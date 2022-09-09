@@ -7,7 +7,7 @@ export default function Index() {
         <div className="faixa1">
 
           <div className="imagem">
-          <img src="images/imagem-loginUsuario.png"  ></img>
+          <img src="images/cadastro.png"  ></img>
           </div>
           
 

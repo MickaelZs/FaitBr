@@ -8,6 +8,7 @@ import Home from './pages/home';
 import LoginAdm from './pages/login adm';
 import CadastroUsuario from './pages/cadastro usuario';
 import LoginUsuario from './pages/login usuario'
+import Confirmacao from './pages/confirmacao'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -19,6 +20,7 @@ root.render(
       <Route path='/LoginAdm' element={<LoginAdm/>}/>
       <Route path='/CadastroUsuario' element={<CadastroUsuario/>}/>
       <Route path='/LoginUsuario' element={<LoginUsuario/>}/>
+      <Route path='/Confirmacao' element={<Confirmacao/>}/>
     </Routes>
     </BrowserRouter>
   </React.StrictMode>

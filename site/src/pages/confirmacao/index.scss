@@ -1,44 +1,32 @@
-.pagina-cadastroUsuario{
+.pagina-confirmaçao{
     background-color: #8d32e5;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    
-    
-    .faixa1{
-        display: flex;
-        flex-direction: row;
-        border: solid 3px rgb(255, 255, 255);
-        width: 1000px;
-        height: 620px;
-        box-shadow: 0px 0px 10px white;
-    }
+    flex-direction: column;
 
-    .imagem{
-        background-color: #ffffff;
-        height: 620px;
-        width: 500px;
+    .img{
+        background-size: 10em;
     }
+    
 
-    .imagem img{
-        width:500px;
-        margin-top: 50px;
+    .txt{
+        color: #ffffff;
     }
 
 
     .label-float{
         position: relative;
         padding-top: 13px;
-        display: flex;
-        flex-direction: column;
       }
       
       .label-float input{
-        color: white;
         background-color: #8d32e5;
         border: 1px solid lightgrey;
         border-radius: 5px;
+    
+        
         outline: none;
         min-width: 250px;
         padding: 15px 20px;
@@ -67,12 +55,10 @@
         -webkit-transition: all .1s linear;
         -moz-transition: all .1s linear;
         background-color: #8d32e5;
-        color: #ffffff;
+        color: white;
         padding: 5px;
         box-sizing: border-box;
       }
-
-      
       
       .label-float input:focus + label,
       .label-float input:not(:placeholder-shown) + label{
@@ -81,20 +67,12 @@
         color: #ffffff;
       }
 
-     .faixa1 button{
+      button{
         background-color: #ffffff;
-        border-radius: 20px;
+        color: #8d32e5;
         border: none;
-        width: 100px;
-        height: 35px;
-     }
-
-     .faixa-input{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction:column;
-        margin-left: 100px;
-     }
-
+        border-radius: 20px;
+        width: 120px;
+        height: 40px;
+      }
 }
