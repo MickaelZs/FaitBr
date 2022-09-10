@@ -1,0 +1,10 @@
+1 - Git: pull
+2 - Git: Commit
+3 - Git: mensagem de alteração
+4 - Git: Push to
+
+
+//'react-scripts' não é reconhecido como um comando interno
+ou externo, um programa operável ou um arquivo em lotes.
+
+Caso de esse erro na hora do npm start é so ir no terminal e só da 'npm i' --Cauã

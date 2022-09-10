@@ -19,7 +19,7 @@ export default function Index() {
           <br/>
           <div class="label-float">
             <input type="date" placeholder=" " required/>
-            <label>Nome de Usuário</label>
+            <label>Date de nascimento</label>
           </div>
 
           <br/>
@@ -36,7 +36,7 @@ export default function Index() {
 
           <br/>
 
-          <button type="button" > Entrar </button>
+          <button type="button" className="botao1"> Entrar </button>
           
 
           </div>

@@ -1,14 +1,38 @@
+
+
 .pagina-loginADM{
     display: flex;
+    flex-direction: column;
+    
+    
+
+    .faixa-1{
+      display: flex;
+      flex-direction: row;
+          background-color: #8d32e5;
+        height: 20vh;
+        align-items: center;
+    
+    }
+
+
+    .faixa2{
+      display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #8d32e5;
-    height: 41.3em;
+        height: 80vh;
+        
+
+    }
+
+    
   
     .label-float{
       position: relative;
       padding-top: 13px;
+      
     }
     
     .label-float input{
@@ -25,6 +49,7 @@
       -webkit-transition: all .1s linear;
       -moz-transition: all .1s linear;
       -webkit-appearance:none;
+      color: #ffffff;
     }
     
     .label-float input:focus{
@@ -49,6 +74,7 @@
       padding: 5px;
       box-sizing: border-box;
     }
+   
     
     .label-float input:focus + label,
     .label-float input:not(:placeholder-shown) + label{
@@ -56,6 +82,57 @@
       top: 0;
       color: #ffffff;
     }
+
+    .div{
+      margin-top: 30px;
+      font-size: 17px;
+      font-weight: bold;
+      color: #ffffff;
+    }
+    .botao{
+      background-color:#ffffff ;
+      font-weight: bold;
+        color: #8d32e5;
+        border-radius: 20px;
+        border: solid #ffffff 3px;
+        width: 120px;
+        height: 45px;
+        margin-top: 5vh;
+        font-size: 19px;
+        box-shadow: -5px 6px #501b81;
+            transition: all ease-in 0.2s;
+          
+      
+    }
+    .botao:hover, .botao:focus{
+      background: #8d32e5;
+      color: #FFF;
+      border-color: #fff;
+      box-shadow: none;
+      
+  }
+  .botao2{
+    background-color:#ffffff ;
+      font-weight: bold;
+        color: #8d32e5;
+        border-radius: 20px;
+        border: solid #ffffff 3px;
+        width: 120px;
+        height: 45px;
+        margin-left: 5em;
+        font-size: 19px;
+        box-shadow: -5px 6px #501b81;
+            transition: all ease-in 0.2s;
+          
+  }
+
+  .botao2:hover, .botao2:focus{
+    background: #8d32e5;
+    color: #FFF;
+    border-color: #fff;
+    box-shadow: none;
+    
+}
   
   }
   
