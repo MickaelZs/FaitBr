@@ -1,7 +1,6 @@
 .pagina-rec{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     text-align: center;
     height: 100vh;
     background-color: #8d32e5;
@@ -12,9 +11,31 @@
     .faixa-input{
         display:flex;
         justify-content: space-evenly;
-        border: #fff solid 1px;
         width: 60em;
+        align-self: center;
         align-items: center;
+    }
+    h1{
+        color: #fff;
+    }
+    h3{
+        color: #fff;
+    }
+    input{
+        width: 100px;
+        height: 120px;
+        background-color: #8d32e5;
+        border:#fff solid 8px;
+        border-radius: 10px;
+        font-size: 50px;
+        text-align: center;
+        outline: 0;
+        
+    }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
     }
 
 
