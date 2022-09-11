@@ -104,11 +104,13 @@
         margin-left: 100px;
      }
 
-     .botao1:hover, .botao1:focus{
+     .botao1:active, .botao1:focus{
       background: #53BFC4;
       color: #FFF;
       border-color: #59D7DC;
       box-shadow: none;
+      pointer-events: fill;
+      position: relative;
       
   }
       //MUDAR A COR MICKAEL!!

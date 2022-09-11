@@ -1,0 +1,22 @@
+.pagina-rec{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    background-color: #8d32e5;
+
+    .faixa-rec1{
+        
+    }
+    .faixa-input{
+        display:flex;
+        justify-content: space-evenly;
+        border: #fff solid 1px;
+        width: 60em;
+        align-items: center;
+    }
+
+
+
+}

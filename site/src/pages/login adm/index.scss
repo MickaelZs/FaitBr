@@ -104,7 +104,7 @@
           
       
     }
-    .botao:hover, .botao:focus{
+    .botao:active, .botao:focus{
       background: #8d32e5;
       color: #FFF;
       border-color: #fff;
@@ -126,7 +126,7 @@
           
   }
 
-  .botao2:hover, .botao2:focus{
+  .botao2:active, .botao2:focus{
     background: #8d32e5;
     color: #FFF;
     border-color: #fff;
