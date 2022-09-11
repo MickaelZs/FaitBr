@@ -30,50 +30,67 @@ export default function Index() {
 
     <div className='pagina-home'>
 
-    <Carousel
-      swipeable={false}
-      draggable={false}
-      responsive={responsive}
-      ssr={true}
-      infinite={true}
-      autoPlaySpeed={1000}
-      keyBoardControl={true}
-      transitionDuration={500}
-      centerMode
-    >
-      <CardGenero avatar="images/trap..png" />
-      <CardGenero avatar="images/brega.png"/>
-      <CardGenero avatar="images/funk.png"/>
-      <CardGenero avatar="images/sertanejo..png"/>
-      <CardGenero avatar="images/rock.png" />
-      <CardGenero avatar="images/pagode.png" />
-      <CardGenero avatar="images/pop.png" />
-      <CardGenero avatar="images/forro.png" />
+      <div className='faixa1'>
+        <header>
+          <div className='texto-cabecalho'>
+            <div>
+              <img  className='logo' src='./images/logo.png' href='' />
+            </div>
 
-    </Carousel>
+              <p>Artistas</p>
+              <p>Gêneros</p>
+              <p>Mais Escutados</p>
+              <img  className='icon-pesquisa' src='./images/icon-pesquisa.png'/>
+              <img className='icon-livraria' src='./images/icon-library.png'/>
+              <img className='icon-perfil' src='./images/icon-perfil.png'/>
+          </div>
+        </header>
+      </div>
 
-    <Carousel
-      swipeable={false}
-      draggable={false}
-      responsive={responsive}
-      ssr={true}
-      infinite={true}
-      autoPlaySpeed={1000}
-      keyBoardControl={true}
-      transitionDuration={500}
-      centerMode
-    >
-      <CardArtistas avatar="images/teto.jpg" />
-      <CardArtistas avatar="images/menos.jpg" />
-      <CardArtistas avatar="images/hariel.webp" />
-      <CardArtistas avatar="images/gusttavolima.webp" />
-      <CardArtistas avatar="images/" />
-      <CardArtistas avatar="images/anderson.jpeg" />
-      <CardArtistas avatar="images/anitta..jpg" />
-      <CardArtistas avatar="images/rai.webp" />
-      
+      <Carousel
+        swipeable={false}
+        draggable={false}
+        responsive={responsive}
+        ssr={true}
+        infinite={true}
+        autoPlaySpeed={1000}
+        keyBoardControl={true}
+        transitionDuration={500}
+        centerMode
+      >
+        <CardGenero avatar="images/trap..png" />
+        <CardGenero avatar="images/brega.png"/>
+        <CardGenero avatar="images/funk.png"/>
+        <CardGenero avatar="images/sertanejo..png"/>
+        <CardGenero avatar="images/rock.png" />
+        <CardGenero avatar="images/pagode.png" />
+        <CardGenero avatar="images/pop.png" />
+        <CardGenero avatar="images/forro.png" />
 
-    </Carousel>
+      </Carousel>
+
+      <Carousel
+        swipeable={false}
+        draggable={false}
+        responsive={responsive}
+        ssr={true}
+        infinite={true}
+        autoPlaySpeed={1000}
+        keyBoardControl={true}
+        transitionDuration={500}
+        centerMode
+      >
+        <CardArtistas avatar="images/teto.jpg" />
+        <CardArtistas avatar="images/menos.jpg" />
+        <CardArtistas avatar="images/hariel.webp" />
+        <CardArtistas avatar="images/gusttavolima.webp" />
+        <CardArtistas avatar="images/" />
+        <CardArtistas avatar="images/anderson.jpeg" />
+        <CardArtistas avatar="images/anitta..jpg" />
+        <CardArtistas avatar="images/rai.webp" />
+        
+
+      </Carousel>
 
 
 

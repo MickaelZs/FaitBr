@@ -1,6 +1,43 @@
 .pagina-home{
 
     background-color: #1e1e1e;
-    height: 100vh;
+    height: 100%;
 
+    .faixa1{
+        background-color: #8D32E5;
+        height: 30em;
+    }
+
+    .texto-cabecalho{
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: row;
+        align-items:flex-start;
+        text-align: center;
+        color: white;
+        font-size: 20px;
+    }
+
+    .logo{
+        display:flex;
+        align-items: flex-start;
+        height:17em;
+        margin-top:-6em;
+        margin-left:-5em
+    }
+
+    .icon-pesquisa{
+        height: 3.5em;
+    }
+
+    .icon-livraria{
+        height:1.7em;
+        margin-top:15px;
+    }
+
+    .icon-perfil{
+        height:3em;
+        margin-top:5px;
+    }
+    
 }
