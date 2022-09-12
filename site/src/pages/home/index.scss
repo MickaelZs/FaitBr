@@ -2,6 +2,7 @@
 
     background-color: #1e1e1e;
     height: 100%;
+    
 
     .faixa1{
         background-color: #8D32E5;
@@ -23,7 +24,8 @@
         align-items: flex-start;
         height:17em;
         margin-top:-6em;
-        margin-left:-5em
+        margin-left:-5em;
+        margin: #ffffff solid 2px;
     }
 
     .icon-pesquisa{
@@ -38,6 +40,20 @@
     .icon-perfil{
         height:3em;
         margin-top:5px;
+    }
+
+    .rodape{
+        background-color: #8D32E5;
+        height:auto;
+        display: flex;
+        flex-direction: row;
+        color: white;
+        font-size: 25px;
+        justify-content:space-around;
+    }
+
+    .texto-rodape{
+       
     }
     
 }
