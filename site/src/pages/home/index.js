@@ -92,7 +92,35 @@ export default function Index() {
 
       </Carousel>
 
+      <div className='rodape'>
 
+        <div>
+          <img className='logo' src='./images/logo.png'/>
+        </div>
+
+        <div className='texto-rodape' >
+          <h3>Redes Sociais:</h3>
+          <p>Instagram</p>
+          <p>Facebook</p>
+          <p>Twitter</p>
+        </div>
+
+        <div>
+        <h3>Desenvolvedores:</h3>
+          <p>João Paulo</p>
+          <p>Mickael V.</p>
+          <p>Lucas Tatsuo</p>
+          <p>Cauã G.</p>
+          <p>Cauã R.</p>
+        </div>
+
+        <div>
+          <h3>Apoiadores:</h3>
+          <img src='./images/logo-frei.png'/>
+        </div>
+
+      </div>
+      
 
     </div>
   );
