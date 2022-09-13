@@ -1,31 +1,59 @@
 .pagina-rec{
+    *{
+        border: solid green;
+    }
     display: flex;
     flex-direction: column;
-    text-align: center;
     height: 100vh;
     background-color: #8d32e5;
+    justify-content: center;
+
+    
 
     .faixa-rec1{
-        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
     .faixa-input{
         display:flex;
         justify-content: space-evenly;
-        width: 60em;
+        width: 56em;
+        
         align-self: center;
         align-items: center;
     }
     h1{
         color: #fff;
+        font-size: 60px;
+        font-family: Arial, Helvetica, sans-serif ;
+        width: 10em;
+
     }
     h3{
         color: #fff;
+        font-size: 43px;
+        width: 900px;
+        
+    }
+    .p{
+        color: #1e1e1ec0;
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    .bah{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
     }
     input{
         width: 100px;
         height: 120px;
         background-color: #8d32e5;
-        border:#fff solid 8px;
+        border:#fff solid 4.5px;
         border-radius: 10px;
         font-size: 50px;
         text-align: center;
@@ -37,6 +65,17 @@
         -webkit-appearance: none;
         margin: 0;
     }
+
+    .sub-mae{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    
+
+    
+
 
 
 
