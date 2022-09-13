@@ -37,14 +37,34 @@ export default function Index() {
               <img  className='logo' src='./images/logo.png' href='' />
             </div>
 
-              <p>Artistas</p>
-              <p>Gêneros</p>
-              <p>Mais Escutados</p>
+            
+              <li><a href="#sec1">Artistas mais escutados</a></li>
+              <li><a href="#sec2">Gêneros</a></li>
+              <li><a href="#sec3">Artistas populares</a></li>
+              
               <img  className='icon-pesquisa' src='./images/icon-pesquisa.png'/>
               <img className='icon-livraria' src='./images/icon-library.png'/>
-              <img className='icon-perfil' src='./images/icon-perfil.png'/>
+
+              
+              <div class="hamburger-menu">
+              <input id="menu__toggle" type="checkbox" />
+              <label class="menu__btn" for="menu__toggle">
+                <span></span>
+              </label>
+
+              <ul class="menu__box">
+                <li><a class="menu__item" href="#">Login</a></li>
+                <li><a class="menu__item" href="#">Cadastro</a></li>
+                <li><a class="menu__item" href="#">Area ADM</a></li>
+                
+              </ul>
+  </div>
           </div>
         </header>
+      </div>
+
+      <div>
+      <section id="sec2"><h1>Gêneros</h1></section>
       </div>
 
       <Carousel
@@ -68,6 +88,10 @@ export default function Index() {
         <CardGenero avatar="images/forro.png" />
 
       </Carousel>
+
+      <div>
+      <section id="sec3"><h1>Artistas populares</h1></section>
+      </div>
 
       <Carousel
         swipeable={false}
