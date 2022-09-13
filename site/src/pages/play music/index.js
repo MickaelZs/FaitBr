@@ -10,20 +10,22 @@ export default function Index() {
     return (
       <div className="App">
 
-
+        
   <AudioPlayer
     autoPlay
-    src="http://example.com/audio.mp3"
+    src="./music/henriqueejulianooficial-completa-ai-part-marilia-mendonca-09f511dd.mp3"
     onPlay={e => console.log("onPlay")}
     // other props here
   />
 
 
         <ReactAudioPlayer
-        src='my_audio_file.ogg'
+        src='./music/henriqueejulianooficial-completa-ai-part-marilia-mendonca-09f511dd.mp3'
         autoPlay
         controls
          />
+
+
        
       </div>
     );

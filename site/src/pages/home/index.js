@@ -8,6 +8,9 @@ import CardArtistas from '../../components/artistas';
 
 export default function Index() {
 
+
+
+
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -36,6 +39,8 @@ export default function Index() {
             <div>
               <img  className='logo' src='./images/logo.png' href='' />
             </div>
+
+            
 
             
               <li><a href="#sec1">Artistas mais escutados</a></li>
@@ -78,14 +83,14 @@ export default function Index() {
         transitionDuration={500}
         centerMode
       >
-        <CardGenero avatar="images/trap..png" />
-        <CardGenero avatar="images/brega.png"/>
-        <CardGenero avatar="images/funk.png"/>
-        <CardGenero avatar="images/sertanejo..png"/>
-        <CardGenero avatar="images/rock.png" />
-        <CardGenero avatar="images/pagode.png" />
-        <CardGenero avatar="images/pop.png" />
-        <CardGenero avatar="images/forro.png" />
+        <CardGenero avatar="images/trap..png" nome="Trap"/>
+        <CardGenero avatar="images/brega.png" nome="Brega Funk"/>
+        <CardGenero avatar="images/funk.png" nome="Funk"/>
+        <CardGenero avatar="images/sertanejo..png" nome="Sertanejo"/>
+        <CardGenero avatar="images/rock.png" nome="Rock" />
+        <CardGenero avatar="images/pagode.png" nome="Pagode"/>
+        <CardGenero avatar="images/pop.png" nome="Pop" />
+        <CardGenero avatar="images/forro.png" nome="Forró"/>
 
       </Carousel>
 
