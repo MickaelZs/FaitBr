@@ -1,4 +1,7 @@
 import './index.scss'
+import {
+  Link
+} from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import CardGenero from '../../components/genero';
@@ -43,6 +46,8 @@ export default function Index() {
             
 
             
+
+            
               <li><a href="#sec1">Artistas mais escutados</a></li>
               <li><a href="#sec2">Gêneros</a></li>
               <li><a href="#sec3">Artistas populares</a></li>
@@ -58,9 +63,9 @@ export default function Index() {
               </label>
 
               <ul class="menu__box">
-                <li><a class="menu__item" href="#">Login</a></li>
-                <li><a class="menu__item" href="#">Cadastro</a></li>
-                <li><a class="menu__item" href="#">Area ADM</a></li>
+                <li><a class="menu__item" href="/LoginUsuario">Login</a></li>
+                <li><a class="menu__item" href="/CadastroUsuario">Cadastro</a></li>
+                <li><a class="menu__item" href="/LoginAdm">Area ADM</a></li>
                 
               </ul>
   </div>
@@ -149,6 +154,8 @@ export default function Index() {
         </div>
 
       </div>
+
+      <a href='login usuario'></a>
       
 
     </div>
