@@ -11,6 +11,7 @@ import LoginUsuario from './pages/login usuario'
 import Confirmacao from './pages/confirmacao'
 import Rec from './pages/recuperacao';
 import PlayMusic from './pages/play music';
+import Cadastromsc from './pages/cadastrarmsc';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -25,6 +26,7 @@ root.render(
       <Route path='/Confirmacao' element={<Confirmacao/>}/>
       <Route path='/Rec' element={<Rec/>}/>
       <Route path='/PlayMusic' element={<PlayMusic/>}/>
+      <Route path='/Cadastromusica' element={<Cadastromsc/>}/>
     </Routes>
     </BrowserRouter>
   </React.StrictMode>

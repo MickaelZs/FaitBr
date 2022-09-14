@@ -1,0 +1,35 @@
+.pagina-cadastro-musica{
+    display: flex;
+
+
+    .faixa-menu{
+        display: flex;
+        flex-direction: column;
+        background-color: #8D32E5;
+        width: 17em;
+        height: 100vh;
+
+    }
+    .imagem-fit{
+        width: 200px;
+    }
+
+    .faixa-cadastrar{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 83em;
+        background-color: #1E1E1E;
+    }
+
+    .faixa-branca{
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        width: 70vw;
+        height: 80vh;
+        border-radius: 20px;
+        border: #8D32E5 solid 1px;
+    }
+}
