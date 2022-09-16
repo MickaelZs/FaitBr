@@ -8,6 +8,8 @@ import artistacadastrado from './artistacadastrado.svg'
 import sair from './sair.svg'
 import artista from './artista.svg'
 import fitbr from './fitbr.svg'
+import imagem from './imagem.svg'
+
 
 export default function Cadastromsc(){
     return(
@@ -24,7 +26,17 @@ export default function Cadastromsc(){
             </section>
             <section className='faixa-cadastrar'>
                 <div className='faixa-branca'>
-
+                    <div>
+                        <p>Adicionar música</p>
+                        <div>
+                        <img src={imagem}/>
+                        </div>
+                    </div>
+                    <div>
+                            <lab
+                            <input type="text"></input>
+                            
+                    </div>
                 </div>
 
             </section>

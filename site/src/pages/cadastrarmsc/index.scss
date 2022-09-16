@@ -25,11 +25,12 @@
 
     .faixa-branca{
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         background-color: #fff;
-        width: 70vw;
+        width: 65vw;
         height: 80vh;
         border-radius: 20px;
         border: #8D32E5 solid 1px;
     }
+    
 }
