@@ -9,6 +9,7 @@ import sair from './sair.svg'
 import artista from './artista.svg'
 import fitbr from './fitbr.svg'
 import imagem from './imagem.svg'
+import Cardinput from '../../components/inputs'
 
 
 export default function Cadastromsc(){
@@ -33,8 +34,8 @@ export default function Cadastromsc(){
                         </div>
                     </div>
                     <div>
-                            <lab
-                            <input type="text"></input>
+                        <Cardinput/>
+                        <Cardinput/>
                             
                     </div>
                 </div>

@@ -1,0 +1,88 @@
+@import url('');
+
+.pagina-cadastro-artista{
+    display: flex;
+    flex-direction: row;
+
+
+
+    .faixa-icons{
+        display: flex;
+        flex-direction: column;
+        background-color: #8D32E5;
+        height: 100vh;
+        width: 21vw;
+    }
+    .faixa-cadastro{
+        background-color: #1E1E1E;
+        height: 100vh;
+        width: 79vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
+
+    }
+    .margin-cadastro{
+        background-color: #fff;
+        height: 55vw;
+        width: 67vw;
+        border-radius: 25px;
+        display: flex;
+        flex-direction: row;
+
+    }
+
+    .div1-cadastro{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #8D32E5;
+        font-size: 20px;
+        font-family: 'inter';
+        width: 33vw;
+    }
+
+    
+
+    .border-image{
+        padding: 80px ;
+        border-radius: 30px;
+        border: #8D32E5 solid 5px;
+    }
+    p{
+        font-size: 24px;
+    }
+
+
+    .div2-cadastro{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: #1E1E1E solid 1px;
+        width: 34vw;
+        
+
+
+    }
+    input{
+        border-top: 0px;
+        border-left: 0px;
+        border-right: 0px;
+       border-bottom: #8D32E5  solid 4px;
+       padding: 20px;
+       outline: none;
+       font-size: 20px;
+       font-family: 'inter';
+       color: #8D32E5;
+    }
+
+    .div-input{
+        padding: 15px;
+    }
+    
+
+}
