@@ -18,16 +18,16 @@ export default function cadartista(){
                     </div>
                     <div className='div2-cadastro'>
                         <div className='div-input'>
-                        <input type="text" placeholder="Artista" required></input>
+                        <input type="text"  placeholder="Artista"  required></input>
                         </div>
                         <div className='div-input'>
-                        <input type="text" placeholder="Artista" required></input>
+                        <input type="text" placeholder="Gênero" required></input>
                         </div>
                         <div className='div-input'>
-                        <input type="text" placeholder="Artista" required></input>
+                        <input type="text" placeholder="Sobre o artista" required></input>
                         </div>
                         
-
+                                <button className='botao'>Cadastrar</button>
                     </div>
                 </div>
 

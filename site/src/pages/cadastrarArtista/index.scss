@@ -42,7 +42,7 @@
         color: #8D32E5;
         font-size: 20px;
         font-family: 'inter';
-        width: 33vw;
+        width: 36vw;
     }
 
     
@@ -62,10 +62,8 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        border: #1E1E1E solid 1px;
-        width: 34vw;
-        
-
+        width: 31vw;
+        color: #8D32E5;
 
     }
     input{
@@ -73,16 +71,35 @@
         border-left: 0px;
         border-right: 0px;
        border-bottom: #8D32E5  solid 4px;
-       padding: 20px;
+       padding: 20px 0;
        outline: none;
        font-size: 20px;
        font-family: 'inter';
-       color: #8D32E5;
+       width: 270px;
+
+    }
+    input::placeholder{
+        color:#8D32E5 !important;
+        font-size: 25px;
+        margin: 20px;
     }
 
     .div-input{
         padding: 15px;
+        margin-right: 3em;
+    }
+
+    .botao{
+        outline: none;
+        background-color: #8D32E5;
+        border: 0;
+        padding: 14px 30px;
+        border-radius:  20px;
+        font-family: 'inter';
+        color: #fff;
+        font-size: 20px;
+
+        margin-top: 20px;
     }
     
-
 }
