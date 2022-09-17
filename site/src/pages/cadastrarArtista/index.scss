@@ -4,14 +4,51 @@
     display: flex;
     flex-direction: row;
 
-
+    
 
     .faixa-icons{
         display: flex;
         flex-direction: column;
+        align-items: center;
         background-color: #8D32E5;
         height: 100vh;
         width: 21vw;
+        color: #fff;
+        font-family: 'inter';
+
+    }
+    .image-fitbr{
+        padding: 6em;
+    }
+    .div-card1{
+        display: flex;
+        padding: 20px 10px;
+    }
+    .p{
+        color: #fff;
+        font-size: 15px;
+        padding-left: 2em;
+    }
+    .div-card2{
+        display: flex;
+        
+    }
+    .div-sair{
+        padding: 40px 0px 0px 0px;
+    }
+    .background{
+        background-color: #a45ae9;
+        
+    }
+    .p2{
+        color: #fff;
+        padding-left: 1em;
+    }
+    .icons{
+        display: flex;
+        flex-direction: column;
+        width: 21vw;
+
     }
     .faixa-cadastro{
         background-color: #1E1E1E;

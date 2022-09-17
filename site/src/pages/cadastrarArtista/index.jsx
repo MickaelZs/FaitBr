@@ -1,10 +1,25 @@
+import CardCadastromsc from '../../components/comp-cadastrar-musica';
 import './index.scss'
+
 
 export default function cadartista(){
     return(
         <main className='pagina-cadastro-artista'>
             <section className='faixa-icons'>
-
+                <img src="images/fitbr.svg"  width='150px' className='image-fitbr'/>
+                <div className='icons'>
+                <CardCadastromsc categoria='images/casinha.svg' nome='Home' cardscss='div-card1' pclas='p'/>
+                <div className='background'>
+                <CardCadastromsc categoria='images/artista.svg' nome='Cadastrar Artistas' cardscss='div-card1' pclas='p'/>
+                </div>
+                <CardCadastromsc categoria='images/cadastrarmusica.svg' nome='Cadastrar Musica' cardscss='div-card1' pclas='p'/>
+                <CardCadastromsc categoria='images/consulta.svg' nome='Consultar' cardscss='div-card1' pclas='p'/>
+                <CardCadastromsc categoria='images/msccadastrada.svg' nome='Musicas Cadastradas' cardscss='div-card1' pclas='p'/>
+                <CardCadastromsc categoria='images/artistacadastrado.svg' nome='Artistas Cadastrados' cardscss='div-card1' pclas='p'/>                
+                </div>
+                <div className='div-sair'>
+                <CardCadastromsc categoria='images/sair.svg' nome='Sair' cardscss='div-card2' pclas='p2'/> 
+                </div>
             </section>
             <section className='faixa-cadastro'>
                 <div className='margin-cadastro'>
