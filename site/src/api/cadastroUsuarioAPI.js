@@ -5,12 +5,12 @@ const api = axios.create({
     baseURL: API_URL
 })
 
-export async function listarCategorias() {
+export async function cadastroUsuario(nome, nasc, email, senha) {
     const r = await api.post('/cadastrousuario',{
         nome: nome,
         nasc: nasc,
         email: email,
-        senha: senha
+        senha: senha,
     })
     return r.data;
 }
