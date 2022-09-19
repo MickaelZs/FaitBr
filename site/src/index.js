@@ -13,6 +13,7 @@ import Rec from './pages/recuperacao';
 import PlayMusic from './pages/play music';
 import Cadastromsc from './pages/cadastrarmsc';
 import Cadartista from './pages/cadastrarArtista';
+import MusicaCadastradas from './pages/musica cadastrada';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -29,6 +30,7 @@ root.render(
       <Route path='/PlayMusic' element={<PlayMusic/>}/>
       <Route path='/Cadastromusica' element={<Cadastromsc/>}/>
       <Route path='/Cadastrarartista' element={<Cadartista/>}/>
+      <Route path='/MusicaCadastradas' element={<MusicaCadastradas/>}/>
     </Routes>
     </BrowserRouter>
   </React.StrictMode>

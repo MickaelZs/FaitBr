@@ -18,3 +18,18 @@ export async function alterarImagem(imagem, id){
     const [resposta] = await con.query(comando,[imagem, id]);
     return resposta.affectedRows;
 }
+
+
+export async function listarTodosArtista() {
+    const comando =
+    `select 
+    id_artistas id,
+    nm_artistas nome,
+    ds_genero genero,
+    ds_sobre sobre,
+    img_artista artistas
+    from tb_artistas;`
+    
+    const [linhas] = await con.query(comando);
+    return linhas;
+}

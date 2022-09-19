@@ -40,7 +40,7 @@ export default function Index() {
         <header>
           <div className='texto-cabecalho'>
             <div>
-              <img  className='logo' src='./images/logo.png' href='' />
+              
             </div>
 
             
@@ -54,6 +54,9 @@ export default function Index() {
               
               <img  className='icon-pesquisa' src='./images/icon-pesquisa.png'/>
               <img className='icon-livraria' src='./images/icon-library.png'/>
+              
+              <img  className='logo' src='./images/logooo.png' href='' width='100' />
+            
 
               
               <div class="hamburger-menu">
@@ -114,14 +117,14 @@ export default function Index() {
         transitionDuration={500}
         centerMode
       >
-        <CardArtistas avatar="images/teto.jpg" />
-        <CardArtistas avatar="images/menos.jpg" />
-        <CardArtistas avatar="images/hariel.webp" />
-        <CardArtistas avatar="images/gusttavolima.webp" />
-        <CardArtistas avatar="images/" />
-        <CardArtistas avatar="images/anderson.jpeg" />
-        <CardArtistas avatar="images/anitta..jpg" />
-        <CardArtistas avatar="images/rai.webp" />
+        <CardArtistas avatar="images/teto.jpg" nome="teto" />
+        <CardArtistas avatar="images/menos.jpg" nome="Menos e mais"/>
+        <CardArtistas avatar="images/hariel.webp" nome="Mc hariel" />
+        <CardArtistas avatar="images/gusttavolima.webp" nome="Gustavo lima"/>
+        <CardArtistas avatar="images/"  nome="teto"/>
+        <CardArtistas avatar="images/anderson.jpeg" nome="Anderson" />
+        <CardArtistas avatar="images/anitta..jpg" nome="Anitta"/>
+        <CardArtistas avatar="images/rai.webp" nome="Saia rodada"/>
         
 
       </Carousel>

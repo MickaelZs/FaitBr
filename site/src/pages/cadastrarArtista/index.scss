@@ -4,6 +4,19 @@
     display: flex;
     flex-direction: row;
 
+    #imagemCapa{
+        visibility: hidden;
+        position: absolute;
+    }
+
+    .imagem{
+       
+        border-radius: 20px;
+        height: 300px;
+        width: 300px;
+
+    }
+
     
 
     .faixa-icons{
@@ -85,9 +98,11 @@
     
 
     .border-image{
-        padding: 80px ;
-        border-radius: 30px;
+        height: 300px;
+        width: 300px;
+        border-radius: 20px;
         border: #8D32E5 solid 5px;
+        
     }
     p{
         font-size: 24px;

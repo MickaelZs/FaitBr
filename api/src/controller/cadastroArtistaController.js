@@ -1,5 +1,5 @@
 import { Router} from "express";
-import { alterarImagem, cadastrorArtista } from "../repository/cadastroArtistaRepository.js"
+import { alterarImagem, cadastrorArtista, listarTodosArtista } from "../repository/cadastroArtistaRepository.js"
 import multer from 'multer';
 
 
@@ -23,6 +23,8 @@ server.post('/cadastroArtista' , async(req, resp) => {
 
 server.put('/cadastroArtista/:id/capa', upload.single('capa') ,async (req, resp) => {
     try{
+        if(!req.file)
+        throw new Error('Escolhar a imagem do artista.');
         const {id} = req.params;
         const imagem = req.file.path;
 
@@ -36,6 +38,18 @@ server.put('/cadastroArtista/:id/capa', upload.single('capa') ,async (req, resp)
         resp.status(401).send({
             erro: err.message
         })   
+    }
+})
+
+
+server.get('/artista', async (req, resp) => {
+    try {
+        const resposta = await listarTodosArtista();
+        resp.send(resposta);
+    } catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
     }
 })
 
