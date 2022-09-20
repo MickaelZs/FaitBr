@@ -1,7 +1,24 @@
 import './index.scss'
 import Menu from '../../components/menu'
+import { listaArtista } from '../../api/cadastroArtistaAPI';
+import {useEffect, useState} from 'react'
 
 export default function Index(){
+
+    const [nome, setNOME] = useState ([])
+
+
+    async function carregarTodosArtista(){
+        const resp = await listaArtista();
+        setNOME(resp);
+    }
+
+    useEffect(() => {
+        carregarTodosArtista();
+    }, [])
+
+
+
     return(
         <main className='page page-consultar'>
             <Menu />
@@ -30,11 +47,19 @@ export default function Index(){
                                     
                                 </div>
                                 <div>
+                                {nome.map(item =>
+                                <div>
+                                    <div className='nomeArtisata'> {item.nome} </div>
+                                    <div className='genero'> {item.genero} </div>
+                                    <div className='sobre'> {item.sobre} </div>
+                                    </div>
                                     
-                                    <div className='nomeArtisata'> Nome </div>
-                                    <div className='genero'>Genero</div>
-                                    <div className='sobre'>Sobre</div>
+                                    
+                                    
+                                )}    
                                 </div>
+                                <div className='genero'>Genero</div>
+                                    <div className='sobre'>Sobre</div>
                         
                             </div>
                         </div>

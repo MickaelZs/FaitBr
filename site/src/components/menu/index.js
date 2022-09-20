@@ -11,12 +11,13 @@ export default function Menu (){
 
             <div className='menu-items'>
                 <div>
+                    
                     <img src="images/casinha.svg" alt="home" />
-                    <div>Home</div>
+                    <div >Home</div>
                 </div>
                 <div>
                     <img src="images/artista.svg" alt="cadastrar" />
-                    <div>Cadastrar artista</div>
+                    <a href='/Cadastrarartista'>Cadastrar artista</a>
                 </div>
                 <div>
                     <img src="images/cadastrarmusica.svg" alt="consultar" />
@@ -30,12 +31,13 @@ export default function Menu (){
 
                 <div>
                     <img src="images/artistacadastrado.svg" alt="consultar" />
-                    <div>Artista cadastrado</div>
+                    <a href='/ArtistaCadastrados'>Artista cadastrado</a>
+                    
                 </div>
 
                 <div>
                     <img src="images/msccadastrada.svg" alt="consultar" />
-                    <div>Musica cadastrada</div>
+                    <a href='/MusicaCadastradas'>Musicas cadastradas</a>
                 </div>
             </div>
         </div>
