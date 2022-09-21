@@ -33,3 +33,20 @@ export async function listarTodosArtista() {
     const [linhas] = await con.query(comando);
     return linhas;
 }
+
+export async function buscarPorId(id) {
+    const comando =
+        `select 
+        id_artistas id,
+        nm_artistas nome,
+        ds_genero genero,
+        ds_sobre sobre,
+        img_artista artistas
+        from tb_artistas
+        where id_artistas = ?`
+        
+        
+    
+    const [linhas] = await con.query(comando, [id]);
+    return linhas[0];
+}

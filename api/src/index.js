@@ -3,7 +3,7 @@ import express from 'express'
 import cors from 'cors'
 import cadastroUsuario from './controller/cadastroUsuarioController.js'
 import cadastroArtista from './controller/cadastroArtistaController.js'
-import loginAdm from './controller/loginadmController'
+import loginAdm from './controller/loginadmController.js'
 
 const server = express();
 

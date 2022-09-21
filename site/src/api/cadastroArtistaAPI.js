@@ -31,3 +31,9 @@ export async function listaArtista(){
     const resposta = await api.get('/artista');
     return resposta.data;
   }
+
+
+export async function buscarPorId(id){
+    const resposta = await api.get(`/artista/${id}`)
+    return resposta.data;
+}

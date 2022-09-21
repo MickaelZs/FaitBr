@@ -1,4 +1,7 @@
 import './index.scss'
+import {
+  Link
+} from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import CardGenero from '../../components/genero';
@@ -48,7 +51,9 @@ export default function Index() {
               <li><a href="#sec1">Artistas mais escutados</a></li>
               <li><a href="#sec2">Gêneros</a></li>
               <li><a href="#sec3">Artistas populares</a></li>
-          
+              
+              <img  className='icon-pesquisa' src='./images/icon-pesquisa.png'/>
+              <img className='icon-livraria' src='./images/icon-library.png'/>
               
               <img  className='logo' src='./images/logooo.png' href='' width='100' />
             
