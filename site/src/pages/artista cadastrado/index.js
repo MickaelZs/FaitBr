@@ -30,7 +30,7 @@ export default function Index() {
 
                     <div className='caixa-busca'>
                         <input type="text" placeholder='Buscar filmes por nome' />
-                        <img src='/assets/images/icon-buscar.svg' alt='buscar' />
+                        <img src='images/icon-pesquisa.png' alt='buscar' />
                     </div>
                     
 
@@ -51,8 +51,9 @@ export default function Index() {
                                         
                                     </div>
                                     <div>
-                                        <div className='sigla'>H</div>
-                                        <div className='artista'>{item.id} </div>
+                                        <div className='sigla'></div>
+                                        <div className='id'>{item.id} </div>
+                                        <div className='artista'>{item.nome} </div>
                                         <div className='genero'>{item.genero}</div>
                                     </div>
                                     <div>
