@@ -15,6 +15,15 @@ select * from tb_playlist_item;
 
 
 drop table tb_usuario;
+
+
+create table TB_LOGINADM(
+ID_LOGINADM   int PRIMARY KEY auto_increment,
+DS_SENHA    varchar(100),
+DS_EMAIL   varchar(100)
+);
+
+
 create table tb_usuario(
 id_usuario int primary key auto_increment,
 nm_nome varchar(200),
