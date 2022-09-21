@@ -1,10 +1,9 @@
---Banco de dados
-
 create database fitbr;
 
 use fitbr;
 
 select * from tb_usuario;
+select * from tb_loginadm;
 select * from tb_artistas;
 select * from tb_musicas;
 select * from tb_usuario_artistas;
@@ -16,13 +15,14 @@ select * from tb_playlist_item;
 
 drop table tb_usuario;
 
-
-create table TB_LOGINADM(
-ID_LOGINADM   int PRIMARY KEY auto_increment,
-DS_SENHA    varchar(100),
-DS_EMAIL   varchar(100)
+create table tb_loginadm (
+id_adm int primary key auto_increment,
+ds_email varchar (200),
+ds_senha varchar (200)
 );
 
+insert into tb_loginadm (ds_email, ds_senha)
+values ( 'mickaelcosta@gmail.com', 123 );
 
 create table tb_usuario(
 id_usuario int primary key auto_increment,
@@ -31,6 +31,10 @@ dt_nasc datetime,
 ds_email varchar(200),
 ds_senha varchar(200)
 );
+select * from tb_usuario;
+
+insert into tb_usuario (nm_nome, dt_nasc, ds_email, ds_senha)
+values ('Mickael','2005-05-19', 'mickaelcosta@gmail.com', 123 );
 
 create table tb_artistas(
 id_artistas int primary key auto_increment,

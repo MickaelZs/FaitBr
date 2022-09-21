@@ -1,4 +1,4 @@
-import {login} from '../repository/loginadmRepository'
+import { loginAdm } from '../repository/loginadmRepository.js'
 
 import { Router  } from "express"
 const server = Router();
@@ -7,7 +7,7 @@ server.post('/adm/login', async (req, resp) => {
     try {
         const {email, senha} = req.body;
         
-        const resposta = await login (email, senha)
+        const resposta = await loginAdm (email, senha)
         if(!resposta){
             throw new Error('Credenciais inválidas')
         }
@@ -23,3 +23,5 @@ server.post('/adm/login', async (req, resp) => {
         })
     }
 })
+
+export default server;
