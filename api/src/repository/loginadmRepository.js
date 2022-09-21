@@ -5,7 +5,6 @@ export async function loginAdm (email, senha){
     `
     select  id_adm	  id,
             ds_email		email
-            ds_senha		senha
     from	tb_loginadm
     where	ds_email   = ?
     and	    ds_senha   = ? `

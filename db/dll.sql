@@ -19,7 +19,7 @@ create table tb_loginadm (
 id_adm int primary key auto_increment,
 ds_email varchar (200),
 ds_senha varchar (200)
-);
+);0
 
 insert into tb_loginadm (ds_email, ds_senha)
 values ( 'mickaelcosta@gmail.com', 123 );
