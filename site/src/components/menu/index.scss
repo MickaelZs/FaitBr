@@ -11,6 +11,11 @@
     flex-direction: column;
     justify-content: space-between;
 
+    a{
+        text-decoration: none;
+        color: white;
+    }
+
     
     .logo {
         display: flex;
@@ -44,7 +49,7 @@
         cursor: pointer;
     }
     .menu-items > div:hover {
-        background-color: #A028E6;
+        background-color: #bebebe;
     }
 
     .menu-items > div img {

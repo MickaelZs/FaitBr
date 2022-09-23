@@ -1,5 +1,5 @@
 import Menu from '../../components/menu'
-import { listaArtista, buscarPorId } from '../../api/cadastroArtistaAPI';
+import { listaArtista, buscarPorId, buscarImagem } from '../../api/cadastroArtistaAPI';
 import {useEffect, useState} from 'react'
 import './index.scss'
 
@@ -13,6 +13,7 @@ export default function Index() {
         const resp = await listaArtista();
         setNomee(resp);
     }
+
 
     useEffect(() => {
         carregarTodosArtista();
@@ -51,7 +52,9 @@ export default function Index() {
                                         
                                     </div>
                                     <div>
-                                        <div className='sigla'></div>
+                                        <div className='imgg'> 
+                                        <img src={item.artistas}></img>
+                                        </div>
                                         <div className='id'>{item.id} </div>
                                         <div className='artista'>{item.nome} </div>
                                         <div className='genero'>{item.genero}</div>

@@ -1,5 +1,5 @@
 import { Router} from "express";
-import { alterarImagem, cadastrorArtista, listarTodosArtista } from "../repository/cadastroArtistaRepository.js"
+import { alterarImagem, buscarImagem, cadastrorArtista, listarTodosArtista } from "../repository/cadastroArtistaRepository.js"
 import multer from 'multer';
 
 
@@ -45,6 +45,17 @@ server.put('/cadastroArtista/:id/capa', upload.single('capa') ,async (req, resp)
 server.get('/artista', async (req, resp) => {
     try {
         const resposta = await listarTodosArtista();
+        resp.send(resposta);
+    } catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
+server.get('/buscarImagemm', async (req, resp) => {
+    try {
+        const resposta = await buscarImagem();
         resp.send(resposta);
     } catch (err) {
         resp.status(400).send({

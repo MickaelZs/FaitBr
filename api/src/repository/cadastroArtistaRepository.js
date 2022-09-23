@@ -34,6 +34,17 @@ export async function listarTodosArtista() {
     return linhas;
 }
 
+export async function buscarImagem() {
+    const comando =
+    `select
+    img_artista artistas
+    from tb_artistas;`
+    
+    const [linhas] = await con.query(comando);
+    return linhas;
+}
+
+
 export async function buscarPorId(id) {
     const comando =
         `select 

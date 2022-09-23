@@ -1,6 +1,4 @@
-    *{
-        border:  1px solid green    ;
-    }
+    
     .page-consultar {
 
         display: flex;
@@ -29,7 +27,8 @@
             display: flex;
             justify-content: space-between;
     
-            background-color: rgb(206, 49, 198);
+            background-color: white;
+            border: solid 3px black;
             padding: 10px 20px;
             border-radius: 15px;
             box-shadow: 1px 1px 5px rgb(220, 220, 220);
@@ -168,18 +167,14 @@
     
     
     
-        .card .sigla {
+        .card .imgg {
             display: flex;
             align-items: center;
             justify-content: center;
-    
             width: 61px;
             height: 52px;
-            background-color: #FFCE37;
             border-radius: 18px;
-    
             font: 600 22px 'Inter';
-            color: #fff;
         }
         .card .id {
             font: 800 16px 'Inter';

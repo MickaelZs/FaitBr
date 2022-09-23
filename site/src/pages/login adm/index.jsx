@@ -18,7 +18,7 @@ export default function Index() {
         const r = await login(email,senha) 
     
 
-      navigate('/MusicaCadastradas');
+      navigate('/Cadastrarartista');
 
     }
 

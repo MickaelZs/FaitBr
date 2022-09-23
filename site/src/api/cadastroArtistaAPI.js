@@ -37,3 +37,7 @@ export async function buscarPorId(id){
     const resposta = await api.get(`/artista/${id}`)
     return resposta.data;
 }
+
+export async function buscarImagem(imagem) {
+    return `${api.getUri()}/${imagem}`
+}
