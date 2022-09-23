@@ -71,6 +71,7 @@ id_musica int,
 foreign key (id_usuario) references tb_usuario (id_usuario),
 foreign key (id_musica) references tb_musicas (id_musica)
 );
+.
 
 create table tb_playlist (
 id_playlist int primary key auto_increment,
