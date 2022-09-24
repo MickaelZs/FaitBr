@@ -36,7 +36,7 @@ root.render(
       <Route path='/MusicaCadastradas' element={<MusicaCadastradas/>}/>
       <Route path='/ArtistaCadastrados' element={<ArtistaCadastrados/>}/>
       <Route path='/HomeLoginFeito' element={<HomeLoginFeito/>}/>
-      <Route path='/Genero' element={<Genero/>}/>
+      <Route path='/Genero/:idParam' element={<Genero/>}/>
     </Routes>
     </BrowserRouter>
   </React.StrictMode>

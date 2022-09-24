@@ -27,7 +27,7 @@ export async function listarTodosArtista() {
     nm_artistas nome,
     ds_genero genero,
     ds_sobre sobre,
-    img_artista artistas
+    img_artista artista
     from tb_artistas;`
     
     const [linhas] = await con.query(comando);
@@ -37,7 +37,7 @@ export async function listarTodosArtista() {
 export async function buscarImagem() {
     const comando =
     `select
-    img_artista artistas
+    img_artista artista
     from tb_artistas;`
     
     const [linhas] = await con.query(comando);
@@ -52,7 +52,7 @@ export async function buscarPorId(id) {
         nm_artistas nome,
         ds_genero genero,
         ds_sobre sobre,
-        img_artista artistas
+        img_artista artista
         from tb_artistas
         where id_artistas = ?`
         

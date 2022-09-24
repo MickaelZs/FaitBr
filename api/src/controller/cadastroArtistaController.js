@@ -1,5 +1,5 @@
 import { Router} from "express";
-import { alterarImagem, buscarImagem, cadastrorArtista, listarTodosArtista } from "../repository/cadastroArtistaRepository.js"
+import { alterarImagem, buscarImagem, buscarPorId, cadastrorArtista, listarTodosArtista } from "../repository/cadastroArtistaRepository.js"
 import multer from 'multer';
 
 
