@@ -5,7 +5,7 @@ export async function listarTodosGenero() {
     const comando =
     `select 
     id_genero id,
-    nm_generos nome
+    nm_genero nome
     from tb_genero;`
     
     const [linhas] = await con.query(comando);
@@ -16,7 +16,7 @@ export async function buscarGeneroPorId(id) {
     const comando =
     `select 
     id_genero id,
-    nm_generos nome
+    nm_genero nome
     from tb_genero
     where id_genero = ?;`
         
