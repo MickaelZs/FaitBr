@@ -1,10 +1,10 @@
 import { con } from "./connection.js";
 
 export async function cadastrorArtista(artistas){
-    const comando = `insert into tb_artistas(nm_artistas, ds_genero, ds_sobre)
+    const comando = `insert into tb_artistas(id_genero,nm_artistas, ds_sobre)
                     values(?, ?, ?);`
 
-    const [resposta] = await con.query(comando,[artistas.artistas,artistas.genero,artistas.sobre]);
+    const [resposta] = await con.query(comando,[artistas.genero,artistas.artistas,artistas.sobre]);
     artistas.id = resposta.insertId;
 
     return artistas;
@@ -24,8 +24,8 @@ export async function listarTodosArtista() {
     const comando =
     `select 
     id_artistas id,
+    id_genero genero,
     nm_artistas nome,
-    ds_genero genero,
     ds_sobre sobre,
     img_artista artista
     from tb_artistas;`
@@ -56,8 +56,6 @@ export async function buscarPorId(id) {
         from tb_artistas
         where id_artistas = ?`
         
-        
-    
     const [linhas] = await con.query(comando, [id]);
     return linhas[0];
 }

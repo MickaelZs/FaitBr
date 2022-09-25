@@ -1,14 +1,15 @@
 import { API_URL } from './config';
 
+
 import axios from 'axios'
 const api = axios.create({
     baseURL: API_URL
 })
 
-export async function cadastroArtista(artistas, genero, sobre) {
+export async function cadastroArtista(artistas, idGenero, sobre) {
     const r = await api.post('/cadastroArtista',{
         artistas: artistas,
-        genero: genero,
+        genero: idGenero,
         sobre: sobre,
     })
     return r.data;

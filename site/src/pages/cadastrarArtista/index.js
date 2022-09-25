@@ -1,17 +1,29 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Menu from '../../components/menu'
 import './index.scss'
 
 import { ToastContainer, toast } from 'react-toastify';
 import { cadastroArtista, enviarImagemArtista } from '../../api/cadastroArtistaAPI'
+import { listaGeneros } from '../../api/generoAPI';
 
 
 export default function Index(){
 
     const [nome, setNome] = useState ('');
-    const [genero, setGenero] = useState ('');
+    const [genero, setGenero] = useState ([]);
+    const [idGenero, setIdGenero] = useState ('');
     const [sobre, setSobre] = useState ('');
     const [imagem, setImagem] = useState ('');
+
+    async function carregarGeneros(){
+        const r = await listaGeneros();
+        setGenero(r);
+    }
+
+    useEffect(() => {
+        carregarGeneros();
+    },[] )
+   
 
 
 
@@ -20,7 +32,7 @@ export default function Index(){
         try{      
             if (!imagem)
             throw new Error('escolha a imagem do artista');
-            const Novoartista = await cadastroArtista (nome,genero,sobre);
+            const Novoartista = await cadastroArtista (nome,idGenero,sobre);
             const r = await enviarImagemArtista(Novoartista.id, imagem);
             toast.dark('Acho q foi');
         }
@@ -72,15 +84,29 @@ export default function Index(){
                         </div>
                     </div>
                     <div className='div2-cadastro'>
-                        <div className='div-input'>
-                        <input type="text"  placeholder="Artista" value={nome} onChange={e => setNome(e.target.value)} required></input>
+                    <div className='div-input'>
+                    <div className='label-float'>
+                    <input type="text" placeholder=" " value={nome}  onChange={e => setNome(e.target.value)}/>
+                    <label>Artista</label>
+                    </div>
+
+                    <br />
+                        
+                        <select value={idGenero} onChange={e => setIdGenero(e.target.value)}>
+                        <option selected disabled hidden>Selecione</option>
+
+                        {genero.map(item =>
+                            <option value={item.id}> {item.nome} </option>
+                        )}
+                    </select>
+                    <br />
+                    <div className='label-float'>
+                    <input type="text" placeholder=" " value={sobre}  onChange={e => setSobre(e.target.value)}/>
+                    <label>Sobre</label>
+                    </div>
+                       
                         </div>
-                        <div className='div-input'>
-                        <input type="text" placeholder="Gênero" value={genero} onChange={e => setGenero(e.target.value)} required></input>
-                        </div>
-                        <div className='div-input'>
-                        <input type="text" placeholder="Sobre o artista" value={sobre} onChange={e => setSobre(e.target.value)} required></input>
-                        </div>
+                        
                         
                                 <button className='botao' onClick={salvarClick} >Cadastrar</button>
                     </div>
