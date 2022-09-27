@@ -85,42 +85,15 @@
           border: solid #ffffff 3px;
           width: 120px;
           height: 45px;
-          margin-top: 5vh;
+       
           font-size: 19px;
-          box-shadow: -5px 6px #501b81;
+          box-shadow: 2px 2px 10px #8d32e5;
               transition: all ease-in 0.2s;
             
         
       }
-      .botao:active, .botao:focus{
-        background: #8d32e5;
-        color: #FFF;
-        border-color: #fff;
-        box-shadow: none;
-        
-    }
-    .botao2{
-      background-color:#ffffff ;
-        font-weight: bold;
-          color: #8d32e5;
-          border-radius: 20px;
-          border: solid #ffffff 3px;
-          width: 120px;
-          height: 45px;
-          margin-left: 5em;
-          font-size: 19px;
-          box-shadow: -5px 6px #ffffff;
-              transition: all ease-in 0.2s;
-            
-    }
-  
-    .botao2:active, .botao2:focus{
-      background: #8d32e5;
-      color: #FFF;
-      border-color: #fff;
-      box-shadow: none;
       
-  }
+    
     
 
     

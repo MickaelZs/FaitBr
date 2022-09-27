@@ -51,8 +51,8 @@ export default function Index() {
                                     <div className='card'>
                                     <div className='acoes'>
 
-                                        <img src='/assets/images/icon-editar.svg' alt='editar' /> 
-                                        <img src='/assets/images/icon-remover.svg' alt='remover' />
+                                        <img src='' alt='editar' /> 
+                                        <img src='' alt='remover' />
                                         
                                     </div>
                                     <div>

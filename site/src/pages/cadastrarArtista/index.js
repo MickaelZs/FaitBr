@@ -104,10 +104,9 @@ export default function Index(){
                     <input type="text" placeholder=" " value={sobre}  onChange={e => setSobre(e.target.value)}/>
                     <label>Sobre</label>
                     </div>
+                    <br />
                        
                         </div>
-                        
-                        
                                 <button className='botao' onClick={salvarClick} >Cadastrar</button>
                     </div>
                 </div>
