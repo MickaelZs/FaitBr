@@ -1,8 +1,10 @@
 create database fitbr;
 
+
 use fitbr;
 
 select * from tb_usuario;
+select * from tb_loginUsuario;
 select * from tb_loginadm;
 select * from tb_artistas;
 select * from tb_genero;
@@ -16,7 +18,22 @@ ds_email varchar(200),
 ds_senha varchar(200)
 );
 
-drop table tb_loginadm;
+insert into tb_usuario (nm_nome,dt_nasc,ds_email, ds_senha)
+values ('usu','2005-05-05', 'usuario', 123 );
+
+
+
+
+create table tb_loginUsuario(
+id_loginusuario int primary key auto_increment,
+ds_email varchar(200),
+ds_senha varchar(200)
+);
+
+insert into tb_loginUsuario (ds_email, ds_senha)
+values ( 'usuario', 123 );
+
+
 create table tb_loginadm (
 id_adm int primary key auto_increment,
 ds_email varchar (200),
@@ -36,12 +53,14 @@ img_artista varchar(200),
 foreign key (id_genero) references tb_genero (id_genero)
 );
 
+
 create table tb_genero(
 id_genero int primary key auto_increment,
-nm_genero varchar (100)
+nm_genero varchar (100),
+img_genero varchar(200)
 );
 
- --insert tb_genero
+
 insert into tb_genero (nm_genero)
 values ( 'Funk');
 insert into tb_genero (nm_genero)

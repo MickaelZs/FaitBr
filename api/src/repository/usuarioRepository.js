@@ -9,3 +9,15 @@ export async function cadastrorUsuario(usuario) {
 
     return usuario;
 }
+
+export async function loginUsuario (email, senha){
+    const comando=
+    `
+    select  id_loginUsuario	  id,
+            ds_email		email
+    from	tb_loginUsuario
+    where	ds_email   = ?
+    and	    ds_senha   = ? `
+    const [linha] = await con.query(comando, [email, senha] )
+    return linha[0];
+}
