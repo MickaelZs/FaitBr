@@ -34,7 +34,7 @@ export default function Index() {
 
   return (
 
-    <div className='pagina-home'>
+    <div className='pagina-home-login-feito'>
 
       <div className='faixa1'>
         <header>
