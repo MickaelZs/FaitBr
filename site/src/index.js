@@ -17,6 +17,8 @@ import MusicaCadastradas from './pages/musica cadastrada';
 import ArtistaCadastrados from './pages/artista cadastrado';
 import HomeLoginFeito from './pages/home login feito';
 import Genero from './pages/pagina generos';
+import Consulta from './pages/consultar';
+import Reproduzir from './pages/ReproduzirMusica';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -37,6 +39,11 @@ root.render(
       <Route path='/ArtistaCadastrados' element={<ArtistaCadastrados/>}/>
       <Route path='/HomeLoginFeito' element={<HomeLoginFeito/>}/>
       <Route path='/Genero' element={<Genero/>}/>
+      <Route path='/Consulta' element={<Consulta/>}/>
+      <Route path='/Reproduzir' element={<Reproduzir/>}/>
+
+
+
     </Routes>
     </BrowserRouter>
   </React.StrictMode>

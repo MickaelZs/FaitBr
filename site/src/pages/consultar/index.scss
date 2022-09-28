@@ -1,0 +1,16 @@
+.pagina-consulta{
+    display: flex;
+    flex-direction:row ;
+
+    .faixa-preta{
+        background-color: #1e1e1e;
+        width: 100%;
+    }
+    .faixa-preta{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+
+}

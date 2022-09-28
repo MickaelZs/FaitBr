@@ -36,24 +36,12 @@ export default function Index() {
       <div className='faixa1'>
         <header>
           <div className='texto-cabecalho'>
-            <div>
-              
-            </div>
-
-            
-
-            
-
-            
               <li><a href="#sec1">Artistas mais escutados</a></li>
               <li><a href="#sec2">Gêneros</a></li>
               <li><a href="#sec3">Artistas populares</a></li>
-          
-              
+        
               <img  className='logo' src='./images/logooo.png' href='' width='100' />
-            
-
-              
+          </div>
               <div class="hamburger-menu">
               <input id="menu__toggle" type="checkbox" />
               <label class="menu__btn" for="menu__toggle">
@@ -66,7 +54,7 @@ export default function Index() {
                 <li><a class="menu__item" href="/LoginAdm">Area ADM</a></li>
                 
               </ul>
-  </div>
+
           </div>
         </header>
       </div>
