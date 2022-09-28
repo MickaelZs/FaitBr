@@ -1,5 +1,5 @@
 import { Router} from "express";
-import { alterarImagem, buscarImagem, buscarPorId, cadastrorArtista, listarTodosArtista } from "../repository/cadastroArtistaRepository.js"
+import { alteraArtista, alterarImagem, buscarImagem, buscarPorId, cadastrorArtista, deletaArtista, listarTodosArtista } from "../repository/cadastroArtistaRepository.js"
 import multer from 'multer';
 
 
@@ -77,6 +77,55 @@ server.get('/artista/:id', async (req, resp) => {
             resp.send(resposta);
     } catch (err) {
         resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
+
+server.delete ('/artista/:id',async (req,resp) => {
+    try{
+
+        const { id } = req.params;
+    
+        const resposta = await deletaArtista(id);
+        resp.status(200).send();
+    }
+
+    catch (err){
+        resp.status(401).send({
+            erro: err.message
+        })
+    }
+
+})
+
+
+server.put ('/artista/:id', async (req,resp) => {
+    try{
+        const {id} = req.params;
+        const music = req.body;
+   
+        const resposta = await alteraArtista(id, music);
+        if (resposta != 1)
+            throw new Error('Artistas não pode ser alterado');
+        if(!music.nome.trim()){
+                throw new Error('Nome é obrigatório');
+            }
+        if(!music.genero.trim()){
+                throw new Error('Genero é obrigatório');
+            }
+        if(!music.sobre.trim()){
+                throw new Error('Sobre é obrigatório');
+            }
+       
+        else
+            resp.status(204).send();
+        
+    }
+
+    catch (err){
+        resp.status(401).send({
             erro: err.message
         })
     }

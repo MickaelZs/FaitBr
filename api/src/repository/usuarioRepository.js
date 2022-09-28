@@ -13,9 +13,9 @@ export async function cadastrorUsuario(usuario) {
 export async function loginUsuario (email, senha){
     const comando=
     `
-    select  id_loginUsuario	  id,
+    select  id_usuario	  id,
             ds_email		email
-    from	tb_loginUsuario
+    from	tb_usuario
     where	ds_email   = ?
     and	    ds_senha   = ? `
     const [linha] = await con.query(comando, [email, senha] )

@@ -59,3 +59,22 @@ export async function buscarPorId(id) {
     const [linhas] = await con.query(comando, [id]);
     return linhas[0];
 }
+
+export async function deletaArtista (id){
+    const comando = 
+    `delete from tb_artistas
+    where id_artistas = ? `;
+    const [resposta] = await con.query(comando, [id]);
+    return resposta.affectedRows;
+}
+
+export  async function alteraArtista(id, agend){
+    const comando = 
+        `update tb_artistas
+        set	id_genero  = ?,
+            nm_artistas	= ?,
+            ds_sobre	= ?
+        where id_artistas = ?`
+const [resposta] = await con.query(comando,[agend.carro, agend.cor, agend.cpf, agend.telefone, agend.cliente, agend.atendimento,  id ])
+return resposta.affectedRows;
+}
