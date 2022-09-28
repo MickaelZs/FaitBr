@@ -49,8 +49,8 @@ export async function buscarPorId(id) {
     const comando =
         `select 
         id_artistas id,
+        id_genero genero,
         nm_artistas nome,
-        ds_genero genero,
         ds_sobre sobre,
         img_artista artista
         from tb_artistas
@@ -68,13 +68,29 @@ export async function deletaArtista (id){
     return resposta.affectedRows;
 }
 
-export  async function alteraArtista(id, agend){
+export  async function alteraArtista(id, artista){
     const comando = 
         `update tb_artistas
         set	id_genero  = ?,
             nm_artistas	= ?,
             ds_sobre	= ?
         where id_artistas = ?`
-const [resposta] = await con.query(comando,[agend.carro, agend.cor, agend.cpf, agend.telefone, agend.cliente, agend.atendimento,  id ])
+const [resposta] = await con.query(comando,[artista.genero,artista.nome,artista.sobre,id ])
 return resposta.affectedRows;
+}
+
+export async function buscarPorNome(nome) {
+    
+    const comando =
+    `select 
+    id_artistas     id,
+    nm_artistas     nome,
+    id_genero      genero,
+    ds_sobre    sobre,
+    img_artista     artista
+    from tb_artistas
+    where nm_artistas like ?`;
+    
+    const [linhas] = await con.query(comando, [`%${nome}%`]);
+    return linhas;
 }

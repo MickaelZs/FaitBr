@@ -14,3 +14,11 @@ export async function cadastroUsuario(nome, nasc, email, senha) {
     })
     return r.data;
 }
+
+export async function loginUsuario(email, senha){
+    const a = await api.post('/usuario/login',{
+        email: email,
+        senha: senha
+    });
+    return a.data;
+}

@@ -14,7 +14,7 @@ export async function loginUsuario (email, senha){
     const comando=
     `
     select  id_usuario	  id,
-            ds_email		email
+            ds_email	email
     from	tb_usuario
     where	ds_email   = ?
     and	    ds_senha   = ? `

@@ -1,10 +1,11 @@
 import './index.scss'
-import { cadastroUsuario } from '../../api/cadastroUsuarioAPI'
+
 import axios  from 'axios'
 import {useEffect, useState} from 'react'
 import {useHref, useParams} from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+import { cadastroUsuario } from '../../api/usuarioAPI';
 
 export default function Index() {
     const [nome, setNome] = useState('');
