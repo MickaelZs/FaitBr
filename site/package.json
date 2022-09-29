@@ -10,6 +10,7 @@
     "axios": "^0.27.2",
     "react": "^18.2.0",
     "react-audio-player": "^0.17.0",
+    "react-confirm-alert": "^3.0.6",
     "react-dom": "^18.2.0",
     "react-h5-audio-player": "^3.8.5",
     "react-multi-carousel": "^2.8.2",

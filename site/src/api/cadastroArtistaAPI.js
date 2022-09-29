@@ -6,6 +6,12 @@ const api = axios.create({
     baseURL: API_URL
 })
 
+
+export async function BuscarArtistaPorNome(nome){
+    const resposta = await api.get(`/artista/busca?nome=${nome}`);
+    return resposta.data;
+  }
+
 export async function cadastroArtista(artistas, idGenero, sobre) {
     const r = await api.post('/cadastroArtista',{
         artistas: artistas,
@@ -42,3 +48,8 @@ export async function buscarPorId(id){
 export async function buscarImagem(imagem) {
     return `${api.getUri()}/${imagem}`
 }
+
+export async function deletaArtista(id){
+    const resposta = await api.delete(`/artista/${id}`);
+    return resposta.status;
+  }

@@ -1,7 +1,9 @@
 import { API_URL } from '../../api/config';
 import Menu from '../../components/menu'
-import { listaArtista, buscarPorId, buscarImagem } from '../../api/cadastroArtistaAPI';
+import { confirmAlert } from 'react-confirm-alert'
+import { listaArtista, buscarPorId, buscarImagem, BuscarArtistaPorNome, deletaArtista } from '../../api/cadastroArtistaAPI';
 import {useEffect, useState} from 'react'
+import { ToastContainer, toast } from 'react-toastify';
 import './index.scss'
 
 
@@ -9,6 +11,7 @@ import './index.scss'
 export default function Index() {
 
     const [nomee, setNomee] = useState ([])
+    const [filtro, setFiltro] = useState ('')
 
 
     async function carregarArtista(){
@@ -16,26 +19,56 @@ export default function Index() {
         setNomee(resp);
     }
 
-
     useEffect(() => {
         carregarArtista();
-       
-       
     }, [])
+
+    async function filtrar(){
+        const resp = await BuscarArtistaPorNome(filtro);
+        setNomee(resp);
+    }
+
+    async function deletarArtista (id, nome){
+
+        confirmAlert({
+            title: 'Remover Agendamento',
+            message: `deseja remover o agendamento ${id}?`,
+            buttons: [
+                {
+                    label:'sim',
+                    onClick: async () => {
+                        const filtro = await deletaArtista (id, nome);
+                          if(filtro === ''){
+                         carregarArtista();
+                      }
+                          else
+                          filtrar();
+                          toast.dark('agendamento removido')
+                    }
+                },
+                {
+                    label:'Não'
+                }
+            ]
+        })
+
+        
+    }
 
 
 
     return (
         <main className='page page-consultar'>
             <Menu />
+            <ToastContainer/>
             <div className='container'>
                 
                 
                 <div className='conteudo'>
 
                     <div className='caixa-busca'>
-                        <input type="text" placeholder='Buscar filmes por nome' />
-                        <img src='images/icon-pesquisa.png' alt='buscar' />
+                        <input type="text" placeholder='Buscar filmes por nome' value={filtro} onChange={e => setFiltro(e.target.value)} />
+                        <img src='images/icon-pesquisa.png' alt='buscar' onClick={filtrar}/>
                     </div>
                     
 
@@ -52,7 +85,8 @@ export default function Index() {
                                     <div className='acoes'>
 
                                         <img src='' alt='editar' /> 
-                                        <img src='' alt='remover' />
+                                        <img src='images/icon-pesquisa.png' alt='remover' onClick={() => deletarArtista(item.id, item.nome) } />
+                                        
                                         
                                     </div>
                                     <div>
