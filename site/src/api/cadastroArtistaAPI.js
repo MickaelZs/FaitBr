@@ -55,7 +55,7 @@ export async function deletaArtista(id){
   }
 
 export async function alterarArtista(artistas, idGenero, sobre ) {
-    const resposta = await api.put(`/artista/${idGenero}`, {
+    const resposta = await api.put(`/artista/${id}`, {
         artistas: artistas,
         genero: idGenero,
         sobre: sobre

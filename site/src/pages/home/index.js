@@ -119,7 +119,7 @@ useEffect(() => {
       >
          {artista.map (item =>
         <div className="generos">
-        <img src={item.genero} />
+        <img src={(item.genero)} />
         <p> {item.nome}</p>
        </div>
           
