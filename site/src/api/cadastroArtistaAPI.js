@@ -53,3 +53,12 @@ export async function deletaArtista(id){
     const resposta = await api.delete(`/artista/${id}`);
     return resposta.status;
   }
+
+export async function alterarArtista(artistas, idGenero, sobre ) {
+    const resposta = await api.put(`/artista/${idGenero}`, {
+        artistas: artistas,
+        genero: idGenero,
+        sobre: sobre
+    })
+    return resposta.status;
+}

@@ -132,13 +132,16 @@ server.put ('/artista/:id', async (req,resp) => {
         const resposta = await alteraArtista(id, music);
         if (resposta != 1)
             throw new Error('Artistas não pode ser alterado');
-        if(!music.nome.trim()){
+
+        if(!music.genero){
+            throw new Error('Genero é obrigatório');
+        }
+        
+        if(!music.nome){
                 throw new Error('Nome é obrigatório');
             }
-        if(!music.genero.trim()){
-                throw new Error('Genero é obrigatório');
-            }
-        if(!music.sobre.trim()){
+        
+        if(!music.sobre){
                 throw new Error('Sobre é obrigatório');
             }
        
