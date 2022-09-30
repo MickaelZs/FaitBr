@@ -5,7 +5,7 @@ import './index.scss'
 import { ToastContainer, toast } from 'react-toastify';
 import { cadastroArtista, enviarImagemArtista } from '../../api/cadastroArtistaAPI'
 import { listaGeneros } from '../../api/generoAPI';
-
+import { useNavigate } from 'react-router-dom'
 
 export default function Index(){
 
@@ -14,6 +14,7 @@ export default function Index(){
     const [idGenero, setIdGenero] = useState ('');
     const [sobre, setSobre] = useState ('');
     const [imagem, setImagem] = useState ('');
+    const [id, setId] = useState ('');
 
     async function carregarGeneros(){
         const r = await listaGeneros();
@@ -25,6 +26,7 @@ export default function Index(){
     },[] )
    
 
+    const navigate = useNavigate();
 
 
 
@@ -35,13 +37,13 @@ export default function Index(){
             const Novoartista = await cadastroArtista (nome,idGenero,sobre);
             const r = await enviarImagemArtista(Novoartista.id, imagem);
             toast.dark('Acho q foi');
-        }
+            }
         catch (err){
-            if(err.response)
-            toast.error(err.response.data.erro)
-            else
-            toast.error(err.message);
-        }
+                if(err.response)
+                toast.error(err.response.data.erro)
+                else
+                toast.error(err.message);
+            }
         }
 
 
