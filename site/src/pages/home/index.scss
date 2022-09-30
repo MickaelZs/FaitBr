@@ -1,5 +1,5 @@
 .pagina-home{
-    background-color: #1e1e1e;
+   background-color: #333;
     height: 100%;
     width: 100%;
     
@@ -148,5 +148,16 @@
       .menu__item:hover {
         background-color: #CFD8DC;
       }
+
+        img{
+            width: 200px;
+            height: 200px;
+            border-radius: 20px;
+        }
+        p{
+            color: white;
+            
+        }
     
+
 }

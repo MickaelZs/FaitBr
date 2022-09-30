@@ -15,7 +15,7 @@ async function loginClick() {
 
   try{
     const r = await loginUsuario(email,senha) 
-    navigate('/Home');
+    navigate('/HomeLoginFeito');
 
   }
 

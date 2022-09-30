@@ -1,12 +1,30 @@
 import './index.scss'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import CardGenero from '../../components/genero';
-import CardArtistas from '../../components/artistas';
+import { listaGeneros } from '../../api/generoAPI';
+import { useEffect, useState } from 'react';
+import { listaArtista } from '../../api/cadastroArtistaAPI';
 
 
 
 export default function Index() {
+  const [genero,setGenero] = useState ([])
+  const [artista,setArtista] = useState ([])
+
+  async function carregarGenero(){
+    const resp = await listaGeneros();
+    setGenero(resp);
+}
+
+async function carregarArtista(){
+  const resp = await listaArtista();
+  setArtista(resp);
+}
+
+useEffect(() => {
+  carregarArtista();
+    carregarGenero();
+}, [])
 
 
 
@@ -74,14 +92,13 @@ export default function Index() {
         transitionDuration={500}
         centerMode
       >
-        <CardGenero avatar="images/trap..png" nome="Trap"/>
-        <CardGenero avatar="images/brega.png" nome="Brega Funk"/>
-        <CardGenero avatar="images/funk.png" nome="Funk"/>
-        <CardGenero avatar="images/sertanejo..png" nome="Sertanejo"/>
-        <CardGenero avatar="images/rock.png" nome="Rock" />
-        <CardGenero avatar="images/pagode.png" nome="Pagode"/>
-        <CardGenero avatar="images/pop.png" nome="Pop" />
-        <CardGenero avatar="images/forro.png" nome="Forró"/>
+        {genero.map (item =>
+        <div className="generos">
+        <img src={item.genero} />
+        <p> {item.nome}</p>
+       </div>
+          
+          )}
 
       </Carousel>
 
@@ -100,14 +117,13 @@ export default function Index() {
         transitionDuration={500}
         centerMode
       >
-        <CardArtistas avatar="images/teto.jpg" nome="teto" />
-        <CardArtistas avatar="images/menos.jpg" nome="Menos e mais"/>
-        <CardArtistas avatar="images/hariel.webp" nome="Mc hariel" />
-        <CardArtistas avatar="images/gusttavolima.webp" nome="Gustavo lima"/>
-        <CardArtistas avatar="images/"  nome="teto"/>
-        <CardArtistas avatar="images/anderson.jpeg" nome="Anderson" />
-        <CardArtistas avatar="images/anitta..jpg" nome="Anitta"/>
-        <CardArtistas avatar="images/rai.webp" nome="Saia rodada"/>
+         {artista.map (item =>
+        <div className="generos">
+        <img src={item.genero} />
+        <p> {item.nome}</p>
+       </div>
+          
+          )}
         
 
       </Carousel>

@@ -64,6 +64,23 @@ server.get('/buscarImagemm', async (req, resp) => {
     }
 })
 
+server.delete ('/artista/:id',async (req,resp) => {
+    try{
+
+        const { id } = req.params;
+    
+        const resposta = await deletaArtista(id);
+        resp.status(200).send();
+    }
+
+    catch (err){
+        resp.status(401).send({
+            erro: err.message
+        })
+    }
+
+})
+
 
 
 server.get('/artista/busca', async (req, resp) => {
@@ -102,22 +119,7 @@ server.get('/artista/:id', async (req, resp) => {
 })
 
 
-server.delete ('/artista/:id',async (req,resp) => {
-    try{
 
-        const { id } = req.params;
-    
-        const resposta = await deletaArtista(id);
-        resp.status(200).send();
-    }
-
-    catch (err){
-        resp.status(401).send({
-            erro: err.message
-        })
-    }
-
-})
 
 
 

@@ -1,7 +1,7 @@
 import { API_URL } from '../../api/config';
 import Menu from '../../components/menu'
 import { confirmAlert } from 'react-confirm-alert'
-import { listaArtista, buscarPorId, buscarImagem, BuscarArtistaPorNome, deletaArtista } from '../../api/cadastroArtistaAPI';
+import { listaArtista,  BuscarArtistaPorNome, deletaArtista } from '../../api/cadastroArtistaAPI';
 import {useEffect, useState} from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import './index.scss'
@@ -28,22 +28,24 @@ export default function Index() {
         setNomee(resp);
     }
 
-    async function deletarArtista (id, nome){
+   
+
+    async function deletarArtista (id){
 
         confirmAlert({
-            title: 'Remover Agendamento',
-            message: `deseja remover o agendamento ${id}?`,
+            title: 'Remover Artista',
+            message: `deseja remover o Artista ${id}?`,
             buttons: [
                 {
                     label:'sim',
                     onClick: async () => {
-                        const filtro = await deletaArtista (id, nome);
+                        const filtro = await deletaArtista (id);
                           if(filtro === ''){
                          carregarArtista();
                       }
                           else
                           filtrar();
-                          toast.dark('agendamento removido')
+                          toast.dark('Artista removido')
                     }
                 },
                 {
@@ -67,8 +69,9 @@ export default function Index() {
                 <div className='conteudo'>
 
                     <div className='caixa-busca'>
-                        <input type="text" placeholder='Buscar filmes por nome' value={filtro} onChange={e => setFiltro(e.target.value)} />
-                        <img src='images/icon-pesquisa.png' alt='buscar' onClick={filtrar}/>
+                        
+                        <input type="text" placeholder='Buscar artista por nome' value={filtro} onChange={e => setFiltro(e.target.value)} />
+                        <img src='images/procurar.png' alt='buscar' onClick={filtrar}/>
                     </div>
                     
 
@@ -84,8 +87,8 @@ export default function Index() {
                                     <div className='card'>
                                     <div className='acoes'>
 
-                                        <img src='' alt='editar' /> 
-                                        <img src='images/icon-pesquisa.png' alt='remover' onClick={() => deletarArtista(item.id, item.nome) } />
+                                        <img src='images/botao-editar.png' alt='editar' /> 
+                                        <img src='images/excluir.png' alt='remover' onClick={() => deletarArtista(item.id, item.nome) } />
                                         
                                         
                                     </div>

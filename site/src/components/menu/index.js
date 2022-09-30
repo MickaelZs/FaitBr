@@ -44,7 +44,7 @@ export default function Menu (){
 
         <div className='menu-items'>
             <div>
-                <img src="/assets/images/icon-sair.svg" alt="consultar" />
+                <img src="/images/logout.png" alt="consultar" />
                 <div>Sair</div>
             </div>
         </div>
