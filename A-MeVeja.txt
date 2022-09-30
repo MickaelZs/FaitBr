@@ -8,4 +8,4 @@
 ou externo, um programa operável ou um arquivo em lotes.
 
 Caso de esse erro na hora do npm start é so ir no terminal e só da 'npm i' --Cauã  
-
+pronto.
