@@ -29,8 +29,8 @@ root.render(
       <Route path='/' element={<Home/>}/>
       <Route path='/loginAdm' element={<LoginAdm/>}/>
       <Route path='/adm/cadastromusica' element={<Cadastromsc/>}/>
-      <Route path='/adm/cadastrArartista' element={<Cadartista/>}/>
-      <Route path='/adm/cadastrarartista/alterar/:idParams' element={<Cadartista/>}/>
+      <Route path='/adm/cadastrarArtista' element={<Cadartista/>}/>
+      <Route path='/adm/cadastrarArtista/alterar/:idParams' element={<Cadartista/>}/>
       <Route path='/adm/musicaCadastradas' element={<MusicaCadastradas/>}/>
       <Route path='/adm/artistaCadastrados' element={<ArtistaCadastrados/>}/>
       

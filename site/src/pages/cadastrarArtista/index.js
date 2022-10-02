@@ -143,7 +143,11 @@ export default function Index(){
                     <br />
                        
                         </div>
+                        <div className='botoes'>
                                 <button className='botao' onClick={salvarClick} >Cadastrar</button>
+                               
+                                <button className='botao'  >Salvar</button>
+                                </div>
                     </div>
                 </div>
 

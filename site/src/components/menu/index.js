@@ -23,31 +23,31 @@ export default function Menu (){
             <div className='menu-items'>
                 <div>
                     
-                    <img src="images/casinha.svg" alt="home" />
+                    <img src="images/casinha.svg"  />
                     <div >Home</div>
                 </div>
                 <div>
-                    <img src="images/artista.svg" alt="cadastrar" />
+                    <img src="images/artista.svg"/>
                     <a href='/Cadastrarartista'>Cadastrar artista</a>
                 </div>
                 <div>
-                    <img src="images/cadastrarmusica.svg" alt="consultar" />
+                    <img src="images/cadastrarmusica.svg"/>
                     <div>Cadastrar musica</div>
                 </div>
 
                 <div>
-                    <img src="images/consulta.svg" alt="consultar" />
+                    <img src="images/consulta.svg"  />
                     <div>Consultar</div>
                 </div>
 
                 <div>
-                    <img src="images/artistacadastrado.svg" alt="consultar" />
+                    <img src="images/artistacadastrado.svg"/>
                     <a href='/ArtistaCadastrados'>Artista cadastrado</a>
                     
                 </div>
 
                 <div >
-                    <img src="images/msccadastrada.svg" alt="consultar" />
+                    <img src="images/msccadastrada.svg"  />
                     <a href='/MusicaCadastradas'>Musicas cadastradas</a>
                 </div>
             </div>
@@ -55,7 +55,7 @@ export default function Menu (){
 
         <div className='menu-items'>
             <div onClick={sairClick}>
-                <img src="/images/logout.png" alt="consultar" />
+                <img src="/images/logout.png" />
                 <div>Sair</div>
             </div>
         </div>
