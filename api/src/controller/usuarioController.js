@@ -1,7 +1,11 @@
 import { Router } from "express";
-import { cadastrorUsuario, loginUsuario } from "../repository/usuarioRepository.js"
+import { cadastrorUsuario, imagemUsuario, listarUsuario, loginUsuario } from "../repository/usuarioRepository.js"
+import multer from 'multer';
+
 
 const server = Router();
+const upload = multer({ dest: 'storage/capaUsuario'})
+
 
 server.post('/cadastrousuario', async (req,resp) => {
     try {
@@ -43,6 +47,36 @@ server.post('/usuario/login', async (req, resp) => {
     }
 })
 
+server.put('/cadastroUsuario/:id/capa', upload.single('capa') ,async (req, resp) => {
+    try{
+        if(!req.file)
+        throw new Error('Escolhar a imagem do usuario.');
+        const {id} = req.params;
+        const imagem = req.file.path;
+
+        const resposta = await imagemUsuario(imagem, id);
+        if(resposta != 1)
+            throw new Error('A imagem não pode ser salva.');
+
+        resp.status(204).send();
+    }
+    catch(err){
+        resp.status(401).send({
+            erro: err.message
+        })   
+    }
+})
+
+server.get('/usuario', async (req, resp) => {
+    try {
+        const resposta = await listarUsuario();
+        resp.send(resposta);
+    } catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
 
 
  export default server;

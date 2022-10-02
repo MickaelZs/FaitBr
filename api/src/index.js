@@ -10,6 +10,8 @@ import genero from './controller/generoController.js'
 const server = express();
 server.use('/storage/capaArtistas', express.static('storage/capaArtistas'));
 server.use('/storage/capaGenero', express.static('storage/capaGenero'));
+server.use('/storage/capaUsuario', express.static('storage/capaUsuario'));
+
 server.use(cors());
 server.use(express.json());
 server.use(Usuario);

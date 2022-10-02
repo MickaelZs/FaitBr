@@ -21,3 +21,27 @@ export async function loginUsuario (email, senha){
     const [linha] = await con.query(comando, [email, senha] )
     return linha[0];
 }
+
+export async function imagemUsuario(imagem, id){
+    const comando = `UPDATE tb_usuario
+                    SET img_usuario = ?
+                    WHERE id_usuario = ?`;
+
+    const [resposta] = await con.query(comando,[imagem, id]);
+    return resposta.affectedRows;
+}
+
+export async function listarUsuario() {
+    const comando =
+    `select 
+    id_usuario,
+    nm_nome,
+    dt_nasc,
+    ds_email,
+    ds_senha,
+    img_usuario
+    from tb_usuario;`
+    
+    const [linhas] = await con.query(comando);
+    return linhas;
+}
