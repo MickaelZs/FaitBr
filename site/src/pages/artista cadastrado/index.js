@@ -3,6 +3,7 @@ import Menu from '../../components/menu'
 import { confirmAlert } from 'react-confirm-alert'
 import { listaArtista,  BuscarArtistaPorNome, deletaArtista } from '../../api/cadastroArtistaAPI';
 import {useEffect, useState} from 'react'
+import {useNavigate} from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import './index.scss'
 
@@ -12,6 +13,11 @@ export default function Index() {
 
     const [nomee, setNomee] = useState ([])
     const [filtro, setFiltro] = useState ('')
+    const navigate = useNavigate();
+
+    function editarArtista(id){
+        navigate(`/Cadastrarartista/alterar/${id}`)
+    }
 
 
     async function carregarArtista(){
@@ -87,7 +93,7 @@ export default function Index() {
                                     <div className='card'>
                                     <div className='acoes'>
 
-                                        <img src='images/botao-editar.png' alt='editar' /> 
+                                        <img src='images/botao-editar.png' alt='editar' inclick={() => editarArtista} /> 
                                         <img src='images/excluir.png' alt='remover' onClick={() => deletarArtista(item.id, item.nome) } />
                                         
                                         

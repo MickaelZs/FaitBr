@@ -3,9 +3,9 @@ import Menu from '../../components/menu'
 import './index.scss'
 
 import { ToastContainer, toast } from 'react-toastify';
-import { cadastroArtista, enviarImagemArtista } from '../../api/cadastroArtistaAPI'
+import { buscarPorId, cadastroArtista, enviarImagemArtista } from '../../api/cadastroArtistaAPI'
 import { listaGeneros } from '../../api/generoAPI';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 export default function Index(){
 
@@ -21,9 +21,39 @@ export default function Index(){
         setGenero(r);
     }
 
+    const {idParams} = useParams();
+
+    async function carregarGeneros(){
+        const r = await listaGeneros();
+        setGenero(r);
+    }
+
     useEffect(() => {
         carregarGeneros();
+        if (idParams){
+        carregarArtista()
+        }
+
     },[] )
+
+    async function carregarArtista (){
+        const resposta = await buscarPorId(idParams);
+        setNome(resposta.nome)
+        setIdGenero(resposta.idGenero)
+        setSobre(resposta.sobre)
+        setImagem(resposta.imagem)
+        setId(resposta.id)
+    }
+
+    function mostrarImagem(){
+        if(typeof (imagem) == 'object') {
+            return  URL.createObjectURL(imagem)
+        }
+        else {
+            return buscarPorId(imagem)
+        }
+        
+    }
    
 
     const navigate = useNavigate();

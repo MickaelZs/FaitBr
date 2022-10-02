@@ -35,6 +35,7 @@ root.render(
       <Route path='/PlayMusic' element={<PlayMusic/>}/>
       <Route path='/Cadastromusica' element={<Cadastromsc/>}/>
       <Route path='/Cadastrarartista' element={<Cadartista/>}/>
+      <Route path='/Cadastrarartista/alterar/:idParams' element={<Cadartista/>}/>
       <Route path='/MusicaCadastradas' element={<MusicaCadastradas/>}/>
       <Route path='/ArtistaCadastrados' element={<ArtistaCadastrados/>}/>
       <Route path='/HomeLoginFeito' element={<HomeLoginFeito/>}/>
