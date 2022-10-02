@@ -2,10 +2,14 @@ import './index.scss'
 import Menu from '../../components/menu'
 import { listaArtista } from '../../api/cadastroArtistaAPI';
 import {useEffect, useState} from 'react'
+import storage from 'local-storage'
+import { useNavigate } from 'react-router-dom';
 
 export default function Index(){
 
     const [nome, setNOME] = useState ([])
+
+    const navigate = useNavigate ();
 
 
     async function carregarTodosArtista(){
@@ -14,6 +18,9 @@ export default function Index(){
     }
 
     useEffect(() => {
+        if(!storage('usuario-logado')){
+            navigate('/LoginAdm')
+        }
         carregarTodosArtista();
     }, [])
 

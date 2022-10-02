@@ -45,8 +45,8 @@ export async function buscarPorId(id){
     return resposta.data;
 }
 
-export async function buscarImagem(imagem) {
-    return `${api.getUri()}/${imagem}`
+export async function buscarImagem(artista) {
+    return `${api.getUri()}/${artista}`
 }
 
 export async function deletaArtista(id){

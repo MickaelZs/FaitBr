@@ -1,8 +1,24 @@
 import CardCadastromsc from '../../components/comp-cadastrar-musica'
 import './index.scss'
+import storage from 'local-storage'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 
 export default function Cadastromsc(){
+
+    const navigate = useNavigate ();
+
+    useEffect(() => {
+        if(!storage('usuario-logado')){
+            navigate('/LoginAdm')
+        }
+
+    }, [])
+
+
+
+
     return(
         <main className='pagina-cadastro-musica'>
         <section className='faixa-icons'>

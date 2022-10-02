@@ -5,6 +5,7 @@ import { listaArtista,  BuscarArtistaPorNome, deletaArtista } from '../../api/ca
 import {useEffect, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
+import storage from 'local-storage'
 import './index.scss'
 
 
@@ -26,6 +27,9 @@ export default function Index() {
     }
 
     useEffect(() => {
+        if(!storage('usuario-logado')){
+            navigate('/LoginAdm')
+        }
         carregarArtista();
     }, [])
 

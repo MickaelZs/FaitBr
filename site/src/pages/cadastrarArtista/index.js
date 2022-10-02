@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { buscarPorId, cadastroArtista, enviarImagemArtista } from '../../api/cadastroArtistaAPI'
 import { listaGeneros } from '../../api/generoAPI';
 import { useNavigate, useParams } from 'react-router-dom'
+import storage from 'local-storage'
 
 export default function Index(){
 
@@ -29,6 +30,9 @@ export default function Index(){
     }
 
     useEffect(() => {
+        if(!storage('usuario-logado')){
+            navigate('/LoginAdm')
+        }
         carregarGeneros();
         if (idParams){
         carregarArtista()

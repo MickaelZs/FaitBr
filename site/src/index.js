@@ -27,17 +27,19 @@ root.render(
     <BrowserRouter>
     <Routes>
       <Route path='/' element={<Home/>}/>
-      <Route path='/LoginAdm' element={<LoginAdm/>}/>
-      <Route path='/CadastroUsuario' element={<CadastroUsuario/>}/>
-      <Route path='/LoginUsuario' element={<LoginUsuario/>}/>
-      <Route path='/Confirmacao' element={<Confirmacao/>}/>
+      <Route path='/loginAdm' element={<LoginAdm/>}/>
+      <Route path='/adm/cadastromusica' element={<Cadastromsc/>}/>
+      <Route path='/adm/cadastrArartista' element={<Cadartista/>}/>
+      <Route path='/adm/cadastrarartista/alterar/:idParams' element={<Cadartista/>}/>
+      <Route path='/adm/musicaCadastradas' element={<MusicaCadastradas/>}/>
+      <Route path='/adm/artistaCadastrados' element={<ArtistaCadastrados/>}/>
+      
+      <Route path='/cadastroUsuario' element={<CadastroUsuario/>}/>
+      <Route path='/loginUsuario' element={<LoginUsuario/>}/>
+      <Route path='/confirmacao' element={<Confirmacao/>}/>
       <Route path='/Rec' element={<Rec/>}/>
       <Route path='/PlayMusic' element={<PlayMusic/>}/>
-      <Route path='/Cadastromusica' element={<Cadastromsc/>}/>
-      <Route path='/Cadastrarartista' element={<Cadartista/>}/>
-      <Route path='/Cadastrarartista/alterar/:idParams' element={<Cadartista/>}/>
-      <Route path='/MusicaCadastradas' element={<MusicaCadastradas/>}/>
-      <Route path='/ArtistaCadastrados' element={<ArtistaCadastrados/>}/>
+     
       <Route path='/HomeLoginFeito' element={<HomeLoginFeito/>}/>
       <Route path='/Genero' element={<Genero/>}/>
       <Route path='/Consulta' element={<Consulta/>}/>

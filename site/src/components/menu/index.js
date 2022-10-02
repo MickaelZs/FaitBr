@@ -1,6 +1,17 @@
 import './index.scss'
+import storage from 'local-storage'
+import { useNavigate } from 'react-router-dom'
 
 export default function Menu (){
+
+    const navigate = useNavigate ();
+
+    function sairClick(){
+        storage.remove('usuario-logado')
+        navigate('/LoginAdm')
+    }
+
+
     return(
         <nav className="comp-menu">
         <div>
@@ -35,7 +46,7 @@ export default function Menu (){
                     
                 </div>
 
-                <div>
+                <div >
                     <img src="images/msccadastrada.svg" alt="consultar" />
                     <a href='/MusicaCadastradas'>Musicas cadastradas</a>
                 </div>
@@ -43,7 +54,7 @@ export default function Menu (){
         </div>
 
         <div className='menu-items'>
-            <div>
+            <div onClick={sairClick}>
                 <img src="/images/logout.png" alt="consultar" />
                 <div>Sair</div>
             </div>
