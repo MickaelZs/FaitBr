@@ -42,6 +42,6 @@ export async function listarUsuario() {
     img_usuario
     from tb_usuario;`
     
-    const [linhas] = await con.query(comando);
+    const [linhas] =  await con.query(comando);
     return linhas;
 }
