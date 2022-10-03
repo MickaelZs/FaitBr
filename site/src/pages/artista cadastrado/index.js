@@ -5,6 +5,7 @@ import { listaArtista,  BuscarArtistaPorNome, deletaArtista } from '../../api/ca
 import {useEffect, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-confirm-alert/src/react-confirm-alert.css'
 import storage from 'local-storage'
 import './index.scss'
 
@@ -40,16 +41,16 @@ export default function Index() {
 
    
 
-    async function deletarArtista (id){
+    async function deletarArtista (id, nome){
 
         confirmAlert({
             title: 'Remover Artista',
-            message: `deseja remover o Artista ${id}?`,
+            message: `deseja remover o Artista ${id, nome}?`,
             buttons: [
                 {
                     label:'sim',
                     onClick: async () => {
-                        const filtro = await deletaArtista (id);
+                        const filtro = await deletaArtista (id,nome);
                           if(filtro === ''){
                          carregarArtista();
                       }
@@ -81,7 +82,7 @@ export default function Index() {
                     <div className='caixa-busca'>
                         
                         <input type="text" placeholder='Buscar artista por nome' value={filtro} onChange={e => setFiltro(e.target.value)} />
-                        <img src='images/procurar.png' alt='buscar' onClick={filtrar}/>
+                        <img src='./images/procurar.png'  onClick={filtrar}/>
                     </div>
                     
 
@@ -97,8 +98,8 @@ export default function Index() {
                                     <div className='card'>
                                     <div className='acoes'>
 
-                                        <img src='images/botao-editar.png' alt='editar' inclick={() => editarArtista} /> 
-                                        <img src='images/excluir.png' alt='remover' onClick={() => deletarArtista(item.id, item.nome) } />
+                                        <img src='images/botao-editar.png' inclick={() => editarArtista} /> 
+                                        <img src='images/excluir.png' onClick={() => deletarArtista(item.id, item.nome) } />
                                         
                                         
                                     </div>
@@ -111,6 +112,7 @@ export default function Index() {
                                         
                                         <div className='id'>{item.id} </div>
                                         <div className='artista'>{item.nome} </div>
+
                                         <div className='genero'>{item.genero}</div>
                                     </div>
                                     <div>

@@ -1,7 +1,5 @@
 import './index.scss'
-import {
-  Link
-} from "react-router-dom";
+import storage from 'local-storage'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import CardGenero from '../../components/genero';
@@ -9,35 +7,17 @@ import CardArtistas from '../../components/artistas';
 import { useEffect, useState } from 'react';
 import { listaArtista } from '../../api/cadastroArtistaAPI';
 import { listaGeneros } from '../../api/generoAPI';
+import { useNavigate } from 'react-router-dom';
 
 
 
 export default function Index() {
 
-  const [artista, setArtista] = useState ([])
-  const [genero, setGenero] = useState ([])
-  const [buscar,setBuscar] = useState ('')
+  const [usuario,setUsuario] = useState ('mickael')
 
-  async function carregarArtista(){
-    const resp = await listaArtista();
-    setArtista(resp);
-}
+  const navigate = useNavigate()
+  
 
-async function carregarGenero(){
-  const resp = await listaGeneros();
-  setGenero(resp);
-}
-
-
-async function BuscarArtistaeGenero(){
-  const resp = await listaArtista() && listaGeneros()
-  setArtista(resp) 
-  setGenero(resp)
-}
-
-useEffect(() => {
-  BuscarArtistaeGenero()    
-}, [])
 
 
 
@@ -66,18 +46,19 @@ useEffect(() => {
       <div className='faixa1'>
         <header>
           <div className='texto-cabecalho'>
-            <div>
-              
-            </div>
+           
+           <div className='usuario'>
+            <span>{usuario[0]}</span>
+           </div>
 
-              <li><a href="#sec1">Artistas mais escutados</a></li>
+              
               <li><a href="#sec2">Gêneros</a></li>
               <li><a href="#sec3">Artistas populares</a></li>
               
-              <div className='caixa-busca'>
-                  <input type="text" placeholder='Buscar' value={buscar} onChange={e => setBuscar(e.target.value)}  />
-                  <img src='images/procurar.png' alt='buscar' onClick={buscar}/>
-              </div>
+              
+                  
+              <img className='icon-pesquisa' src='images/icon-pesquisa.png' />
+             
               <img className='icon-livraria' src='./images/icon-library.png'/>
               
               <img  className='logo' src='./images/logooo.png' href='' width='100' />
