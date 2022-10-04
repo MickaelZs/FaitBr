@@ -4,6 +4,7 @@ import "react-multi-carousel/lib/styles.css";
 import { listaGeneros } from '../../api/generoAPI';
 import { useEffect, useState } from 'react';
 import { listaArtista } from '../../api/cadastroArtistaAPI';
+import { API_URL } from '../../api/config';
 
 
 
@@ -119,7 +120,7 @@ useEffect(() => {
       >
          {artista.map (item =>
         <div className="generos">
-        <img src={(item.genero)} />
+        <img src={`${API_URL}/${item.artista}`} />
         <p> {item.nome}</p>
        </div>
           

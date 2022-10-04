@@ -16,18 +16,18 @@ export default function Menu (){
         <nav className="comp-menu">
         <div>
             <div className='logo'>
-                <img src="images/logooo.png" alt="logo" />
+                <img src="/images/logooo.png" alt="logo" />
                 
             </div>
 
             <div className='menu-items'>
                 <div>
                     
-                    <img src="images/casinha.svg"  />
+                    <img src="/images/casinha.svg"  />
                     <div >Home</div>
                 </div>
                 <div>
-                    <img src="images/artista.svg"/>
+                    <img src="/images/artista.svg"/>
                     <a href='/Cadastrarartista'>Cadastrar artista</a>
                 </div>
                 <div>
@@ -36,18 +36,18 @@ export default function Menu (){
                 </div>
 
                 <div>
-                    <img src="images/consulta.svg"  />
+                    <img src="/images/consulta.svg"  />
                     <div>Consultar</div>
                 </div>
 
                 <div>
-                    <img src="images/artistacadastrado.svg"/>
+                    <img src="/images/artistacadastrado.svg"/>
                     <a href='/ArtistaCadastrados'>Artista cadastrado</a>
                     
                 </div>
 
                 <div >
-                    <img src="images/msccadastrada.svg"  />
+                    <img src="/images/msccadastrada.svg"  />
                     <a href='/MusicaCadastradas'>Musicas cadastradas</a>
                 </div>
             </div>

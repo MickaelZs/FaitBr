@@ -7,7 +7,9 @@ import loginAdm from './controller/loginadmController.js'
 import genero from './controller/generoController.js'
 
 
+
 const server = express();
+
 server.use('/storage/capaArtistas', express.static('storage/capaArtistas'));
 server.use('/storage/capaGenero', express.static('storage/capaGenero'));
 server.use('/storage/capaUsuario', express.static('storage/capaUsuario'));

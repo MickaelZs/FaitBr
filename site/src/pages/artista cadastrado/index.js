@@ -98,16 +98,15 @@ export default function Index() {
                                     <div className='card'>
                                     <div className='acoes'>
 
-                                        <img src='images/botao-editar.png' inclick={() => editarArtista} /> 
-                                        <img src='images/excluir.png' onClick={() => deletarArtista(item.id, item.nome) } />
+                                        <img src='/images/botao-editar.png' inclick={() => editarArtista} /> 
+                                        <img src='/images/excluir.png' onClick={() => deletarArtista(item.id, item.nome) } />
                                         
                                         
                                     </div>
                                     <div>
                                         <div className=''> 
-                                        <img className='capas' src={`${API_URL}/storage/capaArtistas/${item.artista}`}/>      
+                                        <img className='capas' src={`${API_URL}/${item.artista}`}/>      
                                       
-                                        
                                         </div>
                                         
                                         <div className='id'>{item.id} </div>
