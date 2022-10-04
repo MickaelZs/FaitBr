@@ -107,7 +107,7 @@ export default function Index(){
 
                             {!imagem &&
 
-                            <img src='./images/image-bottom212.svg' width='170px'/>
+                            <img src='/images/image-bottom212.svg' width='170px'/>
                             }
 
                             {imagem &&  

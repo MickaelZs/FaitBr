@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Index() {
 
-  const [usuario,setUsuario] = useState ('mickael')
+  const [usuario,setUsuario] = useState ('')
 
   const navigate = useNavigate()
   

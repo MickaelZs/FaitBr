@@ -104,7 +104,7 @@ export default function Index() {
                                         
                                     </div>
                                     <div>
-                                        <div className=''> 
+                                        <div className=''>
                                         <img className='capas' src={`${API_URL}/${item.artista}`}/>      
                                       
                                         </div>

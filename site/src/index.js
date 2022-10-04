@@ -19,6 +19,7 @@ import HomeLoginFeito from './pages/home login feito';
 import Genero from './pages/pagina generos';
 import Consulta from './pages/consultar';
 import Reproduzir from './pages/ReproduzirMusica';
+import Buscar from './pages/buscar';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -44,6 +45,7 @@ root.render(
       <Route path='/Genero' element={<Genero/>}/>
       <Route path='/Consulta' element={<Consulta/>}/>
       <Route path='/Reproduzir' element={<Reproduzir/>}/>
+      <Route path='/buscar' element={<Buscar/>}/>
 
 
 
