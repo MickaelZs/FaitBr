@@ -28,7 +28,7 @@ export default function Menu (){
                 </div>
                 <div>
                     <img src="/images/artista.svg"/>
-                    <a href='/Cadastrarartista'>Cadastrar artista</a>
+                    <a href='/adm/cadastrarArtista'>Cadastrar artista</a>
                 </div>
                 <div>
                     <img src="images/cadastrarmusica.svg"/>
@@ -42,7 +42,7 @@ export default function Menu (){
 
                 <div>
                     <img src="/images/artistacadastrado.svg"/>
-                    <a href='/ArtistaCadastrados'>Artista cadastrado</a>
+                    <a href='/adm/artistaCadastrados'>Artista cadastrado</a>
                     
                 </div>
 

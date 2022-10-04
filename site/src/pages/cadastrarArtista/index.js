@@ -129,7 +129,7 @@ export default function Index(){
                     <br />
                         
                         <select value={idGenero} onChange={e => setIdGenero(e.target.value)}>
-                        <option selected disabled hidden>Selecione</option>
+                        <option selected disabled hidden>Generos</option>
 
                         {genero.map(item =>
                             <option value={item.id}> {item.nome} </option>
