@@ -16,7 +16,7 @@ export default function Index(){
     const [idGenero, setIdGenero] = useState ('');
     const [sobre, setSobre] = useState ('');
     const [imagem, setImagem] = useState ('');
-    const [id, setId] = useState ('');
+    const [id, setId] = useState (0);
 
     async function carregarGeneros(){
         const r = await listaGeneros();
@@ -69,20 +69,25 @@ export default function Index(){
 
     async function salvarClick(){
         try{ 
-            if(id === 0){  
-                if (!imagem)
+            if (!imagem){
                 throw new Error('escolha a imagem do artista');
+            }
+
+            if(id === 0){
                 const Novoartista = await cadastroArtista (nome,idGenero,sobre);
-                const r = await enviarImagemArtista(Novoartista.id, imagem);
+                await enviarImagemArtista(Novoartista.id, imagem);
+                setId(Novoartista.id)
+
                 toast.dark('Novo artista cadastrado');
             }
 
             else{
                 await alterarArtista(id, nome, idGenero, sobre);
-               toast.dark(' Artista alterado');       
+                toast.dark(' Pedido alterado com sucesso');
+            }
             }
 
-            }
+            
             
         catch (err){
                 if(err.response)
@@ -139,8 +144,7 @@ export default function Index(){
                     <br />
                         
                         <select value={idGenero} onChange={e => setIdGenero(e.target.value)}>
-                        <option selected disabled hidden>Generos</option>
-
+                        <option selected disabled hidden> Generos </option>
                         {genero.map(item =>
                             <option value={item.id}> {item.nome} </option>
                         )}
@@ -155,7 +159,8 @@ export default function Index(){
                         </div>
                         <div className='botoes'>
                                 <button className='botao' onClick={salvarClick} >{id === 0 ? 'cadastrar' : 'Alterar'}</button>
-                               
+                                <button className='botao'>novo</button>
+
                                 </div>
                     </div>
                 </div>
@@ -166,4 +171,4 @@ export default function Index(){
 }
 
 
-//                            <button className='botao'>Salvar</button>
+                  
