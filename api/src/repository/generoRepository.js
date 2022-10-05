@@ -29,7 +29,7 @@ export async function buscarGeneroPorId(id) {
 export async function ImagemGenero(imagem, id){
     const comando = `UPDATE tb_genero
                     SET img_genero = ?
-                    WHERE id_artistas = ?`;
+                    WHERE id_genero = ?`;
 
     const [resposta] = await con.query(comando,[imagem, id]);
     return resposta.affectedRows;

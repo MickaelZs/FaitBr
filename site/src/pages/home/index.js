@@ -95,7 +95,7 @@ useEffect(() => {
       >
         {genero.map (item =>
         <div className="generos">
-        <img src={item.genero} />
+        <img src={`${API_URL}/${item.genero}`} />
         <p> {item.nome}</p>
        </div>
           

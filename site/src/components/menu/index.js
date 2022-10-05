@@ -28,11 +28,7 @@ export default function Menu (){
                 </div>
                 <div>
                     <img src="/images/artista.svg"/>
-<<<<<<< HEAD
                     <a href='/adm/cadastrarArtista'>Cadastrar artista</a>
-=======
-                    <a href='/adm/Cadastrarartista'>Cadastrar artista</a>
->>>>>>> 14e840f92d03dcda5874467242c9ab010fd6fe7a
                 </div>
                 <div>
                     <img src="images/cadastrarmusica.svg"/>
@@ -46,11 +42,7 @@ export default function Menu (){
 
                 <div>
                     <img src="/images/artistacadastrado.svg"/>
-<<<<<<< HEAD
                     <a href='/adm/artistaCadastrados'>Artista cadastrado</a>
-=======
-                    <a href='/adm/ArtistaCadastrados'>Artista cadastrado</a>
->>>>>>> 14e840f92d03dcda5874467242c9ab010fd6fe7a
                     
                 </div>
 
