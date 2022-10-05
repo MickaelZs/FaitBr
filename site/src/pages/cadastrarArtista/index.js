@@ -3,7 +3,7 @@ import Menu from '../../components/menu'
 import './index.scss'
 
 import { ToastContainer, toast } from 'react-toastify';
-import { buscarPorId, cadastroArtista, enviarImagemArtista } from '../../api/cadastroArtistaAPI'
+import { buscarPorId, cadastroArtista, enviarImagemArtista, alterarArtista } from '../../api/cadastroArtistaAPI'
 import { listaGeneros } from '../../api/generoAPI';
 import { useNavigate, useParams } from 'react-router-dom'
 import storage from 'local-storage'
@@ -68,13 +68,22 @@ export default function Index(){
 
 
     async function salvarClick(){
-        try{      
-            if (!imagem)
-            throw new Error('escolha a imagem do artista');
-            const Novoartista = await cadastroArtista (nome,idGenero,sobre);
-            const r = await enviarImagemArtista(Novoartista.id, imagem);
-            toast.dark('Acho q foi');
+        try{ 
+            if(id === 0){  
+                if (!imagem)
+                throw new Error('escolha a imagem do artista');
+                const Novoartista = await cadastroArtista (nome,idGenero,sobre);
+                const r = await enviarImagemArtista(Novoartista.id, imagem);
+                toast.dark('Novo artista cadastrado');
             }
+
+            else{
+                await alterarArtista(id, nome, idGenero, sobre);
+               toast.dark(' Artista alterado');       
+            }
+
+            }
+            
         catch (err){
                 if(err.response)
                 toast.error(err.response.data.erro)
@@ -145,9 +154,8 @@ export default function Index(){
                        
                         </div>
                         <div className='botoes'>
-                                <button className='botao' onClick={salvarClick} >Cadastrar</button>
+                                <button className='botao' onClick={salvarClick} >{id === 0 ? 'cadastrar' : 'Alterar'}</button>
                                
-                                <button className='botao'  >Salvar</button>
                                 </div>
                     </div>
                 </div>
@@ -156,3 +164,6 @@ export default function Index(){
         </main>
     );
 }
+
+
+//                            <button className='botao'>Salvar</button>
