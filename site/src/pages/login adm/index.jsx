@@ -45,7 +45,7 @@ export default function Index() {
           </div>
           <br/>
           <div class="label-float">
-            <input type="text" placeholder=" " required  value={senha} onChange={e => setSenha(e.target.value)} />
+            <input type="password" placeholder=" " required  value={senha} onChange={e => setSenha(e.target.value)} />
             <label>Senha</label>
           </div>
           <button type='button' className='botao'  onClick={loginClick}> Entrar </button>

@@ -2,16 +2,35 @@ import './index.scss'
 
 import axios  from 'axios'
 import {useEffect, useState} from 'react'
-import {useHref, useParams} from 'react-router-dom'
+import {useHref, useNavigate, useParams} from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
-import { cadastroUsuario } from '../../api/usuarioAPI';
+import { cadastroUsuario, loginUsuario } from '../../api/usuarioAPI';
+import storage from 'local-storage'
 
 export default function Index() {
     const [nome, setNome] = useState('');
     const [nasc, setNasc] = useState('');
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+    const [erro,setErro] = useState()
+     const navigate = useNavigate()
+
+    async function CadastroClick() {
+
+      try{
+          const r = await cadastroUsuario(email,senha) 
+          storage('usuario-logado', r)
+        navigate('/HomeLoginFeito');
+      }
+  
+      catch(err){
+        if(err.response.status === 401){
+            setErro(err.response.data.erro)
+        }
+  
+    }
+  }
 
     
 
@@ -19,6 +38,8 @@ export default function Index() {
       try{      
           const r = await cadastroUsuario (nome,nasc,email,senha)
           toast.dark('Cadastro realizado corno');
+          const oi = await loginUsuario(email,senha) 
+          navigate('/HomeLoginFeito');
       }
       catch (err){
           toast.error(err.response.data.erro)
@@ -59,7 +80,7 @@ export default function Index() {
           </div>
           <br/>
           <div class="label-float">
-            <input type="text" placeholder=" " value={senha} onChange={e => setSenha(e.target.value)} required/>
+            <input type="password" placeholder=" " value={senha} onChange={e => setSenha(e.target.value)} required/>
             <label>Senha</label>
           </div>
 
