@@ -17,7 +17,7 @@ export default function Index() {
 
     try{
         const r = await login(email,senha) 
-        storage('usuario-logado', r)
+        storage('adm-logado', r)
       navigate('/adm/cadastrarArtista');
     }
 
@@ -28,8 +28,6 @@ export default function Index() {
 
   }
 }
-
-
 
     return (
       <div className="pagina-loginADM">
@@ -45,7 +43,7 @@ export default function Index() {
           </div>
           <br/>
           <div class="label-float">
-            <input type="password" placeholder=" " required  value={senha} onChange={e => setSenha(e.target.value)} />
+            <input type="text" placeholder=" " required  value={senha} onChange={e => setSenha(e.target.value)} />
             <label>Senha</label>
           </div>
           <button type='button' className='botao'  onClick={loginClick}> Entrar </button>

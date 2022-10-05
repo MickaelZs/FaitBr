@@ -16,6 +16,4 @@ export async function Cadastrarplaylist(playlist){
 }
 
 
-export async function PlaylistItem(item){
-    const comando = 
-}
+

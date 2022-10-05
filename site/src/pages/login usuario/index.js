@@ -2,6 +2,7 @@ import { loginUsuario } from '../../api/usuarioAPI';
 import {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import './index.scss'
+import storage from 'local-storage'
 
 export default function Index() {
   
@@ -14,7 +15,8 @@ export default function Index() {
 async function loginClick() {
 
   try{
-    const r = await loginUsuario(email,senha) 
+    const r = await loginUsuario(email,senha)
+    storage('usuario-logado', r)
     navigate('/HomeLoginFeito');
 
   }

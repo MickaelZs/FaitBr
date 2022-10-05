@@ -37,8 +37,7 @@ export default function Index() {
     async function salvarClick(){
       try{      
           const r = await cadastroUsuario (nome,nasc,email,senha)
-          toast.dark('Cadastro realizado corno');
-          const oi = await loginUsuario(email,senha) 
+          storage('usuario-logado', r)
           navigate('/HomeLoginFeito');
       }
       catch (err){
