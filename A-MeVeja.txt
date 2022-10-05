@@ -1,3 +1,4 @@
+
  1 - Git: pull
 2 - Git: Commit
 3 - Git: mensagem de alteração
