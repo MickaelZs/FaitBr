@@ -7,6 +7,7 @@ import { buscarPorId, cadastroArtista, enviarImagemArtista } from '../../api/cad
 import { listaGeneros } from '../../api/generoAPI';
 import { useNavigate, useParams } from 'react-router-dom'
 import storage from 'local-storage'
+import { API_URL } from '../../api/config';
 
 export default function Index(){
 
@@ -43,20 +44,22 @@ export default function Index(){
     async function carregarArtista (){
         const resposta = await buscarPorId(idParams);
         setNome(resposta.nome)
-        setIdGenero(resposta.idGenero)
+        setIdGenero(resposta.genero)
         setSobre(resposta.sobre)
-        setImagem(resposta.imagem)
+        setImagem(resposta.artista)
         setId(resposta.id)
     }
 
-    function mostrarImagem(){
-        if(typeof (imagem) == 'object') {
-            return  URL.createObjectURL(imagem)
+    
+    function mostrarImagem(imagem){
+        
+        if (typeof (imagem) == 'object') {
+            return URL.createObjectURL(imagem);
         }
         else {
-            return buscarPorId(imagem)
+                
+                return `${API_URL}/${imagem}`
         }
-        
     }
    
 
@@ -85,9 +88,7 @@ export default function Index(){
             document.getElementById('imagemCapa').click();
         }
 
-        function mostrarImagem() {
-            return URL.createObjectURL(imagem);
-        }
+        
     
 
 
@@ -112,7 +113,7 @@ export default function Index(){
 
                             {imagem &&  
 
-                            <img className='imagem' src={mostrarImagem()} />
+                            <img className='imagem' src={mostrarImagem(imagem)} />
 
                             }
 

@@ -18,7 +18,7 @@ export default function Index() {
     const navigate = useNavigate();
 
     function editarArtista(id){
-        navigate(`/Cadastrarartista/alterar/${id}`)
+        navigate(`/adm/cadastrarArtista/alterar/${id}`)
     }
 
 
@@ -98,25 +98,22 @@ export default function Index() {
                                     <div className='card'>
                                     <div className='acoes'>
 
-                                        <img src='/images/botao-editar.png' inclick={() => editarArtista} /> 
+                                        <img src='/images/botao-editar.png' onClick={() => editarArtista (item.id)} /> 
                                         <img src='/images/excluir.png' onClick={() => deletarArtista(item.id, item.nome) } />
                                         
                                         
                                     </div>
                                     <div>
-                                        <div className=''>
+                                       
                                         <img className='capas' src={`${API_URL}/${item.artista}`}/>      
                                       
-                                        </div>
                                         
                                         <div className='id'>{item.id} </div>
                                         <div className='artista'>{item.nome} </div>
 
                                         <div className='genero'>{item.genero}</div>
                                     </div>
-                                    <div>
-                                        <div className='sobre'>{item.sobre}</div>
-                                    </div>
+                                    
                                     </div>
                             );
                             })} 
