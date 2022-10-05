@@ -22,10 +22,11 @@ export async function alterarImagem(imagem, id){
 
 export async function listarTodosArtista() {
     const comando =
-    `select tb_artistas.id_artistas,
-    nm_artistas,
-    ds_sobre,
-    nm_genero
+    `select tb_artistas.id_artistas id,
+    nm_artistas nome,
+    ds_sobre sobre,
+    nm_genero genero,
+    img_artista artista
     from tb_artistas
     inner join tb_genero on tb_artistas.id_genero = tb_genero.id_genero;`
     
