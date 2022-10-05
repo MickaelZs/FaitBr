@@ -36,3 +36,18 @@ export async function ImagemGenero(imagem, id){
 }
 
 
+export async function buscarGeneroPorNome(nome) {
+    
+    const comando =
+    `select  
+    id_genero id,
+    nm_genero genero,
+    img_genero
+    from tb_genero
+    where nm_genero like ?`
+    
+    const [linhas] = await con.query(comando, [`%${nome}%`]);
+    return linhas;
+}
+
+

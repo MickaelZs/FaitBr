@@ -123,7 +123,6 @@ useEffect(() => {
         <img src={`${API_URL}/${item.artista}`} />
         <p> {item.nome}</p>
        </div>
-          
           )}
         
 

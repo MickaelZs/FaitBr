@@ -1,0 +1,50 @@
+.pagina-informacao-usu{
+    display: flex;
+    flex-direction: column;
+    color: #ffff;
+
+    *{
+      // border: #8D32E5 solid 1px;
+       
+    }
+
+    .faixa1{
+        background-color: #8D32E5;
+        height: 8vh;
+    }
+    .faixa2{
+        display: flex;
+        flex-direction: column;
+        background-color: #1e1e1e;
+        height: 92vh;
+    }
+
+    .lapix{
+        display: flex;
+    }
+
+    .nm-usuario{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        margin: 0;
+    }
+    .div1{
+        display: flex;
+        align-items: center;
+        
+    }
+    .nome{
+        font-size: 60px;
+    }
+
+    .hr1{
+        width: 56em;
+        border: #8D32E5 solid 2px;
+    }
+    .div1{
+        display: flex;
+        align-items: center;
+    }
+}

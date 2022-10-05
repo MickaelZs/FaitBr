@@ -8,18 +8,46 @@ import { useEffect, useState } from 'react';
 import { listaArtista } from '../../api/cadastroArtistaAPI';
 import { listaGeneros } from '../../api/generoAPI';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../../api/config';
 
 
 
 export default function Index() {
 
+  const [artista,setArtista] = useState ([])
+  const [genero,setGenero] = useState ([])
   const [usuario,setUsuario] = useState ('')
+  const [imagem,setImagem] = useState ('')
 
-  const navigate = useNavigate()
-  
+  function escolherImagem() {
+    document.getElementById('imagemCapa').click();
+}
 
+function mostrarImagem(imagem){
+        
+  if (typeof (imagem) == 'object') {
+      return URL.createObjectURL(imagem);
+  }
+  else {
+          
+          return `${API_URL}/${imagem}`
+  }
+}
 
+  async function carregarGenero(){
+    const resp = await listaGeneros();
+    setGenero(resp);
+}
 
+async function carregarArtista(){
+  const resp = await listaArtista();
+  setArtista(resp);
+}
+
+useEffect(() => {
+  carregarArtista();
+    carregarGenero();
+}, [])
 
   const responsive = {
     desktop: {
@@ -47,8 +75,22 @@ export default function Index() {
         <header>
           <div className='texto-cabecalho'>
            
-           <div className='usuario'>
-            <span>{usuario[0]}</span>
+           
+           <div className='usuario' onClick={escolherImagem}>
+
+        {!imagem &&
+
+        <img src='/images/img.png'/>
+        }
+
+        {imagem &&  
+
+        <img className='imagem' src={mostrarImagem(imagem)} />
+
+        }
+
+        <input type='file' id='imagemCapa' onChange={e => setImagem(e.target.files[0])}  className="inp"></input>
+
            </div>
 
               
@@ -56,8 +98,9 @@ export default function Index() {
               <li><a href="#sec3">Artistas populares</a></li>
               
               
-                  
+              <a href='/buscar'>
               <img className='icon-pesquisa' src='images/icon-pesquisa.png' />
+              </a>
              
               <img className='icon-livraria' src='./images/icon-library.png'/>
               
@@ -81,14 +124,13 @@ export default function Index() {
         transitionDuration={500}
         centerMode
       >
-        <CardGenero avatar="images/trap..png" nome="Trap"/>
-        <CardGenero avatar="images/brega.png" nome="Brega Funk"/>
-        <CardGenero avatar="images/funk.png" nome="Funk"/>
-        <CardGenero avatar="images/sertanejo..png" nome="Sertanejo"/>
-        <CardGenero avatar="images/rock.png" nome="Rock" />
-        <CardGenero avatar="images/pagode.png" nome="Pagode"/>
-        <CardGenero avatar="images/pop.png" nome="Pop" />
-        <CardGenero avatar="images/forro.png" nome="Forró"/>
+        {genero.map (item =>
+        <div className="generos">
+        <img src={`${API_URL}/${item.genero}`} />
+        <p> {item.nome}</p>
+       </div>
+          )}
+       
 
       </Carousel>
 
@@ -107,14 +149,12 @@ export default function Index() {
         transitionDuration={500}
         centerMode
       >
-        <CardArtistas avatar="images/teto.jpg" nome="teto" />
-        <CardArtistas avatar="images/menos.jpg" nome="Menos e mais"/>
-        <CardArtistas avatar="images/hariel.webp" nome="Mc hariel" />
-        <CardArtistas avatar="images/gusttavolima.webp" nome="Gustavo lima"/>
-        <CardArtistas avatar="images/"  nome="teto"/>
-        <CardArtistas avatar="images/anderson.jpeg" nome="Anderson" />
-        <CardArtistas avatar="images/anitta..jpg" nome="Anitta"/>
-        <CardArtistas avatar="images/rai.webp" nome="Saia rodada"/>
+        {artista.map (item =>
+        <div className="generos">
+        <img src={`${API_URL}/${item.artista}`} />
+        <p> {item.nome}</p>
+       </div>
+          )}
         
 
       </Carousel>
