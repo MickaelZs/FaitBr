@@ -102,27 +102,15 @@ useEffect(() => {
              
               <img className='icon-livraria' src='./images/icon-library.png'/>
               
-              <div className='usuario' onClick={escolherImagem}>
-      
-
-      {!imagem &&
-
-      <img src='/images/img.png'/>
-      }
-
-      {imagem &&  
-
-      <img className='imagem' src={mostrarImagem(imagem)} />
-
-      }
-
-      <input type='file' id='imagemCapa' onChange={e => setImagem(e.target.files[0])} ></input>
+              <div className='usuario' >
+                <span> </span>
 
          </div>
           </div>
         </header>
-        <div>
+        <div className='faixa'>
           <h1>Play Music</h1>
+           <img className='imag' src='/images/Music-pana.png'></img>
 
           <AudioPlayer
   audioFiles={[
@@ -133,7 +121,6 @@ useEffect(() => {
     }
   ]}
   rearrange={rearrangedPlayer}
-
   playerWidth="10rem"
   iconSize="10rem"
   playIcon="/images/forro.png"
