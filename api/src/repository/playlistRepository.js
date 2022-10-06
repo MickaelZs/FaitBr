@@ -16,7 +16,3 @@ export async function Cadastrarplaylist(playlist){
 }
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> e5d0485bc4d64667e0ce8a16f272a902cff5aa59

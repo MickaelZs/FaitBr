@@ -2,6 +2,7 @@ import './index.scss'
 import storage from 'local-storage'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import AudioPlayer from 'react-modular-audio-player' ;
 import CardGenero from '../../components/genero';
 import CardArtistas from '../../components/artistas';
 import { useEffect, useState } from 'react';
@@ -18,6 +19,18 @@ export default function Index() {
   const [genero,setGenero] = useState ([])
   const [usuario,setUsuario] = useState ('')
   const [imagem,setImagem] = useState ('')
+
+  const rearrangedPlayer = [
+    {
+      className: "beatles",
+      style: { cursor: "pointer" },
+      innerComponents: [
+        {
+          type: "play"
+        }
+      ]
+    }
+  ];
 
   function escolherImagem() {
     document.getElementById('imagemCapa').click();
@@ -74,24 +87,9 @@ useEffect(() => {
       <div className='faixa1'>
         <header>
           <div className='texto-cabecalho'>
-           
-           
-           <div className='usuario' onClick={escolherImagem}>
-
-        {!imagem &&
-
-        <img src='/images/img.png'/>
-        }
-
-        {imagem &&  
-
-        <img className='imagem' src={mostrarImagem(imagem)} />
-
-        }
-
-        <input type='file' id='imagemCapa' onChange={e => setImagem(e.target.files[0])}  className="inp"></input>
-
-           </div>
+          <img  className='logo' src='./images/logooo.png' href='' width='100' />
+        
+        
 
               
               <li><a href="#sec2">Gêneros</a></li>
@@ -104,9 +102,47 @@ useEffect(() => {
              
               <img className='icon-livraria' src='./images/icon-library.png'/>
               
-              <img  className='logo' src='./images/logooo.png' href='' width='100' />
+              <div className='usuario' onClick={escolherImagem}>
+      
+
+      {!imagem &&
+
+      <img src='/images/img.png'/>
+      }
+
+      {imagem &&  
+
+      <img className='imagem' src={mostrarImagem(imagem)} />
+
+      }
+
+      <input type='file' id='imagemCapa' onChange={e => setImagem(e.target.files[0])} ></input>
+
+         </div>
           </div>
         </header>
+        <div>
+          <h1>Play Music</h1>
+
+          <AudioPlayer
+  audioFiles={[
+    {
+      src: "music/henriqueejulianooficial-completa-ai-part-marilia-mendonca-09f511dd.mp3",
+      title: "Hey Jude",
+      artist: "The Beatles"
+    }
+  ]}
+  rearrange={rearrangedPlayer}
+
+  playerWidth="10rem"
+  iconSize="10rem"
+  playIcon="/images/forro.png"
+  playHoverIcon="/images/forro.png"
+  pauseIcon="/images/forro.png"
+  pauseHoverIcon="/images/forro.png"
+/>
+        </div>
+
       </div>
 
       <div>
