@@ -39,7 +39,7 @@ export async function listarUsuario() {
     dt_nasc,
     ds_email,
     ds_senha,
-    img_usuario
+    img_imagem
     from tb_usuario;`
     
     const [linhas] =  await con.query(comando);
