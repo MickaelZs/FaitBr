@@ -47,18 +47,36 @@ export async function buscarImagem() {
 
 export async function buscarPorId(id) {
     const comando =
-        `select 
-        id_artistas id,
-        id_genero genero,
-        nm_artistas nome,
-        ds_sobre sobre,
-        img_artista artista
-        from tb_artistas
-        where id_artistas = ?`
-        
+
+    `select tb_artistas.id_artistas id,
+    nm_artistas nome,
+    ds_sobre sobre,
+    nm_genero genero,
+    img_artista artista
+    from tb_artistas
+    inner join tb_genero on tb_artistas.id_genero = tb_genero.id_genero
+    where id_artistas = ?`
+
     const [linhas] = await con.query(comando, [id]);
     return linhas[0];
 }
+
+export async function ListaPorId(id) {
+    const comando =
+
+    `select 
+    id_artistas id,
+    id_genero genero,
+    nm_artistas nome,
+    ds_sobre sobre,
+    img_artista artista
+    from tb_artistas
+    where id_artistas = ?`
+
+    const [linhas] = await con.query(comando, [id]);
+    return linhas[0];
+}
+
 
 export async function deletaArtista (id){
     const comando = 

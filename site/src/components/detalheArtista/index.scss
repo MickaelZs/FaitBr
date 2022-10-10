@@ -7,20 +7,18 @@
     background-color: #fff;
     padding: 20px 50px 20px 20px;
     border-radius: 35px;
-    box-shadow: 0px 0px 8px rgba(155, 155, 155, 0.25);
     height: 30vh;
 
     img {
-        width: 200px;
-        border-radius: 35px;
+        width: 400px;
+        border-radius: 20px;
         margin-right: 30px;
     }
 
     h1 {
-        font: 800 32px 'Inter';
-        color: #606060;
+        font: 800 50px 'Inter';
+        color: #000000;
 
-        margin-top: 50px;
         margin-bottom: 30px;
     }
 
@@ -33,17 +31,14 @@
         width: 600px;
     }
 
-    .info {
-        margin-bottom: 30px;
-    }
+    
     .info h3 {
         font: 700 16px 'Inter';
-        color: #7D7D7D;
-        margin-bottom: 5px;
+        color: #000000;
     }
     .info p {
         font: 400 16px 'Inter';
-        color: #7D7D7D;
+        color: #000000;
     }
 
 }

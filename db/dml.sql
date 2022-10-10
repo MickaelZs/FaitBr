@@ -20,3 +20,18 @@ ds_sobre,
 nm_genero
 from tb_artistas
 inner join tb_genero on tb_artistas.id_genero = tb_genero.id_genero;
+
+
+select tb_artistas.id_artistas,
+nm_artistas,
+ds_sobre,
+nm_genero
+from tb_artistas
+inner join tb_genero on tb_artistas.id_genero = tb_genero.id_genero
+where nm_genero = 'Funk'
+or nm_genero = 'Sertanejo'
+or nm_genero = 'Pagode'
+or nm_genero = 'Pop'
+or nm_genero = 'Forró'
+or nm_genero = 'Brega Funk'
+or nm_genero = 'Rock';

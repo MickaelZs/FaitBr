@@ -6,6 +6,7 @@ import cadastroArtista from './controller/cadastroArtistaController.js'
 import loginAdm from './controller/loginadmController.js'
 import genero from './controller/generoController.js'
 import  cadastrarplaylist from './controller/playlistController.js'
+import select from './controller/selectArtistasPorGenerosController.js'
 
 
 
@@ -22,6 +23,7 @@ server.use(cadastroArtista);
 server.use(loginAdm);
 server.use(genero);
 server.use(cadastrarplaylist)
+server.use(select);
 
 
 

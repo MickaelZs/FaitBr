@@ -3,7 +3,7 @@ import Menu from '../../components/menu'
 import './index.scss'
 
 import { ToastContainer, toast } from 'react-toastify';
-import { buscarPorId, cadastroArtista, enviarImagemArtista, alterarArtista } from '../../api/cadastroArtistaAPI'
+import { buscarPorId, cadastroArtista, enviarImagemArtista, alterarArtista, listaArtistaPorId } from '../../api/cadastroArtistaAPI'
 import { listaGeneros } from '../../api/generoAPI';
 import { useNavigate, useParams } from 'react-router-dom'
 import storage from 'local-storage'
@@ -23,7 +23,7 @@ export default function Index(){
         setGenero(r);
     }
 
-    const {idParams} = useParams();
+    const {idParam} = useParams();
 
     async function carregarGeneros(){
         const r = await listaGeneros();
@@ -35,19 +35,19 @@ export default function Index(){
             navigate('/LoginAdm')
         }
         carregarGeneros();
-        if (idParams){
+        if (idParam){
         carregarArtista()
         }
 
     },[] )
 
     async function carregarArtista (){
-        const resposta = await buscarPorId(idParams);
+        const resposta = await listaArtistaPorId(idParam);
+        setId(resposta.id) 
         setNome(resposta.nome)
         setIdGenero(resposta.genero)
         setSobre(resposta.sobre)
         setImagem(resposta.artista)
-        setId(resposta.id)
     }
 
     
@@ -83,7 +83,11 @@ export default function Index(){
 
             else{
                 await alterarArtista(id, nome, idGenero, sobre);
-                toast.dark(' Pedido alterado com sucesso');
+                if(typeof(imagem) == 'object'){
+                    await enviarImagemArtista(id, imagem)
+                    
+                }
+                toast.dark(' Artista alterado com sucesso');
             }
             }
 

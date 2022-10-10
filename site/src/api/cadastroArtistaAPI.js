@@ -45,6 +45,11 @@ export async function buscarPorId(id){
     return resposta.data;
 }
 
+export async function listaArtistaPorId(id){
+    const resposta = await api.get(`/art/${id}`)
+    return resposta.data;
+}
+
 export async function buscarImagem(artista) {
     return `${api.getUri()}/${artista}`
 }

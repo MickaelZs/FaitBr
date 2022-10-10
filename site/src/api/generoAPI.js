@@ -5,8 +5,15 @@ const api = axios.create({
     baseURL: API_URL
 })
 
+
+
 export async function buscarGeneroPorNome(nome){
   const resposta = await api.get(`/genero/busca?nome=${nome}`);
+  return resposta.data;
+}
+
+export async function buscarGeneroPorId(id){
+  const resposta = await api.get(`/genero/${id}`)
   return resposta.data;
 }
 
@@ -15,7 +22,3 @@ export async function listaGeneros(){
     return resposta.data;
   }
 
-  export async function buscarGeneroPorId(id){
-    const resposta = await api.get(`/artista/${id}`)
-    return resposta.data;
-}

@@ -82,7 +82,7 @@ export default function Index() {
                     <div className='caixa-busca'>
                         
                         <input type="text" placeholder='Buscar artista por nome' value={filtro} onChange={e => setFiltro(e.target.value)} />
-                        <img src='./images/procurar.png'  onClick={filtrar}/>
+                        <img src='/images/procurar.png'  onClick={filtrar}/>
                     </div>
                     
 

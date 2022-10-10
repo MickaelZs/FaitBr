@@ -1,6 +1,7 @@
 import { con } from "./connection.js";
 
 
+
 export async function listarTodosGenero() {
     const comando =
     `select 
