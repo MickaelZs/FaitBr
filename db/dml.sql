@@ -40,3 +40,8 @@ or nm_genero = 'Rock';
 --musica
 insert into tb_musicas (id_genero, id_artistas, nm_musica)
 values (2, 1, 'o fim é triste')
+
+
+update tb_musicas 
+set img_imagem = 1
+where id_musica = 1;
