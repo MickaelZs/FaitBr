@@ -35,3 +35,8 @@ or nm_genero = 'Pop'
 or nm_genero = 'Forró'
 or nm_genero = 'Brega Funk'
 or nm_genero = 'Rock';
+
+
+--musica
+insert into tb_musicas (id_genero, id_artistas, nm_musica)
+values (2, 1, 'o fim é triste')
