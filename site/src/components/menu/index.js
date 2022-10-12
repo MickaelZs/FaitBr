@@ -32,7 +32,7 @@ export default function Menu (){
                 </div>
                 <div>
                     <img src="images/cadastrarmusica.svg"/>
-                    <div>Cadastrar musica</div>
+                    <a href='/adm/cadastromusica'>Cadastrar artista</a>
                 </div>
 
                 <div>
