@@ -90,9 +90,7 @@ export default function Index(){
                 toast.dark(' Artista alterado com sucesso');
             }
             }
-
-            
-            
+ 
         catch (err){
                 if(err.response)
                 toast.error(err.response.data.erro)
@@ -105,11 +103,6 @@ export default function Index(){
         function escolherImagem() {
             document.getElementById('imagemCapa').click();
         }
-
-        
-    
-
-
 
 
     return(
