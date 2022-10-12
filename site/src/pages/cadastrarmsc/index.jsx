@@ -1,24 +1,110 @@
-import CardCadastromsc from '../../components/comp-cadastrar-musica'
+import { ToastContainer, toast } from 'react-toastify';
 import './index.scss'
-import storage from 'local-storage'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Menu from '../../components/menu'
+import { listaArtista } from '../../api/cadastroArtistaAPI'
+import { listaGeneros } from '../../api/generoAPI'
+import { cadastraMusica, enviarImagemMusica, inserirMusica } from '../../api/musicaAPI'
+import { API_URL } from '../../api/config';
 
 
 export default function Cadastromsc(){
+    const [nome,setNome] = useState('')
+    const [artista,setArtista] = useState([])
+    const [idArtista,setIdArtista] = useState('')
+    const [genero,setGenero] = useState([])
+    const [idGenero,setIdGenero] = useState ('')
+    const [musica,setMusica] = useState ('')
+    const [imagem,setImagem] = useState ('')
+    const [id,setId] = useState(0)
 
-    const navigate = useNavigate ();
+    async function carregarArtista(){
+        const resp = await listaArtista()
+        setArtista(resp)
+    }
+
+    async function carregarGeneros(){
+        const resp = await listaGeneros()
+        setGenero(resp)
+    }
+
+    function escolherImagem() {
+        document.getElementById('imagemCapa').click();
+    }
+
+    function escolherMusica() {
+        document.getElementById('musica').click();
+    }
+
+    function mostrarImagem(imagem){
+        
+        if (typeof (imagem) == 'object') {
+            return URL.createObjectURL(imagem);
+        }
+        else {
+                
+                return `${API_URL}/${imagem}`
+        }
+    }
+
+    function mostrarMusica(musica){
+        
+        if (typeof (musica) == 'object') {
+            return URL.createObjectURL(musica);
+        }
+        else {
+                
+                return `${API_URL}/${musica}`
+        }
+    }
+    
+
 
     useEffect(() => {
+        carregarArtista()
+        carregarGeneros()
+        
        
     }, [])
+
+    async function salvarClick(){
+        try{ 
+            if (!imagem){
+                throw new Error('escolha a imagem do artista');
+            }
+
+            if (!musica){
+                throw new Error('escolha a MUSICA');
+            }
+
+            if(id === 0){
+                const NovaMusica = await cadastraMusica (nome,idGenero,idArtista);
+                await enviarImagemMusica(NovaMusica.id, imagem);
+                await inserirMusica (NovaMusica.id, musica);
+                setId(NovaMusica.id)
+
+                toast.dark('Nova musica cadastrada');
+            }
+
+           
+            }
+ 
+        catch (err){
+                if(err.response)
+                toast.error(err.response.data.erro)
+                else
+                toast.error(err.message);
+            }
+        }
 
 
 
 
     return(
+
         <main className='pagina-cadastro-musica'>
+            <ToastContainer/>
             <Menu/>
         <section className='faixa-cadastro'>
             <div className='margin-cadastro'>
@@ -26,28 +112,58 @@ export default function Cadastromsc(){
                     <p className='p'>
                         Adicionar capa
                     </p>
-                    <div className='border-image'>
-                        <img src='/images/image-bottom212.svg' width='170px'/>
+                    <div className='border-image' onClick={escolherImagem}>
+
+                    {!imagem &&
+
+                    <img src='/images/image-bottom212.svg' width='170px'/>
+                    }
+
+                    {imagem &&  
+
+                    <img className='imagem' src={mostrarImagem(imagem)} />
+
+                    }
+
+                    <input type='file' id='imagemCapa' onChange={e => setImagem(e.target.files[0])} ></input>
                     </div>
                 </div>
                 <div className='div2-cadastro'>
                     <div className='div-input'>
-                    <input type="text"  placeholder="Artista"  required></input>
+                    <select value={idArtista} onChange={e => setIdArtista(e.target.value)}>
+                        <option selected disabled hidden> Artista </option>
+                        {artista.map(item =>
+                            <option value={item.id}> {item.nome} </option>
+                        )}
+                    </select>
+                    </div>
+                   
+                    <div className='div-input'  onClick={escolherMusica}>
+
+                    {musica &&  
+
+                    <img className='musica' src={mostrarMusica(musica)} />
+
+                    }
+
+                    <input type='file' id='musica' onChange={e => setMusica(e.target.files[0])} ></input> 
+                    
                     </div>
                     <div className='div-input'>
-                    <input type="text" placeholder="Nome" required></input>
+                    <select value={idGenero} onChange={e => setIdGenero(e.target.value)}>
+                        <option selected disabled hidden> generos </option>
+                        {genero.map(item =>
+                            <option value={item.id}> {item.nome} </option>
+                        )}
+                    </select>
                     </div>
                     <div className='div-input'>
-                    <input type="text" placeholder="Musica" required></input>
-                    </div>
-                    <div className='div-input'>
-                    <input type="text" placeholder="Gênero" required></input>
-                    </div>
-                    <div className='div-input'>
-                    <input type="number" placeholder="Tempo" required></input>
+                    <input type="text" value={nome}  onChange={e => setNome(e.target.value)} required></input>
+                    <label>Senha</label>
                     </div>
                     
-                            <button className='botao'>Cadastrar</button>
+                    
+                            <button className='botao' onClick={salvarClick} >Cadastrar</button>
                 </div>
             </div>
 

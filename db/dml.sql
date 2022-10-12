@@ -45,3 +45,12 @@ values (2, 1, 'o fim é triste')
 update tb_musicas 
 set img_imagem = 1
 where id_musica = 1;
+
+
+--musica
+select tb_musicas.id_musica,
+nm_artistas,
+nm_genero
+from tb_musicas
+inner join tb_artistas on tb_musicas.id_artistas = tb_artistas.id_artistas
+inner join tb_genero on tb_musicas.id_genero = tb_genero.id_genero;

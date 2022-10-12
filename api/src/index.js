@@ -8,11 +8,14 @@ import genero from './controller/generoController.js'
 import  cadastrarplaylist from './controller/playlistController.js'
 import select from './controller/selectArtistasPorGenerosController.js'
 import Musica from './controller/musicaController.js'
+import InserirMusica from './controller/inserirMusicaController.js'
 
 
 
 const server = express();
 
+server.use('/storage/capaMusica', express.static('storage/capaMusica'));
+server.use('/storage/musica', express.static('storage/musica'));
 server.use('/storage/capaArtistas', express.static('storage/capaArtistas'));
 server.use('/storage/capaGenero', express.static('storage/capaGenero'));
 server.use('/storage/capaUsuario', express.static('storage/capaUsuario'));
@@ -20,6 +23,8 @@ server.use('/storage/capaUsuario', express.static('storage/capaUsuario'));
 server.use(cors());
 server.use(express.json());
 
+
+server.use(InserirMusica)
 server.use(Usuario);
 server.use(cadastroArtista);
 server.use(loginAdm);

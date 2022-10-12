@@ -132,6 +132,11 @@
         margin: 4px;
     }
 
+    .card .capas {
+        width: 10em;
+        height: 10em;
+    }
+
 
 
     .card .acoes {
@@ -160,6 +165,10 @@
     .card .acoes > img {
         margin: 0px 5px;
         cursor: pointer;
+    }
+
+    audio{
+        width: 15em;
     }
 
 

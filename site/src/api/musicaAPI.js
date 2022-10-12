@@ -1,11 +1,49 @@
-import { selectArtistaeGeneros } from '../../../api/src/repository/selectArtistasPorGenerosRepository';
 import { API_URL } from './config';
 
-export async function cadastraMusica(genero,artista,nome) {
-    const r = await api.post('/cadastroArtista',{
-        genero: genero,
-        artistas: artista,
+import axios from 'axios'
+const api = axios.create({
+    baseURL: API_URL
+})
+
+export async function cadastraMusica(nome,idGenero,idArtista) {
+    const r = await api.post('/cadastra/musica',{
         nome: nome,
+        genero: idGenero,
+        artistas: idArtista, 
+        
     })
     return r.data;
 }
+
+
+export async function enviarImagemMusica(id, imagem){
+    const formData = new FormData ();
+    formData.append('capa', imagem);
+
+    const resposta = await api.put(`/cadastraMusica/${id}/capa`, formData,{
+        headers:{
+            "Content-type": "multipart/form-data"
+        },
+    });
+
+    return resposta.status;
+}
+
+export async function inserirMusica(id, musica){
+    const formData = new FormData ();
+    formData.append('musica', musica);
+
+    const resposta = await api.put(`/cadastroMusica/${id}/musica`, formData,{
+        headers:{
+            "Content-type": "multipart/form-data"
+        },
+    });
+
+    return resposta.status;
+}
+
+
+export async function listaMusicaArtista(){
+    const resposta = await api.get('/musica/artista');
+    return resposta.data;
+  }

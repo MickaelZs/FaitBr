@@ -27,6 +27,8 @@ export default function Index() {
         setNomee(resp);
     }
 
+    
+
     useEffect(() => {
         if(!storage('usuario-logado')){
             navigate('/LoginAdm')

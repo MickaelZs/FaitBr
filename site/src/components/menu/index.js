@@ -31,8 +31,8 @@ export default function Menu (){
                     <a href='/adm/cadastrarArtista'>Cadastrar artista</a>
                 </div>
                 <div>
-                    <img src="images/cadastrarmusica.svg"/>
-                    <a href='/adm/cadastromusica'>Cadastrar artista</a>
+                    <img src="/images/cadastrarmusica.svg"/>
+                    <a href='/adm/cadastromusica'>Cadastrar Musica </a>
                 </div>
 
                 <div>

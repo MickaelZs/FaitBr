@@ -4,24 +4,29 @@ import { listaArtista } from '../../api/cadastroArtistaAPI';
 import {useEffect, useState} from 'react'
 import storage from 'local-storage'
 import { useNavigate } from 'react-router-dom';
+import { listaMusicaArtista, listaMusicaeArtista } from '../../api/musicaAPI';
+import { API_URL } from '../../api/config';
 
 export default function Index(){
 
-    const [nome, setNOME] = useState ([])
+    const [nomee, setNomee] = useState ([])
 
     const navigate = useNavigate ();
 
 
-    async function carregarTodosArtista(){
-        const resp = await listaArtista();
-        setNOME(resp);
+    async function carregarMusicaArtista(){
+        const resp = await listaMusicaArtista()
+        setNomee(resp)
+
+       
     }
+   
 
     useEffect(() => {
         if(!storage('usuario-logado')){
             navigate('/LoginAdm')
         }
-        carregarTodosArtista();
+        carregarMusicaArtista();
     }, [])
 
 
@@ -38,42 +43,41 @@ export default function Index(){
                         <input type="text" placeholder='Buscar artista por nome' />
                         <img src='/assets/images/icon-buscar.svg' alt='buscar' />
                     </div>
-                    
-
+                
 
                     <div className='card-container'>
+                    <div className='comp-card'>
 
+{nomee.map(item => {
+return (
+   
+        <div className='card'>
+        <div className='acoes'>
 
-                        <div className='comp-card'>
-                            <div className='card'>
-                                <div className='acoes'>
+            <img src='/images/botao-editar.png' /> 
+            <img src='/images/excluir.png' />
+            
+            
+        </div>
+        <div>
+           
+            <img className='capas' src={`${API_URL}/${item.imagem}`}/>      
+          
+            
+            <div className='id'>{item.id} </div>
+            <div className='artista'>{item.musica} </div>
 
-                                    <img src='/assets/images/icon-editar.svg' alt='editar' />
-                                    
-                                    <img src='/assets/images/icon-remover.svg' alt='remover' />
-                                    
-                                </div>
-                                <div>
-                                {nome.map(item =>
-                                <div>
-                                    <div className='nomeArtisata'> {item.nome} </div>
-                                    <div className='genero'> {item.genero} </div>
-                                    <div className='sobre'> {item.sobre} </div>
-                                    </div>
-                                    
-                                    
-                                    
-                                )}    
-                                </div>
-                                <div className='genero'>Genero</div>
-                                    <div className='sobre'>Sobre</div>
-                        
-                            </div>
-                        </div>
-
-                        
+            <div className='genero'>{item.genero}</div>
+            <audio controls src={`${API_URL}/${item.audio}`}></audio>
+        </div>
+        
+        </div>
+);
+})} 
+</div>
                         
                     </div>
+                      
 
 
                     
