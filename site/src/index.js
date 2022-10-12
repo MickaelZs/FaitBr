@@ -50,7 +50,7 @@ root.render(
       <Route path='/detalhe/artista/:idParam' element={<DetalheAertista/>}/>
       <Route path='/Reproduzir' element={<Reproduzir/>}/>
       <Route path='/buscar' element={<Buscar/>}/>
-      <Route path='/informacao' element={<Infusario/>}/>
+      <Route path='/informacao/:idParam' element={<Infusario/>}/>
 
 
 

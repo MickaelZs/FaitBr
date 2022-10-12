@@ -34,15 +34,32 @@ export async function imagemUsuario(imagem, id){
 export async function listarUsuario() {
     const comando =
     `select 
-    id_usuario,
-    nm_nome,
-    dt_nasc,
-    ds_email,
-    ds_senha,
-    img_imagem
+    id_usuario id,
+    nm_nome nome,
+    dt_nasc nascimento,
+    ds_email email,
+    ds_senha senha,
+    img_imagem imagem
     from tb_usuario;`
     
     const [linhas] =  await con.query(comando);
     return linhas;
+}
+
+export async function buscarUsuarioPorId(id) {
+    const comando =
+
+    `select 
+    id_usuario id,
+    nm_nome nome,
+    dt_nasc nascimento,
+    ds_email email,
+    ds_senha senha,
+    img_imagem imagem
+    from tb_usuario
+    where id_usuario = ?`
+
+    const [linhas] = await con.query(comando, [id]);
+    return linhas[0];
 }
 

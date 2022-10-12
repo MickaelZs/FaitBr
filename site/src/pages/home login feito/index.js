@@ -19,6 +19,12 @@ export default function Index() {
   const [genero,setGenero] = useState ([])
   const [usuario,setUsuario] = useState ('')
   const [imagem,setImagem] = useState ('')
+  const navigate = useNavigate()
+
+  function acessarPerfil(id){
+    navigate(`/informacao/${id}`)
+}
+
 
   const rearrangedPlayer = [
     {
@@ -101,11 +107,12 @@ useEffect(() => {
               </a>
              
               <img className='icon-livraria' src='./images/icon-library.png'/>
-              
-              <div className='usuario' >
+              {usuario.map(item => 
+              <div className='usuario' onClick={() => acessarPerfil (item.id)} >
                 <span> </span>
 
          </div>
+         )}
           </div>
         </header>
         <div className='faixa'>

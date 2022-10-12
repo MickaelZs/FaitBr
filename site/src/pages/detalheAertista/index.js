@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { buscarPorId } from "../../api/cadastroArtistaAPI"
 import DetalheArtista from "../../components/detalheArtista"
 import Cabeçario from "../../components/cabeçalho"
+import { listaMusicaArtista } from "../../api/musicaAPI"
 
 
 export default function Index(){

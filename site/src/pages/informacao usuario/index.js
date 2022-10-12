@@ -4,15 +4,17 @@ import Cabeçario from '../../components/cabeçalho'
 
 import { API_URL } from '../../api/config'
 import { useEffect, useState } from 'react'
-import { listarUsuario } from '../../api/usuarioAPI'
+import { buscarUsuarioPorId, listarUsuario } from '../../api/usuarioAPI'
+import { useParams } from 'react-router-dom'
 
 export default function Index(){
 
     const [usuario, setUsuario] = useState ([])
     const [imagem, setImagem] = useState ('')
+    const {idParam} = useParams()
 
     async function carregarUsuario(){
-        const resp = await listarUsuario();
+        const resp = await buscarUsuarioPorId(idParam);
         setUsuario(resp);
     }
 
@@ -41,6 +43,7 @@ export default function Index(){
             <Cabeçario/>
             <section className='faixa2'>
                 <div>
+               
 
                    
                        
@@ -70,10 +73,14 @@ export default function Index(){
                 
                     </div>
                     
+                    <div>
+                        
+                    
                     <div class=''>
                     <p>Alterar nome</p>
                     <img src="./images/lapis.svg" alt="" />
                     </div>
+                        
                 </div>
                 
                 <div>
@@ -85,10 +92,15 @@ export default function Index(){
                 </div>
              
                     <div>
+                        {usuario.map(item =>
+                        <div>
                         <h1>
                             Email
                         </h1>
-                        <p>neymar@gmail.com</p>
+                        <p>{item.email}</p>
+                        </div>
+                        )}
+                       
                     </div>
                     <div>
                         <p>Alterar email</p>
@@ -101,11 +113,14 @@ export default function Index(){
                         <p>*</p>
                     </div>
                     
+                    </div> 
+                   
                     </div>
+
                   
 
                         
-                
+               
                   
                 </div>
             </section>

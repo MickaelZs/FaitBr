@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { cadastrorUsuario, imagemUsuario, listarUsuario, loginUsuario } from "../repository/usuarioRepository.js"
+import { buscarUsuarioPorId, cadastrorUsuario, imagemUsuario, listarUsuario, loginUsuario } from "../repository/usuarioRepository.js"
 import multer from 'multer';
 
 
@@ -71,6 +71,23 @@ server.get('/usuario', async (req, resp) => {
     try {
         const resposta = await listarUsuario();
         resp.send(resposta);
+    } catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
+server.get('/usuario/:id', async (req, resp) => {
+    try {
+        const id = Number(req.params.id);
+        
+        const resposta = await buscarUsuarioPorId(id);
+
+        if (!resposta)
+            resp.status(404).send([])
+        else
+            resp.send(resposta);
     } catch (err) {
         resp.status(400).send({
             erro: err.message
