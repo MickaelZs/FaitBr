@@ -1,0 +1,87 @@
+.pag-playlist{
+    display: flex;
+    flex-direction: column;
+    background-color: #1E1E1E;
+    height: 100;
+    color: #fff;
+
+    *{
+        margin: 0;
+    }
+
+    .section-musicas{
+        padding-top: 4em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding-left: 5em;
+    }
+    
+
+    .faixa-musicas{
+        display: flex;
+    }
+    .bolinhas{
+        padding: 5px;
+    }
+
+    .music{
+        padding-right: 10em;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        text-align: start;
+    }
+
+    .titulos{
+        font-size: 70px;
+        display: flex;
+        justify-content: start;
+        margin-bottom: 30px;
+
+    }
+
+    .caixa-musica{
+        height: 16em;
+        width: 16em;
+        background-color: #575757;
+    }
+    .playlist{
+        display: flex;
+        align-items: center;
+    }
+
+    .section-playlist{
+        padding-left: 5em;
+        margin-top: 5em;
+    }
+
+    .titulo-playlist{
+        font-size: 50px;
+        margin-bottom: 35px;
+    }
+
+    .nome-playlist{
+        margin-left: 1em;
+        font-size: 30px;
+    }
+
+    .faixa-criar-play{
+        display: flex;
+        padding-left: 5em;
+        margin-top: 10em;
+        text-align: center ;
+        align-items: center;
+    }
+    .criar-playlist{
+        font-size: 50px;
+        margin-left: 0.8em;
+    }
+    .finalização{
+        height: 5em;
+    }
+
+    
+
+}
