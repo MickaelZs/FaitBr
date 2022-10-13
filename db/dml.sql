@@ -54,3 +54,19 @@ nm_genero
 from tb_musicas
 inner join tb_artistas on tb_musicas.id_artistas = tb_artistas.id_artistas
 inner join tb_genero on tb_musicas.id_genero = tb_genero.id_genero;
+
+
+
+--playlist item
+select tb_playlist.id_playlist,
+id_usuario,
+nm_playlist,
+id_musica
+from tb_playlist
+inner join tb_playlist_item on tb_playlist.id_playlist_item = tb_playlist_item.id_playlist_item;
+
+
+select id_playlist,
+id_usuario,
+nm_playlist
+from tb_playlist;

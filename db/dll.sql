@@ -3,12 +3,21 @@ drop database fitbr;
 
 use fitbr;
 
+select tb_artistas.id_artistas,
+nm_artistas,
+ds_sobre,
+nm_genero
+from tb_artistas
+inner join tb_genero on tb_artistas.id_genero = tb_genero.id_genero;
+
 select * from tb_usuario;
 select * from tb_loginUsuario;
 select * from tb_loginadm;
 select * from tb_artistas;
 select * from tb_genero;
 select * from tb_musicas;
+select * from tb_playlist;
+select * from tb_playlist_item;
 
 create table tb_usuario(
 id_usuario int primary key auto_increment,
@@ -20,7 +29,7 @@ img_imagem varchar(200)
 );
 
 insert into tb_usuario (nm_nome,dt_nasc,ds_email, ds_senha)
-values ('usu','2005-05-05', 'BRUNO', 123 );
+values ('mickael','2005-05-05', 'abc', 123 );
 
 
 create table tb_loginadm (
@@ -66,23 +75,35 @@ img_artista varchar(200),
 foreign key (id_genero) references tb_genero (id_genero)
 );
 
-select tb_artistas.id_artistas,
-nm_artistas,
-ds_sobre,
-nm_genero
-from tb_artistas
-inner join tb_genero on tb_artistas.id_genero = tb_genero.id_genero;
 
 create table tb_musicas(
 id_musica int primary key auto_increment,
 id_genero int,
-id_usuario	int,
 id_artistas int,
 nm_musicas varchar(200),
-ds_genero varchar(200),
-arq_musica varchar(200),
-img_musica varchar(200),
-foreign key (id_usuario) references tb_usuario (id_usuario),
+blob_musica varchar(200),
+img_imagem varchar(200),
 foreign key (id_artistas) references tb_artistas (id_artistas),
 foreign key (id_genero) references tb_genero (id_genero)
 );
+
+
+
+
+create table tb_playlist(
+id_playlist int primary key auto_increment,
+id_usuario int,
+nm_playlist varchar(100),
+foreign key (id_usuario) references tb_usuario (id_usuario)
+);
+
+
+
+create table tb_playlist_item(
+id_playlist_item int primary key auto_increment,
+id_playlist int,
+id_musica int,
+foreign key (id_playlist) references tb_playlist (id_playlist),
+foreign key (id_musica) references tb_musicas (id_musica)
+);
+

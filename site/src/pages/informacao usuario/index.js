@@ -92,14 +92,14 @@ export default function Index(){
                 </div>
              
                     <div>
-                        {usuario.map(item =>
+                       
                         <div>
                         <h1>
                             Email
                         </h1>
-                        <p>{item.email}</p>
+                        <p>{usuario.email}</p>
                         </div>
-                        )}
+                      
                        
                     </div>
                     <div>

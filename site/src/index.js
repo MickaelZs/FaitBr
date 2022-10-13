@@ -23,6 +23,7 @@ import Buscar from './pages/buscar';
 import Infusario from './pages/informacao usuario';
 import DetalheAertista from './pages/detalheAertista';
 import Playlist from './pages/playlist';
+import AdicionarMusica from './pages/adicionarMusica'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -54,6 +55,7 @@ root.render(
       <Route path='/informacao/:idParam' element={<Infusario/>}/>
 
       <Route path='/Playlist' element={<Playlist/>}/>
+      <Route path='/adicionarMusica' element={<AdicionarMusica/>}/>
 
 
 

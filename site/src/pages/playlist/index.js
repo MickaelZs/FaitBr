@@ -31,9 +31,9 @@ export default function Playlist(){
                     </div>
                 </div>
                 <div>
-                        <img className='bolinhas' src="./images/eclipse2.png"></img>
-                        <img className='bolinhas' src="./images/eclipse2.png"></img>
-                        <img className='bolinhas' src="./images/eclipse2.png"></img>
+                        <img className='bolinhas' src="/images/eclipse2.png"></img>
+                        <img className='bolinhas' src="/images/eclipse2.png"></img>
+                        <img className='bolinhas' src="/images/eclipse2.png"></img>
                     </div>
             </section>
             <section className='section-musicas'>

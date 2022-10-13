@@ -8,8 +8,10 @@ import CardArtistas from '../../components/artistas';
 import { useEffect, useState } from 'react';
 import { listaArtista } from '../../api/cadastroArtistaAPI';
 import { listaGeneros } from '../../api/generoAPI';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { API_URL } from '../../api/config';
+import { buscarUsuarioPorId } from '../../api/usuarioAPI';
+import Perfil from '../../components/perfilUsuario';
 
 
 
@@ -17,12 +19,20 @@ export default function Index() {
 
   const [artista,setArtista] = useState ([])
   const [genero,setGenero] = useState ([])
-  const [usuario,setUsuario] = useState ('')
+  const [usuario,setUsuario] = useState ({})
   const [imagem,setImagem] = useState ('')
-  const navigate = useNavigate()
+  const navigate = useNavigate() 
+  const {idParam} = useParams()
 
   function acessarPerfil(id){
     navigate(`/informacao/${id}`)
+}
+
+async function carregarUsuario(){
+  const reso = await buscarUsuarioPorId(idParam)
+  setUsuario(reso)
+
+  
 }
 
 
@@ -64,6 +74,7 @@ async function carregarArtista(){
 }
 
 useEffect(() => {
+  carregarUsuario();
   carregarArtista();
     carregarGenero();
 }, [])
@@ -107,14 +118,19 @@ useEffect(() => {
               </a>
              
               <img className='icon-livraria' src='./images/icon-library.png'/>
-              {usuario.map(item => 
-              <div className='usuario' onClick={() => acessarPerfil (item.id)} >
-                <span> </span>
+              <div>
+              
+              <div className='usuario' onClick={() => acessarPerfil ( <Perfil usuario={usuario}/>
+              )} >
+                
 
-         </div>
-         )}
+         </div> 
+        
+          </div>
           </div>
         </header>
+        <div className='usuario'  />
+
         <div className='faixa'>
           <h1>Play Music</h1>
            <img className='imag' src='/images/Music-pana.png'></img>
