@@ -19,3 +19,13 @@ export async function listaPlaylist(){
     const resposta = await api.get('/playlist');
     return resposta.data;
   }
+
+
+export async function criarPlaylistItem(idPlaylist,idMusica) {
+    const r = await api.post('/playlist/item',{
+        playlist: idPlaylist,
+        musica: idMusica,
+        
+    })
+    return r.data;
+}  

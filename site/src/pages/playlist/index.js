@@ -1,10 +1,85 @@
 import './index.scss'
 import Cabeçario from '../../components/cabeçalho'
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css'
+import Modal from 'react-modal';
+import React, { useState } from 'react'
+import { criarPlaylist, criarPlaylistItem } from '../../api/playlistAPI';
+import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+
+const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+    },
+  };
 
 export default function Playlist(){
+
+    const [nome,setNome] = useState('')
+    const [idPlaylist,setIdPlaylist] = useState('')
+    const [idMusica,setIdMusica] = useState('')
+    const [idUsuario,setIdUsuario] = useState('')
+    const [id,setId] = useState('')
+    const navigate = useNavigate()
+
+        let subtitle;
+        const [modalIsOpen, setIsOpen] = React.useState(false);
+      
+        function openModal() {
+          setIsOpen(true);
+        }
+      
+        function afterOpenModal() {
+          // references are now sync'd and can be accessed.
+          subtitle.style.color = '#f00';
+        }
+      
+        function closeModal() {
+          setIsOpen(false);
+        }
+
+        function acessarMusica(){
+            navigate(`/adicionarMusica`)
+        }
+
+
+        async function salvarClick(){
+            try{ 
+                
+    
+                if(id === 0){
+                    const NovaPlaylist = await criarPlaylist (nome,idUsuario);
+                    await criarPlaylistItem(NovaPlaylist.id,idPlaylist, idMusica);
+                    setId(NovaPlaylist.id)
+    
+                    toast.dark('Novo artista cadastrado');
+                }
+    
+                
+                }
+     
+            catch (err){
+                    if(err.response)
+                    toast.error(err.response.data.erro)
+                    else
+                    toast.error(err.message);
+                }
+            }
+
+   
+
+
+
     return(
         <main className="pag-playlist">
             <Cabeçario/>
+            <ToastContainer/>
             <section className='section-musicas'>
             <h2 className='titulos'>Musicas</h2>
                 <div className="faixa-musicas">
@@ -78,8 +153,31 @@ export default function Playlist(){
             <section className='faixa-criar-play'>
                     <div className='caixa-musica'></div>
                     <h1 className='criar-playlist'>Criar Playlist</h1>
+                    <button ></button>
             </section>
             <div className='finalização'></div>
+
+
+
+            <div>
+      <button onClick={openModal}>Open Modal</button>
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Criar Playlist</h2>
+        <button onClick={closeModal}>close</button>
+        <form>
+          <input type='text' value={nome}  onChange={e => setNome(e.target.value)}/>
+          
+          <button onClick={salvarClick} >Continuar</button>
+          
+        </form>
+      </Modal>
+    </div>
         </main>
     )
 }
