@@ -68,7 +68,7 @@ return (
             <div className='artista'>{item.musica} </div>
 
             <div className='genero'>{item.genero}</div>
-            <audio controls src={`${API_URL}/${item.audio}`}></audio>
+            <audio controls  src={`${API_URL}/${item.audio}`}></audio>
         </div>
         
         </div>

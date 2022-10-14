@@ -38,3 +38,18 @@ export async function listarMusicaeArtista() {
     const [linhas] = await con.query(comando);
     return linhas;
 }
+
+export async function listarArtistaPorMusica(id) {
+    const comando =
+    `select 
+    id_musica id,
+    id_genero genero,
+    id_artistas idArtista,
+    blob_musica audio,
+    img_imagem imagem
+    from tb_musicas
+    where id_artistas = ?`
+    
+    const [linhas] = await con.query(comando, [id]);
+    return linhas[0];
+}

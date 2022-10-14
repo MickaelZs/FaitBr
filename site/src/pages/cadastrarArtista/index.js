@@ -18,6 +18,16 @@ export default function Index(){
     const [imagem, setImagem] = useState ('');
     const [id, setId] = useState (0);
 
+    function novoClick(){
+        setNome('')
+        setGenero('')
+        setSobre('')
+        setImagem('')
+        setId(0)
+
+    }
+
+
     async function carregarGeneros(){
         const r = await listaGeneros();
         setGenero(r);
@@ -154,7 +164,7 @@ export default function Index(){
                         </div>
                         <div className='botoes'>
                                 <button className='botao' onClick={salvarClick} >{id === 0 ? 'cadastrar' : 'Alterar'}</button>
-                                <button className='botao'>novo</button>
+                                <button className='botao' onClick={novoClick}>novo</button>
 
                                 </div>
                     </div>

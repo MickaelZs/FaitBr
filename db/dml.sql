@@ -70,3 +70,12 @@ select id_playlist,
 id_usuario,
 nm_playlist
 from tb_playlist;
+
+select 
+    id_musica id,
+    id_genero genero,
+    id_artistas idArtista,
+    blob_musica audio,
+    img_imagem imagem
+    from tb_musicas
+    where id_artistas;

@@ -34,6 +34,21 @@ export async function listarTodosArtista() {
     return linhas;
 }
 
+export async function listarArtistaPorGenero(id) {
+    const comando =
+    ` select 
+    id_artistas id,
+    id_genero genero,
+    nm_artistas nome,
+    ds_sobre sobre,
+    img_artista artista
+    from tb_artistas
+    where id_genero = ?`
+    
+    const [linhas] = await con.query(comando, [id]);
+    return linhas[0];
+}
+
 export async function buscarImagem() {
     const comando =
     `select

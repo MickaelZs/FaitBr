@@ -1,6 +1,6 @@
 import { Router} from "express";
 import multer from 'multer';
-import { alterarImagemMusica, cadastrarMusica, listarMusicaeArtista } from "../repository/musicaRepository.js";
+import { alterarImagemMusica, cadastrarMusica, listarArtistaPorMusica, listarMusicaeArtista } from "../repository/musicaRepository.js";
 
 
 const server = Router();
@@ -44,16 +44,26 @@ server.put('/cadastraMusica/:id/capa', upload.single('capa') ,async (req, resp) 
     }
 })
 
-server.get('/musica/artista', async (req, resp) => {
+
+
+server.get('/artista/musica:id', async (req, resp) => {
     try {
-        const resposta = await listarMusicaeArtista();
-        resp.send(resposta);
+        const id = Number(req.params.id);
+        
+        const resposta = await listarArtistaPorMusica(id);
+
+        if (!resposta)
+            resp.status(404).send([])
+        else
+            resp.send(resposta);
     } catch (err) {
         resp.status(400).send({
             erro: err.message
         })
     }
 })
+
+
 
 
 export default server;

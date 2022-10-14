@@ -39,6 +39,11 @@ export async function listaArtista(){
     return resposta.data;
   }
 
+  export async function buscarArtistaPorGeneroId(id){
+    const resposta = await api.get(`/genero/artista/${id}`)
+    return resposta.data;
+}  
+
 
 export async function buscarPorId(id){
     const resposta = await api.get(`/artista/${id}`)

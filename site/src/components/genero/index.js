@@ -1,13 +1,15 @@
+import { API_URL } from '../../api/config';
 import './index.scss'
 
 export default function CardGenero(props) {
+
     return (
       <div className="generos">
-       <p> {props.genero.id}</p>
+        <img src={`${API_URL}/${props.genero.artista}`} alt="" />
        <p> {props.genero.nome}</p>
+       <p> {props.ge.nome}</p>
+       
        <br/>
-       <p>{props.artista.nome}</p>
-       <p>{props.artista.nome}</p>
       </div>
     );
   }
