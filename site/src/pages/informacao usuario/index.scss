@@ -20,6 +20,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-left: 0em;
         
   
         background-color: #8D32E5;
@@ -31,18 +32,104 @@
       }
 
     .faixa1{
-        background-color: #8D32E5;
-        height: 8vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        font-size: 20px;
+        margin-right: 7em;
     }
+
+    hr{
+        width: 80%;
+        text-align: center;
+        color: #8D32E5;
+
+    }
+
+    .faixa1-div{
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .sla-cara{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
     .faixa2{
         display: flex;
         flex-direction: column;
         background-color: #1e1e1e;
-        height: 92vh;
+        height: 100%;
+        padding-top: 4em;
+
+    }       
+
+    .faixa3{
+        display:flex;
+        flex-direction: column;
+        margin-left: 7em;
+        padding-top: 1em;
+        font-size: 20px;
     }
 
-    .lapix{
+    .faixa3-div1 h1{
         display: flex;
+        flex-direction:column;
+        margin-bottom: -0.8em;
+    }
+
+    .faixa3-div2 {
+        display: flex;
+        flex-direction:column;
+        flex-direction: row;
+        margin-right: 7em;
+        justify-content: space-between;
+
+    }
+
+    .faixa3-div2 h1{
+        display: flex;
+        flex-direction:column;
+        margin-bottom: -0.8em;
+
+    }
+
+    .faixa3-div2-sla {
+        display: flex;
+        flex-direction: row;
+        font-size: 20px;
+        margin-top: 1em;
+        justify-content: space-around;
+    }
+
+    .faixa3-div2-sla img{
+        
+        font-size: 20px;
+    }
+
+
+    .lapis{
+        
+        height: 1.9em;
+        margin-top: 1.2em;
+        margin-right: 1em;
+    }
+
+    .border-image{
+        height: 200px;
+        width: 200px;
+        border-radius: 20px;
+        
+        box-shadow: 2px 2px 10px #8d32e5;
+    }
+
+    .imagem{
+        border-radius: 20px;
+        height: 200px;
+        width: 200px;
     }
 
     .nm-usuario{

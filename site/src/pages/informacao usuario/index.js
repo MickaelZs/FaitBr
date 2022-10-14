@@ -41,89 +41,121 @@ export default function Index(){
     return(
         <main className='pagina-informacao-usu'>
             <Cabeçario/>
-            <section className='faixa2'>
-                <div>
-               
 
-                   
-                       
+                <section className='faixa2'>
 
-                    
-               
-                <div className='nm-usuario'>
+                        <div className='faixa1'>
 
-                    <div className='div1'>
-                    
+                            <div className='faixa1-div'>
 
-                    <div className='usuario' onClick={escolherImagem}>
+                                <div className='usuario' onClick={escolherImagem}>
 
-                        {!imagem &&
+                                {!imagem &&
 
-                        <img src='/images/img.png'/>
-                        }
+                                <img src='/images/img.png'/>
+                                }
 
-                        {imagem &&  
+                                {imagem &&  
 
-                        <img className='imagem' src={mostrarImagem(imagem)} />
+                                <img className='imagem' src={mostrarImagem(imagem)} />
 
-                        }
+                                }
 
-                        <input type='file' id='imagemCapa' onChange={e => setImagem(e.target.files[0])} ></input>
+                                <input type='file' id='imagemCapa' onChange={e => setImagem(e.target.files[0])} ></input>
+                                
+                                </div>
+                                <h2>Alterar foto de perfil</h2>
+
+                            </div>
+
+                            <div>
+                                <div className='sla-cara'>
+                                    <img src='/images/lapis.svg' />
+                                    <h1>Neymar 123</h1>
+                                </div>
+
+                                <h2>alterar nome de usuário</h2>
+                            </div>
                         </div>
-                
-                    </div>
-                    
-                    <div>
-                        
-                    
-                    <div class=''>
-                    <p>Alterar nome</p>
-                    <img src="./images/lapis.svg" alt="" />
-                    </div>
-                        
-                </div>
-                
-                <div>
-                    
-                    
-                 <div>
-                   <h1> Nascimento</h1>
-                   <p>19-05-2005</p>
-                </div>
-             
-                    <div>
-                       
-                        <div>
-                        <h1>
-                            Email
-                        </h1>
-                        <p>{usuario.email}</p>
+
+                        <hr/>
+
+
+                        <div className='faixa3'>
+
+                            <div className='faixa3-div1'>
+                                <h1>Nome:</h1>
+                                <h3>Neymar junior santos ferreira sla</h3>
+                            </div>
+
+                            <div  className='faixa3-div1'>
+                                <h1>Nascimento:</h1>
+                                <h3> 22/10/2005</h3>
+                            </div>
+
+                            <div className='faixa3-div2'>
+                                <div>
+                                    <h1>Email:</h1>
+                                    <h3> Neymar@gmail.com</h3>
+                                </div>
+
+                                <div className='faixa3-div2-sla'>
+                                    <img className='lapis' src='/images/lapis.svg' />
+                                    <h1>Alterar email</h1>
+                                </div>
+                            </div>
+
+                            <div className='faixa3-div2'>
+                                <div>
+                                    <h1>Senha:</h1>
+                                    <h3>neymar123</h3>
+                                </div>
+
+                                <div className='faixa3-div2-sla'>
+                                    <img className='lapis' src='/images/lapis.svg' />
+                                    <h1>Alterar senha</h1>
+                                </div>
+
+                            </div>
                         </div>
-                      
-                       
-                    </div>
-                    <div>
-                        <p>Alterar email</p>
-                        <img src=""  />
-                    </div>
-                
-                
-                    <div>
-                        <h1>Senha</h1>
-                        <p>*</p>
-                    </div>
-                    
-                    </div> 
-                   
-                    </div>
-
-                  
-
                         
-               
-                  
-                </div>
-            </section>
+                        <hr/>
+
+                        <div className='faixa3'>
+                            <div className='faixa3-div1'>
+                                <h1>Informações extras</h1>
+                                <h3>descrição:</h3>
+                                <input type='text' placeholder='escreva algo' />
+                            </div>
+
+                            <div>
+                            <h5>Adicionar uma foto de perfil:</h5>
+
+                                <div className='border-image' onClick={escolherImagem}>
+
+                                {!imagem &&
+
+                                <img src='/images/image-bottom212.svg' width='170px'/>
+                                }
+
+                                {imagem &&  
+
+                                <img className='imagem' src={mostrarImagem(imagem)} />
+
+                                }
+
+                                <input type='file' id='imagemCapa' onChange={e => setImagem(e.target.files[0])} ></input>
+                                </div>
+                            </div>
+
+                            <div className='faixa3-div1'>
+                                <h3>Nome de usuário:</h3>
+                                <input type='text' placeholder='escreva algo' />
+                            </div>
+
+                        </div>
+
+                </section>
            
         </main>
     )

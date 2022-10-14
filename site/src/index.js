@@ -20,7 +20,7 @@ import Genero from './pages/pagina generos';
 import Consulta from './pages/consultar';
 import Reproduzir from './pages/ReproduzirMusica';
 import Buscar from './pages/buscar';
-import Infusario from './pages/informacao usuario';
+import InfoUsario from './pages/informacao usuario';
 import DetalheAertista from './pages/detalheAertista';
 import Playlist from './pages/playlist';
 import AdicionarMusica from './pages/adicionarMusica'
@@ -52,7 +52,7 @@ root.render(
       <Route path='/detalhe/artista/:idParam' element={<DetalheAertista/>}/>
       <Route path='/Reproduzir' element={<Reproduzir/>}/>
       <Route path='/buscar' element={<Buscar/>}/>
-      <Route path='/informacao/:idParam' element={<Infusario/>}/>
+      <Route path='/informacao/:idParam' element={<InfoUsario/>}/>
 
       <Route path='/Playlist' element={<Playlist/>}/>
       <Route path='/adicionarMusica' element={<AdicionarMusica/>}/>
