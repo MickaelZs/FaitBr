@@ -149,7 +149,7 @@ export default function Index(){
                             </div>
 
                             <div className='faixa3-div1'>
-                                <h3>Nome de usuário:</h3>
+                                <h3>Nome de usuárioP:</h3>
                                 <input type='text' placeholder='escreva algo' />
                             </div>
 
