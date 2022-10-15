@@ -45,6 +45,7 @@ export async function listarArtistaPorMusica(id) {
     id_musica id,
     id_genero genero,
     id_artistas idArtista,
+    nm_musicas nome,
     blob_musica audio,
     img_imagem imagem
     from tb_musicas
@@ -53,3 +54,5 @@ export async function listarArtistaPorMusica(id) {
     const [linhas] = await con.query(comando, [id]);
     return linhas[0];
 }
+
+

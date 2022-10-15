@@ -3,11 +3,12 @@ import { useNavigate, useParams } from "react-router-dom"
 import { buscarPorId } from "../../api/cadastroArtistaAPI"
 import DetalheArtista from "../../components/detalheArtista"
 import Cabeçario from "../../components/cabeçalho"
-import { listaMusicaArtista } from "../../api/musicaAPI"
+import { buscarArtistaPorMusicaId, listaMusicaArtista } from "../../api/musicaAPI"
 
 
 export default function Index(){
     const[artista, setArtista] = useState ({})
+    const[musi, setMusi] = useState ({})
     const {idParam} = useParams ()
 
     async function carregarArtista (){
@@ -15,15 +16,25 @@ export default function Index(){
         setArtista(resp)
     }
 
+    async function carregarArtistaPorMusica(){
+        const resp = await buscarArtistaPorMusicaId(idParam)
+            setMusi(resp)
+
+        
+    }
+
+    
+
     useEffect (() => {
         carregarArtista()
+        carregarArtistaPorMusica()
 
     },[])
     return(
         <div>
            
 
-            <DetalheArtista artista={artista}/>
+            <DetalheArtista artista={artista}  musi={musi}/>
 
         </div>
     )

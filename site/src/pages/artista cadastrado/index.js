@@ -30,9 +30,7 @@ export default function Index() {
     
 
     useEffect(() => {
-        if(!storage('usuario-logado')){
-            navigate('/LoginAdm')
-        }
+        
         carregarArtista();
     }, [])
 

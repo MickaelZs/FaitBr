@@ -46,7 +46,7 @@ server.put('/cadastraMusica/:id/capa', upload.single('capa') ,async (req, resp) 
 
 
 
-server.get('/artista/musica:id', async (req, resp) => {
+server.get('/artista/musica/:id', async (req, resp) => {
     try {
         const id = Number(req.params.id);
         
@@ -56,6 +56,18 @@ server.get('/artista/musica:id', async (req, resp) => {
             resp.status(404).send([])
         else
             resp.send(resposta);
+    } catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
+
+server.get('/musica', async (req, resp) => {
+    try {
+        const resposta = await listarMusicaeArtista();
+        resp.send(resposta);
     } catch (err) {
         resp.status(400).send({
             erro: err.message

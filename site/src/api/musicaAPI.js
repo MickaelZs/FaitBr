@@ -44,6 +44,11 @@ export async function inserirMusica(id, musica){
 
 
 export async function listaMusicaArtista(){
-    const resposta = await api.get('/musica/artista');
+    const resposta = await api.get('/musica');
     return resposta.data;
   }
+
+  export async function buscarArtistaPorMusicaId(id){
+    const resposta = await api.get(`/artista/musica/${id}`)
+    return resposta.data;
+}  
