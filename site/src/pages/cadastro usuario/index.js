@@ -6,7 +6,7 @@ import {useHref, useNavigate, useParams} from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 import { cadastroUsuario, loginUsuario } from '../../api/usuarioAPI';
-import storage from 'local-storage'
+import Storage from 'local-storage'
 
 export default function Index() {
     const [nome, setNome] = useState('');
@@ -20,7 +20,7 @@ export default function Index() {
 
       try{
           const r = await cadastroUsuario(email,senha) 
-          storage('usuario-logado', r)
+          Storage('usuario-logado', r)
         navigate('/HomeLoginFeito');
       }
   
@@ -37,7 +37,7 @@ export default function Index() {
     async function salvarClick(){
       try{      
           const r = await cadastroUsuario (nome,nasc,email,senha)
-          storage('usuario-logado', r)
+          Storage('usuario-logado', r)
           navigate('/HomeLoginFeito');
       }
       catch (err){

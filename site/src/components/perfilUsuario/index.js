@@ -1,4 +1,4 @@
-export default function Perfil(props){
+export default function PerfiUsuario (props){
     return(
         <div>
             <h1>{props.usuario.nome}</h1>

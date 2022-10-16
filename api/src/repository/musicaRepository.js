@@ -43,12 +43,13 @@ export async function listarArtistaPorMusica(id) {
     const comando =
     `select 
     id_musica id,
-    id_genero genero,
+    nm_genero genero,
     id_artistas idArtista,
     nm_musicas nome,
     blob_musica audio,
     img_imagem imagem
     from tb_musicas
+    inner join tb_genero on tb_musicas.id_genero = tb_genero.id_genero
     where id_artistas = ?`
     
     const [linhas] = await con.query(comando, [id]);

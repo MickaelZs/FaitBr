@@ -6,6 +6,7 @@ import { API_URL } from '../../api/config'
 import { useEffect, useState } from 'react'
 import { buscarUsuarioPorId, listarUsuario } from '../../api/usuarioAPI'
 import { useParams } from 'react-router-dom'
+import Storage from 'local-storage'
 
 export default function Index(){
 
@@ -14,7 +15,8 @@ export default function Index(){
     const {idParam} = useParams()
 
     async function carregarUsuario(){
-        const resp = await buscarUsuarioPorId(idParam);
+        const id = Storage('usuario-logado').id
+        const resp = await buscarUsuarioPorId(id);
         setUsuario(resp);
     }
 
@@ -82,11 +84,13 @@ export default function Index(){
 
 
                         <div className='faixa3'>
+                             
 
                             <div className='faixa3-div1'>
                                 <h1>Nome:</h1>
                                 <h3>Neymar junior santos ferreira sla</h3>
                             </div>
+                             
 
                             <div  className='faixa3-div1'>
                                 <h1>Nascimento:</h1>
@@ -94,10 +98,15 @@ export default function Index(){
                             </div>
 
                             <div className='faixa3-div2'>
+                                 
                                 <div>
-                                    <h1>Email:</h1>
-                                    <h3> Neymar@gmail.com</h3>
-                                </div>
+                                <h1>Email:</h1>
+                                <h3> {usuario.email}</h3>
+                            </div>
+                                    
+                                    
+                                    
+                                
 
                                 <div className='faixa3-div2-sla'>
                                     <img className='lapis' src='/images/lapis.svg' />
@@ -117,6 +126,7 @@ export default function Index(){
                                 </div>
 
                             </div>
+                           
                         </div>
                         
                         <hr/>

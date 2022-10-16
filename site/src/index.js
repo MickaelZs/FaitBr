@@ -52,7 +52,8 @@ root.render(
       <Route path='/detalhe/artista/:idParam' element={<DetalheAertista/>}/>
       <Route path='/Reproduzir' element={<Reproduzir/>}/>
       <Route path='/buscar' element={<Buscar/>}/>
-      <Route path='/informacao/:idParam' element={<InfoUsario/>}/>
+      
+      <Route path='/informacao' element={<InfoUsario/>}/>
 
       <Route path='/Playlist' element={<Playlist/>}/>
       <Route path='/adicionarMusica' element={<AdicionarMusica/>}/>

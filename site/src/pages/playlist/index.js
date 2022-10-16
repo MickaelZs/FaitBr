@@ -25,7 +25,7 @@ export default function Playlist(){
     const [idPlaylist,setIdPlaylist] = useState('')
     const [idMusica,setIdMusica] = useState('')
     const [idUsuario,setIdUsuario] = useState('')
-    const [id,setId] = useState('')
+    const [id,setId] = useState(0)
     const navigate = useNavigate()
 
         let subtitle;
@@ -54,11 +54,12 @@ export default function Playlist(){
                 
     
                 if(id === 0){
+                
                     const NovaPlaylist = await criarPlaylist (nome,idUsuario);
-                    await criarPlaylistItem(NovaPlaylist.id,idPlaylist, idMusica);
                     setId(NovaPlaylist.id)
+                
     
-                    toast.dark('Novo artista cadastrado');
+                    toast.dark('Playlist criada');
                 }
     
                 
@@ -70,6 +71,8 @@ export default function Playlist(){
                     else
                     toast.error(err.message);
                 }
+
+                console.log(salvarClick)
             }
 
    
@@ -163,10 +166,10 @@ export default function Playlist(){
       <button onClick={openModal}>Open Modal</button>
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
+        
         onRequestClose={closeModal}
         style={customStyles}
-        contentLabel="Example Modal"
+        
       >
         <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Criar Playlist</h2>
         <button onClick={closeModal}>close</button>

@@ -8,6 +8,7 @@
     padding: 20px 50px 20px 20px;
     border-radius: 35px;
     height: 30vh;
+    
 
     img {
         width: 400px;
@@ -36,9 +37,53 @@
         font: 700 16px 'Inter';
         color: #000000;
     }
-    .info p {
-        font: 400 16px 'Inter';
-        color: #000000;
+    
+
+    .card{
+            position: relative;
+            display: flex;
+           
+            
+            align-items: center;
+    
+            box-shadow: 1px 2px 10px #e3e3e3;
+            background-color: #fff;
+           
+            width: 500px;
+            height: 7em;
+            border-radius: 26px;
+           
+            cursor: pointer;
+            user-select: none;
+
     }
+
+    .card:hover {
+        transition: .1s;
+        transform: scale(1.04);
+    }
+
+    
+   
+
+    .card .capa {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 7em;
+        height: 5em;
+        border-radius: 18px 0px 0px 18px;
+        font: 600 22px 'Inter';
+    }
+
+   
+
+    .nome{
+        color: black;
+        font-size: 25px;
+        margin: 0px;
+    }
+
+    
 
 }

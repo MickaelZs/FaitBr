@@ -20,7 +20,6 @@ export default function Index(){
         const resp = await buscarArtistaPorMusicaId(idParam)
             setMusi(resp)
 
-        
     }
 
     
