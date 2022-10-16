@@ -1,0 +1,64 @@
+.Card-addmusica{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #fff;
+    background-color: #1e1e1e;
+    margin: 0;
+    width: max-content;
+    
+    
+    *{
+        margin: 0;
+    }
+
+
+    .section-music{
+        display: flex;
+        flex-direction: row;
+        border-radius: 15px;
+        width: 30em;
+        background-color: #2e2e2e;
+        position:sticky;
+        box-shadow: 2px 2px 8px 1px #000000
+
+;
+
+    }
+
+    img{
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+    }
+
+
+    h2{
+        font-size: 30px;
+        padding-right: 1em;
+    }
+
+    h1{
+        font-size: 25px;
+    }
+    .atorenome{
+        padding-left: 2em;
+        display: flex;
+        flex-direction: column;
+        justify-content:space-evenly;
+        padding-bottom: 10px;
+
+    }
+
+    .border{
+        background-color: #494949;
+        width: 5em;
+        padding: 3px;
+        display: flex;
+        box-shadow: 2px 2px 5px 1px #000 ;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 30px;
+    }
+
+}

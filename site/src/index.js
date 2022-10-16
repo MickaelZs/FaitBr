@@ -26,6 +26,9 @@ import Playlist from './pages/playlist';
 import AdicionarMusica from './pages/adicionarMusica'
 
 
+
+import Test from './pages/TESTCARD';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -60,6 +63,8 @@ root.render(
 
 
 
+
+      <Route path='/test' element={<Test/>}/>
     </Routes>
     </BrowserRouter>
   </React.StrictMode>
