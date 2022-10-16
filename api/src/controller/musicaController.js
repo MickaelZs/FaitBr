@@ -1,6 +1,6 @@
 import { Router} from "express";
 import multer from 'multer';
-import { alterarImagemMusica, cadastrarMusica, listarArtistaPorMusica, listarMusicaeArtista } from "../repository/musicaRepository.js";
+import { alteraMusica, alterarImagemMusica, cadastrarMusica, listarArtistaPorMusica, listarMusicaeArtista } from "../repository/musicaRepository.js";
 
 
 const server = Router();
@@ -44,6 +44,38 @@ server.put('/cadastraMusica/:id/capa', upload.single('capa') ,async (req, resp) 
     }
 })
 
+server.put ('/musica/:id', async (req,resp) => {
+    try{
+        const {id} = req.params;
+        const music = req.body;
+   
+        const resposta = await alteraMusica(id, music);
+        if (resposta != 1)
+            throw new Error('Musica não pode ser alterado');
+
+            if(!music.genero){
+                throw new Error('Genero é obrigatório');
+            }
+            
+            if(!music.artista){
+                    throw new Error('Artista é obrigatório');
+                }
+            
+            if(!music.nome){
+                    throw new Error('Nome é obrigatório');
+                }
+       
+        else
+            resp.status(204).send();
+        
+    }
+
+    catch (err){
+        resp.status(401).send({
+            erro: err.message
+        })
+    }
+})
 
 
 server.get('/artista/musica/:id', async (req, resp) => {

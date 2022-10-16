@@ -56,4 +56,14 @@ export async function listarArtistaPorMusica(id) {
     return linhas[0];
 }
 
+export  async function alteraMusica(id, musica){
+    const comando = 
+        `update tb_musicas
+        set	id_genero  = ?,
+            id_artistas	= ?,
+            nm_musicas	= ?,
+        where id_musica = ?`
+const [resposta] = await con.query(comando,[musica.genero,musica.artista,musica.nome,id ])
+return resposta.affectedRows;
+}
 
