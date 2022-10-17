@@ -52,12 +52,12 @@ export async function listarMusicaeArtista() {
 
 export async function listarMusicaPorId(id) {
     const comando =
-    `select id_musica,
-    id_genero,
-    id_artistas,
-    nm_musicas,
-    blob_musica,
-    img_imagem
+    `select id_musica id,
+    id_genero genero,
+    id_artistas artista,
+    nm_musicas nome,
+    blob_musica musica,
+    img_imagem imagem
     from tb_musicas
     where id_musica = ? ;`
     

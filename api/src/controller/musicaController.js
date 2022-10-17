@@ -1,7 +1,7 @@
 import { Router} from "express";
 import multer from 'multer';
 
-import { alteraMusica, alterarImagemMusica, cadastrarMusica, listarArtistaPorMusica, listarMusicaeArtista, listarMusicaPorId } from "../repository/musicaRepository.js";
+import { alteraMusica, alterarImagemMusica, cadastrarMusica, deletaMusica, listarArtistaPorMusica, listarMusicaeArtista, listarMusicaPorId } from "../repository/musicaRepository.js";
 
 
 const server = Router();

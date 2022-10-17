@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { confirmAlert } from 'react-confirm-alert'
 
-import { listaMusicaArtista, listaMusicaeArtista , deletarMusica} from '../../api/musicaAPI';
+import { deletarrMusica, listaMusicaArtista} from '../../api/musicaAPI';
 import { API_URL } from '../../api/config';
 
 export default function Index(){
@@ -50,7 +50,7 @@ export default function Index(){
                 {
                     label:'sim',
                     onClick: async () => {
-                        const filtro = await deletarMusica (id,nome);
+                        const filtro = await deletarrMusica (id,nome);
                           if(filtro === ''){
                          listaMusicaArtista();
                       }
@@ -89,8 +89,8 @@ return (
         <div className='card'>
         <div className='acoes'>
 
-            <img src='/images/botao-editar.png'  onClick={() => editarMusica (item.id)}/> 
-            <img src='/images/excluir.png' onClick={() => deletarMusica(item.id, item.nome) }/>
+            <img src='/images/botao-editar.png'  onClick={() => editarMusica (item.id_musica)}/> 
+            <img src='/images/excluir.png' onClick={() => deletarMusica(item.id_musica, item.musica) }/>
             
             
         </div>

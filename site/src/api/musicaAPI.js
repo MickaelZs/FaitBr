@@ -81,7 +81,7 @@ export async function enviarArquivoMusica(id, musica){
     return resposta.status;
 }
 
-export async function deletarMusica(id){
+export async function deletarrMusica(id){
     const resposta = await api.delete(`/musica/${id}`);
     return resposta.status;
   }

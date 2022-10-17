@@ -1,11 +1,11 @@
 import { ToastContainer, toast } from 'react-toastify';
 import './index.scss'
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Menu from '../../components/menu'
 import { listaArtista } from '../../api/cadastroArtistaAPI'
 import { listaGeneros } from '../../api/generoAPI'
-import { alterarMusica, cadastraMusica, enviarArquivoMusica, enviarImagemMusica, inserirMusica } from '../../api/musicaAPI'
+import { alterarMusica, buscarMusicaPorId, cadastraMusica, enviarArquivoMusica, enviarImagemMusica, inserirMusica } from '../../api/musicaAPI'
 import { API_URL } from '../../api/config';
 
 
@@ -18,6 +18,17 @@ export default function Cadastromsc(){
     const [musica,setMusica] = useState ('')
     const [imagem,setImagem] = useState ('')
     const [id,setId] = useState(0)
+    const {idParam} = useParams()
+
+    async function carregarMusica (){
+        const resposta = await buscarMusicaPorId(idParam);
+        setId(resposta.id) 
+        setNome(resposta.nome)
+        setIdGenero(resposta.genero)
+        setArtista(resposta.artista)
+        setImagem(resposta.imagem)
+        setMusica(resposta.musica)
+    }
 
     async function carregarArtista(){
         const resp = await listaArtista()
@@ -64,9 +75,15 @@ export default function Cadastromsc(){
     useEffect(() => {
         carregarArtista()
         carregarGeneros()
-        
+        if (idParam){
+            carregarMusica()
+            }
+                
        
     }, [])
+
+
+    
 
     async function salvarClick(){
         try{ 
