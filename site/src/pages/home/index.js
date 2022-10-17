@@ -4,12 +4,20 @@ import "react-multi-carousel/lib/styles.css";
 import { listaGeneros } from '../../api/generoAPI';
 import { useEffect, useState } from 'react';
 import { listaArtista } from '../../api/cadastroArtistaAPI';
+import { API_URL } from '../../api/config';
+import { useNavigate } from 'react-router-dom'
+
 
 
 
 export default function Index() {
   const [genero,setGenero] = useState ([])
   const [artista,setArtista] = useState ([])
+  const navigate = useNavigate ()
+
+  function acessarArtista(id){
+    navigate(`/detalhe/artista/${id}`)
+}
 
   async function carregarGenero(){
     const resp = await listaGeneros();
@@ -58,7 +66,8 @@ useEffect(() => {
               <li><a href="#sec2">Gêneros</a></li>
               <li><a href="#sec3">Artistas populares</a></li>
         
-              <img  className='logo' src='./images/logooo.png' href='' width='100' />
+              
+              
           </div>
               <div class="hamburger-menu">
               <input id="menu__toggle" type="checkbox" />
@@ -94,7 +103,7 @@ useEffect(() => {
       >
         {genero.map (item =>
         <div className="generos">
-        <img src={item.genero} />
+        <img src={`${API_URL}/${item.genero}`} />
         <p> {item.nome}</p>
        </div>
           
@@ -118,11 +127,10 @@ useEffect(() => {
         centerMode
       >
          {artista.map (item =>
-        <div className="generos">
-        <img src={(item.genero)} />
+        <div className="generos" onClick={() => acessarArtista (item.id)}>
+        <img src={`${API_URL}/${item.artista}`} />
         <p> {item.nome}</p>
        </div>
-          
           )}
         
 

@@ -39,14 +39,24 @@ export async function listaArtista(){
     return resposta.data;
   }
 
+  export async function buscarArtistaPorGeneroId(id){
+    const resposta = await api.get(`/genero/artista/${id}`)
+    return resposta.data;
+}  
+
 
 export async function buscarPorId(id){
     const resposta = await api.get(`/artista/${id}`)
     return resposta.data;
 }
 
-export async function buscarImagem(imagem) {
-    return `${api.getUri()}/${imagem}`
+export async function listaArtistaPorId(id){
+    const resposta = await api.get(`/art/${id}`)
+    return resposta.data;
+}
+
+export async function buscarImagem(artista) {
+    return `${api.getUri()}/${artista}`
 }
 
 export async function deletaArtista(id){
@@ -54,11 +64,11 @@ export async function deletaArtista(id){
     return resposta.status;
   }
 
-export async function alterarArtista(artistas, idGenero, sobre ) {
-    const resposta = await api.put(`/artista/${id}`, {
-        artistas: artistas,
-        genero: idGenero,
-        sobre: sobre
+export async function alterarArtista(id, artistas, idGenero, sobre ) {
+   const resposta = await api.put(`/artista/${id}`, {
+        nome: artistas,
+        sobre: sobre,
+        genero: idGenero
     })
-    return resposta.status;
+    return resposta.data;
 }

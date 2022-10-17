@@ -4,6 +4,7 @@ import axios from 'axios';
 import {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../../api/loginadmAPI';
+import storage from 'local-storage'
 
 export default function Index() {
 
@@ -16,14 +17,10 @@ export default function Index() {
 
     try{
         const r = await login(email,senha) 
-    
-
-      navigate('/Cadastrarartista');
-
+        storage('adm-logado', r)
+      navigate('/adm/cadastrarArtista');
     }
 
-
-    
     catch(err){
       if(err.response.status === 401){
           setErro(err.response.data.erro)
@@ -31,8 +28,6 @@ export default function Index() {
 
   }
 }
-
-
 
     return (
       <div className="pagina-loginADM">

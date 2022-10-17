@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { buscarGeneroPorId, ImagemGenero, listarTodosGenero } from "../repository/generoRepository.js";
+import { buscarGeneroPorId, buscarGeneroPorNome, ImagemGenero, listarTodosGenero } from "../repository/generoRepository.js";
 
 import multer from 'multer';
 
@@ -7,6 +7,25 @@ import multer from 'multer';
 
 const upload = multer({ dest: 'storage/capaGenero'})
 const server = Router();
+
+
+server.get('/genero/busca', async (req, resp) => {
+    try {
+        const { nome } = req.query;
+        
+        const resposta = await buscarGeneroPorNome(nome);
+
+        if (!resposta)
+            resp.status(404).send([])
+        else
+            resp.send(resposta);
+    } catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
 
 server.get('/genero', async (req, resp) => {
     try {
@@ -37,10 +56,12 @@ server.get('/genero/:id', async (req, resp) => {
 })
 
 
+
+
 server.put('/genero/:id/capa', upload.single('capa') ,async (req, resp) => {
     try{
         if(!req.file)
-        throw new Error('Escolhar a imagem do artista.');
+        throw new Error('Escolha a imagem do genero.');
         const {id} = req.params;
         const imagem = req.file.path;
 

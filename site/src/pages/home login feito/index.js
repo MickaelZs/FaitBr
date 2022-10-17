@@ -1,45 +1,83 @@
 import './index.scss'
-import {
-  Link
-} from "react-router-dom";
+import storage from 'local-storage'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import AudioPlayer from 'react-modular-audio-player' ;
 import CardGenero from '../../components/genero';
 import CardArtistas from '../../components/artistas';
 import { useEffect, useState } from 'react';
 import { listaArtista } from '../../api/cadastroArtistaAPI';
 import { listaGeneros } from '../../api/generoAPI';
+import { useNavigate, useParams } from 'react-router-dom';
+import { API_URL } from '../../api/config';
+import { buscarUsuarioPorId } from '../../api/usuarioAPI';
+import Perfil from '../../components/perfilUsuario';
 
 
 
 export default function Index() {
 
-  const [artista, setArtista] = useState ([])
-  const [genero, setGenero] = useState ([])
-  const [buscar,setBuscar] = useState ('')
+  const [artista,setArtista] = useState ([])
+  const [genero,setGenero] = useState ([])
+  const [usuario,setUsuario] = useState ({})
+  const [imagem,setImagem] = useState ('')
+  const navigate = useNavigate() 
+  const {idParam} = useParams()
 
-  async function carregarArtista(){
-    const resp = await listaArtista();
-    setArtista(resp);
+  function acessarPerfil(id){
+    navigate(`/informacao/${id}`)
 }
 
-async function carregarGenero(){
-  const resp = await listaGeneros();
-  setGenero(resp);
+async function carregarUsuario(){
+  const reso = await buscarUsuarioPorId(idParam)
+  setUsuario(reso)
+
+  
 }
 
 
-async function BuscarArtistaeGenero(){
-  const resp = await listaArtista() && listaGeneros()
-  setArtista(resp) 
-  setGenero(resp)
+  const rearrangedPlayer = [
+    {
+      className: "beatles",
+      style: { cursor: "pointer" },
+      innerComponents: [
+        {
+          type: "play"
+        }
+      ]
+    }
+  ];
+
+  function escolherImagem() {
+    document.getElementById('imagemCapa').click();
+}
+
+function mostrarImagem(imagem){
+        
+  if (typeof (imagem) == 'object') {
+      return URL.createObjectURL(imagem);
+  }
+  else {
+          
+          return `${API_URL}/${imagem}`
+  }
+}
+
+  async function carregarGenero(){
+    const resp = await listaGeneros();
+    setGenero(resp);
+}
+
+async function carregarArtista(){
+  const resp = await listaArtista();
+  setArtista(resp);
 }
 
 useEffect(() => {
-  BuscarArtistaeGenero()    
+  carregarUsuario();
+  carregarArtista();
+    carregarGenero();
 }, [])
-
-
 
   const responsive = {
     desktop: {
@@ -66,23 +104,55 @@ useEffect(() => {
       <div className='faixa1'>
         <header>
           <div className='texto-cabecalho'>
-            <div>
-              
-            </div>
+          <img  className='logo' src='./images/logooo.png' href='' width='100' />
+        
+        
 
-              <li><a href="#sec1">Artistas mais escutados</a></li>
+              
               <li><a href="#sec2">Gêneros</a></li>
               <li><a href="#sec3">Artistas populares</a></li>
               
-              <div className='caixa-busca'>
-                  <input type="text" placeholder='Buscar' value={buscar} onChange={e => setBuscar(e.target.value)}  />
-                  <img src='images/procurar.png' alt='buscar' onClick={buscar}/>
-              </div>
-              <img className='icon-livraria' src='./images/icon-library.png'/>
               
-              <img  className='logo' src='./images/logooo.png' href='' width='100' />
+              <a href='/buscar'>
+              <img className='icon-pesquisa' src='images/icon-pesquisa.png' />
+              </a>
+             
+              <img className='icon-livraria' src='./images/icon-library.png'/>
+              <div>
+              
+              <div className='usuario' onClick={() => acessarPerfil ( <Perfil usuario={usuario}/>
+              )} >
+                
+
+         </div> 
+        
+          </div>
           </div>
         </header>
+        <div className='usuario'  />
+
+        <div className='faixa'>
+          <h1>Play Music</h1>
+           <img className='imag' src='/images/Music-pana.png'></img>
+
+          <AudioPlayer
+  audioFiles={[
+    {
+      src: "music/henriqueejulianooficial-completa-ai-part-marilia-mendonca-09f511dd.mp3",
+      title: "Hey Jude",
+      artist: "The Beatles"
+    }
+  ]}
+  rearrange={rearrangedPlayer}
+  playerWidth="10rem"
+  iconSize="10rem"
+  playIcon="/images/forro.png"
+  playHoverIcon="/images/forro.png"
+  pauseIcon="/images/forro.png"
+  pauseHoverIcon="/images/forro.png"
+/>
+        </div>
+
       </div>
 
       <div>
@@ -100,14 +170,13 @@ useEffect(() => {
         transitionDuration={500}
         centerMode
       >
-        <CardGenero avatar="images/trap..png" nome="Trap"/>
-        <CardGenero avatar="images/brega.png" nome="Brega Funk"/>
-        <CardGenero avatar="images/funk.png" nome="Funk"/>
-        <CardGenero avatar="images/sertanejo..png" nome="Sertanejo"/>
-        <CardGenero avatar="images/rock.png" nome="Rock" />
-        <CardGenero avatar="images/pagode.png" nome="Pagode"/>
-        <CardGenero avatar="images/pop.png" nome="Pop" />
-        <CardGenero avatar="images/forro.png" nome="Forró"/>
+        {genero.map (item =>
+        <div className="generos">
+        <img src={`${API_URL}/${item.genero}`} />
+        <p> {item.nome}</p>
+       </div>
+          )}
+       
 
       </Carousel>
 
@@ -126,14 +195,12 @@ useEffect(() => {
         transitionDuration={500}
         centerMode
       >
-        <CardArtistas avatar="images/teto.jpg" nome="teto" />
-        <CardArtistas avatar="images/menos.jpg" nome="Menos e mais"/>
-        <CardArtistas avatar="images/hariel.webp" nome="Mc hariel" />
-        <CardArtistas avatar="images/gusttavolima.webp" nome="Gustavo lima"/>
-        <CardArtistas avatar="images/"  nome="teto"/>
-        <CardArtistas avatar="images/anderson.jpeg" nome="Anderson" />
-        <CardArtistas avatar="images/anitta..jpg" nome="Anitta"/>
-        <CardArtistas avatar="images/rai.webp" nome="Saia rodada"/>
+        {artista.map (item =>
+        <div className="generos">
+        <img src={`${API_URL}/${item.artista}`} />
+        <p> {item.nome}</p>
+       </div>
+          )}
         
 
       </Carousel>

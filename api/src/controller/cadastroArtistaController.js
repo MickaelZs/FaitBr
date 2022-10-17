@@ -1,5 +1,5 @@
 import { Router} from "express";
-import { alteraArtista, alterarImagem, buscarImagem, buscarPorId, buscarPorNome, cadastrorArtista, deletaArtista, listarTodosArtista } from "../repository/cadastroArtistaRepository.js"
+import { alteraArtista, alterarImagem, buscarImagem, buscarPorId, buscarPorNome, cadastrorArtista, deletaArtista, ListaPorId, listarArtistaPorGenero, listarTodosArtista } from "../repository/cadastroArtistaRepository.js"
 import multer from 'multer';
 
 
@@ -24,7 +24,7 @@ server.post('/cadastroArtista' , async(req, resp) => {
 server.put('/cadastroArtista/:id/capa', upload.single('capa') ,async (req, resp) => {
     try{
         if(!req.file)
-        throw new Error('Escolhar a imagem do artista.');
+        throw new Error('Escolha a imagem do artista.');
         const {id} = req.params;
         const imagem = req.file.path;
 
@@ -52,6 +52,25 @@ server.get('/artista', async (req, resp) => {
         })
     }
 })
+
+
+server.get('/genero/artista/:id', async (req, resp) => {
+    try {
+        const id = Number(req.params.id);
+        
+        const resposta = await listarArtistaPorGenero(id);
+
+        if (!resposta)
+            resp.status(404).send([])
+        else
+            resp.send(resposta);
+    } catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
 
 server.get('/buscarImagemm', async (req, resp) => {
     try {
@@ -118,6 +137,23 @@ server.get('/artista/:id', async (req, resp) => {
     }
 })
 
+server.get('/art/:id', async (req, resp) => {
+    try {
+        const id = Number(req.params.id);
+        
+        const resposta = await ListaPorId(id);
+
+        if (!resposta)
+            resp.status(404).send([])
+        else
+            resp.send(resposta);
+    } catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
 
 
 
@@ -133,17 +169,17 @@ server.put ('/artista/:id', async (req,resp) => {
         if (resposta != 1)
             throw new Error('Artistas não pode ser alterado');
 
-        if(!music.genero){
-            throw new Error('Genero é obrigatório');
-        }
-        
-        if(!music.nome){
-                throw new Error('Nome é obrigatório');
+            if(!music.genero){
+                throw new Error('Genero é obrigatório');
             }
-        
-        if(!music.sobre){
-                throw new Error('Sobre é obrigatório');
-            }
+            
+            if(!music.nome){
+                    throw new Error('Nome é obrigatório');
+                }
+            
+            if(!music.sobre){
+                    throw new Error('Sobre é obrigatório');
+                }
        
         else
             resp.status(204).send();

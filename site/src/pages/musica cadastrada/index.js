@@ -2,22 +2,69 @@ import './index.scss'
 import Menu from '../../components/menu'
 import { listaArtista } from '../../api/cadastroArtistaAPI';
 import {useEffect, useState} from 'react'
+import storage from 'local-storage'
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import { confirmAlert } from 'react-confirm-alert'
+
+import { deletarrMusica, listaMusicaArtista} from '../../api/musicaAPI';
+import { API_URL } from '../../api/config';
 
 export default function Index(){
 
-    const [nome, setNOME] = useState ([])
+    const [nomee, setNomee] = useState ([])
+    const [filtro, setFiltro] = useState ('')
 
 
-    async function carregarTodosArtista(){
-        const resp = await listaArtista();
-        setNOME(resp);
+    const navigate = useNavigate ();
+
+
+    async function carregarMusicaArtista(){
+        const resp = await listaMusicaArtista()
+        setNomee(resp)
+
+       
     }
 
+    async function filtrar(){
+        const resp = await listaMusicaArtista(filtro);
+        setNomee(resp);
+    }
+   
+
     useEffect(() => {
-        carregarTodosArtista();
+        
+        carregarMusicaArtista();
     }, [])
 
+    function editarMusica(id){
+        navigate(`/adm/cadastromusica/alterar/${id}`)
+    }
 
+    async function deletarMusica (id, nome){
+
+        confirmAlert({
+            title: 'Remover Musica',
+            message: `deseja remover a musica ${id, nome}?`,
+            buttons: [
+                {
+                    label:'sim',
+                    onClick: async () => {
+                        const filtro = await deletarrMusica (id,nome);
+                          if(filtro === ''){
+                         listaMusicaArtista();
+                      }
+                          else
+                          filtrar();
+                          toast.dark('musica removida')
+                    }
+                },
+                {
+                    label:'Não'
+                }
+            ]
+        })
+    }
 
     return(
         <main className='page page-consultar'>
@@ -28,45 +75,44 @@ export default function Index(){
                 <div className='conteudo'>
 
                     <div className='caixa-busca'>
-                        <input type="text" placeholder='Buscar artista por nome' />
+                        <input type="text" placeholder='Buscar musica por nome' value={filtro} onChange={e => setFiltro(e.target.value)} />
                         <img src='/assets/images/icon-buscar.svg' alt='buscar' />
                     </div>
-                    
-
+                
 
                     <div className='card-container'>
+                    <div className='comp-card'>
 
+{nomee.map(item => {
+return (
+   
+        <div className='card'>
+        <div className='acoes'>
 
-                        <div className='comp-card'>
-                            <div className='card'>
-                                <div className='acoes'>
+            <img src='/images/botao-editar.png'  onClick={() => editarMusica (item.id_musica)}/> 
+            <img src='/images/excluir.png' onClick={() => deletarMusica(item.id_musica, item.musica) }/>
+            
+            
+        </div>
+        <div>
+           
+            <img className='capas' src={`${API_URL}/${item.imagem}`}/>      
+          
+            
+            <div className='id'>{item.id} </div>
+            <div className='artista'>{item.musica} </div>
 
-                                    <img src='/assets/images/icon-editar.svg' alt='editar' />
-                                    
-                                    <img src='/assets/images/icon-remover.svg' alt='remover' />
-                                    
-                                </div>
-                                <div>
-                                {nome.map(item =>
-                                <div>
-                                    <div className='nomeArtisata'> {item.nome} </div>
-                                    <div className='genero'> {item.genero} </div>
-                                    <div className='sobre'> {item.sobre} </div>
-                                    </div>
-                                    
-                                    
-                                    
-                                )}    
-                                </div>
-                                <div className='genero'>Genero</div>
-                                    <div className='sobre'>Sobre</div>
-                        
-                            </div>
-                        </div>
-
-                        
+            <div className='genero'>{item.genero}</div>
+            <audio controls  src={`${API_URL}/${item.audio}`}></audio>
+        </div>
+        
+        </div>
+);
+})} 
+</div>
                         
                     </div>
+                      
 
 
                     

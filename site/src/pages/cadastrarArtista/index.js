@@ -3,9 +3,11 @@ import Menu from '../../components/menu'
 import './index.scss'
 
 import { ToastContainer, toast } from 'react-toastify';
-import { cadastroArtista, enviarImagemArtista } from '../../api/cadastroArtistaAPI'
+import { buscarPorId, cadastroArtista, enviarImagemArtista, alterarArtista, listaArtistaPorId } from '../../api/cadastroArtistaAPI'
 import { listaGeneros } from '../../api/generoAPI';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import storage from 'local-storage'
+import { API_URL } from '../../api/config';
 
 export default function Index(){
 
@@ -14,7 +16,24 @@ export default function Index(){
     const [idGenero, setIdGenero] = useState ('');
     const [sobre, setSobre] = useState ('');
     const [imagem, setImagem] = useState ('');
-    const [id, setId] = useState ('');
+    const [id, setId] = useState (0);
+
+    function novoClick(){
+        setNome('')
+        setGenero('')
+        setSobre('')
+        setImagem('')
+        setId(0)
+
+    }
+
+
+    async function carregarGeneros(){
+        const r = await listaGeneros();
+        setGenero(r);
+    }
+
+    const {idParam} = useParams();
 
     async function carregarGeneros(){
         const r = await listaGeneros();
@@ -22,8 +41,34 @@ export default function Index(){
     }
 
     useEffect(() => {
+       
         carregarGeneros();
+        if (idParam){
+        carregarArtista()
+        }
+
     },[] )
+
+    async function carregarArtista (){
+        const resposta = await listaArtistaPorId(idParam);
+        setId(resposta.id) 
+        setNome(resposta.nome)
+        setIdGenero(resposta.genero)
+        setSobre(resposta.sobre)
+        setImagem(resposta.artista)
+    }
+
+    
+    function mostrarImagem(imagem){
+        
+        if (typeof (imagem) == 'object') {
+            return URL.createObjectURL(imagem);
+        }
+        else {
+                
+                return `${API_URL}/${imagem}`
+        }
+    }
    
 
     const navigate = useNavigate();
@@ -31,13 +76,29 @@ export default function Index(){
 
 
     async function salvarClick(){
-        try{      
-            if (!imagem)
-            throw new Error('escolha a imagem do artista');
-            const Novoartista = await cadastroArtista (nome,idGenero,sobre);
-            const r = await enviarImagemArtista(Novoartista.id, imagem);
-            toast.dark('Acho q foi');
+        try{ 
+            if (!imagem){
+                throw new Error('escolha a imagem do artista');
             }
+
+            if(id === 0){
+                const Novoartista = await cadastroArtista (nome,idGenero,sobre);
+                await enviarImagemArtista(Novoartista.id, imagem);
+                setId(Novoartista.id)
+
+                toast.dark('Novo artista cadastrado');
+            }
+
+            else{
+                await alterarArtista(id, nome, idGenero, sobre);
+                if(typeof(imagem) == 'object'){
+                    await enviarImagemArtista(id, imagem)
+                    
+                }
+                toast.dark(' Artista alterado com sucesso');
+            }
+            }
+ 
         catch (err){
                 if(err.response)
                 toast.error(err.response.data.erro)
@@ -50,13 +111,6 @@ export default function Index(){
         function escolherImagem() {
             document.getElementById('imagemCapa').click();
         }
-
-        function mostrarImagem() {
-            return URL.createObjectURL(imagem);
-        }
-    
-
-
 
 
     return(
@@ -73,12 +127,12 @@ export default function Index(){
 
                             {!imagem &&
 
-                            <img src='./images/image-bottom212.svg' width='170px'/>
+                            <img src='/images/image-bottom212.svg' width='170px'/>
                             }
 
                             {imagem &&  
 
-                            <img className='imagem' src={mostrarImagem()} />
+                            <img className='imagem' src={mostrarImagem(imagem)} />
 
                             }
 
@@ -95,8 +149,7 @@ export default function Index(){
                     <br />
                         
                         <select value={idGenero} onChange={e => setIdGenero(e.target.value)}>
-                        <option selected disabled hidden>Selecione</option>
-
+                        <option selected disabled hidden> Generos </option>
                         {genero.map(item =>
                             <option value={item.id}> {item.nome} </option>
                         )}
@@ -109,7 +162,11 @@ export default function Index(){
                     <br />
                        
                         </div>
-                                <button className='botao' onClick={salvarClick} >Cadastrar</button>
+                        <div className='botoes'>
+                                <button className='botao' onClick={salvarClick} >{id === 0 ? 'cadastrar' : 'Alterar'}</button>
+                                <button className='botao' onClick={novoClick}>novo</button>
+
+                                </div>
                     </div>
                 </div>
 
@@ -117,3 +174,6 @@ export default function Index(){
         </main>
     );
 }
+
+
+                  

@@ -1,6 +1,7 @@
 import { con } from "./connection.js";
 
 
+
 export async function listarTodosGenero() {
     const comando =
     `select 
@@ -29,10 +30,25 @@ export async function buscarGeneroPorId(id) {
 export async function ImagemGenero(imagem, id){
     const comando = `UPDATE tb_genero
                     SET img_genero = ?
-                    WHERE id_artistas = ?`;
+                    WHERE id_genero = ?`;
 
     const [resposta] = await con.query(comando,[imagem, id]);
     return resposta.affectedRows;
+}
+
+
+export async function buscarGeneroPorNome(nome) {
+    
+    const comando =
+    `select  
+    id_genero id,
+    nm_genero genero,
+    img_genero
+    from tb_genero
+    where nm_genero like ?`
+    
+    const [linhas] = await con.query(comando, [`%${nome}%`]);
+    return linhas;
 }
 
 

@@ -21,3 +21,45 @@ export async function loginUsuario (email, senha){
     const [linha] = await con.query(comando, [email, senha] )
     return linha[0];
 }
+
+export async function imagemUsuario(imagem, id){
+    const comando = `UPDATE tb_usuario
+                    SET img_usuario = ?
+                    WHERE id_usuario = ?`;
+
+    const [resposta] = await con.query(comando,[imagem, id]);
+    return resposta.affectedRows;
+}
+
+export async function listarUsuario() {
+    const comando =
+    `select 
+    id_usuario id,
+    nm_nome nome,
+    dt_nasc nascimento,
+    ds_email email,
+    ds_senha senha,
+    img_imagem imagem
+    from tb_usuario;`
+    
+    const [linhas] =  await con.query(comando);
+    return linhas;
+}
+
+export async function buscarUsuarioPorId(id) {
+    const comando =
+
+    `select 
+    id_usuario id,
+    nm_nome nome,
+    dt_nasc nascimento,
+    ds_email email,
+    ds_senha senha,
+    img_imagem imagem
+    from tb_usuario
+    where id_usuario = ?`
+
+    const [linhas] = await con.query(comando, [id]);
+    return linhas[0];
+}
+

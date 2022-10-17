@@ -1,0 +1,30 @@
+.cabecalho{
+    display: flex;
+    height: 10vh;
+    background-color: #8D32E5;
+    align-items: center;
+    justify-content: space-between;
+
+    .faixa{
+        display: flex;
+       
+    }
+    *{
+        //border: green solid 1px;
+    }
+    .lupa{
+        padding: 2em;
+    }
+    .playlist{
+        padding-right:3em;
+    }
+
+    .logoconta{
+        padding-right: 3em;
+    }
+
+    .logo{
+        margin-top: 0.5em;
+        padding-left: 2em;
+    }
+}

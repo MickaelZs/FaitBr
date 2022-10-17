@@ -22,3 +22,13 @@ export async function loginUsuario(email, senha){
     });
     return a.data;
 }
+
+export async function listarUsuario(){
+    const resposta = await api.get('/usuario');
+    return resposta.data;
+  }
+
+  export async function buscarUsuarioPorId(id){
+    const resposta = await api.get(`/usuario/${id}`)
+    return resposta.data;
+}  

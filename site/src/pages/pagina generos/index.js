@@ -1,32 +1,46 @@
+
 import {useParams} from 'react-router-dom'
-import { buscarImagem, buscarPorId, listaArtista } from '../../api/cadastroArtistaAPI';
-import Artistas from '../../components/artista'
+import { buscarArtistaPorGeneroId } from '../../api/cadastroArtistaAPI';
 import './index.scss'
 import { useState,useEffect  } from 'react';
+import CardGenero from '../../components/genero';
+import { buscarGeneroPorId } from '../../api/generoAPI';
 
 
 
 export default function Index(){
 
-const [artista, setArtista] = useState({});
+
+const [genero,setGenero] = useState ({})
+const [ge,setGe] = useState ({})
 
 const {idParam} = useParams();
 
+async function carregarArtistaPorGenero(){
+    const resp = await buscarArtistaPorGeneroId(idParam)
+    setGenero(resp)
+}
 
+async function carregarGenero(){
+    const resp = await buscarGeneroPorId(idParam)
+    setGe(resp)
+}
+
+ 
 useEffect(() => {
-    carregarArtista();
-    async function carregarArtista(){
-        const resposta = await buscarPorId(idParam)
-        setArtista(resposta);
-    }
+    carregarArtistaPorGenero();
+    carregarGenero();
 },[]);
 
 
     return(
-        <div className='Artistas'>
-            <Artistas artista={artista}/>
-           
-
+        <div>                  
+        <div className='Artistas'> 
+        <CardGenero genero={genero} ge={ge} />
+    </div>
+    
+   
+    
     </div>
     )
 }
