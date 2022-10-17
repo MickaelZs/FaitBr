@@ -1,6 +1,6 @@
 import { Router} from "express";
 import multer from 'multer';
-import { alteraMusica, alterarImagemMusica, cadastrarMusica, listarArtistaPorMusica, listarMusicaeArtista } from "../repository/musicaRepository.js";
+import { alteraMusica, alterarImagemMusica, cadastrarMusica, listarArtistaPorMusica, listarMusicaeArtista, listarMusicaPorId } from "../repository/musicaRepository.js";
 
 
 const server = Router();
@@ -83,6 +83,23 @@ server.get('/artista/musica/:id', async (req, resp) => {
         const id = Number(req.params.id);
         
         const resposta = await listarArtistaPorMusica(id);
+
+        if (!resposta)
+            resp.status(404).send([])
+        else
+            resp.send(resposta);
+    } catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
+server.get('/musicas/:id', async (req, resp) => {
+    try {
+        const id = Number(req.params.id);
+        
+        const resposta = await listarMusicaPorId(id);
 
         if (!resposta)
             resp.status(404).send([])

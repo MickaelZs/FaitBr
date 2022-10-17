@@ -5,7 +5,8 @@ import { listaGeneros } from '../../api/generoAPI';
 import { useEffect, useState } from 'react';
 import { listaArtista } from '../../api/cadastroArtistaAPI';
 import { API_URL } from '../../api/config';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
+
 
 
 

@@ -88,13 +88,13 @@ export default function Index(){
 
                             <div className='faixa3-div1'>
                                 <h1>Nome:</h1>
-                                <h3>Neymar junior santos ferreira sla</h3>
+                                <h3>{usuario.nome}</h3>
                             </div>
                              
 
                             <div  className='faixa3-div1'>
                                 <h1>Nascimento:</h1>
-                                <h3> 22/10/2005</h3>
+                                <h3>{usuario.nasc}</h3>
                             </div>
 
                             <div className='faixa3-div2'>
@@ -117,7 +117,7 @@ export default function Index(){
                             <div className='faixa3-div2'>
                                 <div>
                                     <h1>Senha:</h1>
-                                    <h3>neymar123</h3>
+                                    <h3>{usuario.senha}</h3>
                                 </div>
 
                                 <div className='faixa3-div2-sla'>

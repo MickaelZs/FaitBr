@@ -1,7 +1,9 @@
 import './index.scss'
 import CardAudio from '../../components/CardAudio'
+import { useState } from 'react';
 
 export default function Reproduzir(){
+    const [musica,setMusica] = useState()
     return(
         <main className='pagina-reproduzir'>
             <section className='faixa1'>

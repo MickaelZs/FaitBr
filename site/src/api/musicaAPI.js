@@ -52,3 +52,8 @@ export async function listaMusicaArtista(){
     const resposta = await api.get(`/artista/musica/${id}`)
     return resposta.data;
 }  
+
+export async function buscarMusicaPorId(id){
+    const resposta = await api.get(`/musicas/${id}`)
+    return resposta.data;
+} 

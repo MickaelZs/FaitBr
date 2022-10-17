@@ -3,10 +3,12 @@ import Cabeçario from '../../components/cabeçalho'
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import Modal from 'react-modal';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { criarPlaylist, criarPlaylistItem } from '../../api/playlistAPI';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import Storage from 'local-storage'
+import { buscarUsuarioPorId } from '../../api/usuarioAPI';
 
 const customStyles = {
     content: {
@@ -27,6 +29,19 @@ export default function Playlist(){
     const [idUsuario,setIdUsuario] = useState('')
     const [id,setId] = useState(0)
     const navigate = useNavigate()
+
+    useEffect(() => {
+        carregarUsuario();
+
+    },[])
+
+
+    async function carregarUsuario(){
+        const id = Storage('usuario-logado').id;
+        const resp = await buscarUsuarioPorId(id)
+        setIdUsuario(resp)
+
+    }
 
         let subtitle;
         const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -180,6 +195,9 @@ export default function Playlist(){
           
         </form>
       </Modal>
+      <input type='text' value={nome}  onChange={e => setNome(e.target.value)}/>
+          
+          <button onClick={salvarClick} >Continuar</button>
     </div>
         </main>
     )

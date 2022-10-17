@@ -24,6 +24,7 @@ import InfoUsario from './pages/informacao usuario';
 import DetalheAertista from './pages/detalheAertista';
 import Playlist from './pages/playlist';
 import AdicionarMusica from './pages/adicionarMusica'
+import Teest from './pages/TESTCARD';
 
 
 
@@ -54,6 +55,7 @@ root.render(
       <Route path='/Consulta' element={<Consulta/>}/>
       <Route path='/detalhe/artista/:idParam' element={<DetalheAertista/>}/>
       <Route path='/Reproduzir' element={<Reproduzir/>}/>
+      <Route path='/Reproduzir/:idParam' element={<Reproduzir/>}/>
       <Route path='/buscar' element={<Buscar/>}/>
       
       <Route path='/informacao' element={<InfoUsario/>}/>
@@ -61,11 +63,11 @@ root.render(
       <Route path='/Playlist' element={<Playlist/>}/>
       <Route path='/adicionarMusica' element={<AdicionarMusica/>}/>
 
+  
 
 
 
-
-      <Route path='/test' element={<Test/>}/>
+      <Route path='/test' element={<Teest/>}/>
     </Routes>
     </BrowserRouter>
   </React.StrictMode>
