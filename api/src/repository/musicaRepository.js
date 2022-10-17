@@ -12,6 +12,7 @@ export async function cadastrarMusica(musica){
 
 
 
+
 export async function alterarImagemMusica(imagem, id){
     const comando = `
     update tb_musicas 
@@ -19,6 +20,14 @@ export async function alterarImagemMusica(imagem, id){
     where id_musica = ?;`
 
     const [resposta] = await con.query(comando,[imagem, id]);
+    return resposta.affectedRows;
+}
+
+export async function deletaMusica (id){
+    const comando = 
+    `delete from tb_musicas
+    where id_musica = ? `;
+    const [resposta] = await con.query(comando, [id]);
     return resposta.affectedRows;
 }
 
@@ -78,9 +87,20 @@ export  async function alteraMusica(id, musica){
         `update tb_musicas
         set	id_genero  = ?,
             id_artistas	= ?,
-            nm_musicas	= ?,
+            nm_musicas	= ?
         where id_musica = ?`
 const [resposta] = await con.query(comando,[musica.genero,musica.artista,musica.nome,id ])
 return resposta.affectedRows;
 }
+
+export async function alterarArquivoMusica(imagem, id){
+    const comando = `
+    update tb_musicas 
+    set blob_musica = ?
+    where id_musica = ?;`
+
+    const [resposta] = await con.query(comando,[imagem, id]);
+    return resposta.affectedRows;
+}
+
 

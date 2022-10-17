@@ -37,9 +37,10 @@ root.render(
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/loginAdm' element={<LoginAdm/>}/>
-      <Route path='/adm/cadastromusica' element={<Cadastromsc/>}/>
       <Route path='/adm/cadastrarArtista' element={<Cadartista/>}/>
       <Route path='/adm/cadastrarArtista/alterar/:idParam' element={<Cadartista/>}/>
+      <Route path='/adm/cadastromusica' element={<Cadastromsc/>}/>
+      <Route path='/adm/cadastromusica/alterar/:idParam' element={<Cadastromsc/>}/>
       <Route path='/adm/musicaCadastradas' element={<MusicaCadastradas/>}/>
       <Route path='/adm/artistaCadastrados' element={<ArtistaCadastrados/>}/>
       
