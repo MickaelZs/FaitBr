@@ -4,12 +4,17 @@ import { listaArtista } from '../../api/cadastroArtistaAPI';
 import {useEffect, useState} from 'react'
 import storage from 'local-storage'
 import { useNavigate } from 'react-router-dom';
-import { listaMusicaArtista, listaMusicaeArtista } from '../../api/musicaAPI';
+import { ToastContainer, toast } from 'react-toastify';
+import { confirmAlert } from 'react-confirm-alert'
+
+import { listaMusicaArtista, listaMusicaeArtista , deletarMusica} from '../../api/musicaAPI';
 import { API_URL } from '../../api/config';
 
 export default function Index(){
 
     const [nomee, setNomee] = useState ([])
+    const [filtro, setFiltro] = useState ('')
+
 
     const navigate = useNavigate ();
 
@@ -20,6 +25,11 @@ export default function Index(){
 
        
     }
+
+    async function filtrar(){
+        const resp = await listaMusicaArtista(filtro);
+        setNomee(resp);
+    }
    
 
     useEffect(() => {
@@ -27,7 +37,34 @@ export default function Index(){
         carregarMusicaArtista();
     }, [])
 
+    function editarMusica(id){
+        navigate(`/adm/cadastromusica/alterar/${id}`)
+    }
 
+    async function deletarMusica (id, nome){
+
+        confirmAlert({
+            title: 'Remover Musica',
+            message: `deseja remover a musica ${id, nome}?`,
+            buttons: [
+                {
+                    label:'sim',
+                    onClick: async () => {
+                        const filtro = await deletarMusica (id,nome);
+                          if(filtro === ''){
+                         listaMusicaArtista();
+                      }
+                          else
+                          filtrar();
+                          toast.dark('musica removida')
+                    }
+                },
+                {
+                    label:'Não'
+                }
+            ]
+        })
+    }
 
     return(
         <main className='page page-consultar'>
@@ -38,7 +75,7 @@ export default function Index(){
                 <div className='conteudo'>
 
                     <div className='caixa-busca'>
-                        <input type="text" placeholder='Buscar artista por nome' />
+                        <input type="text" placeholder='Buscar musica por nome' value={filtro} onChange={e => setFiltro(e.target.value)} />
                         <img src='/assets/images/icon-buscar.svg' alt='buscar' />
                     </div>
                 
@@ -52,8 +89,8 @@ return (
         <div className='card'>
         <div className='acoes'>
 
-            <img src='/images/botao-editar.png' /> 
-            <img src='/images/excluir.png' />
+            <img src='/images/botao-editar.png'  onClick={() => editarMusica (item.id)}/> 
+            <img src='/images/excluir.png' onClick={() => deletarMusica(item.id, item.nome) }/>
             
             
         </div>

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import Menu from '../../components/menu'
 import { listaArtista } from '../../api/cadastroArtistaAPI'
 import { listaGeneros } from '../../api/generoAPI'
-import { cadastraMusica, enviarImagemMusica, inserirMusica } from '../../api/musicaAPI'
+import { alterarMusica, cadastraMusica, enviarArquivoMusica, enviarImagemMusica, inserirMusica } from '../../api/musicaAPI'
 import { API_URL } from '../../api/config';
 
 
@@ -71,7 +71,7 @@ export default function Cadastromsc(){
     async function salvarClick(){
         try{ 
             if (!imagem){
-                throw new Error('escolha a imagem do artista');
+                throw new Error('escolha a imagem da musica');
             }
 
             if (!musica){
@@ -81,13 +81,22 @@ export default function Cadastromsc(){
             if(id === 0){
                 const NovaMusica = await cadastraMusica (nome,idGenero,idArtista);
                 await enviarImagemMusica(NovaMusica.id, imagem);
+                await enviarArquivoMusica(NovaMusica.id, musica);
                 await inserirMusica (NovaMusica.id, musica);
                 setId(NovaMusica.id)
 
                 toast.dark('Nova musica cadastrada');
             }
+            else{
+                await alterarMusica(id, idGenero, idArtista, nome);
+                if(typeof(imagem) == 'object'){
+                    await enviarImagemMusica(id, imagem)
+                    await enviarArquivoMusica(id, musica);
 
-           
+                    
+                }
+                toast.dark(' Musica alterada com sucesso');
+            }
             }
  
         catch (err){
@@ -163,7 +172,7 @@ export default function Cadastromsc(){
                     </div>
                     
                     
-                            <button className='botao' onClick={salvarClick} >Cadastrar</button>
+                    <button className='botao' onClick={salvarClick} >{id === 0 ? 'cadastrar' : 'Alterar'}</button>
                 </div>
             </div>
 
