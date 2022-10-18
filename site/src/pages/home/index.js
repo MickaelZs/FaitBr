@@ -68,7 +68,7 @@ useEffect(() => {
         
               
               
-          </div>
+          
               <div class="hamburger-menu">
               <input id="menu__toggle" type="checkbox" />
               <label class="menu__btn" for="menu__toggle">
@@ -81,6 +81,7 @@ useEffect(() => {
                 <li><a class="menu__item" href="/LoginAdm">Area ADM</a></li>
                 
               </ul>
+              </div>
 
           </div>
         </header>

@@ -1,9 +1,19 @@
 
+import { useNavigate } from 'react-router-dom';
 import { API_URL } from '../../api/config';
 import './index.scss';
 
 
 export default function DetalheArtista(props) {
+    const navigate = useNavigate()
+
+    function acessarMusica(id){
+        navigate(`/Reproduzir/${id}`)
+    }
+
+    
+
+
     return (
         <main className='comp-detalhe'>
         <div className=''>
@@ -19,12 +29,14 @@ export default function DetalheArtista(props) {
                     <p className='sinopse'>{props.artista.sobre} </p>
                 </div>
 
+            
 
-                <div className='card'>
-                <img className="capa" src={`${API_URL}/${props.musi.imagem}`}></img>
+
+                <div className='card' onClick={() => acessarMusica (props.musica.id)}>
+                <img className="capa" src={`${API_URL}/${props.musica.imagem}`}></img>
                 <div className='text'>
-                <p className='nome'>{props.musi.nome} </p>
-                <p className='nome'>{props.musi.genero}</p>
+                <p className='nome'>{props.musica.nome} </p>
+                <p className='nome'>{props.musica.genero}</p>
                 
                 </div>    
                 

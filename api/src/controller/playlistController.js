@@ -6,8 +6,9 @@ const server = Router();
 
 server.post('/criar/playlist', async (req,resp) =>{
     try{
+        const id = req.params.id;
         const playlistt = req.body;
-        const x = await Cadastrarplaylist(playlistt);
+        const x = await Cadastrarplaylist(id,playlistt);
 
         resp.send(x);
     }

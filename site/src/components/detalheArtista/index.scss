@@ -84,6 +84,67 @@
         margin: 0px;
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+.cardmusica{
+    display: flex;
+    flex-direction: row;
+    color: #fff;
+    align-items: center;
+    padding: 10px 10px;
+    width: 100%;
+    
+
+
+    .image-music{
+        border-radius: 3px;
+
+    }
+    .p{
+        font-size: 40px ;
+        font: bold;
+        margin-right: 20px;
+    }
+    .div-ator{
+        font-family: "Roboto";
+        width: 370px;
+        padding-left: 20px;
+        
+    }
+    p{
+        font-family: sans-serif;
+        margin: 0px;
+    }
+    .nome{
+        font-weight:550;
+        padding-bottom: 10px;
+        font-size: 35px;
+    }
+    .autor{
+        font-size: 25px;
+        font-family: 'Roboto';
+    }
+}
+
     
 
 }

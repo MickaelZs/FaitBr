@@ -3,12 +3,12 @@ import { con } from "./connection.js";
 
 
 
-export async function Cadastrarplaylist(playlist){
+export async function Cadastrarplaylist(idUsuario,playlist){
     const comando = 
     `insert Into tb_playlist (id_usuario,nm_playlist)
     values(?,?)`
 
-    const [resposta] = await con.query(comando,[playlist.usuario,playlist.nome]);
+    const [resposta] = await con.query(comando,[idUsuario,playlist.nome]);
     playlist.id = resposta.insertId;
 
     return playlist;

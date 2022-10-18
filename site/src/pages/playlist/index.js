@@ -10,23 +10,11 @@ import { useNavigate } from 'react-router-dom';
 import Storage from 'local-storage'
 import { buscarUsuarioPorId } from '../../api/usuarioAPI';
 
-const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-    },
-  };
-
 export default function Playlist(){
 
     const [nome,setNome] = useState('')
-    const [idPlaylist,setIdPlaylist] = useState('')
-    const [idMusica,setIdMusica] = useState('')
     const [idUsuario,setIdUsuario] = useState('')
+    const [usu,setUsu] = useState([])
     const [id,setId] = useState(0)
     const navigate = useNavigate()
 
@@ -39,30 +27,11 @@ export default function Playlist(){
     async function carregarUsuario(){
         const id = Storage('usuario-logado').id;
         const resp = await buscarUsuarioPorId(id)
-        setIdUsuario(resp)
+        setUsu(resp)
 
     }
 
-        let subtitle;
-        const [modalIsOpen, setIsOpen] = React.useState(false);
       
-        function openModal() {
-          setIsOpen(true);
-        }
-      
-        function afterOpenModal() {
-          // references are now sync'd and can be accessed.
-          subtitle.style.color = '#f00';
-        }
-      
-        function closeModal() {
-          setIsOpen(false);
-        }
-
-        function acessarMusica(){
-            navigate(`/adicionarMusica`)
-        }
-
 
         async function salvarClick(){
             try{ 
@@ -87,7 +56,7 @@ export default function Playlist(){
                     toast.error(err.message);
                 }
 
-                console.log(salvarClick)
+              
             }
 
    
@@ -178,25 +147,10 @@ export default function Playlist(){
 
 
             <div>
-      <button onClick={openModal}>Open Modal</button>
-      <Modal
-        isOpen={modalIsOpen}
-        
-        onRequestClose={closeModal}
-        style={customStyles}
-        
-      >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Criar Playlist</h2>
-        <button onClick={closeModal}>close</button>
-        <form>
-          <input type='text' value={nome}  onChange={e => setNome(e.target.value)}/>
-          
-          <button onClick={salvarClick} >Continuar</button>
-          
-        </form>
-      </Modal>
+    
+   
       <input type='text' value={nome}  onChange={e => setNome(e.target.value)}/>
-          
+    
           <button onClick={salvarClick} >Continuar</button>
     </div>
         </main>
