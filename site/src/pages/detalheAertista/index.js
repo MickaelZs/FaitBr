@@ -13,6 +13,11 @@ export default function Index(){
     const {idParam} = useParams ()
     const navigate = useNavigate()
 
+    function acessarMusica(id){
+        navigate(`/Reproduzir/${id}`)
+    }
+
+
     async function carregarArtista (){
         const resp = await buscarPorId(idParam)
         setArtista(resp)
@@ -21,6 +26,7 @@ export default function Index(){
     async function carregarArtistaPorMusica(){
         const resp = await buscarArtistaPorMusicaId(idParam)
             setMusica(resp)
+            console.log(resp)
     }
 
     useEffect (() => {
@@ -29,11 +35,35 @@ export default function Index(){
 
     },[])
     return(
-        <div>
+        <main className='comp-detalhe'>
+        <div className=''>
+            <img src={`${API_URL}/${artista.artista}`} />
+            <div className='box-info'>
+                <p>{artista.id}</p>
+                <h1>{artista.nome}</h1>
+                <div className='info'>
+                    <h3>Genero</h3>
+                    <p>{artista.genero}</p>
+                </div>
+                <div className='info'>
+                    <h3>Sobre</h3>
+                    <p className='sinopse'>{artista.sobre} </p>
+                </div>
 
-         <DetalheArtista artista={artista} musica={musica} />
-       
-
+                {musica.map(item => 
+                <div className='card' onClick={() => acessarMusica(item.id)}>
+                <img className="capa" src={`${API_URL}/${item.imagem}`}></img>
+                <div className='text'>
+                <p className='nome'>{item.nome} </p>
+                <p className='nome'>{item.genero}</p>
+                
+                </div>    
+                
+                </div>
+                )}
+        
+            </div>
         </div>
+        </main>
     )
 }

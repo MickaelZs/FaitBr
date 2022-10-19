@@ -125,6 +125,8 @@ export default function Cadastromsc(){
                 else
                 toast.error(err.message);
             }
+
+            console.log(salvarClick)
         }
 
 
