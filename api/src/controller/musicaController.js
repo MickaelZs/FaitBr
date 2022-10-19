@@ -8,6 +8,7 @@ const server = Router();
 const upload = multer({ dest: 'storage/capaMusica'})
 
 
+
 server.post('/cadastramusica' , async(req, resp) => {
 
     try{
@@ -40,7 +41,7 @@ server.delete ('/musica/:id',async (req,resp) => {
 
 })
 
-server.put('/cadastramusica/:id/musica', upload.single('musica') ,async (req, resp) => {
+server.put('/cadastroMusica/:id/musica', upload.single('musica') ,async (req, resp) => {
     try{
         if(!req.file)
         throw new Error('Escolha o arquivo da musica.');
@@ -62,7 +63,7 @@ server.put('/cadastramusica/:id/musica', upload.single('musica') ,async (req, re
 
 
 
-server.put('/cadastraMusica/:id/capa', upload.single('capa') ,async (req, resp) => {
+server.put('/cadastraMusica/capa/:id', upload.single('capa') ,async (req, resp) => {
     try{
         if(!req.file)
         throw new Error('Escolha a imagem.');

@@ -5,7 +5,10 @@ import { useNavigate, useParams } from 'react-router-dom'
 import Menu from '../../components/menu'
 import { listaArtista } from '../../api/cadastroArtistaAPI'
 import { listaGeneros } from '../../api/generoAPI'
+import storage from 'local-storage'
+
 import { alterarMusica, buscarMusicaPorId, cadastraMusica, enviarArquivoMusica, enviarImagemMusica, inserirMusica } from '../../api/musicaAPI'
+
 import { API_URL } from '../../api/config';
 
 
@@ -175,6 +178,7 @@ export default function Cadastromsc(){
                     <input type='file' id='musica' onChange={e => setMusica(e.target.files[0])} ></input> 
                     
                     </div>
+
                     <div className='div-input'>
                     <select value={idGenero} onChange={e => setIdGenero(e.target.value)}>
                         <option selected disabled hidden> generos </option>

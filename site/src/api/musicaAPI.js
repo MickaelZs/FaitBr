@@ -20,7 +20,7 @@ export async function enviarImagemMusica(id, imagem){
     const formData = new FormData ();
     formData.append('capa', imagem);
 
-    const resposta = await api.put(`/cadastraMusica/${id}/capa`, formData,{
+    const resposta = await api.put(`/cadastraMusica/capa/${id}`, formData,{
         headers:{
             "Content-type": "multipart/form-data"
         },
