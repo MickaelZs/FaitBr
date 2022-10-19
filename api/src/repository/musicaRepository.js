@@ -16,7 +16,7 @@ export async function cadastrarMusica(musica){
 export async function alterarImagemMusica(imagem, id){
     const comando = `
     update tb_musicas 
-    set img_imagem = ?
+    set img_musica = ?
     where id_musica = ?;`
 
     const [resposta] = await con.query(comando,[imagem, id]);
@@ -38,8 +38,8 @@ export async function listarMusicaeArtista() {
     nm_artistas artista,
     nm_genero  genero,
     nm_musicas musica,
-    blob_musica audio,
-    img_imagem imagem
+    arq_musica audio,
+    img_musica imagem
     from tb_musicas
     inner join tb_artistas on tb_musicas.id_artistas = tb_artistas.id_artistas
     inner join tb_genero on tb_musicas.id_genero = tb_genero.id_genero;`
@@ -56,8 +56,8 @@ export async function listarMusicaPorId(id) {
     id_genero genero,
     id_artistas artista,
     nm_musicas nome,
-    blob_musica musica,
-    img_imagem imagem
+    arq_musica musica,
+    img_musica imagem
     from tb_musicas
     where id_musica = ? ;`
     
@@ -72,8 +72,8 @@ export async function listarArtistaPorMusica(id) {
     nm_genero genero,
     id_artistas idArtista,
     nm_musicas nome,
-    blob_musica audio,
-    img_imagem imagem
+    arq_musica audio,
+    img_musica imagem
     from tb_musicas
     inner join tb_genero on tb_musicas.id_genero = tb_genero.id_genero
     where id_artistas = ?`
@@ -96,7 +96,7 @@ return resposta.affectedRows;
 export async function alterarArquivoMusica(id, musica){
     const comando = `
     update tb_musicas 
-    set blob_musica = ?
+    set arq_musica = ?
     where id_musica = ?;`
 
     const [resposta] = await con.query(comando,[musica, id]);
