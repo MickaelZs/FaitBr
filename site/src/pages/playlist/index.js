@@ -35,16 +35,15 @@ export default function Playlist(){
 
         async function salvarClick(){
             try{ 
+
                 
-    
-                if(id === 0){
                 
-                    const NovaPlaylist = await criarPlaylist (nome,idUsuario);
+                    const NovaPlaylist = await criarPlaylist (nome); 
                     setId(NovaPlaylist.id)
                 
     
                     toast.dark('Playlist criada');
-                }
+               
     
                 
                 }
@@ -55,6 +54,8 @@ export default function Playlist(){
                     else
                     toast.error(err.message);
                 }
+
+                console.log(salvarClick)
 
               
             }
