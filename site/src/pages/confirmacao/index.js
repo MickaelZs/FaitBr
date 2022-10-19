@@ -1,6 +1,23 @@
 import './index.scss'
+import React from 'react';
+import emailjs from '@emailjs/browser'
 
 export default function Index() {
+
+  function enviaremail(e){
+    e.preventDefault();
+
+    emailjs.sendForm('service_i3yqjfn', 'service_i3yqjfn', form.current, 'I5d_LjG0YjOtZMp-r')
+      .then((result) => {
+        alert(result.text)
+      }, (error) => {
+        alert(error.message)
+      });
+      e.target.reset();
+  }
+
+
+
     return (
       <div className="pagina-confirmaçao">
 
@@ -13,13 +30,13 @@ export default function Index() {
         </div>
 
         <div class="label-float">
-        <input type="text" placeholder=" "/>
+        <input type="text" placeholder=" " name='email'/>
         <label>Email</label>
           </div>
 
           <br/>
 
-         <button>Enviar</button> 
+         <button onClick={enviaremail}>Enviar</button> 
        
       </div>
     );

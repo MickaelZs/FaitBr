@@ -1,3 +1,5 @@
+/*
+
 import React from "react";
 import Carousel from "react-spring-3d-carousel";
 import { v4 as uuidv4 } from "uuid";
@@ -5,7 +7,6 @@ import { config } from "react-spring";
 
 
 export default function Carousell(){
-
 
     
        let cards = [
@@ -42,7 +43,7 @@ export default function Carousell(){
           content: <img src="https://picsum.photos/805/800/?random" alt="8" />
         }
         ]
-
+/*
     return(
         <main>
                 <div className="">
@@ -62,3 +63,5 @@ export default function Carousell(){
         </main>
     )
 }
+
+*/
