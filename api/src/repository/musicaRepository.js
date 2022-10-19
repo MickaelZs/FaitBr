@@ -93,13 +93,13 @@ const [resposta] = await con.query(comando,[musica.genero,musica.artista,musica.
 return resposta.affectedRows;
 }
 
-export async function alterarArquivoMusica(imagem, id){
+export async function alterarArquivoMusica(id, musica){
     const comando = `
     update tb_musicas 
     set blob_musica = ?
     where id_musica = ?;`
 
-    const [resposta] = await con.query(comando,[imagem, id]);
+    const [resposta] = await con.query(comando,[musica, id]);
     return resposta.affectedRows;
 }
 
