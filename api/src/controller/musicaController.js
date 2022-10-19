@@ -122,7 +122,6 @@ server.get('/artista/musica/:id', async (req, resp) => {
         const id = Number(req.params.id);
         
         const resposta = await listarArtistaPorMusica(id);
-
         if (!resposta)
             resp.status(404).send([])
         else

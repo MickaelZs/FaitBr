@@ -79,7 +79,7 @@ export async function listarArtistaPorMusica(id) {
     where id_artistas = ?`
     
     const [linhas] = await con.query(comando, [id]);
-    return linhas[0];
+    return linhas;
 }
 
 export  async function alteraMusica(id, musica){
