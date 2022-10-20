@@ -7,7 +7,7 @@ import { listaArtista } from '../../api/cadastroArtistaAPI'
 import { listaGeneros } from '../../api/generoAPI'
 import storage from 'local-storage'
 
-import { alterarMusica, buscarMusicaPorId, cadastraMusica, enviarArquivoMusica, enviarImagemMusica, inserirMusica } from '../../api/musicaAPI'
+import { alterarMusica, buscarMusicaPorId, cadastraMusica, enviarArquivoMusica, enviarImagemMusica, inserirImagemMusica, inserirMusica } from '../../api/musicaAPI'
 
 import { API_URL } from '../../api/config';
 
@@ -100,18 +100,17 @@ export default function Cadastromsc(){
 
             if(id === 0){
                 const NovaMusica = await cadastraMusica (nome,idGenero,idArtista);
-                await enviarImagemMusica(NovaMusica.id, imagem);
-                await enviarArquivoMusica(NovaMusica.id, musica);
+                await inserirImagemMusica(NovaMusica.id, imagem);
                 await inserirMusica (NovaMusica.id, musica);
-                setId(NovaMusica.id)
+                setId(NovaMusica.id) 
 
                 toast.dark('Nova musica cadastrada');
             }
             else{
                 await alterarMusica(id, idGenero, idArtista, nome);
                 if(typeof(imagem) == 'object'){
-                    await enviarImagemMusica(id, imagem)
-                    await enviarArquivoMusica(id, musica);
+                    await inserirImagemMusica(id, imagem)
+                    await inserirMusica(id, musica)
 
                     
                 }

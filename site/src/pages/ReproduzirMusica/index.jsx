@@ -30,9 +30,13 @@ export default function Reproduzir(){
 
             </section>
             <section className='div-reproducao'>
+                {musica.map(item => 
                 <div>
-                    <img src={`${API_URL}/${musica.imagem}`} width="500px"/>
-                </div>
+                <img src={`${API_URL}/${item.imagem}`} width="500px"/>
+            </div>
+                    
+                    )}
+                
             <div>
             <CardAudio id="1." image="/images/Coraçãoqbrd.svg" nome="Coração Quebrado" autor="Klouvz, Swang Pam..."/>
             <CardAudio id="2." image="/images/Coraçãoqbrd.svg" nome="Coração Quebrado" autor="Klouvz, Swang Pam..."/>

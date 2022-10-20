@@ -16,18 +16,7 @@ export async function cadastraMusica(nome,idGenero,idArtista) {
 }
 
 
-export async function enviarImagemMusica(id, imagem){
-    const formData = new FormData ();
-    formData.append('capa', imagem);
 
-    const resposta = await api.put(`/cadastraMusica/capa/${id}`, formData,{
-        headers:{
-            "Content-type": "multipart/form-data"
-        },
-    });
-
-    return resposta.status;
-}
 
 export async function inserirMusica(id, musica){
     const formData = new FormData ();
@@ -42,11 +31,25 @@ export async function inserirMusica(id, musica){
     return resposta.status;
 }
 
-export async function alterarMusica(id, idGenero, idArtista, nome ) {
+export async function inserirImagemMusica(id, imagem){
+    const formData = new FormData ();
+    formData.append('capa', imagem);
+
+    const resposta = await api.put(`/cadastraMusica/${id}/capa`, formData,{
+        headers:{
+            "Content-type": "multipart/form-data"
+        },
+    });
+
+    return resposta.status;
+}
+
+export async function alterarMusica(id, nome , idGenero, idArtista) {
     const resposta = await api.put(`/musica/${id}`, {
+        nome: nome,
          genero: idGenero,
          artista: idArtista,
-         nome: nome
+         
      })
      return resposta.data;
  }
@@ -68,11 +71,33 @@ export async function buscarMusicaPorId(id){
     return resposta.data;
 } 
 
-export async function enviarArquivoMusica(id, musica){
+
+export async function deletarrMusica(id){
+    const resposta = await api.delete(`/musica/${id}`);
+    return resposta.status;
+  }
+
+
+//Alterar
+
+  export async function enviarArquivoMusica(id, musica){
     const formData = new FormData ();
     formData.append('musica', musica);
 
-    const resposta = await api.put(`/cadastramusica/${id}/musica`, formData,{
+    const resposta = await api.put(`/cadastroMusica/${id}/musica`, formData,{
+        headers:{
+            "Content-type": "multipart/form-data"
+        },
+    });
+
+    return resposta.status;
+}  
+
+export async function enviarImagemMusica(id, imagem){
+    const formData = new FormData ();
+    formData.append('capa', imagem);
+
+    const resposta = await api.put(`/cadastraMusica/${id}/capa`, formData,{
         headers:{
             "Content-type": "multipart/form-data"
         },
@@ -80,8 +105,3 @@ export async function enviarArquivoMusica(id, musica){
 
     return resposta.status;
 }
-
-export async function deletarrMusica(id){
-    const resposta = await api.delete(`/musica/${id}`);
-    return resposta.status;
-  }

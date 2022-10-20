@@ -1,10 +1,11 @@
 import { Router} from "express";
 import multer from 'multer';
 
-import { alteraMusica, cadastrarMusica, deletaMusica, listarArtistaPorMusica, listarMusicaeArtista, listarMusicaPorId } from "../repository/musicaRepository.js";
+import { alteraMusica, alterarImagemMusica, cadastrarMusica, deletaMusica, listarArtistaPorMusica, listarMusicaeArtista, listarMusicaPorId } from "../repository/musicaRepository.js";
 
 
 const server = Router();
+const upload = multer({ dest: 'storage/capaMusica'})
 
 
 
@@ -17,6 +18,26 @@ server.post('/cadastramusica' , async(req, resp) => {
         resp.send(x);
     }
     catch (err){
+        resp.status(401).send({
+            erro: err.message
+        })   
+    }
+})
+
+server.put('/cadastraMusica/:id/capa', upload.single('capa') ,async (req, resp) => {
+    try{
+        if(!req.file)
+        throw new Error('Escolha a imagem.');
+        const {id} = req.params;
+        const imagem = req.file.path;
+
+        const resposta = await alterarImagemMusica(imagem, id);
+        if(resposta != 1)
+            throw new Error('A imagem não pode ser salva.');
+
+        resp.status(204).send();
+    }
+    catch(err){
         resp.status(401).send({
             erro: err.message
         })   
