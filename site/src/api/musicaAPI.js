@@ -85,6 +85,7 @@ export async function deletarrMusica(id){
     formData.append('musica', musica);
 
     const resposta = await api.put(`/cadastroMusica/${id}/musica`, formData,{
+
         headers:{
             "Content-type": "multipart/form-data"
         },
@@ -98,6 +99,7 @@ export async function enviarImagemMusica(id, imagem){
     formData.append('capa', imagem);
 
     const resposta = await api.put(`/cadastraMusica/${id}/capa`, formData,{
+
         headers:{
             "Content-type": "multipart/form-data"
         },

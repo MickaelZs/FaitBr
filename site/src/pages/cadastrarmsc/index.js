@@ -109,10 +109,15 @@ export default function Cadastromsc(){
             else{
                 await alterarMusica(id, idGenero, idArtista, nome);
                 if(typeof(imagem) == 'object'){
+<<<<<<< HEAD:site/src/pages/cadastrarmsc/index.jsx
                     await inserirImagemMusica(id, imagem)
                     await inserirMusica(id, musica)
 
                     
+=======
+                    await enviarImagemMusica(id, imagem)
+                    await enviarArquivoMusica(id, musica);
+>>>>>>> d2957a09022474d13094db7bba43d33d7e2febf0:site/src/pages/cadastrarmsc/index.js
                 }
                 toast.dark(' Musica alterada com sucesso');
             }
