@@ -72,7 +72,7 @@ export async function enviarArquivoMusica(id, musica){
     const formData = new FormData ();
     formData.append('musica', musica);
 
-    const resposta = await api.put(`/cadastramusica/${id}/musica`, formData,{
+    const resposta = await api.put(`/cadastroMusica/${id}/musica`, formData,{
         headers:{
             "Content-type": "multipart/form-data"
         },

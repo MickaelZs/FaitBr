@@ -112,8 +112,6 @@ export default function Cadastromsc(){
                 if(typeof(imagem) == 'object'){
                     await enviarImagemMusica(id, imagem)
                     await enviarArquivoMusica(id, musica);
-
-                    
                 }
                 toast.dark(' Musica alterada com sucesso');
             }
