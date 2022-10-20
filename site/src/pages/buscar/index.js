@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BuscarArtistaPorNome, listaArtista } from '../../api/cadastroArtistaAPI';
+import { API_URL } from '../../api/config';
 import { buscarGeneroPorNome } from '../../api/generoAPI';
 import './index.scss'
 
@@ -43,7 +44,7 @@ export default function Index(){
             <div className='comp-card'>
             {artista.map(item =>
             <div className='card_artistas' onClick={() => acessarArtista (item.id)}>
-                <img src='.images/anderson.jpeg'/>
+                <img className='cap' src={`${API_URL}/${item.artista}`}/>
                 <h1>{item.nome}</h1>
                 <h3>{item.genero}</h3>
             </div>
