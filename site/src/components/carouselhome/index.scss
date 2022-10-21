@@ -1,6 +1,7 @@
 .contai{
     display: flex;
     flex-direction: row;
+    box-sizing: content-box;
 
 
     .carousel{
@@ -8,6 +9,11 @@
     flex-direction: row;
 
     }
+    .car{
+        padding: 20px;
+
+    }
+    
 
 
 .bordershadow{
@@ -48,6 +54,7 @@
         height: 13em;
 
     }
+    
 
     .imagem{
         height: 13em;
