@@ -1,14 +1,15 @@
 import { Router } from "express";
-import { Cadastrarplaylist, listarTodosPlaylist, playlistItem } from "../repository/playlistRepository.js";
+import { listarArtistaPorGenero } from "../repository/cadastroArtistaRepository.js";
+import { Cadastrarplaylist, listarPlaylistPorIdUsuario, listarTodosPlaylist, playlistItem } from "../repository/playlistRepository.js";
 
 
 const server = Router();
 
-server.post('/criar/playlist', async (req,resp) =>{
+server.post('/criar/:id/playlist', async (req,resp) =>{
     try{
-        const id = req.params.id;
-        const playlistt = req.body;
-        const x = await Cadastrarplaylist(id,playlistt);
+        const idUsuario = req.params.id;
+        const playlist = req.body;
+        const x = await Cadastrarplaylist(idUsuario,playlist);
 
         resp.send(x);
     }
@@ -19,6 +20,23 @@ server.post('/criar/playlist', async (req,resp) =>{
         })
            
        }
+})
+
+server.get('/usuario/:id/playlist', async (req, resp) => {
+    try {
+        const idUsuario = Number(req.params.id);
+        
+        const resposta = await listarPlaylistPorIdUsuario(idUsuario);
+
+        if (!resposta)
+            resp.status(404).send([])
+        else
+            resp.send(resposta);
+    } catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
 })
 
 server.get('/playlist', async (req, resp) => {

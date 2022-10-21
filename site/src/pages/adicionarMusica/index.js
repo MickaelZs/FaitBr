@@ -26,11 +26,14 @@ export default function Index(){
             {musica.map( item => 
             <div className='card'>
                
+               
                 <img src={`${API_URL}/${item.imagem}`} alt="" />
                <h1>Musica: {item.musica}</h1>
                 <h2>Artista: {item.artista}</h2>
                 <h2>Genero: {item.genero}</h2>
                 <audio controls  src={`${API_URL}/${item.audio}`}></audio>
+                <input type="radio"  />
+                
                 </div>
            
                 

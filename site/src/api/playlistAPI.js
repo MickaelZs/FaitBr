@@ -6,13 +6,18 @@ const api = axios.create({
 })
 
 export async function criarPlaylist(nome,idUsuario) {
-    const r = await api.post('/criar/playlist',{
-        playlist: nome,
-        usuario: idUsuario,
+    const r = await api.post('/criar/' + idUsuario +'/playlist',{
+        nome: nome,
+        
         
     })
     return r.data;
 }
+
+export async function listarPlaylistPorIdUsuarioo(idUsuario){
+    const resposta = await api.get('/usuario/' + idUsuario + '/playlist');
+    return resposta.data;
+  }
 
 
 export async function listaPlaylist(){
