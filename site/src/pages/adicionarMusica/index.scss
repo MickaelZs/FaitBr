@@ -1,12 +1,42 @@
 .add{
+    margin:0 ;
+    background-color: #1e1e1e;
+    
+
     .card{
         display: flex;
         flex-direction: row;
-        border: solid 2px red;
+        justify-content: center;
+        align-items: center;
+      //  border: solid 2px red;
+        
+        margin: 10px;
+        position: relative;
+ 
+        box-shadow: 1px 2px 10px #e3e3e3;
+        background-color: #fff;
+       
+        width: 900px;
+        height: 7em;
+        border-radius: 20px;
+       
+        
+
     }
 
+    h2{
+        color: #1e1e1e;
+    }
+
+    h1{
+        color: #1e1e1e;
+    }
+
+
+
     img{
-        width: 5em;
-        height: 5em;
+        width: 8em;
+        height: 7em;
+        border-radius: 20px 0px 0px 20px;
     }
 }

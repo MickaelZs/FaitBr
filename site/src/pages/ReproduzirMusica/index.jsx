@@ -31,8 +31,10 @@ export default function Reproduzir(){
             </section>
             <section className='div-reproducao'>
                 {musica.map(item => 
-                <div>
+                <div> 
                 <img src={`${API_URL}/${item.imagem}`} width="500px"/>
+                <h1>{item.nome}</h1>
+                <audio controls src={`${API_URL}/${item.musica}`}  > </audio>
             </div>
                     
                     )}
