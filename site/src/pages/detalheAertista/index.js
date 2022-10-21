@@ -36,7 +36,7 @@ export default function Index(){
 
     },[])
     //src={`${API_URL}/${artista.artista}`}
-    //<img className="capa" src={`${API_URL}/${item.imagem}`}></img>
+   
 
     return(
         <main className='comp-detalhe'>
@@ -45,12 +45,12 @@ export default function Index(){
                 <div className='aaaa'>
 
                         <div className="imagem">
-                            <img src='/images/teto.jpg' />
+                        <img className="capa" src={`${API_URL}/${artista.artista}`}></img>
                         </div>
 
                     <div className='box-info'>
                         <p>{artista.id}</p>
-                        <h1 className="titulo-artista">mc poze{artista.nome}</h1>
+                        <h1 className="titulo-artista">{artista.nome}</h1>
 
                         <div className="genero">
                             <h3 >Genero:</h3>
@@ -66,19 +66,20 @@ export default function Index(){
                     </div>
 
                 </div>
-                
+                {musica.map(item => 
                     <div className='card-musica'>
-                        {musica.map(item => 
+                        
                         <div  onClick={() => acessarMusica(item.id)}>
-                            <img className="capa" src='/images/teto.jpg'></img>
+                            <img className="capaMusic" src={`${API_URL}/${item.imagem}`}></img>
                             <div className='text'>
                             <p className='nome'>aaaaa{item.nome} </p>
                             <p className='nome'>aaaaaaaaaaa{item.genero}</p>
                             </div>
 
                         </div>    
-                        )}
+                       
                     </div>
+                    )}
             </div>
 
             </body>
