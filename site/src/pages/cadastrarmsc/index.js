@@ -14,28 +14,32 @@ import { API_URL } from '../../api/config';
 
 export default function Cadastromsc(){
     const [nome,setNome] = useState('')
-    const [artista,setArtista] = useState([])
-    const [idArtista,setIdArtista] = useState('')
+    const [artista, setArtista] = useState([]);
+    const [idArtista,setIdArtista] = useState(0)
     const [genero,setGenero] = useState([])
+    const [newArtista, setNewArtista] = useState([]);
     const [idGenero,setIdGenero] = useState ('')
     const [musica,setMusica] = useState ('')
     const [imagem,setImagem] = useState ('')
     const [id,setId] = useState(0)
-    const {idParam} = useParams()
+
+    const { idParam } = useParams();
 
     async function carregarMusica (){
         const resposta = await buscarMusicaPorId(idParam);
-        setId(resposta.id) 
-        setNome(resposta.nome)
-        setIdGenero(resposta.genero)
-        setArtista(resposta.artista)
-        setImagem(resposta.imagem)
-        setMusica(resposta.musica)
+        setId(resposta[0].id) 
+        setNome(resposta[0].nome)
+        setIdGenero(resposta[0].genero)
+        setArtista(resposta[0].artista)
+        setImagem(resposta[0].imagem)
+        setMusica(resposta[0].musica)
+       
+
     }
 
     async function carregarArtista(){
         const resp = await listaArtista()
-        setArtista(resp)
+        setNewArtista(resp)
     }
 
     async function carregarGeneros(){
@@ -165,10 +169,9 @@ export default function Cadastromsc(){
                 <div className='div2-cadastro'>
                     <div className='div-input'>
                     <select value={idArtista} onChange={e => setIdArtista(e.target.value)}>
-                        <option selected disabled hidden> Artista </option>
-                        {artista.map(item =>
-                            <option value={item.id}> {item.nome} </option>
-                        )}
+                        <option selected disabled hidden> artista </option>
+                        {newArtista.map((item) => <option value={item.id}>{item.nome}</option>)}
+                       
                     </select>
                     </div>
                    
@@ -187,7 +190,7 @@ export default function Cadastromsc(){
                     <div className='div-input'>
                     <select value={idGenero} onChange={e => setIdGenero(e.target.value)}>
                         <option selected disabled hidden> generos </option>
-                        {genero.map(item =>
+                        {genero.map((item) =>
                             <option value={item.id}> {item.nome} </option>
                         )}
                     </select>

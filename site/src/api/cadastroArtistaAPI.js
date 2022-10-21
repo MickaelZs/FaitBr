@@ -36,6 +36,7 @@ export async function enviarImagemArtista(id, imagem){
 
 export async function listaArtista(){
     const resposta = await api.get('/artista');
+    console.log(resposta)
     return resposta.data;
   }
 

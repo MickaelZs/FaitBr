@@ -1,7 +1,7 @@
 
 import './index.scss'
-import  "react-responsive-carousel/lib/styles/carousel.min.css" ; 
-import  {  Carousel  }  from  'react-responsive-carousel' ;
+//import  "react-responsive-carousel/lib/styles/carousel.min.css" ; 
+//import  {  Carousel  }  from  'react-responsive-carousel' ;
 
 
 export default function Carouselhome(props){
@@ -10,7 +10,7 @@ export default function Carouselhome(props){
             
         <main className='contai'>
             
-                <Carousel >
+          
       
         <div className='bordershadow'>
             <div className="padding">
@@ -39,7 +39,7 @@ export default function Carouselhome(props){
         
         
        
-         </Carousel>
+      
         </main>
        
     )
