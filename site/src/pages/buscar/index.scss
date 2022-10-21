@@ -1,6 +1,11 @@
 .pagina-buscar{
-    background-color: #8D32E5;
-    padding-top: -4em;
+    background-color: #1e1e1e;
+    background-size: 100%;
+    height: auto;
+    padding-top: 3em;
+}
+body{
+    background-color: #1e1e1e;
 }
 
 .caixa-busca {
@@ -12,7 +17,7 @@
     border-radius: 15px;
     box-shadow: 1px 1px 5px #bdbdbd;
     width: 40%;
-    margin-top: 30px;
+    margin-top: 0px;
     justify-content: center;
     
 }
@@ -41,7 +46,7 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
-    justify-content: space-evenly;
+    justify-content: space-around;
 
 }
 

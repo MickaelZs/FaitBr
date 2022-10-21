@@ -5,6 +5,7 @@ import DetalheArtista from "../../components/detalheArtista"
 import Cabeçario from "../../components/cabeçalho"
 import { buscarArtistaPorMusicaId, listaMusicaArtista } from "../../api/musicaAPI"
 import { API_URL } from "../../api/config"
+import './index.scss'
 
 
 export default function Index(){
@@ -34,36 +35,53 @@ export default function Index(){
         carregarArtistaPorMusica()
 
     },[])
+    //src={`${API_URL}/${artista.artista}`}
+    //<img className="capa" src={`${API_URL}/${item.imagem}`}></img>
+
     return(
         <main className='comp-detalhe'>
-        <div className=''>
-            <img src={`${API_URL}/${artista.artista}`} />
-            <div className='box-info'>
-                <p>{artista.id}</p>
-                <h1>{artista.nome}</h1>
-                <div className='info'>
-                    <h3>Genero</h3>
-                    <p>{artista.genero}</p>
-                </div>
-                <div className='info'>
-                    <h3>Sobre</h3>
-                    <p className='sinopse'>{artista.sobre} </p>
-                </div>
+            <body>
+            <div className="comp-card">
+                <div className='aaaa'>
 
-                {musica.map(item => 
-                <div className='card' onClick={() => acessarMusica(item.id)}>
-                <img className="capa" src={`${API_URL}/${item.imagem}`}></img>
-                <div className='text'>
-                <p className='nome'>{item.nome} </p>
-                <p className='nome'>{item.genero}</p>
-                
-                </div>    
-                
+                        <div className="imagem">
+                            <img src='/images/teto.jpg' />
+                        </div>
+
+                    <div className='box-info'>
+                        <p>{artista.id}</p>
+                        <h1 className="titulo-artista">mc poze{artista.nome}</h1>
+
+                        <div className="genero">
+                            <h3 >Genero:</h3>
+                            <p className="--genero">Funk{artista.genero}</p>
+                        </div>
+
+                        <div className='genero'>
+                            <h3>Sobre</h3>
+                            <p className='sinopse'>Marlon Brandon Coelho Couto Silva, mais conhecido pelo seu nome artístico MC Poze do Rodo ou simplesmente MC Poze, é um rapper e cantor brasileiro de funk carioca.{artista.sobre} </p>
+                        </div>
+                        <button className='botao'>Seguir</button>
+
+                    </div>
+
                 </div>
-                )}
-        
+                
+                    <div className='card-musica'>
+                        {musica.map(item => 
+                        <div  onClick={() => acessarMusica(item.id)}>
+                            <img className="capa" src='/images/teto.jpg'></img>
+                            <div className='text'>
+                            <p className='nome'>aaaaa{item.nome} </p>
+                            <p className='nome'>aaaaaaaaaaa{item.genero}</p>
+                            </div>
+
+                        </div>    
+                        )}
+                    </div>
             </div>
-        </div>
+
+            </body>
         </main>
     )
 }
