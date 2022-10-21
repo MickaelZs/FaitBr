@@ -113,3 +113,19 @@ foreign key (id_playlist) references tb_playlist (id_playlist),
 foreign key (id_musica) references tb_musicas (id_musica)
 );
 
+create table tb_usuario_musica_favorita(
+id_usuario_musica_favorita  int primary key auto_increment,
+id_usuario int, 
+id_musica int,
+foreign key (id_usuario) references tb_usuario(id_usuario),
+foreign key(id_musica) references tb_musicas(id_musica)
+);
+
+
+create table tb_usuario_artista_seguido(
+id_usuario_artista_seguido  int primary key auto_increment,
+id_usuario int, 
+id_artista int,
+foreign key (id_usuario) references tb_usuario(id_usuario),
+foreign key(id_musica) references tb_artista(id_musica)
+);
