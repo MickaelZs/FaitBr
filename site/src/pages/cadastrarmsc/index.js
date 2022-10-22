@@ -30,7 +30,7 @@ export default function Cadastromsc(){
         setId(resposta[0].id) 
         setNome(resposta[0].nome)
         setIdGenero(resposta[0].genero)
-        setNewArtista(resposta[0].artista)
+        setArtista(resposta[0].artista)
         setImagem(resposta[0].imagem)
         setMusica(resposta[0].musica)
     }

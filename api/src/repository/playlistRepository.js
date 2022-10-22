@@ -40,12 +40,12 @@ export async function listarTodosPlaylist() {
     return linhas;
 }
 
-export async function playlistItem(item){
+export async function playlistItem(idPlaylist,item){
     const comando = 
     `insert Into tb_playlist_item (id_playlist, id_musica)
     values( ?, ?)`
 
-    const [resposta] = await con.query(comando,[item.playlist,item.musica]);
+    const [resposta] = await con.query(comando,[idPlaylist,item.musica]);
     item.id = resposta.insertId;
 
     return item;
