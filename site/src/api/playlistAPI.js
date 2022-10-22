@@ -9,7 +9,6 @@ export async function criarPlaylist(nome,idUsuario) {
     const r = await api.post('/criar/' + idUsuario +'/playlist',{
         nome: nome,
         
-        
     })
     return r.data;
 }

@@ -92,6 +92,28 @@ const [resposta] = await con.query(comando,[musica.genero,musica.artista,musica.
 return resposta.affectedRows;
 }
 
+export async function MusicaFavorita(idUsuario,musica){
+    const comando = `insert into tb_usuario_musica_favorita(id_usuario,id_musica)
+    values (?,?);`
+
+    const [resposta] = await con.query(comando,[idUsuario,musica.musica]);
+    musica.id = resposta.insertId;
+
+    return musica;
+}
+
+export async function listarcurtidaPorIdUsuario(idUsuario) {
+    const comando =
+    `select id_usuario_musica_favorita id,
+    id_usuario usuario,
+    id_musica musica
+    from tb_usuario_musica_favorita
+    where id_usuario = ?;`
+    
+    const [linhas] = await con.query(comando, [idUsuario]);
+    return linhas;
+}
+
 
 
 
