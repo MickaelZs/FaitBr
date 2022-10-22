@@ -127,3 +127,7 @@ export async function buscarPorNome(nome) {
     const [linhas] = await con.query(comando, [`%${nome}%`]);
     return linhas;
 }
+
+export async function seguir(){
+    
+}
