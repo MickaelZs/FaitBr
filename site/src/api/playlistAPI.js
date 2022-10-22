@@ -9,7 +9,6 @@ export async function criarPlaylist(nome,idUsuario) {
     const r = await api.post('/criar/' + idUsuario +'/playlist',{
         nome: nome,
         
-        
     })
     return r.data;
 }
@@ -25,11 +24,9 @@ export async function listaPlaylist(){
     return resposta.data;
   }
 
-
-export async function criarPlaylistItem(idPlaylist,idMusica) {
-    const r = await api.post('/playlist/item',{
-        playlist: idPlaylist,
-        musica: idMusica,
+  export async function PlaylistItem(musica,idPlaylist) {
+    const r = await api.post('/playlist/' + idPlaylist +'/item',{
+        musica: musica,
         
     })
     return r.data;

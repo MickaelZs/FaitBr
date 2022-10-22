@@ -62,6 +62,8 @@ export default function Playlist(){
                     
                 
                     toast.dark('Playlist criada');
+                    navigate('/AdicionarMusica')
+                    
 
             
                   

@@ -50,10 +50,11 @@ server.get('/playlist', async (req, resp) => {
     }
 })
 
-server.post('/playlist/item', async (req,resp) =>{
+server.post('/playlist/:id/item', async (req,resp) =>{
     try{
+        const idPlaylist = req.params.id;
         const item = req.body;
-        const x = await playlistItem(item);
+        const x = await playlistItem(idPlaylist,item);
 
         resp.send(x);
     }
@@ -65,17 +66,5 @@ server.post('/playlist/item', async (req,resp) =>{
            
        }
 })
-
-
-
-
-
-
-
-
-
-
-
-
 
 export default server;

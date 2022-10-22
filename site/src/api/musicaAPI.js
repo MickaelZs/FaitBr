@@ -16,6 +16,19 @@ export async function cadastraMusica(nome,idGenero,idArtista) {
 }
 
 
+export async function curtirMusica(musica,idUsuario) {
+    const r = await api.post('/curtir/' + idUsuario +'/musica',{
+        musica: musica,
+
+    })
+    return r.data;
+}
+
+export async function listarCurtidas(idUsuario){
+    const resposta = await api.get('/musica/' + idUsuario + '/curtidas');
+    return resposta.data;
+  }
+
 
 
 export async function inserirMusica(id, musica){

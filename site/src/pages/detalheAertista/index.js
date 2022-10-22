@@ -1,21 +1,62 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { buscarPorId } from "../../api/cadastroArtistaAPI"
+import { ToastContainer, toast } from 'react-toastify';
 import DetalheArtista from "../../components/detalheArtista"
 import Cabeçario from "../../components/cabeçalho"
-import { buscarArtistaPorMusicaId, listaMusicaArtista } from "../../api/musicaAPI"
+import { buscarArtistaPorMusicaId, curtirMusica, listaMusicaArtista, listarCurtidas } from "../../api/musicaAPI"
 import { API_URL } from "../../api/config"
 import './index.scss'
+import Storage from 'local-storage'
+
 
 
 export default function Index(){
+
+    const [like,setLike] = useState(false)
     const[artista, setArtista] = useState ([])
     const[musica, setMusica] = useState ([])
     const {idParam} = useParams ()
     const navigate = useNavigate()
 
+
+
+
+
+          
+     
+
     function acessarMusica(id){
         navigate(`/Reproduzir/${id}`)
+    }
+
+    
+    async function carregarCurtidas(){
+        const id = Storage('usuario-logado').id;
+        const resp = await listarCurtidas(id)
+        (resp)
+
+    }
+
+    
+
+
+
+
+
+    async function curtir (){
+        try{
+             let id = Storage('usuario-logado').id;
+            const resp = await curtirMusica(like,id)
+  
+            toast.dark('musica curtidaa'); 
+
+        }
+
+        catch{
+
+        }
+       
     }
 
 
@@ -33,6 +74,7 @@ export default function Index(){
     useEffect (() => {
         carregarArtista()
         carregarArtistaPorMusica()
+        carregarCurtidas()
 
     },[])
     //src={`${API_URL}/${artista.artista}`}
@@ -40,6 +82,7 @@ export default function Index(){
 
     return(
         <main className='comp-detalhe'>
+            <ToastContainer/>
             <body>
             <div className="comp-card">
                 <div className='aaaa'>
@@ -75,9 +118,20 @@ export default function Index(){
                             <p className='nome'>aaaaa{item.nome} </p>
                             <p className='nome'>aaaaaaaaaaa{item.genero}</p>
                             </div>
-
-                        </div>    
-                       
+                           
+                        </div> 
+                        
+                        <div>
+                         
+                                
+                              
+            
+             
+            
+                
+           
+          </div> 
+                        
                     </div>
                     )}
             </div>
