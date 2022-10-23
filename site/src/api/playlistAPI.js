@@ -24,9 +24,9 @@ export async function listaPlaylist(){
     return resposta.data;
   }
 
-  export async function PlaylistItem(musica,idPlaylist) {
+  export async function PlaylistItem(musicaa,idPlaylist) {
     const r = await api.post('/playlist/' + idPlaylist +'/item',{
-        musica: musica,
+        musica: musicaa,
         
     })
     return r.data;

@@ -7,6 +7,7 @@ import Cabeçario from "../../components/cabeçalho"
 import { buscarArtistaPorMusicaId, curtirMusica, listaMusicaArtista, listarCurtidas } from "../../api/musicaAPI"
 import { API_URL } from "../../api/config"
 import './index.scss'
+
 import Storage from 'local-storage'
 
 

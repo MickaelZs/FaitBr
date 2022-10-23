@@ -43,6 +43,10 @@ export default function Playlist(){
 
     },[])
 
+    function acessarPlaylist(id){
+        navigate(`/adicionarMusica/${id}`)
+    }
+
 
     async function carregarPlaylist(){
         const id = Storage('usuario-logado').id;
@@ -59,14 +63,11 @@ export default function Playlist(){
                let id = Storage('usuario-logado').id;
                 
                     const NovaPlaylist = await criarPlaylist (nome,id); 
-                    
-                
-                    toast.dark('Playlist criada');
-                    navigate('/AdicionarMusica')
-                    
+                    Storage('Playlist',NovaPlaylist)
 
-            
-                  
+                    navigate('/AdicionarMusica')
+                    toast.dark('Playlist criada');
+     
                 }
      
             catch (err){
@@ -161,7 +162,7 @@ export default function Playlist(){
         centerMode
       >
             {usu.map(item =>
-            <section className='section-playlist'>
+            <section className='section-playlist' onClick={() => acessarPlaylist (item.id)}>
             <h2 className='titulo-playlist'>Playlist</h2>
             <div className='playlist'>
                 

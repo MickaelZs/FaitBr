@@ -41,6 +41,7 @@ export async function listarTodosPlaylist() {
 }
 
 export async function playlistItem(idPlaylist,item){
+    
     const comando = 
     `insert Into tb_playlist_item (id_playlist, id_musica)
     values( ?, ?)`

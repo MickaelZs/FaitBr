@@ -93,10 +93,10 @@ return resposta.affectedRows;
 }
 
 export async function MusicaFavorita(idUsuario,musica){
-    const comando = `insert into tb_usuario_musica_favorita(id_usuario,id_musica)
-    values (?,?);`
+    const comando = `insert into tb_usuario_musica_favorita(id_usuario,id_musica,bt_like)
+    values (?,?,?);`
 
-    const [resposta] = await con.query(comando,[idUsuario,musica.musica]);
+    const [resposta] = await con.query(comando,[idUsuario,musica.musica,musica.curtir]);
     musica.id = resposta.insertId;
 
     return musica;
@@ -106,12 +106,13 @@ export async function listarcurtidaPorIdUsuario(idUsuario) {
     const comando =
     `select id_usuario_musica_favorita id,
     id_usuario usuario,
-    id_musica musica
+    id_musica musica,
+    bt_like curtir
     from tb_usuario_musica_favorita
-    where id_usuario = ?;`
+    where id_usuario = ?`
     
     const [linhas] = await con.query(comando, [idUsuario]);
-    return linhas;
+    return linhas[0];
 }
 
 
