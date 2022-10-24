@@ -65,7 +65,7 @@ export default function Index(){
                 <h2> {item.artista}</h2>
                 <h2> {item.genero}</h2>
                 <audio controls  src={`${API_URL}/${item.audio}`}></audio>
-                <button onClick={salvar}>Adicionar</button>
+                <button onClick={() => salvar (item.id)}>Adicionar</button>
                 
                 </div>
            
@@ -75,4 +75,6 @@ export default function Index(){
         </div>
     )
 }
+
+
 
