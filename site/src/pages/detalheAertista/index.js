@@ -14,7 +14,7 @@ import Storage from 'local-storage'
 
 export default function Index(){
 
-    const [like,setLike] = useState(false)
+    const [curtir,setCurtir] = useState(false)
     const[artista, setArtista] = useState ([])
     const[musica, setMusica] = useState ([])
     const {idParam} = useParams ()
@@ -45,18 +45,22 @@ export default function Index(){
 
 
 
-    async function curtir (){
+    async function curtirr (position){
         try{
              let id = Storage('usuario-logado').id;
-            const resp = await curtirMusica(like,id)
+             let musicaSelecionada = musica[position].id_musica
+            const resp = await curtirMusica(curtir,musicaSelecionada,id)
   
             toast.dark('musica curtidaa'); 
 
         }
 
-        catch{
+        catch(err){
+            if (err.response) toast.error(err.response.data.erro);
+            else toast.error(err.message);
 
         }
+    
        
     }
 
@@ -110,31 +114,37 @@ export default function Index(){
                     </div>
 
                 </div>
-                {musica.map(item => 
+                {musica.map((item,index ) => 
                     <div className='card-musica'>
                         
                         <div  onClick={() => acessarMusica(item.id)}>
                             <img className="capaMusic" src={`${API_URL}/${item.imagem}`}></img>
                             <div className='text'>
-                            <p className='nome'>aaaaa{item.nome} </p>
-                            <p className='nome'>aaaaaaaaaaa{item.genero}</p>
+                            <p className='nome'>{item.nome} </p>
+                            <p className='nome'>{item.genero}</p>
                             </div>
                            
                         </div> 
-                        
                         <div>
-                         
-                                
-                              
-            
-             
-            
-                
+            <div  onClick={() => curtirr (index)  (!curtir)}>
+                <img  src="/images/heart.png" alt="" />
            
-          </div> 
+
+            {curtir &&
+
+            
+                <img src="/images/heart on.png" alt="" />}
+ 
+            </div>
+          
+            
+        </div>
+             
                         
                     </div>
                     )}
+
+  
             </div>
 
             </body>
