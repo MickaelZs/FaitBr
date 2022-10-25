@@ -1,5 +1,5 @@
 import { Router} from "express";
-import { alteraArtista, alterarImagem, buscarImagem, buscarPorId, buscarPorNome, cadastrorArtista, deletaArtista, ListaPorId, listarArtistaPorGenero, listarTodosArtista } from "../repository/cadastroArtistaRepository.js"
+import { alteraArtista, alterarImagem, buscarImagem, buscarPorId, buscarPorNome, cadastrorArtista, deletaArtista, ListaPorId, listarArtistaPorGenero, listarTodosArtista, seguirArtista } from "../repository/cadastroArtistaRepository.js"
 import multer from 'multer';
 
 
@@ -190,6 +190,22 @@ server.put ('/artista/:id', async (req,resp) => {
         resp.status(401).send({
             erro: err.message
         })
+    }
+})
+
+server.post('/seguir/:id/artista' , async(req, resp) => {
+
+    try{
+        const idUsuario = Number(req.params.id)
+        const artista = req.body;
+        const x = await seguirArtista(idUsuario,artista);
+
+        resp.send(x);
+    }
+    catch (err){
+        resp.status(401).send({
+            erro: err.message
+        })   
     }
 })
 

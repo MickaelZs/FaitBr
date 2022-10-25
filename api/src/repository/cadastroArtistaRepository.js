@@ -128,6 +128,12 @@ export async function buscarPorNome(nome) {
     return linhas;
 }
 
-export async function seguir(){
-    
+export async function seguirArtista(idUsuario,artista){
+    const comando = `insert into tb_usuario_artista_seguido(id_usuario, id_artistas)
+                    values(?, ?);`
+
+    const [resposta] = await con.query(comando,[idUsuario,artista.artista]);
+    artista.id = resposta.insertId;
+
+    return artista;
 }

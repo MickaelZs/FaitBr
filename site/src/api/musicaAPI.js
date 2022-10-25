@@ -16,11 +16,10 @@ export async function cadastraMusica(nome,idGenero,idArtista) {
 }
 
 
-export async function curtirMusica (musica,curtir,idUsuario) {
+export async function curtirMusica (musica,idUsuario) {
     const r = await api.post('/curtir/' + idUsuario +'/musica',{
         musica: musica,
-        curtir: curtir,
-
+       
     })
     return r.data;
 }

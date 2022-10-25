@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import { buscarPorId } from "../../api/cadastroArtistaAPI"
+import { buscarPorId, seguirArtista } from "../../api/cadastroArtistaAPI"
 import { ToastContainer, toast } from 'react-toastify';
-import DetalheArtista from "../../components/detalheArtista"
-import Cabeçario from "../../components/cabeçalho"
 import { buscarArtistaPorMusicaId, curtirMusica, listaMusicaArtista, listarCurtidas } from "../../api/musicaAPI"
 import { API_URL } from "../../api/config"
 import './index.scss'
@@ -14,7 +12,6 @@ import Storage from 'local-storage'
 
 export default function Index(){
 
-    const [curtir,setCurtir] = useState(false)
     const[artista, setArtista] = useState ([])
     const[musica, setMusica] = useState ([])
     const {idParam} = useParams ()
@@ -39,18 +36,24 @@ export default function Index(){
 
     }
 
-    
-
-
-
-
+    async function seguir (position){
+        try{
+            let id = Storage ('usuario-logado').id;
+            const resp = await seguirArtista(artista[0],id)
+            toast.dark('vamosssss')
+        }
+        catch(err){
+            if (err.response) toast.error(err.response.data.erro);
+            else toast.error(err.message);
+        }
+    }
 
     async function curtirr (position){
         try{
              let id = Storage('usuario-logado').id;
-             let musicaSelecionada = musica[position].id_musica
-            const resp = await curtirMusica(curtir,musicaSelecionada,id)
-  
+             let musicaSelecionada = musica[position].id
+            const resp = await curtirMusica(musicaSelecionada,id)
+           
             toast.dark('musica curtidaa'); 
 
         }
@@ -61,19 +64,19 @@ export default function Index(){
 
         }
     
-       
     }
 
 
     async function carregarArtista (){
         const resp = await buscarPorId(idParam)
         setArtista(resp)
+        console.log(resp)
     }
 
     async function carregarArtistaPorMusica(){
         const resp = await buscarArtistaPorMusicaId(idParam)
             setMusica(resp)
-            console.log(resp)
+           
     }
 
     useEffect (() => {
@@ -102,14 +105,14 @@ export default function Index(){
 
                         <div className="genero">
                             <h3 >Genero:</h3>
-                            <p className="--genero">Funk{artista.genero}</p>
+                            <p className="--genero">{artista.genero}</p>
                         </div>
 
                         <div className='genero'>
                             <h3>Sobre</h3>
-                            <p className='sinopse'>Marlon Brandon Coelho Couto Silva, mais conhecido pelo seu nome artístico MC Poze do Rodo ou simplesmente MC Poze, é um rapper e cantor brasileiro de funk carioca.{artista.sobre} </p>
+                            <p className='sinopse'>{artista.sobre} </p>
                         </div>
-                        <button className='botao'>Seguir</button>
+                        <button className='botao' onClick={() => seguir (artista.id) }>Seguir</button>
 
                     </div>
 
@@ -126,16 +129,10 @@ export default function Index(){
                            
                         </div> 
                         <div>
-            <div  onClick={() => curtirr (index)  (!curtir)}>
-                <img  src="/images/heart.png" alt="" />
-           
-
-            {curtir &&
-
+                           
+          
+               <button onClick={() => curtirr (index)} >curtir</button>
             
-                <img src="/images/heart on.png" alt="" />}
- 
-            </div>
           
             
         </div>

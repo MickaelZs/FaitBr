@@ -93,10 +93,10 @@ return resposta.affectedRows;
 }
 
 export async function MusicaFavorita(idUsuario,musica){
-    const comando = `insert into tb_usuario_musica_favorita(id_usuario,id_musica,bt_like)
-    values (?,?,?);`
+    const comando = `insert into tb_usuario_musica_favorita (id_usuario,id_musica)
+    values (?,?);`
 
-    const [resposta] = await con.query(comando,[idUsuario,musica.musica,musica.curtir]);
+    const [resposta] = await con.query(comando,[idUsuario,musica.musica]);
     musica.id = resposta.insertId;
 
     return musica;
