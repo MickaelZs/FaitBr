@@ -1,6 +1,5 @@
 import { Router } from "express";
-import { listarArtistaPorGenero } from "../repository/cadastroArtistaRepository.js";
-import { Cadastrarplaylist, listarPlaylistPorIdUsuario, listarTodosPlaylist, playlistItem } from "../repository/playlistRepository.js";
+import { Cadastrarplaylist, deletaPlaylist, listarPlaylistPorIdUsuario, listarTodosPlaylist, playlistItem } from "../repository/playlistRepository.js";
 
 
 const server = Router();
@@ -66,6 +65,23 @@ server.post('/playlist/:id/item', async (req,resp) =>{
         })
            
        }
+})
+
+server.delete ('/playlist/:id',async (req,resp) => {
+    try{
+
+        const { id } = req.params;
+    
+        const resposta = await deletaPlaylist(id);
+        resp.status(200).send();
+    }
+
+    catch (err){
+        resp.status(401).send({
+            erro: err.message
+        })
+    }
+
 })
 
 export default server;

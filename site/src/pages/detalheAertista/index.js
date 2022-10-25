@@ -96,7 +96,7 @@ export default function Index(){
                 <div className='aaaa'>
 
                         <div className="imagem">
-                        <img className="capa" src={`${API_URL}/${artista.artista}`}></img>
+                         <img className="capa" src={`${API_URL}/${artista.artista}`}></img>
                         </div>
 
                     <div className='box-info'>
@@ -117,26 +117,31 @@ export default function Index(){
                     </div>
 
                 </div>
+
                 {musica.map((item,index ) => 
                     <div className='card-musica'>
                         
                         <div  onClick={() => acessarMusica(item.id)}>
-                            <img className="capaMusic" src={`${API_URL}/${item.imagem}`}></img>
-                            <div className='text'>
-                            <p className='nome'>{item.nome} </p>
-                            <p className='nome'>{item.genero}</p>
-                            </div>
-                           
+
+                            <div className="gambiarra">
+                                <div className="imagem-musica">
+                                    <img className="capaMusic" src={`${API_URL}/${item.imagem}`}></img>
+                                </div>
+
+                                <div className='text'>
+                                    <p className='nome'>{item.nome} </p>
+                                    <p className='nome'>{item.genero}</p>
+                                </div>
+
+                                <div>
+                                    <button className="curtida" onClick={() => curtirr (index)} >curtir</button>
+                                </div>
+
+                            </div> 
+
                         </div> 
-                        <div>
-                           
-          
-               <button onClick={() => curtirr (index)} >curtir</button>
-            
-          
-            
-        </div>
-             
+
+                        
                         
                     </div>
                     )}
