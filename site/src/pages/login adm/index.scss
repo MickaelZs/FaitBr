@@ -3,6 +3,26 @@
 .pagina-loginADM{
     display: flex;
     flex-direction: column;
+   
+    align-items: center;
+    justify-content: center;
+      background: linear-gradient(-45deg, #8D32E5, #e73c7e, #8D32E5, #AB72E1);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+  
+    
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
 
     
     
@@ -11,7 +31,7 @@
     .faixa-1{
       display: flex;
       flex-direction: row;
-          background-color: #8d32e5;
+          background-color: #aaa2b3;
         height: 20vh;
         align-items: center;
     
@@ -23,11 +43,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #8d32e5;
-        height: 80vh;
+   
         
 
     }
+  
+
 
     
   
@@ -38,7 +59,9 @@
     }
     
     .label-float input{
-      background-color: #8d32e5;
+      background-color: #ffffff4d;
+      -webkit-backdrop-filter: blur(40px);
+backdrop-filter: blur(40px);
       border: 1px solid lightgrey;
       border-radius: 5px;
   
@@ -71,7 +94,7 @@
       transition: all .1s linear;
       -webkit-transition: all .1s linear;
       -moz-transition: all .1s linear;
-      background-color: #8d32e5;
+      background-color: #ffffff4d;
       color: white;
       padding: 5px;
       box-sizing: border-box;

@@ -66,17 +66,17 @@ export default function Index() {
                             <input type='file' id='imagemCapa' onChange={e => setImagem(e.target.files[0])} ></input>
 
                         </div>
-                        <h2>Alterar foto de perfil</h2>
+                       
 
                     </div>
 
                     <div>
                         <div className='sla-cara'>
-                            <img src='/images/lapis.svg' />
-                            <h1>Neymar 123</h1>
+                            
+                            <h1>{usuario.nome}</h1>
                         </div>
 
-                        <h2>alterar nome de usuário</h2>
+                       
                     </div>
                 </div>
 
@@ -108,10 +108,7 @@ export default function Index() {
 
 
 
-                        <div className='faixa3-div2-sla'>
-                            <img className='lapis' src='/images/lapis.svg' />
-                            <h1>Alterar email</h1>
-                        </div>
+                        
                     </div>
 
                     <div className='faixa3-div2'>
@@ -120,17 +117,14 @@ export default function Index() {
                             <h3>{usuario.senha}</h3>
                         </div>
 
-                        <div className='faixa3-div2-sla'>
-                            <img className='lapis' src='/images/lapis.svg' />
-                            <h1>Alterar senha</h1>
-                        </div>
+                      
 
                     </div>
 
                 </div>
 
                 <hr />
-
+{/* 
                 <div className='faixa3'>
                     <div className='faixa3-div1'>
                         <h1>Informações extras</h1>
@@ -163,7 +157,7 @@ export default function Index() {
                         <input type='text' placeholder='escreva algo' />
                     </div>
 
-                </div>
+                </div> */}
 
             </section>
 

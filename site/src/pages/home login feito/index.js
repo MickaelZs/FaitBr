@@ -1,5 +1,5 @@
 import './index.scss'
-import storage from 'local-storage'
+import Storage from 'local-storage'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import AudioPlayer from 'react-modular-audio-player' ;
@@ -19,17 +19,19 @@ export default function Index() {
 
   const [artista,setArtista] = useState ([])
   const [genero,setGenero] = useState ([])
-  const [usuario,setUsuario] = useState ({})
+  const [usuario,setUsuario] = useState ([])
   const [imagem,setImagem] = useState ('')
   const navigate = useNavigate() 
   const {idParam} = useParams()
 
-  function acessarPerfil(id){
+  function acessarPerfil(){
+    const id = Storage('usuario-logado').id
     navigate(`/informacao/${id}`)
 }
 
 async function carregarUsuario(){
-  const reso = await buscarUsuarioPorId(idParam)
+  const id = Storage('usuario-logado').id
+  const reso = await buscarUsuarioPorId(id)
   setUsuario(reso)
 
   
@@ -119,21 +121,20 @@ useEffect(() => {
              
               <img className='icon-livraria' src='./images/icon-library.png'/>
               <div>
-              
-              <div className='usuario' onClick={() => acessarPerfil ( <Perfil usuario={usuario}/>
-              )} >
+             
+              <div className='usuario' onClick={() => acessarPerfil  } >
                 
 
          </div> 
+          
         
           </div>
           </div>
         </header>
-        <div className='usuario'  />
+       
 
         <div className='faixa'>
-          <h1>Play Music</h1>
-           <img className='imag' src='/images/Music-pana.png'></img>
+        
 
           <AudioPlayer
   audioFiles={[

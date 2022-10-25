@@ -4,21 +4,53 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
-import Modal from 'react-modal';
+import modal from 'react-modal';
 import React, { useEffect, useState } from 'react'
 import { criarPlaylist, criarPlaylistItem, listarPlaylistPorIdUsuarioo } from '../../api/playlistAPI';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import Storage from 'local-storage'
 import { buscarUsuarioPorId } from '../../api/usuarioAPI';
+import Modal from 'react-modal';
+
+
+const  customStyles  =  { 
+    content : { 
+      top : '50%' , 
+      left : '50%' , 
+      right : 'auto' , 
+      bottom : 'auto' , 
+      marginRight : '-50%' , 
+      transform : 'translate(-50%, -50%)' , 
+    } , 
+  } ;
 
 export default function Playlist(){
 
     const [nome,setNome] = useState('')
     const [idUsuario,setIdUsuario] = useState('')
     const [usu,setUsu] = useState([])
+    const [modal,setModal] = useState (false)
  //   const [id,setId] = useState(0)
     const navigate = useNavigate()
+
+    
+        let subtitle;
+        const [modalIsOpen, setIsOpen] = React.useState(false);
+      
+        function openModal() {
+          setIsOpen(true);
+        }
+      
+        function afterOpenModal() {
+          // references are now sync'd and can be accessed.
+          subtitle.style.color = '#f00';
+        }
+      
+        function closeModal() {
+          setIsOpen(false);
+        }
+   
 
     const responsive = {
         desktop: {
@@ -185,7 +217,25 @@ export default function Playlist(){
             <div className='finalização'></div>
 
 
-
+            <button onClick={openModal}>Open Modal</button>
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
+        <button onClick={closeModal}>close</button>
+        <div>I am a modal</div>
+        <form>
+          <input />
+          <button>tab navigation</button>
+          <button>stays</button>
+          <button>inside</button>
+          <button>the modal</button>
+        </form>
+      </Modal>
             <div>
     
    
