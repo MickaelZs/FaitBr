@@ -19,6 +19,12 @@ export async function listarPlaylistPorIdUsuarioo(idUsuario){
   }
 
 
+  export async function listarPlaylistItemUsuarioo(idUsuario){
+    const resposta = await api.get('/musica/' + idUsuario + '/curtidas');
+    return resposta.data;
+  }
+
+
 export async function listaPlaylist(){
     const resposta = await api.get('/playlist');
     return resposta.data;

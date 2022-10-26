@@ -7,7 +7,8 @@ import { useEffect } from 'react';
 import { API_URL } from '../../api/config';
 
 import Storage from 'local-storage'
-import { listarPlaylistItemPorUsuarioo } from '../../api/playlistAPI';
+import { listarPlaylistItemUsuarioo } from '../../api/playlistAPI';
+
 
 export default function Reproduzir(){
     const [playlist,setPlaylist] = useState([])
@@ -16,7 +17,7 @@ export default function Reproduzir(){
 
     async function carregarMusica(){
         const id = Storage('usuario-logado').id
-        const x =  await listarPlaylistItemPorUsuarioo(id)
+        const x =  await listarPlaylistItemUsuarioo(id)
         setPlaylist(x)
     }
 
