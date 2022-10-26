@@ -3,28 +3,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 41.3em;
+    height:100vh;
     
     
     .faixa1{
         display: flex;
         flex-direction: row-reverse;
         border: solid 3px rgb(255, 255, 255);
-        width: 1000px;
-        height: 620px;
+        height: 85vh;
+        width: 80vw;
         box-shadow: 0px 0px 10px white;
     }
 
-    .imagem{
+    .imagemm{
         background-color: #ffffff;
-        height: 620px;
-        width: 500px;
+        height: 100%;
+        width: 40vw;
+
+        display: flex;
+        
     }
 
-    .imagem img{
-        width:500px;
-        margin-top: 50px;
-    }
+   
 
 
     .label-float{

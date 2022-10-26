@@ -113,8 +113,9 @@ export default function Index(){
     return(
         <main className='pagina-cadastro-artista'>
             <ToastContainer/>
-            <Menu />
+            <Menu/>
             <section className='faixa-cadastro'>
+                
                 <div className='margin-cadastro'>
                     <div className='div1-cadastro'>
                         <p className='p'>
@@ -124,7 +125,7 @@ export default function Index(){
 
                             {!imagem &&
 
-                            <img src='/images/image-bottom212.svg' width='170px'/>
+                            <img src='/images/image-bottom212.svg' width='120px'/>
                             }
 
                             {imagem &&  
