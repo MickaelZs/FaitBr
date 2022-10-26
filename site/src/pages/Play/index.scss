@@ -1,0 +1,41 @@
+.pagina-playy{
+    background-color:#1e1e1e ;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    border: 0;
+    margin:0;
+
+    .div-center{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 90vh;
+
+    }
+
+    .imagem{
+        height: 80vh;
+        width: 25vw;
+    }
+
+    .audio{
+        background-color: #d9d9d9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 3em;
+        width: 10em;
+        border-radius: 30px;
+        color:#1e1e1e;
+
+    }
+    .h1h3{
+        
+    }
+}

@@ -27,7 +27,7 @@ import AdicionarMusica from './pages/adicionarMusica'
 import Teest from './pages/TESTCARD';
 import ReproduzirPlaylist  from './pages/reproduzirPlaylist'
 
-
+import Play from './pages/Play';
 import Test from './pages/TESTCARD';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -68,6 +68,8 @@ root.render(
       <Route path='/adicionarMusica' element={<AdicionarMusica/>}/>
       <Route path='/adicionarMusica/:idParam' element={<AdicionarMusica/>}/>
       <Route path='/test' element={<Teest/>}/>
+
+      <Route path='/Play' element={<Play/>}/>
       
     </Routes>
     </BrowserRouter>
