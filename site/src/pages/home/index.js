@@ -60,12 +60,13 @@ useEffect(() => {
     <div className='pagina-home'>
 
       <div className='faixa1'>
-        <header>
+        <header >
           <div className='texto-cabecalho'>
+            <div className='uee'>
               <li><a href="#sec1">Artistas mais escutados</a></li>
               <li><a href="#sec2">Gêneros</a></li>
               <li><a href="#sec3">Artistas populares</a></li>
-        
+              </div>
               
               
           
@@ -85,21 +86,41 @@ useEffect(() => {
 
           </div>
         </header>
+
+        <div className='faixa2'>
+          <div className='containerdafaixa2'>
+          <h1 className='text-pass'>Without music, life would be aﾠﾠﾠﾠﾠﾠﾠ mistake</h1>
+          <div className='caixa-incisivel2'></div>
+          </div>  
+          <div>
+            <div className='caixa-invisivel'></div>
+          <div className='caixa-do-artista'>
+            <div className='img-artista'>
+            <img src='./images/manobrown.png' className='image'></img>
+            </div>
+            <div className='nome-artista'>
+              <div className='ball-transparent'></div>
+              <h3 >Mano Brown</h3>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div>
+      <section id="sec2"><h1 className='artistasegener'>Gêneros</h1></section>
       </div>
 
-      <div>
-      <section id="sec2"><h1>Gêneros</h1></section>
-      </div>
+     
 
       <Carousel
         swipeable={false}
         draggable={false}
         responsive={responsive}
         ssr={true}
-        infinite={true}
+        infinite={false}
         autoPlaySpeed={1000}
         keyBoardControl={true}
-        transitionDuration={500}
+        transitionDuration={20}
         centerMode
       >
         {genero.map (item =>
@@ -113,7 +134,7 @@ useEffect(() => {
       </Carousel>
 
       <div>
-      <section id="sec3"><h1>Artistas populares</h1></section>
+      <section id="sec3"><h1 className='artistasegener'>Artistas populares</h1></section>
       </div>
 
       <Carousel
@@ -172,4 +193,3 @@ useEffect(() => {
     </div>
   );
 }
-
