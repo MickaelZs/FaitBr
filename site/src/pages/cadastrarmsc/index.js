@@ -141,7 +141,6 @@ export default function Cadastromsc(){
 
         <main className='pagina-cadastro-musica'>
             <ToastContainer/>
-            <Menu/>
         <section className='faixa-cadastro'>
             <div className='margin-cadastro'>
                 <div className='div1-cadastro'>
@@ -152,7 +151,7 @@ export default function Cadastromsc(){
 
                     {!imagem &&
 
-                    <img src='/images/image-bottom212.svg' width='170px'/>
+                    <img src='/images/image-bottom212.svg' width='120px'/>
                     }
 
                     {imagem &&  
@@ -181,7 +180,7 @@ export default function Cadastromsc(){
 
                     }
 
-                    <input type='file' id='musica' onChange={e => setMusica(e.target.files[0])} ></input> 
+                    <input type='file' id='musica' className='input-file' onChange={e => setMusica(e.target.files[0])} ></input> 
                     
                     </div>
 

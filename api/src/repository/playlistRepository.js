@@ -79,10 +79,17 @@ export async function listarPlaylistItemPorIdUsuario(idUsuario) {
 
 export async function deletaPlaylist (id){
     const comando = 
-    `delete from tb_playlist_item
+    `delete from tb_playlist
     where id_playlist = ? `;
     const [resposta] = await con.query(comando, [id]);
     return resposta.affectedRows;
 }
 
+export async function deletaPlaylist2 (id){
+    const comando = 
+    `delete from tb_playlist_item
+    where id_playlist = ? `;
+    const [resposta] = await con.query(comando, [id]);
+    return resposta.affectedRows;
+}
 

@@ -55,7 +55,7 @@ export default function Index() {
 
         <div className="faixa1">
 
-          <div className="imagem">
+          <div className="imagemm">
           <img src="images/cadastro.png"  ></img>
           </div>
           

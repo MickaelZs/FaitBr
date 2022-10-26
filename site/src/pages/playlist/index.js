@@ -6,7 +6,7 @@ import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import modal from 'react-modal';
 import React, { useEffect, useState } from 'react'
-import { criarPlaylist, criarPlaylistItem, listarPlaylistPorIdUsuarioo } from '../../api/playlistAPI';
+import { criarPlaylist, criarPlaylistItem,deletaPlaylist, deletaPlaylist2, listarPlaylistPorIdUsuarioo,listaPlaylist } from '../../api/playlistAPI';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import Storage from 'local-storage'
@@ -98,6 +98,8 @@ export default function Playlist(){
 
     }
 
+    
+
       
 
         async function salvarClick(){
@@ -125,6 +127,27 @@ export default function Playlist(){
               
             }
 
+            async function deletarPlaylist(id, nome) {
+
+              confirmAlert({
+                  title: 'Remover playlist',
+                  message: `deseja remover a playlist ${id, nome}?`,
+                  buttons: [
+                      {
+                          label: 'sim',
+                          onClick: async () => {
+                              const r = await deletaPlaylist(id, nome);
+                              const resp = await deletaPlaylist2(id, nome);
+                              
+                              carregarPlaylist();
+                              toast.dark('Artista removido')
+                          }
+                      },
+                      {
+                          label: 'Não'
+                      }
+                  ]
+              })
    
 
 
@@ -209,7 +232,8 @@ export default function Playlist(){
                     <h1>{item.nome}</h1>
                     <h1>De Mickael</h1>
                 </div>
-                
+                <img src='/images/excluir.png' onClick={() => deletarPlaylist(item.id_playlist, item.nome)} />
+
 
             </div>
             </section>
@@ -245,4 +269,4 @@ export default function Playlist(){
       
         </main>
     )
-}
+}}

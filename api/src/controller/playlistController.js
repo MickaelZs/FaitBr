@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Cadastrarplaylist, deletaPlaylist, listarPlaylistItemPorIdUsuario, listarPlaylistPorIdUsuario, listarTodosPlaylist, playlistItem } from "../repository/playlistRepository.js";
+import { Cadastrarplaylist, deletaPlaylist, deletaPlaylist2, listarPlaylistPorIdUsuario, listarTodosPlaylist, playlistItem } from "../repository/playlistRepository.js";
 
 
 const server = Router();
@@ -90,6 +90,23 @@ server.delete ('/playlist/:id',async (req,resp) => {
         const { id } = req.params;
     
         const resposta = await deletaPlaylist(id);
+        resp.status(200).send();
+    }
+
+    catch (err){
+        resp.status(401).send({
+            erro: err.message
+        })
+    }
+
+})
+
+server.delete ('/playlist/:id',async (req,resp) => {
+    try{
+
+        const { id } = req.params;
+    
+        const resposta = await deletaPlaylist2(id);
         resp.status(200).send();
     }
 
