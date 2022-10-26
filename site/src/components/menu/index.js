@@ -46,7 +46,7 @@ export default function Menu (){
                     
                 </div>
 
-                <div >
+                <div href='/adm/MusicaCadastradas' >
                     <img src="/images/msccadastrada.svg"  />
                     <a href='/adm/MusicaCadastradas'>Musicas cadastradas</a>
                 </div>
