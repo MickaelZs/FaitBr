@@ -31,3 +31,13 @@ export async function listaPlaylist(){
     })
     return r.data;
 }  
+
+export async function deletaPlaylist(id){
+    const resposta = await api.delete(`/artista/${id}`);
+    return resposta.status;
+  }
+
+  export async function deletaPlaylist2(id){
+    const resposta = await api.delete(`/artista/${id}`);
+    return resposta.status;
+  }
