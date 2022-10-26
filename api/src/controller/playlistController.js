@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Cadastrarplaylist, deletaPlaylist, listarPlaylistPorIdUsuario, listarTodosPlaylist, playlistItem } from "../repository/playlistRepository.js";
+import { Cadastrarplaylist, deletaPlaylist, listarPlaylistItemPorIdUsuario, listarPlaylistPorIdUsuario, listarTodosPlaylist, playlistItem } from "../repository/playlistRepository.js";
 
 
 const server = Router();
@@ -65,6 +65,23 @@ server.post('/playlist/:id/item', async (req,resp) =>{
         })
            
        }
+})
+
+server.get('/usuario/:id/playlist/item', async (req, resp) => {
+    try {
+        const idUsuario = Number(req.params.id);
+        
+        const resposta = await listarPlaylistItemPorIdUsuario(idUsuario);
+
+        if (!resposta)
+            resp.status(404).send([])
+        else
+            resp.send(resposta);
+    } catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
 })
 
 server.delete ('/playlist/:id',async (req,resp) => {

@@ -14,6 +14,7 @@ export default function Index(){
 
     const[artista, setArtista] = useState ([])
     const[musica, setMusica] = useState ([])
+    const [curtir,setCurtir] = useState (false)
     const {idParam} = useParams ()
     const navigate = useNavigate()
 
@@ -133,13 +134,23 @@ export default function Index(){
                                     <p className='nome'>{item.genero}</p>
                                 </div>
 
-                                <div>
-                                    <button className="curtida" onClick={() => curtirr (index)} >curtir</button>
-                                </div>
+                                
 
                             </div> 
 
                         </div> 
+                        <div onClick={() => curtirr (index)(!curtir)}>
+                <img src="/images/heart.png" alt="" />
+
+            {curtir &&
+
+                <img src="/images/heart on.png" alt="" />}
+ 
+            </div>
+                        <div>
+
+                                    <button className="curtida" onClick={() => curtirr (index)} >curtir</button>
+                                </div>
 
                         
                         

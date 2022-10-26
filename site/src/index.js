@@ -25,7 +25,7 @@ import DetalheAertista from './pages/detalheAertista';
 import Playlist from './pages/playlist';
 import AdicionarMusica from './pages/adicionarMusica'
 import Teest from './pages/TESTCARD';
-
+import ReproduzirPlaylist  from './pages/reproduzirPlaylist'
 
 
 import Test from './pages/TESTCARD';
@@ -57,6 +57,8 @@ root.render(
       <Route path='/detalhe/artista/:idParam' element={<DetalheAertista/>}/>
       <Route path='/Reproduzir' element={<Reproduzir/>}/>
       <Route path='/Reproduzir/:idParam' element={<Reproduzir/>}/>
+      <Route path='/ReproduzirPlaylist/:idParam' element={<ReproduzirPlaylist/>}/>
+      <Route path='/ReproduzirPlaylist' element={<ReproduzirPlaylist/>}/>
       <Route path='/buscar' element={<Buscar/>}/>
       
       <Route path='/informacao' element={<InfoUsario/>}/>

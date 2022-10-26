@@ -12,6 +12,8 @@ import { useNavigate } from 'react-router-dom';
 import Storage from 'local-storage'
 import { buscarUsuarioPorId } from '../../api/usuarioAPI';
 import Modal from 'react-modal';
+import { enviarArquivoMusica, listarCurtidas } from '../../api/musicaAPI';
+import { API_URL } from '../../api/config';
 
 
 const  customStyles  =  { 
@@ -28,7 +30,7 @@ const  customStyles  =  {
 export default function Playlist(){
 
     const [nome,setNome] = useState('')
-    const [idUsuario,setIdUsuario] = useState('')
+    const [musica,setMusica] = useState([])
     const [usu,setUsu] = useState([])
     const [modal,setModal] = useState (false)
  //   const [id,setId] = useState(0)
@@ -72,11 +74,12 @@ export default function Playlist(){
 
     useEffect(() => {
         carregarPlaylist();
+        carregarCurtida()
 
     },[])
 
     function acessarPlaylist(id){
-        navigate(`/adicionarMusica/${id}`)
+        navigate(`/ReproduzirPlaylist/${id}`)
     }
 
 
@@ -84,6 +87,14 @@ export default function Playlist(){
         const id = Storage('usuario-logado').id;
         const resp = await listarPlaylistPorIdUsuarioo(id)
         setUsu(resp)
+ 
+    }
+
+    async function carregarCurtida(){
+      const id = Storage('usuario-logado').id;
+      const resp = await listarCurtidas(id)
+      setMusica(resp)
+      console.log(resp)
 
     }
 
@@ -125,33 +136,32 @@ export default function Playlist(){
             <section className='section-musicas'>
             <h2 className='titulos'>Musicas</h2>
                 <div className="faixa-musicas">
+                <Carousel
+        swipeable={false}
+        draggable={false}
+        responsive={responsive}
+        ssr={true}
+        infinite={true}
+        autoPlaySpeed={1000}
+        keyBoardControl={true}
+        transitionDuration={500}
+        centerMode
+      >
+                  {musica.map( (item) => 
+
+                  
                     <div className='music'>
-                        <div className= 'caixa-musica'></div>
+                       
+                        <img className= 'caixa-musica' src={`${API_URL}/${item.imagem}`} alt=""/>
                         <div className='border0'>
-                        <h3>Dia azul</h3>
+                        <h3>{item.musica}</h3>
                         <p>Teto</p>
                         </div>
                     </div>
-                    <div className='music'>
-                        <div className= 'caixa-musica'></div>
-                        <div className='border0'>
-                        <h3>Dia azul</h3>
-                        <p>Teto</p>
-                        </div>
-                    </div>
-                    <div className='music'>
-                        <div className= 'caixa-musica'></div>
-                        <div className='border0'>
-                        <h3>Dia azul</h3>
-                        <p>Teto</p>
-                        </div>
-                    </div>
+                    )}
+                   </Carousel>
                 </div>
-                <div>
-                        <img className='bolinhas' src="/images/eclipse2.png"></img>
-                        <img className='bolinhas' src="/images/eclipse2.png"></img>
-                        <img className='bolinhas' src="/images/eclipse2.png"></img>
-                    </div>
+                
             </section>
             <section className='section-musicas'>
             <h2 className='titulos'>Artistas - Seguidos</h2>
@@ -175,11 +185,7 @@ export default function Playlist(){
                         </div>
                     </div>
                 </div>
-                <div>
-                        <img className='bolinhas' src="./images/eclipse2.png"></img>
-                        <img className='bolinhas' src="./images/eclipse2.png"></img>
-                        <img className='bolinhas' src="./images/eclipse2.png"></img>
-                    </div>
+               
             </section>
 
             <Carousel
@@ -210,14 +216,14 @@ export default function Playlist(){
             )}
             </Carousel>
             <section className='faixa-criar-play'>
-                    <div className='caixa-musica'></div>
+                    <div  onClick={openModal} className='caixa-musica'></div>
                     <h1 className='criar-playlist'>Criar Playlist</h1>
-                    <button ></button>
+                    
             </section>
             <div className='finalização'></div>
 
 
-            <button onClick={openModal}>Open Modal</button>
+            
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
@@ -225,24 +231,18 @@ export default function Playlist(){
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Criar Playlist</h2>
         <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
-        <form>
-          <input />
-          <button>tab navigation</button>
-          <button>stays</button>
-          <button>inside</button>
-          <button>the modal</button>
-        </form>
-      </Modal>
-            <div>
-    
-   
+        
+       
+          
       <input type='text' value={nome}  onChange={e => setNome(e.target.value)}/>
     
-          <button onClick={salvarClick} >Continuar</button>
-    </div>
+    <button onClick={salvarClick} >Continuar</button>
+          
+        
+      </Modal>
+      
         </main>
     )
 }

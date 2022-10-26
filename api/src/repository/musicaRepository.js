@@ -104,15 +104,20 @@ export async function MusicaFavorita(idUsuario,musica){
 
 export async function listarcurtidaPorIdUsuario(idUsuario) {
     const comando =
-    `select id_usuario_musica_favorita id,
+    `select tb_usuario_musica_favorita.id_usuario_musica_favorita,
     id_usuario usuario,
-    id_musica musica,
-    bt_like curtir
+    nm_musicas musica,
+    id_genero genero,
+    id_artistas artista,
+    blob_musica audio,
+    img_imagem imagem
     from tb_usuario_musica_favorita
-    where id_usuario = ?`
+    inner join tb_musicas on tb_usuario_musica_favorita.id_musica = tb_musicas.id_musica
+    where id_usuario = ?
+    ;`
     
     const [linhas] = await con.query(comando, [idUsuario]);
-    return linhas[0];
+    return linhas;
 }
 
 

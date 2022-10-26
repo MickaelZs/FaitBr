@@ -31,3 +31,8 @@ export async function listaPlaylist(){
     })
     return r.data;
 }  
+
+export async function listarPlaylistItemPorUsuarioo(idUsuario){
+    const resposta = await api.get('/usuario/' + idUsuario +'/playlist/item');
+    return resposta.data;
+  }

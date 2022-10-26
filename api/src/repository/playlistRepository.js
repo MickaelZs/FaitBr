@@ -53,6 +53,30 @@ export async function playlistItem(idPlaylist,item){
 
 }
 
+
+export async function listarPlaylistItemPorIdUsuario(idUsuario) {
+    const comando =
+    `select tb_playlist_item.id_playlist_item,
+    id_usuario usuario,
+    nm_playlist playlist,
+    nm_musicas musica,
+    id_genero genero,
+    id_artistas artista,
+    blob_musica audio,
+    img_imagem imagem
+    from tb_playlist_item
+    inner join tb_musicas on tb_playlist_item.id_musica = tb_musicas.id_musica
+    inner join tb_playlist on tb_playlist_item.id_playlist = tb_playlist.id_playlist
+    where id_usuario = ?
+    ;`
+    
+    const [linhas] = await con.query(comando, [idUsuario]);
+    return linhas;
+}
+
+
+
+
 export async function deletaPlaylist (id){
     const comando = 
     `delete from tb_playlist_item

@@ -1,0 +1,76 @@
+
+
+.pagina-reproduzir{
+    display: flex;
+    flex-direction: row;
+    background-color: #1e1e1e;
+
+
+    .faixa1{
+        height: 8vh;
+        background-color: #8D32E5;
+    }
+
+    .div-reproducao{
+        display: flex;
+        flex-direction: row;
+        margin:10px;
+
+        img{
+            border-radius: 20px;
+            width: 600px;
+            height: 400px;
+
+        }
+    }
+
+    audio {
+       background-color: #8D32E5;
+
+      }
+
+
+
+      
+.cardmusica{
+    display: flex;
+    flex-direction: row;
+    color: #fff;
+    align-items: center;
+    padding: 10px 10px;
+    width: 20em;
+    background-color: #fff;
+    border-radius: 10px;
+
+    .image-music{
+        border-radius: 20px;
+        width:100px;
+        height: 100px;
+
+    }
+    .p{
+        font-size: 40px ;
+        font: bold;
+        margin-right: 20px;
+    }
+    .div-ator{
+        font-family: "Roboto";
+        width: 370px;
+        padding-left: 20px;
+        
+    }
+    p{
+        font-family: sans-serif;
+        margin: 0px;
+    }
+    .nome{
+        font-weight:550;
+        padding-bottom: 10px;
+        font-size: 35px;
+    }
+    .autor{
+        font-size: 25px;
+        font-family: 'Roboto';
+    }
+}
+}
