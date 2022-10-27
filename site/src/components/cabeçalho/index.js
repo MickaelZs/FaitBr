@@ -1,3 +1,4 @@
+import { API_URL } from '../../api/config'
 import './index.scss'
 
 export default function Cabeçario(props){
@@ -14,7 +15,7 @@ export default function Cabeçario(props){
             <img src='/images/playlist.png'></img>
             </div>
             <div className='logoconta'>
-            <img src='/images/logoconta.png'></img>
+            <img className='usuario' src={`${API_URL}/${props.usuario.imagem}`}></img>
             </div>
         </div>
 

@@ -24,7 +24,7 @@ export async function loginUsuario (email, senha){
 
 export async function imagemUsuario(imagem, id){
     const comando = `UPDATE tb_usuario
-                    SET img_usuario = ?
+                    SET img_imagem = ?
                     WHERE id_usuario = ?`;
 
     const [resposta] = await con.query(comando,[imagem, id]);

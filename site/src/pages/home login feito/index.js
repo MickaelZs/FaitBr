@@ -122,7 +122,7 @@ useEffect(() => {
               <img className='icon-livraria' src='./images/icon-library.png'/>
               <div>
              
-              <div className='usuario' onClick={() => acessarPerfil  } >
+              <div className='usuario' onClick={() => acessarPerfil (usuario.id) } >
                 
 
          </div> 

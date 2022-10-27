@@ -42,7 +42,7 @@ export default function Index() {
 
     return (
         <main className='pagina-informacao-usu'>
-            <Cabeçario />
+            <Cabeçario usuario={usuario} />
 
             <section className='faixa2'>
 

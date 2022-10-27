@@ -27,7 +27,7 @@ const  customStyles  =  {
     } , 
   } ;
 
-export default function Playlist(){
+export default function Index(){
 
     const [nome,setNome] = useState('')
     const [musica,setMusica] = useState([])
@@ -148,13 +148,14 @@ export default function Playlist(){
                       }
                   ]
               })
+            }
    
 
 
 
     return(
         <main className="pag-playlist">
-            <Cabeçario/>
+           
             <ToastContainer/>
             <section className='section-musicas'>
             <h2 className='titulos'>Musicas</h2>
@@ -225,16 +226,13 @@ export default function Playlist(){
             {usu.map(item =>
             <section className='section-playlist' onClick={() => acessarPlaylist (item.id)}>
             <h2 className='titulo-playlist'>Playlist</h2>
-            <div className='playlist'>
-                
+            <div className='playlist'>     
                 <div className='caixa-musica'></div>
                 <div className='nome-playlist'>
                     <h1>{item.nome}</h1>
                     <h1>De Mickael</h1>
                 </div>
-                <img src='/images/excluir.png' onClick={() => deletarPlaylist(item.id_playlist, item.nome)} />
-
-
+                <img src='/images/excluir.png' />
             </div>
             </section>
             )}
@@ -269,4 +267,4 @@ export default function Playlist(){
       
         </main>
     )
-}}
+}
