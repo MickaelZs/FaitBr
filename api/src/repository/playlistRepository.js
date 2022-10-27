@@ -85,6 +85,7 @@ export async function deletaPlaylist (id){
     return resposta.affectedRows;
 }
 
+
 export async function deletaPlaylist2 (id){
     const comando = 
     `delete from tb_playlist_item

@@ -6,7 +6,7 @@ import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import modal from 'react-modal';
 import React, { useEffect, useState } from 'react'
-import { criarPlaylist, criarPlaylistItem,deletaPlaylist, deletaPlaylist2, listarPlaylistPorIdUsuarioo,listaPlaylist } from '../../api/playlistAPI';
+import { criarPlaylist, criarPlaylistItem,DeletaPlaylist, listarPlaylistPorIdUsuarioo,listaPlaylist, listarPlaylistItemUsuarioo } from '../../api/playlistAPI';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import Storage from 'local-storage'
@@ -33,7 +33,7 @@ export default function Index(){
     const [musica,setMusica] = useState([])
     const [usu,setUsu] = useState([])
     const [modal,setModal] = useState (false)
- //   const [id,setId] = useState(0)
+    const [id,setId] = useState(0)
     const navigate = useNavigate()
 
     
@@ -98,7 +98,33 @@ export default function Index(){
 
     }
 
-    
+    async function DeletarPlaylist(id, nome) {
+
+      confirmAlert({
+        title: 'Remover playlist',
+        message: `deseja remover a playlist ${id, nome}?`,
+        buttons: [
+          {
+            label: 'sim',
+            onClick: async () => {
+              const filtro = await DeletaPlaylist(id, nome)
+  
+  
+              if (filtro === '') {
+                carregarPlaylist();
+              }
+              else
+                carregarPlaylist()
+                toast.dark('Playlist removida')
+            }
+          },
+          {
+            label: 'Não'
+          }
+        ]
+      })
+  
+    }
 
       
 
@@ -127,31 +153,7 @@ export default function Index(){
               
             }
 
-            async function deletarPlaylist(id, nome) {
-
-              confirmAlert({
-                  title: 'Remover playlist',
-                  message: `deseja remover a playlist ${id, nome}?`,
-                  buttons: [
-                      {
-                          label: 'sim',
-                          onClick: async () => {
-                              const r = await deletaPlaylist(id, nome);
-                              const resp = await deletaPlaylist2(id, nome);
-                              
-                              carregarPlaylist();
-                              toast.dark('Artista removido')
-                          }
-                      },
-                      {
-                          label: 'Não'
-                      }
-                  ]
-              })
-            }
-   
-
-
+            
 
     return(
         <main className="pag-playlist">
@@ -224,15 +226,17 @@ export default function Index(){
         centerMode
       >
             {usu.map(item =>
-            <section className='section-playlist' onClick={() => acessarPlaylist (item.id)}>
-            <h2 className='titulo-playlist'>Playlist</h2>
+            
+            <section className='section-playlist' >
+               <img src='/images/excluir.png' onClick={() => DeletarPlaylist(item.id)} />
+            <h2 className='titulo-playlist' onClick={() => acessarPlaylist (item.id)}>Playlist</h2>
             <div className='playlist'>     
                 <div className='caixa-musica'></div>
                 <div className='nome-playlist'>
                     <h1>{item.nome}</h1>
                     <h1>De Mickael</h1>
                 </div>
-                <img src='/images/excluir.png' />
+               
             </div>
             </section>
             )}
