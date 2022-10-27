@@ -71,7 +71,7 @@ server.get('/usuario/:id/playlist/item', async (req, resp) => {
     try {
         const idUsuario = Number(req.params.id);
         
-        const resposta = await listarPlaylistItemPorIdUsuario(idUsuario);
+        const resposta = await listarPlaylistItemUsuario(idUsuario);
 
         if (!resposta)
             resp.status(404).send([])
@@ -88,25 +88,9 @@ server.delete ('/playlist/:id',async (req,resp) => {
     try{
 
         const { id } = req.params;
-    
+        const res = await deletaPlaylist2(id);
         const resposta = await deletaPlaylist(id);
-        resp.status(200).send();
-    }
-
-    catch (err){
-        resp.status(401).send({
-            erro: err.message
-        })
-    }
-
-})
-
-server.delete ('/playlist/:id',async (req,resp) => {
-    try{
-
-        const { id } = req.params;
-    
-        const resposta = await deletaPlaylist2(id);
+        
         resp.status(200).send();
     }
 
