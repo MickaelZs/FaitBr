@@ -70,6 +70,7 @@ root.render(
       <Route path='/test' element={<Teest/>}/>
 
       <Route path='/Play' element={<Play/>}/>
+      <Route path='/Play/:idParam' element={<Play/>}/>
       
     </Routes>
     </BrowserRouter>

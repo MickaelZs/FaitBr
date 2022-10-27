@@ -54,12 +54,12 @@ export default function Index() {
 
                             {!imagem &&
 
-                                <img src='/images/img.png' />
+                                <img className='usuario'  src={`${API_URL}/${usuario.imagem}`} />
                             }
 
                             {imagem &&
 
-                                <img className='imagem' src={mostrarImagem(imagem)} />
+                                <img className='usuario' src={mostrarImagem(imagem)} />
 
                             }
 
@@ -71,16 +71,13 @@ export default function Index() {
                     </div>
 
                     <div>
-                        <div className='sla-cara'>
-                            
-                            <h1>{usuario.nome}</h1>
-                        </div>
+                       
 
                        
                     </div>
                 </div>
 
-                <hr />
+          
 
 
                 <div className='faixa3'>
@@ -94,7 +91,7 @@ export default function Index() {
 
                     <div className='faixa3-div1'>
                         <h1>Nascimento:</h1>
-                        <h3>{usuario.nasc}</h3>
+                        <h3>{usuario.nascimento}</h3>
                     </div>
 
                     <div className='faixa3-div2'>

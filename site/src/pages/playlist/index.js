@@ -171,7 +171,7 @@ export default function Index(){
         transitionDuration={500}
         centerMode
       >
-                  {musica.map( (item) => 
+                  {musica.map( item => 
 
                   
                     <div className='music'>

@@ -5,13 +5,15 @@ import './index.scss'
 import { useState,useEffect  } from 'react';
 import CardGenero from '../../components/genero';
 import { buscarGeneroPorId } from '../../api/generoAPI';
+import { API_URL } from '../../api/config';
+
 
 
 
 export default function Index(){
 
 
-const [genero,setGenero] = useState ({})
+const [genero,setGenero] = useState ([])
 const [ge,setGe] = useState ({})
 
 const {idParam} = useParams();
@@ -19,6 +21,7 @@ const {idParam} = useParams();
 async function carregarArtistaPorGenero(){
     const resp = await buscarArtistaPorGeneroId(idParam)
     setGenero(resp)
+    console.log(resp)
 }
 
 async function carregarGenero(){
@@ -35,8 +38,19 @@ useEffect(() => {
 
     return(
         <div>                  
-        <div className='Artistas'> 
-        <CardGenero genero={genero} ge={ge} />
+        <div className='Artistas'>
+        <p>{ge.nme}</p>
+      
+        {genero.map(item =>
+        <div className="generos">
+        <img src={`${API_URL}/${item.artista}`} alt="" />
+       <p> {item.nome}</p>
+       
+       
+       <br/> 
+      </div>
+            
+            )}
     </div>
     
    

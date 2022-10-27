@@ -96,7 +96,7 @@ useEffect(() => {
             <div className='caixa-invisivel'></div>
           <div className='caixa-do-artista'>
             <div className='img-artista'>
-            <img src='./images/manobrown.png' className='image'></img>
+            <img src='/images/manobrown.png' className='image'></img>
             </div>
             <div className='nome-artista'>
               <div className='ball-transparent'></div>
