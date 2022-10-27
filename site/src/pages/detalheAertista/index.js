@@ -139,8 +139,8 @@ export default function Index(){
                             </div> 
 
                         </div> 
-                        <div onClick={() => curtirr (index)(!curtir)}>
-                <img src="/images/heart.png" alt="" />
+                        <div >
+                <img src="/images/heart.png" alt="" onClick={() => curtirr  (index)(!curtir)} />
 
             {curtir &&
 

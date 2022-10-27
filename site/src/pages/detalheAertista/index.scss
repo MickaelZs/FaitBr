@@ -120,18 +120,19 @@ body{
 .capaMusic{
     height: 100%;
     width: 100%;
+    border-radius: 15px 0px 0px 15px;
 }
 
 .imagem-musica{
     width: 7.9em;
-    height:7.9em;
+    height:8em;
 }
 
 
 .gambiarra{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+   
     width: 28em;
     height: 100%;
 

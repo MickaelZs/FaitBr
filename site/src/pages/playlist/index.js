@@ -161,6 +161,8 @@ export default function Index(){
             <ToastContainer/>
             <section className='section-musicas'>
             <h2 className='titulos'>Musicas</h2>
+
+       
                 <div className="faixa-musicas">
                 <Carousel
         swipeable={false}
@@ -173,7 +175,10 @@ export default function Index(){
         transitionDuration={500}
         centerMode
       >
+       
+              
                   {musica.map( item => 
+                  
 
                   
                     <div className='music'>
@@ -185,8 +190,10 @@ export default function Index(){
                         </div>
                     </div>
                     )}
-                   </Carousel>
+                  
+                  </Carousel>
                 </div>
+                
                 
             </section>
             <section className='section-musicas'>

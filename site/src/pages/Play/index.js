@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { API_URL } from '../../api/config';
 import { buscarMusicaPorId } from '../../api/musicaAPI'
 import './index.scss'
+import AudioPlayer from 'react-modular-audio-player'
 
 export default function Play(){
 
@@ -17,6 +18,9 @@ export default function Play(){
         console.log(x)
     }
 
+   
+      
+
     useEffect(() => { 
         carregarMusica()
     },[])
@@ -29,6 +33,7 @@ export default function Play(){
                 <h1>{item.nome}</h1>
                 <h3>Gênero</h3>
                 </div>
+                
                 <audio className="audio" controls src={`${API_URL}/${item.musica}`}></audio>
             </div>
          

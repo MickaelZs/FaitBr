@@ -37,7 +37,7 @@ export default function Cadastromsc(){
 
     async function carregarArtista(){
         const resp = await listaArtista()
-        setNewArtista(resp)
+        setArtista(resp)
     }
 
     async function carregarGeneros(){
