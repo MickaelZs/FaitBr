@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { buscarUsuarioPorId, cadastrorUsuario, imagemUsuario, listarUsuario, loginUsuario } from "../repository/usuarioRepository.js"
+import { alteraUsuario, buscarUsuarioPorId, cadastrorUsuario, imagemUsuario, listarUsuario, loginUsuario } from "../repository/usuarioRepository.js"
 import multer from 'multer';
 
 
@@ -95,5 +95,38 @@ server.get('/usuario/:id', async (req, resp) => {
     }
 })
 
+
+server.put ('/usuario/:id', async (req,resp) => {
+    try{
+        const {id} = req.params;
+        const usu = req.body;
+   
+        const resposta = await alteraUsuario(id, usu);
+        if (resposta != 1)
+            throw new Error('Usuario não pode ser alterado');
+
+            if(!usu.nome){
+                throw new Error('Nome é obrigatório');
+            }
+            
+            if(!usu.nasc){
+                    throw new Error('Nascimento é obrigatório');
+                }
+            
+            if(!usu.email){
+                    throw new Error('Email é obrigatório');
+                }
+       
+        else
+            resp.status(204).send();
+        
+    }
+
+    catch (err){
+        resp.status(401).send({
+            erro: err.message
+        })
+    }
+})
 
  export default server;

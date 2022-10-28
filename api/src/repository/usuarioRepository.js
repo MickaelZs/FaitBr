@@ -63,3 +63,15 @@ export async function buscarUsuarioPorId(id) {
     return linhas[0];
 }
 
+
+export  async function alteraUsuario(id, usuario){
+    const comando = 
+        `update tb_usuario
+        set	nm_nome  = ?,
+            dt_nasc	= ?,
+            ds_email = ?,
+            ds_senha	= ?
+        where id_usuario = ?`
+const [resposta] = await con.query(comando,[usuario.nome,usuario.nasc,usuario.email, usuario.senha ,id ])
+return resposta.affectedRows;
+}

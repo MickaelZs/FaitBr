@@ -12,6 +12,11 @@ export default function Index() {
 
     const [usuario, setUsuario] = useState([])
     const [imagem, setImagem] = useState('')
+    const [nome, setNome] = useState('')
+    const [nasc, setNasc] = useState('')
+    const [email, setEmail] = useState('')
+    const [senha, setSenha] = useState('')
+
     const { idParam } = useParams()
 
     async function carregarUsuario() {

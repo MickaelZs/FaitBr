@@ -32,3 +32,13 @@ export async function listarUsuario(){
     const resposta = await api.get(`/usuario/${id}`)
     return resposta.data;
 }  
+
+export async function alteraUsuario(id, nome, nascimento, email, senha){
+    const resposta = await api.put(`/usuario/${id}`, {
+        nome: nome,
+        nasc: nascimento,
+        email: email,
+        senha: senha
+    })
+    return resposta.data;
+}
