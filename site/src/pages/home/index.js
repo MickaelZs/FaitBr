@@ -2,12 +2,22 @@ import './index.scss'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { listaGeneros } from '../../api/generoAPI';
-import { useEffect, useState } from 'react';
+import React,{ useEffect, useState } from 'react';
 import { listaArtista } from '../../api/cadastroArtistaAPI';
 import { API_URL } from '../../api/config';
 import { useNavigate } from 'react-router-dom'
+import Modal from 'react-modal'
 
-
+const  customStyles  =  { 
+  content : { 
+    top : '50%' , 
+    left : '50%' , 
+    right : 'auto' , 
+    bottom : 'auto' , 
+    marginRight : '-50%' , 
+    transform : 'translate(-50%, -50%)' , 
+  } , 
+} ;
 
 
 export default function Index() {
@@ -33,6 +43,22 @@ useEffect(() => {
   carregarArtista();
     carregarGenero();
 }, [])
+
+let subtitle;
+const [modalIsOpen, setIsOpen] = React.useState(false);
+
+function openModal() {
+  setIsOpen(true);
+}
+
+function afterOpenModal() {
+  // references are now sync'd and can be accessed.
+  subtitle.style.color = '#f00';
+}
+
+function closeModal() {
+  setIsOpen(false);
+}
 
 
 
@@ -148,8 +174,9 @@ useEffect(() => {
         transitionDuration={500}
         centerMode
       >
+        
          {artista.map (item =>
-        <div className="generos" onClick={() => acessarArtista (item.id)}>
+        <div className="artista"  onClick={openModal}>
         <img src={`${API_URL}/${item.artista}`} />
         <p> {item.nome}</p>
        </div>
@@ -188,6 +215,24 @@ useEffect(() => {
       </div>
 
       <a href='login usuario'></a>
+
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Para ter o acesso é preciso do cadastro</h2>
+        <button onClick={closeModal}>Fechar</button>
+        <br/>
+        
+       
+          
+      
+          
+        
+      </Modal>
       
 
     </div>

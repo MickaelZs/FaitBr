@@ -30,7 +30,7 @@ export default function Cadastromsc(){
         setId(resposta[0].id) 
         setNome(resposta[0].nome)
         setIdGenero(resposta[0].genero)
-        setArtista(resposta[0].artista)
+        setIdArtista(resposta[0].artista)
         setImagem(resposta[0].imagem)
         setMusica(resposta[0].musica)
     }
@@ -109,7 +109,7 @@ export default function Cadastromsc(){
                 toast.dark('Nova musica cadastrada');
             }
             else{
-                await alterarMusica(id, idGenero, idArtista, nome);
+                await alterarMusica(id, nome, idGenero, idArtista);
                 if(typeof(imagem) == 'object'){
                     await inserirImagemMusica(id, imagem)
                     await inserirMusica(id, musica)
@@ -167,7 +167,7 @@ export default function Cadastromsc(){
                     <div className='div-input'>
                     <select value={idArtista} onChange={e => setIdArtista(e.target.value)}>
                         <option selected disabled hidden> artista </option>
-                        {newArtista.map((item) => <option value={item.id}>{item.nome}</option>)}
+                        {artista.map((item) => <option value={item.id}>{item.nome}</option>)}
                        
                     </select>
                     </div>

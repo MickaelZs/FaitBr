@@ -29,6 +29,12 @@ export async function listarCurtidas(idUsuario){
     return resposta.data;
   }
 
+  export async function deletarrCurtida(id){
+    const resposta = await api.delete(`/curtida/${id}`);
+    return resposta.status;
+  } 
+
+
 
 
 export async function inserirMusica(id, musica){

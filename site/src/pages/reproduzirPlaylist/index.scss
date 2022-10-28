@@ -2,18 +2,18 @@
 
 .pagina-reproduzir{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     background-color: #1e1e1e;
 
 
     .faixa1{
-        height: 8vh;
+       
         background-color: #8D32E5;
     }
 
     .div-reproducao{
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         margin:10px;
 
         img{
@@ -41,6 +41,7 @@
     width: 20em;
     background-color: #fff;
     border-radius: 10px;
+    margin: 15px;
 
     .image-music{
         border-radius: 20px;

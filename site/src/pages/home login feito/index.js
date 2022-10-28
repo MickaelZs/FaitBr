@@ -12,6 +12,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { API_URL } from '../../api/config';
 import { buscarUsuarioPorId } from '../../api/usuarioAPI';
 import Perfil from '../../components/perfilUsuario';
+import { listarCurtidas } from '../../api/musicaAPI';
 
 
 
@@ -20,6 +21,7 @@ export default function Index() {
   const [artista,setArtista] = useState ([])
   const [genero,setGenero] = useState ([])
   const [usuario,setUsuario] = useState ([])
+  const [curtidas,setCurtidas]  = useState([])
   const [imagem,setImagem] = useState ('')
   const navigate = useNavigate() 
   const {idParam} = useParams()
@@ -35,6 +37,15 @@ async function carregarUsuario(){
   setUsuario(reso)
 
   
+}
+
+async function carregarCurtidas(){
+  const id = Storage('usuario-logado').id
+  const resp = await listarCurtidas(id)
+  setCurtidas(resp)
+  console.log(resp)
+
+
 }
 
 
@@ -79,6 +90,7 @@ useEffect(() => {
   carregarUsuario();
   carregarArtista();
     carregarGenero();
+    carregarCurtidas()
 }, [])
 
   const responsive = {
@@ -122,7 +134,8 @@ useEffect(() => {
               <img className='icon-livraria' src='./images/icon-library.png'/>
               <div>
              
-              <div className='usuario' onClick={() => acessarPerfil (usuario.id) } >
+              <div >
+                <img className="usuario" src={`${API_URL}/${usuario.imagem}`}  onClick={() => acessarPerfil (usuario.id) } ></img>
                 
 
          </div> 
@@ -134,24 +147,15 @@ useEffect(() => {
        
 
         <div className='faixa'>
+          <div className='te'>
+          <h1> Without music, life <br/> would be a <br/> mistake</h1>
+          </div>
+         
+
+          <img src="/images/Music-pana.png" alt="" />
         
 
-          <AudioPlayer
-  audioFiles={[
-    {
-      src: "music/henriqueejulianooficial-completa-ai-part-marilia-mendonca-09f511dd.mp3",
-      title: "Hey Jude",
-      artist: "The Beatles"
-    }
-  ]}
-  rearrange={rearrangedPlayer}
-  playerWidth="10rem"
-  iconSize="10rem"
-  playIcon="/images/forro.png"
-  playHoverIcon="/images/forro.png"
-  pauseIcon="/images/forro.png"
-  pauseHoverIcon="/images/forro.png"
-/>
+         
         </div>
 
       </div>
@@ -191,20 +195,55 @@ useEffect(() => {
         responsive={responsive}
         ssr={true}
         infinite={true}
-        autoPlaySpeed={1000}
+        autoPlaySpeed={10000}
         keyBoardControl={true}
         transitionDuration={500}
         centerMode
       >
         {artista.map (item =>
-        <div className="generos">
+        <div className="artista">
         <img src={`${API_URL}/${item.artista}`} />
         <p> {item.nome}</p>
        </div>
           )}
+
+
+    
         
 
       </Carousel>
+
+
+      <br/>
+      <div>
+<section ><h1>Musica Curtidas</h1></section>
+</div>
+
+
+      <Carousel
+
+
+
+
+
+        swipeable={false}
+        draggable={false}
+        responsive={responsive}
+        ssr={true}
+        infinite={true}
+        autoPlaySpeed={1000}
+        keyBoardControl={true}
+        transitionDuration={500}
+        centerMode
+      >
+        {curtidas.map (item =>
+        <div className="generos">
+        <img src={`${API_URL}/${item.imagem}`} />
+        <p> {item.musica}</p>
+       </div>
+          )}
+
+          </Carousel>
 
       <div className='rodape'>
 

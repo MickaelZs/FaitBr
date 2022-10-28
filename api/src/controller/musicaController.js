@@ -1,7 +1,7 @@
 import { Router} from "express";
 import multer from 'multer';
 
-import { alteraMusica, alterarImagemMusica, cadastrarMusica, deletaMusica, listarArtistaPorMusica, listarcurtidaPorIdUsuario, listarMusicaeArtista, listarMusicaPorId, MusicaFavorita } from "../repository/musicaRepository.js";
+import { alteraMusica, alterarImagemMusica, cadastrarMusica, deletaCurtida, deletaMusica, listarArtistaPorMusica, listarcurtidaPorIdUsuario, listarMusicaeArtista, listarMusicaPorId, MusicaFavorita } from "../repository/musicaRepository.js";
 
 
 const server = Router();
@@ -77,6 +77,24 @@ server.put('/cadastraMusica/:id/capa', upload.single('capa') ,async (req, resp) 
             erro: err.message
         })   
     }
+})
+
+
+server.delete ('/curtida/:id',async (req,resp) => {
+    try{
+
+        const { id } = req.params;
+    
+        const resposta = await deletaCurtida(id);
+        resp.status(200).send();
+    }
+
+    catch (err){
+        resp.status(401).send({
+            erro: err.message
+        })
+    }
+
 })
 
 server.delete ('/musica/:id',async (req,resp) => {

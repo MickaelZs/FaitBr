@@ -36,7 +36,7 @@ async function loginClick() {
 <div className="faixa1">
 
 <div className="imagemm">
-<img src="images/loginUsuario.png"  ></img>
+<img src="/images/loginUsuario.png"  ></img>
 </div>
 
 

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Cadastrarplaylist, deletaPlaylist, deletaPlaylist2, listarPlaylistPorIdUsuario, listarTodosPlaylist, playlistItem } from "../repository/playlistRepository.js";
+import { Cadastrarplaylist, deletaPlaylist, deletaPlaylist2, listarPlaylistItemPorIdUsuario, listarPlaylistPorIdUsuario, listarTodosPlaylist, playlistItem } from "../repository/playlistRepository.js";
 
 
 const server = Router();
@@ -71,7 +71,7 @@ server.get('/usuario/:id/playlist/item', async (req, resp) => {
     try {
         const idUsuario = Number(req.params.id);
         
-        const resposta = await listarPlaylistItemUsuario(idUsuario);
+        const resposta = await listarPlaylistItemPorIdUsuario(idUsuario);
 
         if (!resposta)
             resp.status(404).send([])

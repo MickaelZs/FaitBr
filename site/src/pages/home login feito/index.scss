@@ -39,6 +39,24 @@
   .faixa{
     display: flex;
     flex-direction: row;
+   
+    
+    .te{
+      margin: 
+      60px;
+
+      h1{
+        font-size: 25px;
+      }
+
+    }
+
+  
+
+    img{
+      width: 600px;
+      
+    }
   }
 
 
@@ -122,6 +140,18 @@ backdrop-filter: blur(40px);
 
     .texto-rodape{
        
+    }
+
+    .artista{
+      
+    
+      img{
+        border-radius: 100%;
+        width: 200px;
+        height: 200px;
+      }
+
+      p{color: #ffffff;  }
     }
 
       .caixa-busca {

@@ -121,5 +121,14 @@ export async function listarcurtidaPorIdUsuario(idUsuario) {
 }
 
 
+export async function deletaCurtida (id){
+    const comando = 
+    `delete from tb_usuario_musica_favorita 
+    where id_usuario_musica_favorita = ? `;
+    const [resposta] = await con.query(comando, [id]);
+    return resposta.affectedRows;
+}
+
+
 
 

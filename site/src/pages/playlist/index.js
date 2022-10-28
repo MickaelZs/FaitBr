@@ -87,6 +87,7 @@ export default function Index(){
         const id = Storage('usuario-logado').id;
         const resp = await listarPlaylistPorIdUsuarioo(id)
         setUsu(resp)
+        console.log(resp)
  
     }
 
@@ -162,9 +163,7 @@ export default function Index(){
             <section className='section-musicas'>
             <h2 className='titulos'>Musicas</h2>
 
-       
-                <div className="faixa-musicas">
-                <Carousel
+            <Carousel
         swipeable={false}
         draggable={false}
         responsive={responsive}
@@ -175,14 +174,9 @@ export default function Index(){
         transitionDuration={500}
         centerMode
       >
-       
-              
-                  {musica.map( item => 
-                  
-
-                  
+               
+                  {musica.map( item =>
                     <div className='music'>
-                       
                         <img className= 'caixa-musica' src={`${API_URL}/${item.imagem}`} alt=""/>
                         <div className='border0'>
                         <h3>{item.musica}</h3>
@@ -190,9 +184,8 @@ export default function Index(){
                         </div>
                     </div>
                     )}
-                  
-                  </Carousel>
-                </div>
+                
+                </Carousel>
                 
                 
             </section>
@@ -241,7 +234,7 @@ export default function Index(){
                 <div className='caixa-musica'></div>
                 <div className='nome-playlist'>
                     <h1>{item.nome}</h1>
-                    <h1>De Mickael</h1>
+                    <h1>{usu.id}</h1>
                 </div>
                
             </div>
@@ -249,7 +242,11 @@ export default function Index(){
             )}
             </Carousel>
             <section className='faixa-criar-play'>
-                    <div  onClick={openModal} className='caixa-musica'></div>
+              
+                    <div  onClick={openModal} className='caixa-musica'>
+                    <img src="/images/adicionar-botao.png" alt="" />
+
+                    </div>
                     <h1 className='criar-playlist'>Criar Playlist</h1>
                     
             </section>
@@ -265,11 +262,13 @@ export default function Index(){
         contentLabel="Example Modal"
       >
         <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Criar Playlist</h2>
-        <button onClick={closeModal}>close</button>
+        <button onClick={closeModal}>Fechar</button>
+        <br/>
         
        
           
       <input type='text' value={nome}  onChange={e => setNome(e.target.value)}/>
+      <br/>
     
     <button onClick={salvarClick} >Continuar</button>
           

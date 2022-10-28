@@ -8,6 +8,7 @@ import { API_URL } from '../../api/config';
 
 import Storage from 'local-storage'
 import { listarPlaylistItemUsuarioo } from '../../api/playlistAPI';
+import Cabeçario from '../../components/cabeçalho';
 
 
 export default function Reproduzir(){
@@ -19,6 +20,7 @@ export default function Reproduzir(){
         const id = Storage('usuario-logado').id
         const x =  await listarPlaylistItemUsuarioo(id)
         setPlaylist(x)
+        console.log(x)
     }
 
     useEffect(() => {
@@ -31,30 +33,32 @@ export default function Reproduzir(){
     }
     return(
         <main className='pagina-reproduzir'>
-            <section className='faixa1'>
-
-            </section>
+           
+            {playlist.map(item => 
+                 <section className='faixa1'>
+<h1>{item.playlist}</h1>
+                 </section>
+                
+                )}
+           
             <section className='div-reproducao'>
                 {playlist.map(item => 
-                <div> 
-                    <div>
-                <img src={`${API_URL}/${item.imagem}`} width="500px"/>
-                <h1>{item.musica}</h1>
-                <audio controls src={`${API_URL}/${item.audio}`}  > </audio>
-                </div>
+              <div>
 
+               
                 <div className='cardmusica'>
-                <p className='p'>{} </p>
                 <img src={`${API_URL}/${item.imagem}`} className="image-music" />
                 <div className='div-ator'>
                     <p className='nome'>{item.musica}</p>
                     <p className='autor'>{item.genero}</p>
                 </div>
                 
+               
+                </div>
                 </div>
 
                
-            </div>
+           
                
                     
                     )}

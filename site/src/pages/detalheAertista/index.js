@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { buscarPorId, seguirArtista } from "../../api/cadastroArtistaAPI"
 import { ToastContainer, toast } from 'react-toastify';
-import { buscarArtistaPorMusicaId, curtirMusica, listaMusicaArtista, listarCurtidas } from "../../api/musicaAPI"
+import { buscarArtistaPorMusicaId, curtirMusica, deletarrCurtida, listaMusicaArtista, listarCurtidas } from "../../api/musicaAPI"
 import { API_URL } from "../../api/config"
 import './index.scss'
 
@@ -12,11 +12,24 @@ import Storage from 'local-storage'
 
 export default function Index(){
 
-    const[artista, setArtista] = useState ([])
+    const[artista, setArtista] = useState ({})
     const[musica, setMusica] = useState ([])
     const [curtir,setCurtir] = useState (false)
     const {idParam} = useParams ()
     const navigate = useNavigate()
+
+
+    async function deletarClick (id){
+        try{
+            const resp = await deletarrCurtida(id)
+            toast.dark('curtida deletada')
+        }
+        catch(err){
+            if (err.response) toast.error(err.response.data.erro);
+            else toast.error(err.message);
+
+        }
+    }
 
 
 
@@ -26,7 +39,7 @@ export default function Index(){
      
 
     function acessarMusica(id){
-        navigate(`/Reproduzir/${id}`)
+        navigate(`/play/${id}`)
     }
 
     
@@ -40,13 +53,16 @@ export default function Index(){
     async function seguir (position){
         try{
             let id = Storage ('usuario-logado').id;
-            const resp = await seguirArtista(artista[0],id)
+            let artistaS = artista[position]
+            const resp = await seguirArtista(artistaS,id)
+            
             toast.dark('vamosssss')
         }
         catch(err){
             if (err.response) toast.error(err.response.data.erro);
             else toast.error(err.message);
         }
+        
     }
 
     async function curtirr (position){
@@ -113,7 +129,7 @@ export default function Index(){
                             <h3>Sobre</h3>
                             <p className='sinopse'>{artista.sobre} </p>
                         </div>
-                        <button className='botao' onClick={() => seguir (artista.id) }>Seguir</button>
+                        <button className='botao' onClick={() => seguir }>Seguir</button>
 
                     </div>
 
@@ -150,6 +166,7 @@ export default function Index(){
                         <div>
 
                                     <button className="curtida" onClick={() => curtirr (index)} >curtir</button>
+                                    <button className="curtida" onClick={() => deletarClick (index)} >deletar</button>
                                 </div>
 
                         
