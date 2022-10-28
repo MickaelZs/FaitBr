@@ -14,11 +14,12 @@ export default function Menu (){
 
     return(
         <nav className="comp-menu">
-        <div>
+        <div className='div-minimae'>
             <div className='logo'>
-                <img src="/images/logooo.png" alt="logo" />
+                <img src="/images/reallogo.png" className='imagem-logo' />
                 
             </div>
+            <div className='box'></div>
 
             <div className='menu-items'>
                 <div>

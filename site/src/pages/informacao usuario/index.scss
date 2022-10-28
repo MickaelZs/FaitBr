@@ -75,10 +75,10 @@
 
     .faixa3{
         display:flex;
-        flex-direction: column;
         margin-left: 7em;
         padding-top: 1em;
         font-size: 20px;
+        justify-content: space-between;
     }
 
     .faixa3-div1 h1{
@@ -101,6 +101,9 @@
         flex-direction:column;
         margin-bottom: -0.8em;
 
+    }
+    .faixa3{
+        display: flex;
     }
 
     .faixa3-div2-sla {
