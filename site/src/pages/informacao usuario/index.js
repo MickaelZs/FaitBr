@@ -86,6 +86,7 @@ export default function Index() {
 
 
                 <div className='faixa3'>
+                    <div>
 
 
                     <div className='faixa3-div1'>
@@ -98,6 +99,8 @@ export default function Index() {
                         <h1>Nascimento:</h1>
                         <h3>{usuario.nascimento}</h3>
                     </div>
+                    </div>
+                    <div>
 
                     <div className='faixa3-div2'>
 
@@ -121,6 +124,7 @@ export default function Index() {
 
                       
 
+                    </div>
                     </div>
 
                 </div>

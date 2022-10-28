@@ -152,7 +152,7 @@ useEffect(() => {
           </div>
          
 
-          <img src="/images/Music-pana.png" alt="" />
+          <img src="/images/Music-pana.png" alt="" className='imagem-test' />
         
 
          

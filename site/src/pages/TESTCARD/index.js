@@ -13,7 +13,7 @@ import "./index.scss"
 export default function Test(){
     return(
         <main className="f1">
-            <Heart/>
+            <Cardaddmsc id="1" image="https://images.genius.com/5bf375a8e720fbf1e99e75b4a8490c87.1000x1000x1.jpg" nome="Bala azul" ator="Teto"/>
 
        
         </main>

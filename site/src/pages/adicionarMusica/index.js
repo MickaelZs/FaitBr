@@ -38,16 +38,23 @@ export default function Index() {
         <div className='add'>
             <ToastContainer/>
 
-      {musicaa.map((item, index) => (
-        <div className="card">
-          <img src={`${API_URL}/${item.imagem}`} alt="" />
-          <h3> {item.musica}</h3>
-          <h2> {item.artista}</h2>
-          <h2> {item.genero}</h2>
-          <audio controls src={`${API_URL}/${item.audio}`}></audio>
-          <button onClick={() => salvar(index)}>Adicionar</button>
+  
 
+
+    {musicaa.map((item, index) => (
+        <div className="Card-addmusica">
+        <h2>1.</h2>
+        <div className="section-music"> 
+        <img src={`${API_URL}/${item.imagem} `} className="imagem"></img>
+        <div className="atorenome">
+            <h1>{item.musica}</h1>
+            <div className="border">
+            <p>{item.artista}</p>
+            </div>
         </div>
+        </div>
+        <button onClick={() => salvar(index)}>Adicionar</button>
+    </div>
       ))}
     </div>
   );
