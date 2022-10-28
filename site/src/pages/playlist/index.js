@@ -200,23 +200,13 @@ export default function Index(){
             <h2 className='titulos'>Artistas - Seguidos</h2>
                 <div className="faixa-musicas">
                     <div className='music'>
+                      
                         <div className= 'caixa-musica'></div>
                         <div className='border0'>
                         <h3>Tarcisio</h3>
                         </div>
                     </div>
-                    <div className='music'>
-                        <div className= 'caixa-musica'></div>
-                        <div className='border0'>
-                        <h3>Thiaguinho</h3>
-                        </div>
-                    </div>
-                    <div className='music'>
-                        <div className= 'caixa-musica'></div>
-                        <div className='border0'>
-                        <h3>Lana del rey </h3>
-                        </div>
-                    </div>
+                   
                 </div>
                
             </section>
