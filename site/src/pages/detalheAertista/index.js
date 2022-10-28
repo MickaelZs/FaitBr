@@ -16,6 +16,7 @@ export default function Index() {
     const [artista, setArtista] = useState([])
     const [musica, setMusica] = useState([])
     const [curtir, setCurtir] = useState(false)
+    const [heart, setHeart] = useState('')
     const { idParam } = useParams()
     const navigate = useNavigate()
     console.log(artista)
@@ -36,6 +37,22 @@ export default function Index() {
     function acessarMusica(id) {
         navigate(`/play/${id}`)
     }
+
+    function mostrarImagem(imagem){
+        
+        if (typeof (imagem) == 'object') {
+            return URL.createObjectURL(imagem);
+        }
+        else {
+                
+                return `${API_URL}/${imagem}`
+        }
+    }
+    function escolherImagem(objeto, mostrarNovaimagem) {
+        document.querySelector(objeto).src="./images/heart on.png";
+    }
+
+    
 
 
 
@@ -135,28 +152,23 @@ export default function Index() {
 
                     </div>
 
-                    {musica.map((item, index) =>
-                        <div className='card-musica'>
+                   
 
-                            <div onClick={() => acessarMusica(item.id)}>
-
-                                <div className="gambiarra">
-                                    <div className="imagem-musica">
-                                        <img className="capaMusic" src={`${API_URL}/${item.imagem}`}></img>
-                                    </div>
-
-                                    <div className='text'>
-                                        <p className='nome'>{item.nome} </p>
-                                        <p className='nome'>{item.genero}</p>
-                                    </div>
-
-
-
-                                </div>
-
-                            </div>
-                            <div >
-                                <img src="/images/heart.png" alt="" onClick={() => setCurtir (!curtir)} />
+{musica.map((item, index) => (
+        <div className="Card-addmusica">
+        <h2>1.</h2>
+        <div className="section-music"> 
+        <img src={`${API_URL}/${item.imagem} `} className="imagem" ></img>
+        <div className="atorenome">
+            <h1>{item.nome}</h1>
+            <div className="border">
+            <p>{item.genero}</p>
+            </div>
+        </div>
+        </div>
+        <div >
+       
+                                <img src="/images/heart.png" alt=""  onClick={escolherImagem}/>
 
                                 {curtir &&
 
@@ -168,11 +180,8 @@ export default function Index() {
                                 <button className="curtida" onClick={() => curtirr(index)} >curtir</button>
                                 <button className="curtida" onClick={() => deletarClick(index)} >deletar</button>
                             </div>
-
-
-
-                        </div>
-                    )}
+    </div>
+      ))}
 
 
                 </div>
