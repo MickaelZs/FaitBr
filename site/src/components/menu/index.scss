@@ -4,8 +4,9 @@
     z-index: 10;
 
     width: 300px;
-    height: 100vh;
+    height: auto;
     padding-bottom: 50px;
+    padding-top: 20px;
     background-color: #8D32E5;
     
     display: flex;
@@ -17,15 +18,14 @@
         color: white;
     }
 
-    
-    .logo {
-        display: flex;
-        align-items: center;
-        
+    .logo{
+        margin-bottom: 4em;
     }
+    
     .div-minimae{
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         align-items: center;
     }
 
@@ -67,6 +67,10 @@
     .menu-items > div img {
         width: 27px;
         margin-right: 30px;
+    }
+
+    .sair-div{
+        margin-top: 4em; margin-bottom: -1em;
     }
 
 }

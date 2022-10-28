@@ -229,15 +229,15 @@ export default function Index(){
       >
                 {artista.map(item => 
                     <div className='music'>
-                        <img className= 'caixa-musica' src={`${API_URL}/${item.imagem}`} alt="" />
+                      
+                        <div className= 'caixa-musica'></div>
                         <div className='border0'>
                         <h3>{item.artista}</h3>
                         </div>
-                    </div>
-                    )}
-                    </Carousel>
-              
-               
+                    
+                   
+                </div>
+        
                
             </section>
 
