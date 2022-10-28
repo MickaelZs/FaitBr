@@ -14,6 +14,7 @@ import { buscarUsuarioPorId } from '../../api/usuarioAPI';
 import Modal from 'react-modal';
 import { enviarArquivoMusica, listarCurtidas } from '../../api/musicaAPI';
 import { API_URL } from '../../api/config';
+import styled from 'styled-components';
 
 
 const  customStyles  =  { 
@@ -27,7 +28,13 @@ const  customStyles  =  {
     } , 
   } ;
 
+ 
+
 export default function Index(){
+
+  const button = styled.button({
+    backgroundColor: 'grey',
+  });
 
     const [nome,setNome] = useState('')
     const [musica,setMusica] = useState([])
@@ -46,7 +53,7 @@ export default function Index(){
       
         function afterOpenModal() {
           // references are now sync'd and can be accessed.
-          subtitle.style.color = '#f00';
+          subtitle.style.color = '#8D32E5';
         }
       
         function closeModal() {
@@ -229,8 +236,8 @@ export default function Index(){
             
             <section className='section-playlist' >
                <img src='/images/excluir.png' onClick={() => DeletarPlaylist(item.id)} />
-            <h2 className='titulo-playlist' onClick={() => acessarPlaylist (item.id)}>Playlist</h2>
-            <div className='playlist'>     
+            <h2 className='titulo-playlist'>Playlist</h2>
+            <div className='playlist'  onClick={() => acessarPlaylist (item.id)}>     
                 <div className='caixa-musica'></div>
                 <div className='nome-playlist'>
                     <h1>{item.nome}</h1>
@@ -244,7 +251,7 @@ export default function Index(){
             <section className='faixa-criar-play'>
               
                     <div  onClick={openModal} className='caixa-musica'>
-                    <img src="/images/adicionar-botao.png" alt="" />
+                    <img className='k' src="/images/add.png" alt="" />
 
                     </div>
                     <h1 className='criar-playlist'>Criar Playlist</h1>
@@ -262,7 +269,7 @@ export default function Index(){
         contentLabel="Example Modal"
       >
         <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Criar Playlist</h2>
-        <button onClick={closeModal}>Fechar</button>
+        <button className='botaoModal' onClick={closeModal}>Fechar</button>
         <br/>
         
        
@@ -270,7 +277,7 @@ export default function Index(){
       <input type='text' value={nome}  onChange={e => setNome(e.target.value)}/>
       <br/>
     
-    <button onClick={salvarClick} >Continuar</button>
+    <button  className='botaoModal' onClick={salvarClick} >Continuar</button>
           
         
       </Modal>

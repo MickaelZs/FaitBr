@@ -74,7 +74,7 @@ export async function alterarArtista(id, artistas, idGenero, sobre ) {
     return resposta.data;
 }
 
-export async function seguirArtista (artista,idUsuario) {
+export async function seguirArtista (idUsuario, artista) {
     const r = await api.post('/seguir/' + idUsuario +'/artista',{
         artista: artista,
        

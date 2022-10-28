@@ -200,7 +200,12 @@ server.post('/seguir/:id/artista' , async(req, resp) => {
         const artista = req.body;
         const x = await seguirArtista(idUsuario,artista);
 
-        resp.send(x);
+        if(!artista.artista){
+            throw new Error('coloque um artista');
+        }
+        else{
+            resp.send(x);
+        }
     }
     catch (err){
         resp.status(401).send({

@@ -23,14 +23,15 @@ export default function Reproduzir(){
         console.log(x)
     }
 
+    function acessarMusica(id){
+        navigate(`/play/${id}`)
+    }
+
     useEffect(() => {
         carregarMusica()
 
     },[])
 
-    function acessarMusica(id){
-        navigate(`/detalhe/artista/${id}`)
-    }
     return(
         <main className='pagina-reproduzir'>
            
@@ -43,10 +44,7 @@ export default function Reproduzir(){
            
             <section className='div-reproducao'>
                 {playlist.map(item => 
-              <div>
-
-               
-                <div className='cardmusica'>
+                <div className='cardmusica' onClick={() => acessarMusica (item.id_playlist_item)}>
                 <img src={`${API_URL}/${item.imagem}`} className="image-music" />
                 <div className='div-ator'>
                     <p className='nome'>{item.musica}</p>
@@ -54,7 +52,7 @@ export default function Reproduzir(){
                 </div>
                 
                
-                </div>
+                
                 </div>
 
                
