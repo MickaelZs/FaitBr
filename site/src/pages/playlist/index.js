@@ -15,6 +15,7 @@ import Modal from 'react-modal';
 import { enviarArquivoMusica, listarCurtidas } from '../../api/musicaAPI';
 import { API_URL } from '../../api/config';
 import styled from 'styled-components';
+import { seguindoArtistaPorId } from '../../api/cadastroArtistaAPI';
 
 
 const  customStyles  =  { 
@@ -39,6 +40,8 @@ export default function Index(){
     const [nome,setNome] = useState('')
     const [musica,setMusica] = useState([])
     const [usu,setUsu] = useState([])
+    const [artista,setArtista] = useState ([])
+    const [itemm,setItemm] = useState ([])
     const [modal,setModal] = useState (false)
     const [id,setId] = useState(0)
     const navigate = useNavigate()
@@ -81,7 +84,9 @@ export default function Index(){
 
     useEffect(() => {
         carregarPlaylist();
-        carregarCurtida()
+        carregarCurtida();
+        carregarSeguidores();
+        carregarMusica()
 
     },[])
 
@@ -89,12 +94,27 @@ export default function Index(){
         navigate(`/ReproduzirPlaylist/${id}`)
     }
 
+    async function carregarSeguidores (){
+      const id = Storage('usuario-logado').id
+      const resp = await seguindoArtistaPorId(id)
+      console.log(resp)
+      setArtista(resp)
+
+    }
+
+    async function carregarMusica(){
+      const id = Storage('usuario-logado').id
+      const x =  await listarPlaylistItemUsuarioo(id)
+      setItemm(x)
+      console.log(x)
+  }
+
 
     async function carregarPlaylist(){
         const id = Storage('usuario-logado').id;
         const resp = await listarPlaylistPorIdUsuarioo(id)
         setUsu(resp)
-        console.log(resp)
+       
  
     }
 
@@ -102,8 +122,6 @@ export default function Index(){
       const id = Storage('usuario-logado').id;
       const resp = await listarCurtidas(id)
       setMusica(resp)
-      console.log(resp)
-
     }
 
     async function DeletarPlaylist(id, nome) {
@@ -198,26 +216,28 @@ export default function Index(){
             </section>
             <section className='section-musicas'>
             <h2 className='titulos'>Artistas - Seguidos</h2>
-                <div className="faixa-musicas">
+            <Carousel
+        swipeable={false}
+        draggable={false}
+        responsive={responsive}
+        ssr={true}
+        infinite={true}
+        autoPlaySpeed={1000}
+        keyBoardControl={true}
+        transitionDuration={500}
+        centerMode
+      >
+                {artista.map(item => 
                     <div className='music'>
-                        <div className= 'caixa-musica'></div>
+                        <img className= 'caixa-musica' src={`${API_URL}/${item.imagem}`} alt="" />
                         <div className='border0'>
-                        <h3>Tarcisio</h3>
+                        <h3>{item.artista}</h3>
                         </div>
                     </div>
-                    <div className='music'>
-                        <div className= 'caixa-musica'></div>
-                        <div className='border0'>
-                        <h3>Thiaguinho</h3>
-                        </div>
-                    </div>
-                    <div className='music'>
-                        <div className= 'caixa-musica'></div>
-                        <div className='border0'>
-                        <h3>Lana del rey </h3>
-                        </div>
-                    </div>
-                </div>
+                    )}
+                    </Carousel>
+              
+               
                
             </section>
 
@@ -233,18 +253,24 @@ export default function Index(){
         centerMode
       >
             {usu.map(item =>
-            
+          
             <section className='section-playlist' >
                <img src='/images/excluir.png' onClick={() => DeletarPlaylist(item.id)} />
             <h2 className='titulo-playlist'>Playlist</h2>
+            
             <div className='playlist'  onClick={() => acessarPlaylist (item.id)}>     
-                <div className='caixa-musica'></div>
+                 {itemm.map(item => 
+                <div className='caixa-musica'>
+                <img className='capP' src={`${API_URL}/${item.imagem}`} alt="" />
+                </div>
+                 )}
                 <div className='nome-playlist'>
                     <h1>{item.nome}</h1>
                     <h1>{usu.id}</h1>
                 </div>
                
             </div>
+           
             </section>
             )}
             </Carousel>

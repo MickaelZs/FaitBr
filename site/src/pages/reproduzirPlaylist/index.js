@@ -46,6 +46,7 @@ export default function Reproduzir(){
                 {playlist.map(item => 
                 <div className='cardmusica' onClick={() => acessarMusica (item.id_playlist_item)}>
                 <img src={`${API_URL}/${item.imagem}`} className="image-music" />
+                
                 <div className='div-ator'>
                     <p className='nome'>{item.musica}</p>
                     <p className='autor'>{item.genero}</p>

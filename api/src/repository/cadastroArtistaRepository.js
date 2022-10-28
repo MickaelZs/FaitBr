@@ -137,3 +137,18 @@ export async function seguirArtista(idUsuario,artista){
 
     return artista;
 }
+
+export async function artistaSeguidosPorId(id) {
+    const comando =
+
+    `select tb_usuario_artista_seguido.id_usuario_artista_seguido,
+    id_usuario id,
+    nm_artistas artista,
+    img_artista imagem
+    from tb_usuario_artista_seguido
+    inner join tb_artistas on tb_usuario_artista_seguido.id_artistas = tb_artistas.id_artistas
+    where id_usuario = ?;`
+
+    const [linhas] = await con.query(comando, [id]);
+    return linhas;
+}

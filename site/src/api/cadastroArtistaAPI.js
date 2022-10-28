@@ -81,3 +81,8 @@ export async function seguirArtista (idUsuario, artista) {
     })
     return r.data;
 }
+
+export async function seguindoArtistaPorId(id){
+    const resposta = await api.get(`/seguido/${id}`)
+    return resposta.data;
+}
