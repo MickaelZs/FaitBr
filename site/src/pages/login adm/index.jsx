@@ -16,7 +16,7 @@ export default function Index() {
   async function loginClick() {
 
     try{
-        const r = await login(email,senha) 
+        const r = await login(email,senha)
         storage('adm-logado', r)
       navigate('/adm/cadastrarArtista');
     }

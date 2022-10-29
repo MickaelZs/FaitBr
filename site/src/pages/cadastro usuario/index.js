@@ -39,6 +39,7 @@ export default function Index() {
           const r = await cadastroUsuario (nome,nasc,email,senha)
           Storage('usuario-logado', r)
           navigate('/HomeLoginFeito');
+          
       }
       catch (err){
           toast.error(err.response.data.erro)

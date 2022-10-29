@@ -14,6 +14,8 @@ import { buscarUsuarioPorId } from '../../api/usuarioAPI';
 import Modal from 'react-modal';
 import { enviarArquivoMusica, listarCurtidas } from '../../api/musicaAPI';
 import { API_URL } from '../../api/config';
+import styled from 'styled-components';
+import { seguindoArtistaPorId } from '../../api/cadastroArtistaAPI';
 
 
 const  customStyles  =  { 
@@ -27,11 +29,19 @@ const  customStyles  =  {
     } , 
   } ;
 
+ 
+
 export default function Index(){
+
+  const button = styled.button({
+    backgroundColor: 'grey',
+  });
 
     const [nome,setNome] = useState('')
     const [musica,setMusica] = useState([])
     const [usu,setUsu] = useState([])
+    const [artista,setArtista] = useState ([])
+    const [itemm,setItemm] = useState ([])
     const [modal,setModal] = useState (false)
     const [id,setId] = useState(0)
     const navigate = useNavigate()
@@ -46,7 +56,7 @@ export default function Index(){
       
         function afterOpenModal() {
           // references are now sync'd and can be accessed.
-          subtitle.style.color = '#f00';
+          subtitle.style.color = '#8D32E5';
         }
       
         function closeModal() {
@@ -74,7 +84,9 @@ export default function Index(){
 
     useEffect(() => {
         carregarPlaylist();
-        carregarCurtida()
+        carregarCurtida();
+        carregarSeguidores();
+        carregarMusica()
 
     },[])
 
@@ -82,12 +94,27 @@ export default function Index(){
         navigate(`/ReproduzirPlaylist/${id}`)
     }
 
+    async function carregarSeguidores (){
+      const id = Storage('usuario-logado').id
+      const resp = await seguindoArtistaPorId(id)
+      console.log(resp)
+      setArtista(resp)
+
+    }
+
+    async function carregarMusica(){
+      const id = Storage('usuario-logado').id
+      const x =  await listarPlaylistItemUsuarioo(id)
+      setItemm(x)
+      console.log(x)
+  }
+
 
     async function carregarPlaylist(){
         const id = Storage('usuario-logado').id;
         const resp = await listarPlaylistPorIdUsuarioo(id)
         setUsu(resp)
-        console.log(resp)
+       
  
     }
 
@@ -95,8 +122,6 @@ export default function Index(){
       const id = Storage('usuario-logado').id;
       const resp = await listarCurtidas(id)
       setMusica(resp)
-      console.log(resp)
-
     }
 
     async function DeletarPlaylist(id, nome) {
@@ -191,26 +216,28 @@ export default function Index(){
             </section>
             <section className='section-musicas'>
             <h2 className='titulos'>Artistas - Seguidos</h2>
-                <div className="faixa-musicas">
+            <Carousel
+        swipeable={false}
+        draggable={false}
+        responsive={responsive}
+        ssr={true}
+        infinite={true}
+        autoPlaySpeed={1000}
+        keyBoardControl={true}
+        transitionDuration={500}
+        centerMode
+      >
+                {artista.map(item => 
                     <div className='music'>
+                      
                         <div className= 'caixa-musica'></div>
                         <div className='border0'>
-                        <h3>Tarcisio</h3>
+                        <h3>{item.artista}</h3>
                         </div>
-                    </div>
-                    <div className='music'>
-                        <div className= 'caixa-musica'></div>
-                        <div className='border0'>
-                        <h3>Thiaguinho</h3>
-                        </div>
-                    </div>
-                    <div className='music'>
-                        <div className= 'caixa-musica'></div>
-                        <div className='border0'>
-                        <h3>Lana del rey </h3>
-                        </div>
-                    </div>
+                    
+                   
                 </div>
+        
                
             </section>
 
@@ -226,25 +253,31 @@ export default function Index(){
         centerMode
       >
             {usu.map(item =>
-            
+          
             <section className='section-playlist' >
                <img src='/images/excluir.png' onClick={() => DeletarPlaylist(item.id)} />
-            <h2 className='titulo-playlist' onClick={() => acessarPlaylist (item.id)}>Playlist</h2>
-            <div className='playlist'>     
-                <div className='caixa-musica'></div>
+            <h2 className='titulo-playlist'>Playlist</h2>
+            
+            <div className='playlist'  onClick={() => acessarPlaylist (item.id)}>     
+                 {itemm.map(item => 
+                <div className='caixa-musica'>
+                <img className='capP' src={`${API_URL}/${item.imagem}`} alt="" />
+                </div>
+                 )}
                 <div className='nome-playlist'>
                     <h1>{item.nome}</h1>
                     <h1>{usu.id}</h1>
                 </div>
                
             </div>
+           
             </section>
             )}
             </Carousel>
             <section className='faixa-criar-play'>
               
                     <div  onClick={openModal} className='caixa-musica'>
-                    <img src="/images/adicionar-botao.png" alt="" />
+                    <img className='k' src="/images/add.png" alt="" />
 
                     </div>
                     <h1 className='criar-playlist'>Criar Playlist</h1>
@@ -262,7 +295,7 @@ export default function Index(){
         contentLabel="Example Modal"
       >
         <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Criar Playlist</h2>
-        <button onClick={closeModal}>Fechar</button>
+        <button className='botaoModal' onClick={closeModal}>Fechar</button>
         <br/>
         
        
@@ -270,7 +303,7 @@ export default function Index(){
       <input type='text' value={nome}  onChange={e => setNome(e.target.value)}/>
       <br/>
     
-    <button onClick={salvarClick} >Continuar</button>
+    <button  className='botaoModal' onClick={salvarClick} >Continuar</button>
           
         
       </Modal>

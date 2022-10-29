@@ -14,15 +14,13 @@ export default function Menu (){
 
     return(
         <nav className="comp-menu">
-        <div>
+        <div className='div-minimae'>
             <div className='logo'>
-                <img src="/images/logooo.png" alt="logo" />
-                
+                <img src="/images/reallogo.png" className='imagem-logo' />
             </div>
 
             <div className='menu-items'>
                 <div>
-                    
                     <img src="/images/casinha.svg"  />
                     <div >Home</div>
                 </div>
@@ -53,7 +51,7 @@ export default function Menu (){
             </div>
         </div>
 
-        <div className='menu-items'>
+        <div className='menu-items sair-div'>
             <div onClick={sairClick}>
                 <img src="/images/logout.png" />
                 <div>Sair</div>

@@ -1,5 +1,5 @@
 import { Router} from "express";
-import { alteraArtista, alterarImagem, buscarImagem, buscarPorId, buscarPorNome, cadastrorArtista, deletaArtista, ListaPorId, listarArtistaPorGenero, listarTodosArtista, seguirArtista } from "../repository/cadastroArtistaRepository.js"
+import { alteraArtista, alterarImagem, artistaSeguidosPorId, buscarImagem, buscarPorId, buscarPorNome, cadastrorArtista, deletaArtista, ListaPorId, listarArtistaPorGenero, listarTodosArtista, seguirArtista } from "../repository/cadastroArtistaRepository.js"
 import multer from 'multer';
 
 
@@ -200,7 +200,12 @@ server.post('/seguir/:id/artista' , async(req, resp) => {
         const artista = req.body;
         const x = await seguirArtista(idUsuario,artista);
 
-        resp.send(x);
+        if(!artista.artista){
+            throw new Error('coloque um artista');
+        }
+        else{
+            resp.send(x);
+        }
     }
     catch (err){
         resp.status(401).send({
@@ -209,6 +214,23 @@ server.post('/seguir/:id/artista' , async(req, resp) => {
     }
 })
 
+
+server.get('/seguido/:id', async (req, resp) => {
+    try {
+        const id = Number(req.params.id);
+        
+        const resposta = await artistaSeguidosPorId(id);
+
+        if (!resposta)
+            resp.status(404).send([])
+        else
+            resp.send(resposta);
+    } catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
 
 
 export default server;
