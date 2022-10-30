@@ -35,6 +35,7 @@ export default function Reproduzir(){
     return(
         <main className='pagina-reproduzir'>
            
+           
             {playlist.map(item => 
                  <section className='faixa1'>
 <h1>{item.playlist}</h1>

@@ -230,20 +230,20 @@ export default function Index() {
           {artista.map(item =>
             <div className='music'>
 
-              <div className='caixa-musica'></div>
+              <div className='caixa-musica'>
+                <img className='caixa-musica' src={`${API_URL}/${item.imagem}`} alt="" />
+              </div>
               <div className='border0'>
                 <h3>{item.artista}</h3>
               </div>
 
 
             </div>
-        
-               
           )}
-
         </Carousel>
+      </section>
 
-          </section>
+
 
       <Carousel
         swipeable={false}
@@ -264,7 +264,7 @@ export default function Index() {
 
             <div className='playlist' onClick={() => acessarPlaylist(item.id)}>
               {itemm.map(item =>
-                <div className='caixa-musica'>
+                <div className='caixa-musicaa'>
                   <img className='capP' src={`${API_URL}/${item.imagem}`} alt="" />
                 </div>
               )}

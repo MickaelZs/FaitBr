@@ -53,12 +53,11 @@
         border-radius: 20px 0px 0px 20px;
         margin-right: 10px;
     }
-    img{
-        width:8em;
-        height:100%;
-        border-radius: 20px 0px 0px 20px;
 
+    .i{
+        margin: 20px;
     }
+   
 
     .Card-addmusica{
         display: flex;
@@ -66,8 +65,9 @@
         align-items: center;
         color: #fff;
         background-color: #1e1e1e;
-        margin: 0;
+        margin: 25px;
         width: max-content;
+
     }
         
         
@@ -83,16 +83,13 @@
             width: 30em;
             background-color: #2e2e2e;
             position:sticky;
-            box-shadow: 2px 2px 8px 1px #000000
+            box-shadow: 1px 1px 8px 1px #ffffff
     
     ;
     
         }
     
-        img{
-            border-top-left-radius: 15px;
-            border-bottom-left-radius: 15px;
-        }
+       
     
     
         h2{
@@ -117,7 +114,7 @@
             width: 100%;
             padding: 3px;
             display: flex;
-            box-shadow: 2px 2px 5px 1px #000 ;
+            box-shadow: 1px 1px 5px 1px #1e1e1e ;
             flex-direction: column;
             align-items: center;
             justify-content: center;
@@ -126,6 +123,40 @@
 
         .imagem{
             height: 7.5em;
+        }
+
+        .caixa-busca {
+            display: flex;
+            background-color: white;
+           
+            border: solid 3px blueviolet;
+            padding: 10px 20px;
+            border-radius: 15px;
+            box-shadow: 1px 1px 5px #bdbdbd;
+            width: 40%;
+            margin-top: 0px;
+            justify-content: center;
+            margin: 30px;
+            align-items: center;
+            
+        }
+        
+        .cap{
+            width: 100px;
+            height: 100px;
+        }
+        
+        .caixa-busca input {
+            background: none;
+            border: none;
+            padding: 0px;
+            width: 100%;
+            
+        }
+        .caixa-busca img {
+            cursor: pointer;
+            position: relative;
+            right: -15px;
         }
     
     

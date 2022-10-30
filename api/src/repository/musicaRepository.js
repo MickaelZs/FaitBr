@@ -1,5 +1,24 @@
 import { con } from "./connection.js";
 
+export async function buscarMusicaPorNome(nome) {
+    
+    const comando =
+    `select id_musica,
+    id_genero,
+    id_artistas,
+    nm_musicas,
+    blob_musica,
+    img_imagem
+    from tb_musicas
+    where nm_musicas like ? ;
+    
+   `;
+    
+    const [linhas] = await con.query(comando, [`%${nome}%`]);
+    return linhas;
+}
+
+
 export async function cadastrarMusica(musica){
     const comando = `insert into tb_musicas (id_genero, id_artistas, nm_musicas)
     values (?,?,?)`
