@@ -42,3 +42,16 @@ export async function alteraUsuario(id, nome, nascimento, email, senha){
     })
     return resposta.data;
 }
+
+export async function enviarImagemUsuario(id, imagem){
+    const formData = new FormData ();
+    formData.append('capa', imagem);
+
+    const resposta = await api.put(`/cadastroUsuario/${id}/capa`, formData,{
+        headers:{
+            "Content-type": "multipart/form-data"
+        },
+    });
+
+    return resposta.status;
+}

@@ -2,9 +2,11 @@ import './index.scss'
 
 import Cabeçario from '../../components/cabeçalho'
 
+import { ToastContainer, toast } from 'react-toastify';
+
 import { API_URL } from '../../api/config'
 import { useEffect, useState } from 'react'
-import { buscarUsuarioPorId, listarUsuario } from '../../api/usuarioAPI'
+import { buscarUsuarioPorId, listarUsuario, enviarImagemUsuario } from '../../api/usuarioAPI'
 import { useParams } from 'react-router-dom'
 import Storage from 'local-storage'
 
@@ -16,8 +18,9 @@ export default function Index() {
     const [nasc, setNasc] = useState('')
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
+    const [id, setId] = useState('')
 
-    const { idParam } = useParams()
+    const {idParam} = useParams()
 
     async function carregarUsuario() {
         const id = Storage('usuario-logado').id
@@ -44,7 +47,24 @@ export default function Index() {
         document.getElementById('imagemCapa').click();
     }
 
+    async function salvarImagem(){
+        try {
+            
+            if(typeof(imagem) == 'object'){
+                await enviarImagemUsuario(idParam, imagem)
+                
+            }
 
+            toast.success('trocastes a foto, querido usuario do fitas br')
+        
+        } catch (err) {
+            if(err.response)
+            toast.error(err.response.data.erro)
+            else
+            toast.error(err.message);
+        }
+
+    }
     return (
         <main className='pagina-informacao-usu'>
             <Cabeçario usuario={usuario} />
@@ -71,7 +91,8 @@ export default function Index() {
                             <input type='file' id='imagemCapa' onChange={e => setImagem(e.target.files[0])} ></input>
 
                         </div>
-                       
+                        <button onClick={salvarImagem}>alterar foto de perfil</button>
+
 
                     </div>
 
