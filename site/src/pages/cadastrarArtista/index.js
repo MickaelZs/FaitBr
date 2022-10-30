@@ -130,7 +130,7 @@ export default function Index(){
 
                             {imagem &&  
 
-                            <img className='imagem' src={mostrarImagem(imagem)} />
+                            <img className='border-image' src={mostrarImagem(imagem)} />
 
                             }
 
