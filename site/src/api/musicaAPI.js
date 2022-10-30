@@ -5,6 +5,12 @@ const api = axios.create({
     baseURL: API_URL
 })
 
+
+export async function BuscarMusicaPorNome(nome){
+    const resposta = await api.get(`/musica/busca?nome=${nome}`);
+    return resposta.data;
+  }
+
 export async function cadastraMusica(nome,idGenero,idArtista) {
     const r = await api.post('/cadastramusica',{
         nome: nome,

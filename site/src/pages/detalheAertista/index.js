@@ -156,7 +156,7 @@ export default function Index() {
 
 {musica.map((item, index) => (
         <div className="Card-addmusica">
-        <h2>1.</h2>
+        
         <div className="section-music"> 
         <img src={`${API_URL}/${item.imagem} `} className="imagem" ></img>
         <div className="atorenome">
@@ -168,11 +168,10 @@ export default function Index() {
         </div>
         <div >
        
-                                <img src="/images/heart.png" alt=""  onClick={escolherImagem}/>
-
+                                <img className="l" src="/images/heart.png" alt="" onClick={() => setCurtir = curtirr (index)  (!curtir) } />
                                 {curtir &&
 
-                                    <img src="/images/heart on.png" alt="" />}
+                                    <img  src="/images/heart on.png" alt="" onClick={() => deletarClick (index)} />}
 
                             </div>
                             <div>

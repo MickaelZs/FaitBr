@@ -1,5 +1,5 @@
 import "./index.scss";
-import { listaMusicaArtista } from "../../api/musicaAPI";
+import { BuscarMusicaPorNome, listaMusicaArtista } from "../../api/musicaAPI";
 import { useEffect, useState } from "react";
 import { API_URL } from "../../api/config.js";
 import { PlaylistItem } from "../../api/playlistAPI";
@@ -11,6 +11,13 @@ export default function Index() {
   const { idParam } = useParams();
 
   const [musicaa, setMusicaa] = useState([]);
+  const [buscar,setBuscar] = useState('')
+
+  async function filtrar(){
+    const resp = await BuscarMusicaPorNome(buscar)
+    setMusicaa(resp)
+    console.log(resp)
+  }
 
   async function salvar(position) {
     try {
@@ -38,6 +45,11 @@ export default function Index() {
         <div className='add'>
             <ToastContainer/>
 
+            <div className='caixa-busca'>             
+                    <input type="text" placeholder='Buscar artista por nome' value={buscar} onChange={e => setBuscar(e.target.value)} />
+                <img src='/images/procurar.png' onClick={filtrar}  />
+                </div>
+
   
 
 
@@ -53,7 +65,8 @@ export default function Index() {
             </div>
         </div>
         </div>
-        <button onClick={() => salvar(index)}>Adicionar</button>
+        <img className="i" src="/images/i.png" alt="" onClick={() => salvar(index)} />
+      
     </div>
       ))}
     </div>
