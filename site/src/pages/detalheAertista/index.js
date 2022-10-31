@@ -168,7 +168,7 @@ export default function Index() {
         </div>
         <div >
        
-                                <img className="l" src="/images/heart.png" alt="" onClick={() => setCurtir = curtirr (index)  (!curtir) } />
+                                <img className="l" src="/images/heart.png" alt="" onClick={() => setCurtir   (!curtir) } />
                                 {curtir &&
 
                                     <img  src="/images/heart on.png" alt="" onClick={() => deletarClick (index)} />}
@@ -176,8 +176,7 @@ export default function Index() {
                             </div>
                             <div>
 
-                                <button className="curtida" onClick={() => curtirr(index)} >curtir</button>
-                                <button className="curtida" onClick={() => deletarClick(index)} >deletar</button>
+                                
                             </div>
     </div>
       ))}

@@ -46,8 +46,8 @@ export default function Index(){
                     <div className='card_artistas' onClick={() => acessarArtista (item.id)}>
                         <img className='cap' src={`${API_URL}/${item.artista}`}/>
                         <h1>{item.nome}</h1>
-                        <h3>{item.genero}</h3>
-                </div>
+                        
+                </div> 
             
                 )}
                 </div>
