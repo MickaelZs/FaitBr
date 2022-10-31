@@ -7,20 +7,22 @@ import { ToastContainer, toast } from 'react-toastify';
 import { API_URL } from '../../api/config'
 import { useEffect, useState } from 'react'
 import { buscarUsuarioPorId, listarUsuario, enviarImagemUsuario } from '../../api/usuarioAPI'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Storage from 'local-storage'
 
 export default function Index() {
 
     const [usuario, setUsuario] = useState([])
     const [imagem, setImagem] = useState('')
-    const [nome, setNome] = useState('')
-    const [nasc, setNasc] = useState('')
-    const [email, setEmail] = useState('')
-    const [senha, setSenha] = useState('')
-    const [id, setId] = useState('')
+    
 
     const {idParam} = useParams()
+   const  navigate = useNavigate ()
+
+    function sairClick(){
+        Storage.remove('usuario-logado')
+        navigate('/LoginUsuario')
+    }
 
     async function carregarUsuario() {
         const id = Storage('usuario-logado').id
@@ -146,6 +148,9 @@ export default function Index() {
                       
 
                     </div>
+                    </div>
+                    <div  >
+                        <button onClick={sairClick}>sair kkk</button>
                     </div>
 
                 </div>

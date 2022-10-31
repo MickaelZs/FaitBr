@@ -75,3 +75,4 @@ export  async function alteraUsuario(id, usuario){
 const [resposta] = await con.query(comando,[usuario.nome,usuario.nasc,usuario.email, usuario.senha ,id ])
 return resposta.affectedRows;
 }
+

@@ -47,6 +47,17 @@ server.post('/usuario/login', async (req, resp) => {
     }
 })
 
+server.get('/usuario', async (req, resp) => {
+    try {
+        const resposta = await listarUsuario();
+        resp.send(resposta);
+    } catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
 server.put('/cadastroUsuario/:id/capa', upload.single('capa') ,async (req, resp) => {
     try{
         if(!req.file)
