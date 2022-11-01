@@ -14,25 +14,25 @@ import Storage from 'local-storage'
 
 export default function Index() {
 
-    let rearranjadoPlayer =  [ 
-        { 
-          className :  "beatles" , 
-          style :  { cursor :  "ponteiro"  } , 
-          innerComponents :  [ 
-            { 
-              type :  "play" 
-            } 
-          ] 
-        } 
-      ] ;
+    let rearranjadoPlayer = [
+        {
+            className: "beatles",
+            style: { cursor: "ponteiro" },
+            innerComponents: [
+                {
+                    type: "play"
+                }
+            ]
+        }
+    ];
 
     const [artista, setArtista] = useState([])
     const [musica, setMusica] = useState([])
-    const [curtir, setCurtir] = useState(false)
+    const [curtir, setCurtir] = useState(false);
     const [heart, setHeart] = useState('')
     const { idParam } = useParams()
     const navigate = useNavigate()
-    console.log(artista)
+   
 
     async function deletarClick(id) {
         try {
@@ -51,35 +51,27 @@ export default function Index() {
         navigate(`/play/${id}`)
     }
 
-    function mostrarImagem(imagem){
-        
+    function mostrarImagem(imagem) {
+
         if (typeof (imagem) == 'object') {
             return URL.createObjectURL(imagem);
         }
         else {
-                
-                return `${API_URL}/${imagem}`
+
+            return `${API_URL}/${imagem}`
         }
     }
     function escolherImagem(objeto, mostrarNovaimagem) {
-        document.querySelector(objeto).src="./images/heart on.png";
+        document.querySelector(objeto).src = "./images/heart on.png";
     }
 
-    
+    // async function carregarCurtidas() {
+    //     const id = Storage('usuario-logado').id;
+    //     const resp = await listarCurtidas(id)
+    //         (resp)
 
 
-
-
-
-
-
-
-    async function carregarCurtidas() {
-        const id = Storage('usuario-logado').id;
-        const resp = await listarCurtidas(id)
-            (resp)
-
-    }
+    // }
 
     async function seguir(position) {
         try {
@@ -98,11 +90,10 @@ export default function Index() {
     async function curtirr(position) {
         try {
             let id = Storage('usuario-logado').id;
-            let musicaSelecionada = musica[position].id
+            let musicaSelecionada = musica[position]
+            console.log(musicaSelecionada)
             const resp = await curtirMusica(musicaSelecionada, id)
-
             toast.dark('musica curtidaa');
-
         }
 
         catch (err) {
@@ -110,6 +101,8 @@ export default function Index() {
             else toast.error(err.message);
 
         }
+
+        
 
     }
 
@@ -123,13 +116,14 @@ export default function Index() {
     async function carregarArtistaPorMusica() {
         const resp = await buscarArtistaPorMusicaId(idParam)
         setMusica(resp)
+        console.log(resp)
 
     }
 
     useEffect(() => {
         carregarArtista()
         carregarArtistaPorMusica()
-        carregarCurtidas()
+ 
 
     }, [])
     //src={`${API_URL}/${artista.artista}`}
@@ -138,8 +132,8 @@ export default function Index() {
     return (
         <main className='comp-detalhe'>
             <ToastContainer />
-            
- 
+
+
             <body>
                 <div className="comp-card">
                     <div className='aaaa'>
@@ -167,39 +161,37 @@ export default function Index() {
 
                     </div>
 
-                   
 
-{musica.map((item, index) => (
-        <div className="Card-addmusica">
-        
-        <div className="section-music"> 
-        <img src={`${API_URL}/${item.imagem} `} className="imagem" ></img>
-        <div className="atorenome">
-            <h1>{item.nome}</h1>
-            <div className="border">
-            <p>{item.genero}</p>
-            </div>
-        </div>
-        </div>
-        <div >
-       
-                                <img className="l" src="/images/heart.png" alt="" onClick={ () => curtirr (index)  ( !curtir)}   />
+
+                    {musica.map((item, index) => (
+                        <div className="Card-addmusica">
+                            <div className="section-music">
+                                <img src={`${API_URL}/${item.imagem} `} className="imagem" ></img>
+                                <div className="atorenome">
+                                    <h1>{item.nome}</h1>
+                                    <div className="border">
+                                        <p>{item.genero}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div >
+
+                                <img className="l" src="/images/heart.png" alt="" onClick={() => setCurtir(!curtir)  } />
                                 {curtir &&
 
-                                    <img  src="/images/heart on.png" alt="" onClick={ deletarClick (index)} />}
+                                    <img src="/images/heart on.png" alt="" onClick={ () => deletarClick  (item.id) (index)} />}
 
                             </div>
-                            <div>
+                            {/* <button onClick={() => curtirr (item.id)}>curtir</button>
+                            <button onClick={() => deletarClick (item.id)} >deletar</button> */}
+                        </div>
 
-                                
-                            </div>
-    </div>
-      ))}
+                    ))}
 
 
                 </div>
 
-                
+
 
             </body>
         </main>
