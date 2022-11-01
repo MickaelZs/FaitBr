@@ -4,6 +4,7 @@ import { buscarPorId, seguirArtista } from "../../api/cadastroArtistaAPI"
 import { ToastContainer, toast } from 'react-toastify';
 import { buscarArtistaPorMusicaId, curtirMusica, deletarrCurtida, listaMusicaArtista, listarCurtidas } from "../../api/musicaAPI"
 import { API_URL } from "../../api/config"
+import AudioPlayer from 'react-modular-audio-player'
 import './index.scss'
 
 
@@ -12,6 +13,18 @@ import Storage from 'local-storage'
 
 
 export default function Index() {
+
+    let rearranjadoPlayer =  [ 
+        { 
+          className :  "beatles" , 
+          style :  { cursor :  "ponteiro"  } , 
+          innerComponents :  [ 
+            { 
+              type :  "play" 
+            } 
+          ] 
+        } 
+      ] ;
 
     const [artista, setArtista] = useState([])
     const [musica, setMusica] = useState([])
@@ -125,6 +138,8 @@ export default function Index() {
     return (
         <main className='comp-detalhe'>
             <ToastContainer />
+            
+ 
             <body>
                 <div className="comp-card">
                     <div className='aaaa'>
@@ -168,10 +183,10 @@ export default function Index() {
         </div>
         <div >
        
-                                <img className="l" src="/images/heart.png" alt="" onClick={() => setCurtir   (!curtir) } />
+                                <img className="l" src="/images/heart.png" alt="" onClick={ () => curtirr (index)  ( !curtir)}   />
                                 {curtir &&
 
-                                    <img  src="/images/heart on.png" alt="" onClick={() => deletarClick (index)} />}
+                                    <img  src="/images/heart on.png" alt="" onClick={ deletarClick (index)} />}
 
                             </div>
                             <div>
@@ -183,6 +198,8 @@ export default function Index() {
 
 
                 </div>
+
+                
 
             </body>
         </main>

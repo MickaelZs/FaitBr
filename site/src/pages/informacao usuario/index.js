@@ -77,16 +77,16 @@ export default function Index() {
 
                     <div className='faixa1-div'>
 
-                        <div className='usuario' onClick={escolherImagem}>
+                        <div className='usuarioo' onClick={escolherImagem}>
 
                             {!imagem &&
 
-                                <img className='usuario'  src={`${API_URL}/${usuario.imagem}`} />
+                                <img className='usuarioo'  src={`${API_URL}/${usuario.imagem}`} />
                             }
 
                             {imagem &&
 
-                                <img className='usuario' src={mostrarImagem(imagem)} />
+                                <img className='usuarioo' src={mostrarImagem(imagem)} />
 
                             }
 
@@ -94,6 +94,9 @@ export default function Index() {
 
                         </div>
                         <button onClick={salvarImagem}>alterar foto de perfil</button>
+                        <div  >
+                        <button onClick={sairClick}>sair kkk</button>
+                    </div>
 
 
                     </div>
@@ -149,9 +152,7 @@ export default function Index() {
 
                     </div>
                     </div>
-                    <div  >
-                        <button onClick={sairClick}>sair kkk</button>
-                    </div>
+                    
 
                 </div>
 

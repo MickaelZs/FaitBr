@@ -10,7 +10,7 @@ export default function Cabeçario(props){
         </div>
         <div className='div1'>
             <div className='lupa'>
-            <img src='/images/lupa.png' width="80px"></img>
+            <img src='/images/lupa.png' width="40px"></img>
             </div>
             <div className='playlist'>
             <img src='/images/playlist.png' width="40px"></img>

@@ -13,6 +13,7 @@ import { API_URL } from '../../api/config';
 import { buscarUsuarioPorId } from '../../api/usuarioAPI';
 import Perfil from '../../components/perfilUsuario';
 import { listarCurtidas } from '../../api/musicaAPI';
+import Cabeçario from '../../components/cabeçalho';
 
 
 
@@ -22,6 +23,7 @@ export default function Index() {
   const [genero,setGenero] = useState ([])
   const [usuario,setUsuario] = useState ([])
   const [curtidas,setCurtidas]  = useState([])
+ 
   const [imagem,setImagem] = useState ('')
   const navigate = useNavigate() 
   const {idParam} = useParams()
@@ -114,48 +116,15 @@ useEffect(() => {
   return (
 
     <div className='pagina-home-login-feito'>
+      <Cabeçario usuario={usuario}/>
 
       <div className='faixa1'>
-        <header>
-          <div className='texto-cabecalho'>
-          <img  className='logo' src='./images/logooo.png' href='' width='100' />
-        
-        
-
-              
-              <li><a href="#sec2">Gêneros</a></li>
-              <li><a href="#sec3">Artistas populares</a></li>
-              
-              
-              <a href='/buscar'>
-              <img className='icon-pesquisa' src='images/icon-pesquisa.png' />
-              </a>
-             
-              <img className='icon-livraria' src='./images/icon-library.png'/>
-              <div>
-             
-              <div >
-                <img className="usuario" src={`${API_URL}/${usuario.imagem}`}  onClick={() => acessarPerfil (usuario.id) } ></img>
-                
-
-         </div> 
-          
-        
-          </div>
-          </div>
-        </header>
-       
 
         <div className='faixa'>
           <div className='te'>
           <h1> Without music, life <br/> would be a <br/> mistake</h1>
           </div>
-         
-
           <img src="/images/Music-pana.png" alt="" className='imagem-test' />
-        
-
-         
         </div>
 
       </div>
