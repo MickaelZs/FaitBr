@@ -22,30 +22,30 @@ export default function Consulta(){
         <main className='pagina-consulta'>
         <Menu/>
 
-        <table>
-                        <thead>
-                            <tr>
-                                
-                                <th>ID</th>
-                                <th>USUARIO</th>
-                                <th>NASCIMENTO</th>
-                               
-                            </tr>
-                        </thead>
-                        <tbody>
+        {usuario.map(item => {
+                                return (
 
-                            {usuario.map(item =>
-                            <tr>
-                            <td>{item.id}</td>
-                            <td>{item.nome}</td>
-                            <td>{item.nascimento.substr(0, 10)}</td>
-                            
-                        </tr>
+                                    <div className='card'>
+                                        <div className='acoes'>
 
-                                )}                  
-                        </tbody>
-                    </table>
-           
+                                            
+
+                                        </div>
+                                        <div>
+
+
+                                            <div>Nome: {item.nome} </div>
+                                            <div>Nascimento: {item.nascimento.substr(0, 10)} </div>
+                                            <div>Email: {item.email} </div>
+                                            <div>Senha: {item.senha}</div>
+                                            <div>id: {item.id} </div>
+
+                                        </div>
+
+                                    </div>
+                                );
+                            })}
+        
         </main>
     )
 }
