@@ -256,7 +256,7 @@ export default function Index() {
         transitionDuration={500}
         centerMode
       >
-        {usu.map(item =>
+        {usu.filter(item => item.imagem ).map(item =>
 
           <section className='section-playlist' >
             <img src='/images/excluir.png' onClick={() => DeletarPlaylist(item.id)} />
