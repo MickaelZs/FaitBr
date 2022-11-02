@@ -10,6 +10,16 @@ export async function cadastrorUsuario(usuario) {
     return usuario;
 }
 
+export async function recupeçao(email) {
+    const comando = `insert into tb_usuario(ds_email)
+    values ( ? );`
+
+    const [resposta] = await con.query(comando,[email]);
+    email.id = resposta.insertId;
+
+    return email;
+}
+
 export async function loginUsuario (email, senha){
     const comando=
     `

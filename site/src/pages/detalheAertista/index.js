@@ -29,7 +29,7 @@ export default function Index() {
     const [artista, setArtista] = useState([])
     const [musica, setMusica] = useState([])
     const [curtir, setCurtir] = useState(false);
-    const [heart, setHeart] = useState('')
+    const [seguirr, setSeguirr] = useState(false)
     const { idParam } = useParams()
     const navigate = useNavigate()
    
@@ -90,7 +90,7 @@ export default function Index() {
     async function curtirr(position) {
         try {
             let id = Storage('usuario-logado').id;
-            let musicaSelecionada = musica[position]
+            let musicaSelecionada = musica[position].id
             console.log(musicaSelecionada)
             const resp = await curtirMusica(musicaSelecionada, id)
             toast.dark('musica curtidaa');
@@ -155,7 +155,16 @@ export default function Index() {
                                 <h3>Sobre</h3>
                                 <p className='sinopse'>{artista.sobre} </p>
                             </div>
-                            <button className='botao' onClick={() => seguir(artista)}>Seguir</button>
+                            <div onClick={()=> setSeguirr(!seguirr)}>
+                                {seguirr ? 
+                                <button className='botao' onClick={() => seguir(artista)}>Seguir</button>
+                                :
+                                <button className='botao' onClick={() => seguir(artista)}>Seguindo</button>
+                            
+                            }
+
+                            </div>
+                           
 
                         </div>
 
@@ -174,12 +183,11 @@ export default function Index() {
                                     </div>
                                 </div>
                             </div>
-                            <div >
-
-                                <img className="l" src="/images/heart.png" alt="" onClick={() => setCurtir(!curtir)  } />
-                                {curtir &&
-
-                                    <img src="/images/heart on.png" alt="" onClick={ () => deletarClick  (item.id) (index)} />}
+                            <div onClick={() => setCurtir(!curtir)  } >
+                            {curtir ?
+                                <img className="l" src="/images/heart on.png" alt="" onClick={() => deletarClick (item.id) (index)} />
+                                :
+                                    <img src="/images/heart.png" alt="" onClick={() => curtirr (item.id) (index)} />}
 
                             </div>
                             {/* <button onClick={() => curtirr (item.id)}>curtir</button>
