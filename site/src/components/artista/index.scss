@@ -1,14 +1,42 @@
-.artista{
+.faixaa{
 
-
-    img{
+    .card{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
         width: 300px;
-        height: 300px;
-        border-radius: 20px;
-    }
-    p{
-        color: rgb(7, 7, 7);
-        
+        height: 394px;
+      background-color: #ffffff31;
+  backdrop-filter: blur(40px);
+  border-radius: 20px 20px 20px 20px ;
+  margin: 20px;
     }
 
+    .circulo{
+        img{
+            border-radius: 100%;
+            width: 170px;
+            height: 170px;
+        }
+    }
+
+    .text{
+        h1{
+            color: #fff;
+        }
+    }
+
+
+    .botao-seguir{
+        button{
+            border: none;
+            color: #8D32E5;
+            border-radius: 20px;
+            width: 92px;
+            height: 30px;
+        }
+    }
+    
 }

@@ -1,13 +1,21 @@
 import './index.scss'
-import { buscarImagem } from '../../api/cadastroArtistaAPI'
 
-export default function Artistas (props){
+export default function ArtistaSeguido (){
     return(
-        <div>
-        <div className="artista">
-       <img src={buscarImagem( props.artista.artista)} />
-       <p> {props.artista.nome}</p>
-      </div>
+        <div className='faixaa'>
+            <div className='card'>
+                <div className='circulo'>
+                    <img src="/images/teto.jpg" alt="" />
+                </div>
+                <div className="text">
+                    <h1>Teto</h1>
+                </div>
+                <div className="botao-seguir">
+                    <button>Seguir</button>
+                </div>
+
+
+            </div>
 
         </div>
     )

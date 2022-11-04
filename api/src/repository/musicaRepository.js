@@ -57,7 +57,8 @@ export async function listarMusicaeArtista() {
     nm_genero  genero,
     nm_musicas musica,
     blob_musica audio,
-    img_imagem imagem
+    img_imagem imagem,
+    img_imagem capaArtista
     from tb_musicas
     inner join tb_artistas on tb_musicas.id_artistas = tb_artistas.id_artistas
     inner join tb_genero on tb_musicas.id_genero = tb_genero.id_genero;`

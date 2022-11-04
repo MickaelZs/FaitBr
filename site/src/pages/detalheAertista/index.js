@@ -49,7 +49,7 @@ export default function Index() {
     async function ParaDeSeguirArtista(id) {
         try {
             const resp = await ParaDeSeguir(id).id
-            toast.dark('curtida deletada')
+            toast.dark('parou de seguir')
         }
         catch (err) {
             if (err.response) toast.error(err.response.data.erro);
@@ -155,7 +155,7 @@ export default function Index() {
                         </div>
 
                         <div className='box-info'>
-                            <p>{artista.id}</p>
+                          
                             <h1 className="titulo-artista">{artista.nome}</h1>
 
                             <div className="genero">
@@ -207,6 +207,7 @@ export default function Index() {
                         </div>
 
                     ))}
+
 
 
                 </div>

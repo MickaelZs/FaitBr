@@ -17,7 +17,7 @@ export default function Index(){
     const [sobre, setSobre] = useState ('');
     const [imagem, setImagem] = useState ('');
     const [id, setId] = useState (0);
-    const [selecionar,setSelecionar] = useState ('')
+    const [selecionar,setSelecionar] = useState ([])
 
    
     function adicionarGenero() {

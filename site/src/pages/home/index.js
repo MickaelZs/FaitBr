@@ -175,12 +175,7 @@ function closeModal() {
         centerMode
       >
         
-         {artista.map (item =>
-        <div className="artista"  onClick={openModal}>
-        <img src={`${API_URL}/${item.artista}`} />
-        <p> {item.nome}</p>
-       </div>
-          )}
+        
         
 
       </Carousel>
