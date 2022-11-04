@@ -48,7 +48,7 @@ export async function listarUsuario() {
     nm_nome nome,
     dt_nasc nascimento,
     ds_email email,
-    ds_senha senha
+    ds_senha  senha
     from tb_usuario;`
     
     const [linhas] =  await con.query(comando);

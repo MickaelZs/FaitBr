@@ -1,17 +1,17 @@
-export default function Index(){
-    return(
-        <div>
-            <div>
-	  <button onclick="document.getElementById('player').play()">Play</button>
-	  <button onclick="document.getElementById('player').pause()">Pause</button>
-	  <button onclick="document.getElementById('player').volume+=0.1">Aumentar volume</button>
-	  <button onclick="document.getElementById('player').volume-=0.1">Diminuir volume</button>
-	</div>
+import {Carousel} from '3d-react-carousal';
 
-	<audio id="player" autoplay="autoplay" controls="controls">
-	  <source src="henriqueejulianooficial-completa-ai-part-marilia-mendonca-09f511dd.mp3"  />
-	  seu navegador não suporta HTML5
-	</audio>
-        </div>
-    )
+export default function Index (){
+
+  let slides = [
+    <img  src="/images/casinha.svg" alt="1" />,
+    <img  src="/images/casinha.svg" alt="2" />  ,
+    <img  src="/images/casinha.svg" alt="3" />  ,
+    <img  src="/images/casinha.svg" alt="4" />  ,
+    <img src="/images/casinha.svg" alt="5" />   ];
+  return(
+    <div>
+      <Carousel slides={slides} />
+
+    </div>
+  )
 }

@@ -10,6 +10,7 @@ body{
 
 .l{
     position: absolute;
+    margin: 20px;
     
 }
 
@@ -94,7 +95,9 @@ body{
   }
 
 
-
+  .heart{
+    margin: 10px;
+  }
 .card-musica{
         display: flex;
         flex-direction: row;

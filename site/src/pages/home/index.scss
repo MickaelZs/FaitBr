@@ -1,7 +1,8 @@
 .pagina-home{
-  background-color: #333;
+  background-color: #1e1e1e;
    height: 100%;
    width: 100%;
+   
    
 
    .faixa1{
@@ -149,6 +150,14 @@
        color: white;
        font-size: 25px;
        justify-content:space-around;
+
+       h3{
+        font-size: 30px;
+       }
+
+       p{
+        font-size: 20px;
+       }
    }
 
    h1{

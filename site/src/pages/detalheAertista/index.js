@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import { buscarPorId, seguirArtista } from "../../api/cadastroArtistaAPI"
+import { buscarPorId, ParaDeSeguir, seguirArtista } from "../../api/cadastroArtistaAPI"
 import { ToastContainer, toast } from 'react-toastify';
 import { buscarArtistaPorMusicaId, curtirMusica, deletarrCurtida, listaMusicaArtista, listarCurtidas } from "../../api/musicaAPI"
 import { API_URL } from "../../api/config"
@@ -37,6 +37,18 @@ export default function Index() {
     async function deletarClick(id) {
         try {
             const resp = await deletarrCurtida(id)
+            toast.dark('curtida deletada')
+        }
+        catch (err) {
+            if (err.response) toast.error(err.response.data.erro);
+            else toast.error(err.message);
+
+        }
+    }
+
+    async function ParaDeSeguirArtista(id) {
+        try {
+            const resp = await ParaDeSeguir(id).id
             toast.dark('curtida deletada')
         }
         catch (err) {
@@ -157,9 +169,9 @@ export default function Index() {
                             </div>
                             <div onClick={()=> setSeguirr(!seguirr)}>
                                 {seguirr ? 
-                                <button className='botao' onClick={() => seguir(artista)}>Seguir</button>
+                                <button className='botao' onClick={() => ParaDeSeguirArtista(artista)}>Seguindo</button>
                                 :
-                                <button className='botao' onClick={() => seguir(artista)}>Seguindo</button>
+                                <button className='botao' onClick={() => seguir(artista)}>Seguir</button>
                             
                             }
 
@@ -183,11 +195,11 @@ export default function Index() {
                                     </div>
                                 </div>
                             </div>
-                            <div onClick={() => setCurtir(!curtir)  } >
+                            <div className="heart" onClick={() => setCurtir(!curtir)  } >
                             {curtir ?
                                 <img className="l" src="/images/heart on.png" alt="" onClick={() => deletarClick (item.id) (index)} />
                                 :
-                                    <img src="/images/heart.png" alt="" onClick={() => curtirr (item.id) (index)} />}
+                                    <img className="l" src="/images/heart.png" alt="" onClick={() => curtirr (item.id) (index)} />}
 
                             </div>
                             {/* <button onClick={() => curtirr (item.id)}>curtir</button>

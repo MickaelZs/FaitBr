@@ -17,9 +17,17 @@ export default function Index(){
     const [sobre, setSobre] = useState ('');
     const [imagem, setImagem] = useState ('');
     const [id, setId] = useState (0);
+    const [selecionar,setSelecionar] = useState ('')
 
    
-
+    function adicionarGenero() {
+        if (!idGenero) return;
+        
+        if (!selecionar.find(item => item ==  idGenero)) {
+            const genero = [...selecionar, idGenero];
+            setSelecionar(genero);
+        }
+    }
 
     async function carregarGeneros(){
         const r = await listaGeneros();
@@ -152,6 +160,7 @@ export default function Index(){
                             <option value={item.id}> {item.nome} </option>
                         )}
                     </select>
+                    <button>+</button>
                     <br />
                     <div className='label-float'>
                     <input type="text" placeholder=" " value={sobre}  onChange={e => setSobre(e.target.value)}/>
@@ -162,7 +171,7 @@ export default function Index(){
                         </div>
                         <div className='botoes'>
                                 <button className='botao' onClick={salvarClick} >{id === 0 ? 'cadastrar' : 'Alterar'}</button>
-                                <button className='botao' >novo</button>
+                                <button className='botao' onClick={adicionarGenero} >novo</button>
 
                                 </div>
                     </div>
@@ -173,5 +182,3 @@ export default function Index(){
     );
 }
 
-
-                  
