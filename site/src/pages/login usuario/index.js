@@ -34,13 +34,8 @@ async function loginClick() {
       <div className="pagina-loginUsuario">
 
 <div className="faixa1">
-
-<div className="imagemm">
-<img src="/images/loginUsuario.png"  ></img>
-</div>
-
-
-<div className="faixa-input">
+      <div className='faixa-input'>
+        
 
 <div class="label-float">
 <input type="text" placeholder=" " value={email}  onChange={e => setEmail(e.target.value)}/>
@@ -55,7 +50,7 @@ async function loginClick() {
 
 <br/>
 
-<a href="home">Esqueceu sua senha cornooo?</a>
+<a href="home" className='corno'>Esqueceu sua senha cornooo?</a>
 <div className='err'>
 {erro}
 </div>
@@ -69,10 +64,15 @@ async function loginClick() {
 
 </div>
 
+<div className='telabranca'>
+<img src="/images/loginUsuario.png" className='imagemfdp' ></img>
+      </div>
+      </div>
+      
+
 
 
 </div>
 
-      </div>
     );
   }

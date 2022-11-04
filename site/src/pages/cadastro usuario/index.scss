@@ -18,13 +18,15 @@
     }
 
     .imagemm{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
         background-color: #ffffff;
         height: 100%;
         width: 40vw;
         border: 0;
-        display: flex;
-
-     
+             
     }
 
  
@@ -119,5 +121,40 @@
       
   }
       //MUDAR A COR MICKAEL!!
-
+    @media(max-width: 1690px){
+      .label-float input{
+        color: white;
+        background-color: #8d32e5;
+        border: 1px solid lightgrey;
+        border-radius: 5px;
+        outline: none;
+        min-width: 350px;
+        padding: 15px 20px;
+        font-size: 16px;
+        transition: all .1s linear;
+        -webkit-transition: all .1s linear;
+        -moz-transition: all .1s linear;
+        -webkit-appearance:none;
+      }
+    }
+    @media(max-width: 1550px){
+      .imagemfdp{
+        width: 100%;
+      }
+      .imagemm{
+        width: 100vw;
+      }
+    }
+    @media(max-width:1100px){
+      .faixa1{
+        flex-direction: column;
+      }
+      .imagemm{
+        width: 100%;
+        height: 50vh;
+      }
+      .imagemfdp{
+        width: 400px;
+      }
+    }
 }
