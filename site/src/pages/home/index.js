@@ -208,7 +208,7 @@ function closeModal() {
 
         <div>
           <h3>Apoiadores:</h3>
-          <img src='./images/logo-frei.png'/>
+          <img src='/images/logo-frei.png'  width='10px'/>
         </div>
 
       </div>

@@ -10,6 +10,7 @@ body{
 
 .l{
     position: absolute;
+    margin: 20px;
     
 }
 
@@ -89,12 +90,14 @@ body{
       font-size: 19px;
       box-shadow: 2px 2px 10px #8d32e5;
           transition: all ease-in 0.2s;
-        
+          position: absolute;
     
   }
 
 
-
+  .heart{
+    margin: 10px;
+  }
 .card-musica{
         display: flex;
         flex-direction: row;

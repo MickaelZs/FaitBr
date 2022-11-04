@@ -33,8 +33,15 @@ export default function Play(){
                 <h1>{item.nome}</h1>
                 <h3>Gênero</h3>
                 </div>
+                <div>
+	  <button onclick="document.getElementById('player').play()">Play</button>
+	  <button onclick="document.getElementById('player').pause()">Pause</button>
+	  <button onclick="document.getElementById('player').volume+=0.1">Aumentar volume</button>
+	  <button onclick="document.getElementById('player').volume-=0.1">Diminuir volume</button>
+	</div>
+
                 
-                <audio className="audio" controls src={`${API_URL}/${item.musica}`}></audio>
+                <audio className="audio" id="player" preload='auto|metadata|none'  controls src={`${API_URL}/${item.musica}`}></audio>
             </div>
          
             )}

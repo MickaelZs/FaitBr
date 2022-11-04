@@ -1,6 +1,7 @@
 import { Router } from "express";
-import { alteraUsuario, buscarUsuarioPorId, cadastrorUsuario, imagemUsuario, listarUsuario, loginUsuario } from "../repository/usuarioRepository.js"
+import { alteraUsuario, buscarUsuarioPorId, cadastrorUsuario, imagemUsuario, listarUsuario, loginUsuario, recupeçao } from "../repository/usuarioRepository.js"
 import multer from 'multer';
+
 
 
 const server = Router();
@@ -24,6 +25,34 @@ server.post('/cadastrousuario', async (req,resp) => {
         
     }
  })
+
+ server.post('/recupera', async (req,resp) => {
+    try {
+      const {email} = req.body;
+      const x = await recupeçao({email});
+
+    //   const token = crypto.randomBytes(20).toString('hex');
+    //   const now = new Date();
+    //   now.setHours(now.getHours() + 1);
+
+    //   await recupeçao(id, {
+    //     '$set':{
+    //         ds_codigo:token
+    //     }
+    //   })
+      
+      resp.send(x);
+ 
+    }
+
+    catch (err) {
+ 
+     resp.status(401).send({
+         erro: err.message
+     })
+        
+    }
+ }) 
 
 
 server.post('/usuario/login', async (req, resp) => {

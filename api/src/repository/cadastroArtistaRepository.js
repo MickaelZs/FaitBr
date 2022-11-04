@@ -152,3 +152,12 @@ export async function artistaSeguidosPorId(id) {
     const [linhas] = await con.query(comando, [id]);
     return linhas;
 }
+
+    
+export async function ParaDeSeguir (id){
+    const comando = 
+    `delete from tb_usuario_artista_seguido 
+    where id_usuario_artista_seguido = ?`;
+    const [resposta] = await con.query(comando, [id]);
+    return resposta.affectedRows;
+}
