@@ -1,13 +1,15 @@
 import './index.scss'
-import Carousel from 'react-multi-carousel'
+import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+
+import Slider from "react-slick";
 import { listaMusicaArtista } from '../../api/musicaAPI';
 import { useEffect, useState } from 'react';
 import { API_URL } from '../../api/config';
 
 
 
-export default function Index (){
+export default function CardMusica (){
 
   const [musica,setMusica ] = useState([])
 
@@ -32,6 +34,7 @@ export default function Index (){
   async function carregarMusica(){
     const resp = await listaMusicaArtista()
     setMusica(resp)
+    console.log(resp)
   }
 
   useEffect(() => {
@@ -39,14 +42,28 @@ export default function Index (){
   },[])
     
   return(
-    <main className='faixa'>
-      
+    <div className='lider'>
+       <Carousel
+          swipeable={false}
+          draggable={false}
+          responsive={responsive}
+          ssr={true}
+          infinite={true}
+          autoPlaySpeed={1000}
+          keyBoardControl={true}
+          transitionDuration={500}
+          centerMode
+        >
+          
+
+
       {musica.map( (item) => 
+      
+      
      <div className='card' >
       <div>
         <img src={`${API_URL}/${item.imagem}`} alt="" />
       </div>
-
       
       <div className='baixo'>
         <div className='circulo'>
@@ -55,12 +72,17 @@ export default function Index (){
         <div className="text">
         <h1>{item.musica} <br/> {item.artista} </h1>
         </div>
-      </div>
-      
+      </div>    
      </div>
-     )}
+     
+     
+      )}
+      </Carousel>
+    
+    
+    
      
 
-    </main>
+    </div>
   )
 }

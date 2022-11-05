@@ -7,6 +7,8 @@ import { listaArtista } from '../../api/cadastroArtistaAPI';
 import { API_URL } from '../../api/config';
 import { useNavigate } from 'react-router-dom'
 import Modal from 'react-modal'
+import ArtistaSeguido from '../../components/artista';
+import CardMusica from '../../components/coracao';
 
 const  customStyles  =  { 
   content : { 
@@ -137,7 +139,7 @@ function closeModal() {
 
      
 
-      <Carousel
+      {/* <Carousel
         swipeable={false}
         draggable={false}
         responsive={responsive}
@@ -147,37 +149,55 @@ function closeModal() {
         keyBoardControl={true}
         transitionDuration={20}
         centerMode
-      >
-        {genero.map (item =>
-        <div className="generos">
-        <img src={`${API_URL}/${item.genero}`} />
-        <p> {item.nome}</p>
-       </div>
+      > */}
+        <CardMusica/>
           
-          )}
+         
 
-      </Carousel>
+      {/* </Carousel> */}
 
       <div>
       <section id="sec3"><h1 className='artistasegener'>Artistas populares</h1></section>
       </div>
+      <div className='faixaa'>
+       
+    
+        <Carousel
+          swipeable={false}
+          draggable={false}
+          responsive={responsive}
+          ssr={true}
+          infinite={true}
+          autoPlaySpeed={1000}
+          keyBoardControl={true}
+          transitionDuration={500}
+          centerMode
+        >
+         
+        
+        {artista.map(item => 
+        
+            <div className='card'>
+                <div className='circulo'>
+                    <img src={`${API_URL}/${item.artista}`} alt="" />
+                </div> 
+                <div className='text'>
+                    <h1>{item.nome}</h1>
+                </div>
+                <div className='botao-seguir'>
+                    <button>Seguir</button>
+                </div>
+            </div>
+            
+            )}
+           
 
-      <Carousel
-        swipeable={false}
-        draggable={false}
-        responsive={responsive}
-        ssr={true}
-        infinite={true}
-        autoPlaySpeed={1000}
-        keyBoardControl={true}
-        transitionDuration={500}
-        centerMode
-      >
-        
-        
-        
+            </Carousel>
+           
+            </div> 
+           
 
-      </Carousel>
+       
 
       <div className='rodape'>
 
