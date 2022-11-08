@@ -171,7 +171,7 @@ export default function Index(){
                         </div>
                         <div className='botoes'>
                                 <button className='botao' onClick={salvarClick} >{id === 0 ? 'cadastrar' : 'Alterar'}</button>
-                                <button className='botao' onClick={adicionarGenero} >novo</button>
+                                {/* <button className='botao' onClick={adicionarGenero} >novo</button> */}
 
                                 </div>
                     </div>

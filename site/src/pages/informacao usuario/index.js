@@ -93,9 +93,9 @@ export default function Index() {
                             <input type='file' id='imagemCapa' onChange={e => setImagem(e.target.files[0])} ></input>
 
                         </div>
-                        <button onClick={salvarImagem}>alterar foto de perfil</button>
+                        <button onClick={salvarImagem}>Salvar Imagem</button>
                         <div  >
-                        <button onClick={sairClick}>sair kkk</button>
+                        <button onClick={sairClick}>sair</button>
                     </div>
 
 

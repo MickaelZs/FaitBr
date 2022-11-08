@@ -1,13 +1,15 @@
-.faixaaa{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.faixa-Artista{
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
     background-image: url("../../../../site/public/images/degrade.jpg") ;
-    height: 100%;
+    height: 100vh;
     width: 100%;
 
     background-size: cover;
-
+    .card:hover {
+        transform: scale(1.1);
+      }
     .card{
         display: flex;
         justify-content: center;

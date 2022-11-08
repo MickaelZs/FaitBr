@@ -1,15 +1,49 @@
-.generos{
+.page-generos{
+    background-image: url(../../../public/images/degrade.jpg);
+
+    height: 100vh;
+    width: 100%;
+    // display:flex;
+    // justify-content: center;
+    //     align-items: center;
+         
 
 
-    img{
-        width: 200px;
-        height: 200px;
-        border-radius: 20px;
-    }
-    p{
-        color: white;
+    
+    .card-G:hover {
+        transform: scale(1.1);
+      }
+
+    .card-G{
+        margin: 10px;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 340px;
+        width: 297px;
+        border: solid 2px #fff ;
         
+        
+        backdrop-filter: blur(42px);
+        border-radius: 10px;
+        margin: 0px; 
+
+        img{
+            
+            width: 277px;
+            height: 258px;
+            border-radius: 5px;
+            margin: 10px;
+        }
+
+        h1{
+            color: #fff;
+        }
     }
 
-
+   
+   
 }
+
+

@@ -9,6 +9,10 @@ import { API_URL } from '../../api/config';
 
 
 
+// Import css files
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 export default function CardMusica (){
 
   const [musica,setMusica ] = useState([])
@@ -16,8 +20,8 @@ export default function CardMusica (){
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-      slidesToSlide: 3
+      items: 2,
+      slidesToSlide: 2
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -43,6 +47,7 @@ export default function CardMusica (){
     
   return(
     <div className='lider'>
+      <h1>Musicas</h1>
        <Carousel
           swipeable={false}
           draggable={false}
@@ -53,12 +58,25 @@ export default function CardMusica (){
           keyBoardControl={true}
           transitionDuration={500}
           centerMode
-        >
+
           
-
-
+         
+        >
+        {/* <Slider dots={true}
+        infinite={true}
+        speed={500}
+        slidesToShow={4}
+        slidesToScroll={4}
+        autoplay={true}
+        autoPlaySpeed={1000} */}
+        
+        
+        
+ 
+       
       {musica.map( (item) => 
-      
+      <div className='oi'>
+        
       
      <div className='card' >
       <div>
@@ -74,9 +92,10 @@ export default function CardMusica (){
         </div>
       </div>    
      </div>
-     
+     </div>
      
       )}
+    {/* </Slider> */}
       </Carousel>
     
     

@@ -195,7 +195,7 @@ export default function Cadastromsc() {
                         </div>
                         <div className='div-input'>
                             <input type="text" value={nome} onChange={e => setNome(e.target.value)} required></input>
-                            <label>Senha</label>
+                            
                         </div>
 
 

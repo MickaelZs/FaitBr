@@ -36,6 +36,7 @@ export default function Index() {
 
     async function deletarClick(id) {
         try {
+      
             const resp = await deletarrCurtida(id)
             toast.dark('curtida deletada')
         }
@@ -48,8 +49,8 @@ export default function Index() {
 
     async function ParaDeSeguirArtista(id) {
         try {
-            const resp = await ParaDeSeguir(id).id
-            toast.dark('parou de seguir')
+             alert(id)
+            
         }
         catch (err) {
             if (err.response) toast.error(err.response.data.erro);
@@ -102,7 +103,7 @@ export default function Index() {
     async function curtirr(position) {
         try {
             let id = Storage('usuario-logado').id;
-            let musicaSelecionada = musica[position].id
+            let musicaSelecionada = musica[0].id
             console.log(musicaSelecionada)
             const resp = await curtirMusica(musicaSelecionada, id)
             toast.dark('musica curtidaa');
