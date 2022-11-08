@@ -4,28 +4,67 @@
     display: flex;
     flex-direction: column;
     background-color: #1e1e1e;
+    padding-top: 3em;;
 
 
-    .faixa1{
-        height: 8vh;
-        background-color: #8D32E5;
-    }
-
-    .div-reproducao{
+    .faixa-principal{
         display: flex;
         flex-direction: row;
-        margin:10px;
+        justify-content: space-around;
 
-        img{
-            border-radius: 20px;
-
-        }
     }
+}
 
-    audio {
-       background-color: #8D32E5;
-       
+.faixa1{
+    display: flex;
+    flex-direction: column;
+
+    img{
+        height: 56vh;
+        width: 37vw;
+    }
+}
+
+.cardmusica{
+    display: flex;
+    flex-direction: row;
+    color: #fff;
+    align-items: center;
+    padding: 10px 10px;
+    width: 20em;
+    height: 7em;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 15px;
+
+    .image-music{
+        border-radius: 20px;
+        width:100px;
+        height: 100px;
+
+    }
+    .p{
+        font-size: 40px ;
+        font: bold;
+        margin-right: 20px;
+    }
+    .div-ator{
+        font-family: "Roboto";
+        width: 370px;
+        padding-left: 20px;
         
-    
-      }
+    }
+    p{
+        font-family: sans-serif;
+        margin: 0px;
+    }
+    .nome{
+        font-weight:550;
+        padding-bottom: 10px;
+        font-size: 35px;
+    }
+    .autor{
+        font-size: 25px;
+        font-family: 'Roboto';
+    }
 }

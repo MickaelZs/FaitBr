@@ -6,49 +6,60 @@ import { buscarMusicaPorId } from '../../api/musicaAPI';
 import { useEffect } from 'react';
 import { API_URL } from '../../api/config';
 
-export default function Reproduzir(){
-    const [musica,setMusica] = useState([])
+export default function Reproduzir() {
+    const [musica, setMusica] = useState([])
     const navigate = useNavigate()
-    const {idParam} = useParams()
+    const { idParam } = useParams()
 
-    async function carregarMusica(){
-        const x =  await buscarMusicaPorId(idParam)
+    async function carregarMusica() {
+        const x = await buscarMusicaPorId(idParam)
         setMusica(x)
     }
 
     useEffect(() => {
         carregarMusica()
 
-    },[])
+    }, [])
 
-    function acessarMusica(id){
+    function acessarMusica(id) {
         navigate(`/detalhe/artista/${id}`)
     }
-    return(
+    return (
         <main className='pagina-reproduzir'>
-            <section className='faixa1'>
+            <section className='faixa-principal'>
+
+                <div className='faixa1'>
+                    <img src="./images/anitta..jpg" alt="" />
+                    <h2>Musica do mickael de novo</h2>
+                    <h3>Mickael</h3>
+                </div>
+
+                <div>
+                    <label>1</label>
+                    <div className='cardmusica'>
+                            
+                        <img src="./images/anitta..jpg" className="image-music" />
+
+                        <div className='div-ator'>
+                            <p className='nome'>musica do Mickael</p>
+                            <p className='autor'>Mickael</p>
+                        </div>
+
+                    </div>
+
+                    <div className='cardmusica'>
+
+                        <img src="./images/ftneymar.svg" className="image-music" />
+
+                        <div className='div-ator'>
+                            <p className='nome'>musica do Mickael</p>
+                            <p className='autor'>Mickael</p>
+                        </div>
+
+                    </div>
+                </div>
 
             </section>
-            <section className='div-reproducao'>
-                {musica.map(item => 
-                <div> 
-                <img src={`${API_URL}/${item.imagem}`} width="500px"/>
-                <h1>{item.nome}</h1>
-                <audio controls src={`${API_URL}/${item.musica}`}  > </audio>
-            </div>
-                    
-                    )}
-                
-            <div>
-            <CardAudio id="1." image="/images/Coraçãoqbrd.svg" nome="Coração Quebrado" autor="Klouvz, Swang Pam..."/>
-            <CardAudio id="2." image="/images/Coraçãoqbrd.svg" nome="Coração Quebrado" autor="Klouvz, Swang Pam..."/>
-            <CardAudio id="3." image="/images/Coraçãoqbrd.svg" nome="Coração Quebrado" autor="Klouvz, Swang Pam..."/>
-            </div>
-            </section>
-
-        
-
-
         </main>
     );
 }
