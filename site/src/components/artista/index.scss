@@ -5,8 +5,8 @@
     background-image: url("../../../../site/public/images/degrade.jpg") ;
     height: 100vh;
     width: 100%;
-
-    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: contain;
     .card:hover {
         transform: scale(1.1);
       }
