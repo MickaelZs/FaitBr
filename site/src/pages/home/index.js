@@ -9,6 +9,9 @@ import { useNavigate } from 'react-router-dom'
 import Modal from 'react-modal'
 import ArtistaSeguido from '../../components/artista';
 import CardMusica from '../../components/coracao';
+import Home from '../../components/vamos';
+import CardGenero from '../../components/genero';
+import Faixa from '../../components/usuario';
 
 const  customStyles  =  { 
   content : { 
@@ -85,8 +88,9 @@ function closeModal() {
   return (
 
     <div className='pagina-home'>
+      <Home/>
 
-      <div className='faixa1'>
+      {/* <div className='faixa1'>
         <header >
           <div className='texto-cabecalho'>
             <div className='uee'>
@@ -132,12 +136,8 @@ function closeModal() {
           </div>
           </div>
         </div>
-      </div>
-      <div>
-      <section id="sec2"><h1 className='artistasegener'>Gêneros</h1></section>
-      </div>
-
-     
+      </div> */}
+      
 
       {/* <Carousel
         swipeable={false}
@@ -150,51 +150,17 @@ function closeModal() {
         transitionDuration={20}
         centerMode
       > */}
-        <CardMusica/>
+       <Faixa/>
+        <CardGenero/>
+        <Faixa/>
+        <ArtistaSeguido/>
           
          
 
       {/* </Carousel> */}
 
-      <div>
-      <section id="sec3"><h1 className='artistasegener'>Artistas populares</h1></section>
-      </div>
-      <div className='faixaa'>
-       
-    
-        <Carousel
-          swipeable={false}
-          draggable={false}
-          responsive={responsive}
-          ssr={true}
-          infinite={true}
-          autoPlaySpeed={1000}
-          keyBoardControl={true}
-          transitionDuration={500}
-          centerMode
-        >
-         
+      
         
-        {artista.map(item => 
-        
-            <div className='card'>
-                <div className='circulo'>
-                    <img src={`${API_URL}/${item.artista}`} alt="" />
-                </div> 
-                <div className='text'>
-                    <h1>{item.nome}</h1>
-                </div>
-                <div className='botao-seguir'>
-                    <button>Seguir</button>
-                </div>
-            </div>
-            
-            )}
-           
-
-            </Carousel>
-           
-            </div> 
            
 
        

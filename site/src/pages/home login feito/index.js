@@ -14,6 +14,10 @@ import { buscarUsuarioPorId } from '../../api/usuarioAPI';
 import Perfil from '../../components/perfilUsuario';
 import { listarCurtidas } from '../../api/musicaAPI';
 import Cabeçario from '../../components/cabeçalho';
+import CardMusica from '../../components/coracao';
+import ArtistaSeguido from '../../components/artista';
+import HomeLogin from '../../components/homeLogin';
+import Faixa from '../../components/usuario'
 
 
 
@@ -116,137 +120,18 @@ useEffect(() => {
   return (
 
     <div className='pagina-home-login-feito'>
-      <Cabeçario usuario={usuario}/>
-
-      <div className='faixa1'>
-
-        <div className='faixa'>
-          <div className='te'>
-          <h1> Without music, life <br/> would be a <br/> mistake</h1>
-          </div>
-          <img src="/images/Music-pana.png" alt="" className='imagem-test' />
-        </div>
-
-      </div>
-
-      <div>
-      <section id="sec2"><h1>Gêneros</h1></section>
-      </div>
-
-      <Carousel
-        swipeable={false}
-        draggable={false}
-        responsive={responsive}
-        ssr={true}
-        infinite={true}
-        autoPlaySpeed={1000}
-        keyBoardControl={true}
-        transitionDuration={500}
-        centerMode
-      >
-        {genero.map (item =>
-        <div className="generos">
-        <img src={`${API_URL}/${item.genero}`} />
-        <p> {item.nome}</p>
-       </div>
-          )}
-       
-
-      </Carousel>
-
-      <div>
-      <section id="sec3"><h1>Artistas populares</h1></section>
-      </div>
-
-      <Carousel
-        swipeable={false}
-        draggable={false}
-        responsive={responsive}
-        ssr={true}
-        infinite={true}
-        autoPlaySpeed={10000}
-        keyBoardControl={true}
-        transitionDuration={500}
-        centerMode
-      >
-        {artista.map (item =>
-        <div className="artista">
-        <img src={`${API_URL}/${item.artista}`} />
-        <p> {item.nome}</p>
-       </div>
-          )}
-
-
-    
-        
-
-      </Carousel>
-
-
-      <br/>
-      <div>
-<section ><h1>Musica Curtidas</h1></section>
-</div>
-
-
-      <Carousel
-
-
-
-
-
-        swipeable={false}
-        draggable={false}
-        responsive={responsive}
-        ssr={true}
-        infinite={true}
-        autoPlaySpeed={1000}
-        keyBoardControl={true}
-        transitionDuration={500}
-        centerMode
-      >
-        {curtidas.map (item =>
-        <div className="generos">
-        <img src={`${API_URL}/${item.imagem}`} />
-        <p> {item.musica}</p>
-       </div>
-          )}
-
-          </Carousel>
-
-      <div className='rodape'>
-
-        <div>
-          <img className='logo' src='./images/logo.png'/>
-        </div>
-
-        <div className='texto-rodape' >
-          <h3>Redes Sociais:</h3>
-          <p>Instagram</p>
-          <p>Facebook</p>
-          <p>Twitter</p>
-        </div>
-
-        <div>
-        <h3>Desenvolvedores:</h3>
-          <p>João Paulo</p>
-          <p>Mickael V.</p>
-          <p>Lucas Tatsuo</p>
-          <p>Cauã G.</p>
-          <p>Cauã R.</p>
-        </div>
-
-        <div>
-          <h3>Apoiadores:</h3>
-          <img src='./images/logo-frei.png'/>
-        </div>
-
-      </div>
-
-      <a href='login usuario'></a>
       
+      <HomeLogin usuario={usuario} />
 
-    </div>
+
+      
+      <Faixa/>
+      <CardGenero/>
+      <Faixa/>
+
+      <ArtistaSeguido/>
+    
+</div>
   );
 }
 
