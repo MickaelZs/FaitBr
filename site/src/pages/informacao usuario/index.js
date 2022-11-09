@@ -69,7 +69,82 @@ export default function Index() {
     }
     return (
         <main className='pagina-informacao-usu'>
-            <Cabeçario usuario={usuario} />
+
+            <div className='faixa-usuario'>
+
+            <div className='usuarioo' onClick={escolherImagem}>
+
+                {!imagem &&
+
+                    <img className='usuarioo'  src={`${API_URL}/${usuario.imagem}`} />
+                }
+
+                {imagem &&
+
+                    <img className='usuarioo' src={mostrarImagem(imagem)} />
+
+                }
+
+                <input type='file' id='imagemCapa' onChange={e => setImagem(e.target.files[0])} ></input>
+
+                </div>
+
+                <div className='faixa3'>
+                    <div>
+
+
+                    <div className='faixa3-div1'>
+                        <h1>Nome:</h1>
+                        <h3>{usuario.nome}</h3>
+                    </div>
+
+
+                    <div className='faixa3-div1'>
+                        <h1>Nascimento:</h1>
+                        <h3>{usuario.nascimento}</h3>
+                    </div>
+                    </div>
+                    <div>
+
+                    <div className='faixa3-div2'>
+
+                        <div>
+                            <h1>Email:</h1>
+                            <h3> {usuario.email}</h3>
+                        </div>
+
+
+
+
+
+                        
+                    </div>
+
+                    <div className='faixa3-div2'>
+                        <div>
+                            <h1>Senha:</h1>
+                            <h3>{usuario.senha}</h3>
+                        </div>
+
+                      
+
+                    </div>
+                    </div>
+                    
+
+                </div>
+
+                
+            
+
+                
+            </div>
+
+
+
+
+
+            {/* <Cabeçario usuario={usuario} />
 
             <section className='faixa2'>
 
@@ -93,9 +168,9 @@ export default function Index() {
                             <input type='file' id='imagemCapa' onChange={e => setImagem(e.target.files[0])} ></input>
 
                         </div>
-                        <button onClick={salvarImagem}>Salvar Imagem</button>
+                        <button className='botaoo' onClick={salvarImagem}>Salvar Imagem</button>
                         <div  >
-                        <button onClick={sairClick}>sair</button>
+                        <button className='botaoo' onClick={sairClick}>sair</button>
                     </div>
 
 
@@ -156,7 +231,7 @@ export default function Index() {
 
                 </div>
 
-                <hr />
+                <hr /> */}
 {/* 
                 <div className='faixa3'>
                     <div className='faixa3-div1'>
@@ -192,7 +267,7 @@ export default function Index() {
 
                 </div> */}
 
-            </section>
+            {/* </section> */}
 
         </main>
     )
