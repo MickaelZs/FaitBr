@@ -154,6 +154,7 @@ export default function Index() {
                         </div>
                     </div>
                     <div className='div2-cadastro'>
+                        <div>
                         <div className='div-input'>
                             <div className='label-float'>
                                 <input type="text" placeholder=" " value={nome} onChange={e => setNome(e.target.value)} />
@@ -185,6 +186,7 @@ export default function Index() {
                             <div>
                                 <button className='botao' onClick={novoClick}>novo</button>
                             </div>                        
+                        </div>
                         </div>
                     </div>
                 </div>
