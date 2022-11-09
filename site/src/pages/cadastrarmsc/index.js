@@ -135,6 +135,16 @@ export default function Cadastromsc() {
     }
 
 
+    function novoClick() {
+        setIdArtista(0);
+        setMusica();
+        setIdGenero(0);
+        setNome('');
+        setImagem();
+
+    }
+
+
 
 
     return (
@@ -195,11 +205,18 @@ export default function Cadastromsc() {
                         </div>
                         <div className='div-input'>
                             <input type="text" value={nome} onChange={e => setNome(e.target.value)} required></input>
-                            
                         </div>
 
+                        <div className='botoes'>
+                                
+                            <div>
+                                <button className='botao' onClick={salvarClick} >{id === 0 ? 'cadastrar' : 'Alterar'}</button>
+                            </div>
 
-                        <button className='botao' onClick={salvarClick} >{id === 0 ? 'cadastrar' : 'Alterar'}</button>
+                            <div>
+                                <button className='botao' onClick={novoClick}>novo</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

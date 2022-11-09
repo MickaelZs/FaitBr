@@ -160,16 +160,35 @@
     }
 
     .botao{
-        outline: none;
-        background-color: #8D32E5;
-        border: 0;
-        padding: 14px 30px;
-        border-radius:  20px;
-        font-family: 'inter';
-        color: #fff;
-        font-size: 20px;
-
-        margin-top: 20px;
+        display: flex;
+        background-color: #ffffff;
+        font-weight: bold;
+        color: #8d32e5;
+        border-radius: 10px;
+        border: solid #ffffff 3px;
+        width: 120px;
+        height: 45px;
+    
+        font-size: 19px;
+        box-shadow: 2px 2px 10px #8d32e5;
+        transition: all ease-in 0.2s;
+        margin-left: 1em;
+    
     }
+
+    .botoes {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 40%;
+        margin-left: -13em;
+      }
+      .botao{
+        align-items: center;
+        text-align: center;
+      }
+    
+    
+    
     
 }
