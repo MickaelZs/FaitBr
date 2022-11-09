@@ -28,35 +28,47 @@ export default function Reproduzir() {
         <main className='pagina-reproduzir'>
             <section className='faixa-principal'>
 
-                <div className='faixa1'>
+                <div className='faixa-1'>
                     <img src="./images/anitta..jpg" alt="" />
                     <h2>Musica do mickael de novo</h2>
                     <h3>Mickael</h3>
                 </div>
 
                 <div>
-                    <label>1</label>
                     <div className='cardmusica'>
-                            
+
                         <img src="./images/anitta..jpg" className="image-music" />
 
                         <div className='div-ator'>
-                            <p className='nome'>musica do Mickael</p>
-                            <p className='autor'>Mickael</p>
+                            <h1>musica do Mickael</h1>
+                            <p>Mickael</p>
                         </div>
 
                     </div>
 
                     <div className='cardmusica'>
 
-                        <img src="./images/ftneymar.svg" className="image-music" />
+                        <img src="./images/anitta..jpg" className="image-music" />
 
                         <div className='div-ator'>
-                            <p className='nome'>musica do Mickael</p>
-                            <p className='autor'>Mickael</p>
+                            <h1>musica do Mickael</h1>
+                            <p>Mickael</p>
                         </div>
 
                     </div>
+
+                    <div className='cardmusica'>
+
+                        <img src="./images/anitta..jpg" className="image-music" />
+
+                        <div className='div-ator'>
+                            <h1>musica do Mickael</h1>
+                            <p>Mickael</p>
+                        </div>
+
+                    </div>
+
+
                 </div>
 
             </section>
