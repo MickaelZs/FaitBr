@@ -87,7 +87,10 @@ export default function Index() {
 
                 <input type='file' id='imagemCapa' onChange={e => setImagem(e.target.files[0])} ></input>
 
-                <button>OOOOOII</button>
+                <div>
+                    <button className='botaoo' onClick={salvarImagem} >Salvar Imagem</button>
+                    <button className='botaoo' onClick={sairClick}>Sair</button>
+                </div>
 
                 </div>
 
