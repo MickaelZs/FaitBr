@@ -90,6 +90,7 @@
         margin-left: 7em;
         padding-top: 1em;
         font-size: 20px;
+        flex-direction: column;
         justify-content: space-between;
     }
 
@@ -102,9 +103,9 @@
     .faixa3-div2 {
         display: flex;
         flex-direction:column;
-        flex-direction: row;
+        
         margin-right: 7em;
-        justify-content: space-between;
+       
 
     }
 
@@ -120,10 +121,10 @@
 
     .faixa3-div2-sla {
         display: flex;
-        flex-direction: row;
+       
         font-size: 20px;
         margin-top: 1em;
-        justify-content: space-around;
+   
     }
 
     .faixa3-div2-sla img{

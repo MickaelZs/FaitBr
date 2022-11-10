@@ -87,6 +87,8 @@ export default function Index() {
 
                 <input type='file' id='imagemCapa' onChange={e => setImagem(e.target.files[0])} ></input>
 
+                <button>OOOOOII</button>
+
                 </div>
 
                 <div className='faixa3'>
