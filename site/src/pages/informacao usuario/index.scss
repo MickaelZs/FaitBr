@@ -25,7 +25,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 5px;
+       
         flex-direction: column;
 
         
@@ -36,15 +36,22 @@
         width: 200px;
         cursor: pointer;
       }
+      .f{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
 
       .faixa-usuario{
 
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 20px;
+       
 
       }
+
 
     // .faixa1{
     //     display: flex;

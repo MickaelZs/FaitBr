@@ -71,6 +71,7 @@ export default function Index() {
         <main className='pagina-informacao-usu'>
 
             <div className='faixa-usuario'>
+                <div className='f'>
 
             <div className='usuarioo' onClick={escolherImagem}>
 
@@ -87,6 +88,8 @@ export default function Index() {
 
                 <input type='file' id='imagemCapa' onChange={e => setImagem(e.target.files[0])} ></input>
 
+                
+                </div>
                 <div>
                     <button className='botaoo' onClick={salvarImagem} >Salvar Imagem</button>
                     <button className='botaoo' onClick={sairClick}>Sair</button>
