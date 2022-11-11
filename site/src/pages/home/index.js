@@ -85,8 +85,7 @@ function closeModal() {
         <div className='texto-rodape' >
           <h3>Redes Sociais:</h3>
           <p>Instagram</p>
-          <p>Facebook</p>
-          <p>Twitter</p>
+          <p>fitbr2023@gmail.com</p>
         </div>
 
         <div>

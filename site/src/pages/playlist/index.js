@@ -6,7 +6,7 @@ import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import modal from 'react-modal';
 import React, { useEffect, useState } from 'react'
-import { criarPlaylist, criarPlaylistItem, DeletaPlaylist, listarPlaylistPorIdUsuarioo, listaPlaylist, listarPlaylistItemUsuarioo } from '../../api/playlistAPI';
+import { criarPlaylist, criarPlaylistItem, DeletaPlaylist, listarPlaylistPorIdUsuarioo, listaPlaylist, listarPlaylistItemUsuarioo, listarPlaylistImagem } from '../../api/playlistAPI';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import Storage from 'local-storage'
@@ -42,7 +42,7 @@ export default function Index() {
   const [usu, setUsu] = useState([])
   const [artista, setArtista] = useState([])
   const [itemm, setItemm] = useState([])
-  const [modal, setModal] = useState(false)
+  const [imagem, setImagem] = useState([]) 
   const [id, setId] = useState(0)
   const navigate = useNavigate()
 
@@ -87,6 +87,7 @@ export default function Index() {
     carregarCurtida();
     carregarSeguidores();
     carregarMusica()
+    carregarImagem()
 
   }, [])
 
@@ -114,7 +115,12 @@ export default function Index() {
     const id = Storage('usuario-logado').id;
     const resp = await listarPlaylistPorIdUsuarioo(id)
     setUsu(resp)
+  }
 
+  async function carregarImagem(){
+    const id = Storage('usuario-logado').id;
+    const resp = await listarPlaylistImagem(id)
+    setImagem(resp)
 
   }
 
@@ -197,13 +203,13 @@ export default function Index() {
           autoPlaySpeed={1000}
           keyBoardControl={true}
           transitionDuration={500}
-          centerMode
+          
         >
 
           {musica.map(item =>
             <div className='music'>
               <img className='caixa-musica' src={`${API_URL}/${item.imagem}`} alt="" />
-              <div className='border0'>
+              <div className='textt'>
                 <h3>{item.musica}</h3>
                 <p>Teto</p>
               </div>
@@ -233,7 +239,7 @@ export default function Index() {
               <div className='caixa-musica'>
                 <img className='caixa-musica' src={`${API_URL}/${item.imagem}`} alt="" />
               </div>
-              <div className='border0'>
+              <div className='textt'>
                 <h3>{item.artista}</h3>
               </div>
 
@@ -263,11 +269,14 @@ export default function Index() {
             <h2 className='titulo-playlist'>Playlist</h2>
 
             <div className='playlist' onClick={() => acessarPlaylist(item.id)}>
-              {itemm.map(item =>
+
+              {imagem.map((item) =>
                 <div className='caixa-musicaa'>
                   <img className='capP' src={`${API_URL}/${item.imagem}`} alt="" />
                 </div>
               )}
+
+              
               <div className='nome-playlist'>
                 <h1>{item.nome}</h1>
                 <h1>{usu.id}</h1>

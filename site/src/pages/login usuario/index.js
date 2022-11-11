@@ -50,7 +50,7 @@ async function loginClick() {
 
 <br/>
 
-<a href="home" className='corno'>Esqueceu sua senha cornooo?</a>
+<a href="home" className='corno'>Esqueceu sua senha?</a>
 <div className='err'>
 {erro}
 </div>
@@ -59,6 +59,7 @@ async function loginClick() {
 <br/>
 
 <button type="button" onClick={loginClick} > Entrar </button>
+
 
 
 

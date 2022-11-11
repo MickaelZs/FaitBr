@@ -5,17 +5,18 @@
     height: 100;
     color: #fff;
 
-    *{
-        margin: 0;
-    }
+    // *{
+    //     margin: 0;
+    //     border: 2px solid green;
+    // }
 
     .section-musicas{
-        padding-top: 4em;
+      
         display: flex;
         flex-direction: column;
         justify-content: center;
         text-align: center;
-        padding-left: 5em;
+
     }
 
     .artista{
@@ -23,21 +24,17 @@
         height: 200px;
         border-radius:100%;
     }
-    
-
-    .faixa-musicas{
-        display: flex;
-    }
-    .bolinhas{
-        padding: 5px;
-    }
 
     .music{
-        padding-right: 10em;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
+        border: 2px solid #ffffff;
+        width: max-content;
         text-align: start;
+    
+ 
+    }
+
+    .textt{
+        margin: 5px;
     }
 
     .titulos{
@@ -51,19 +48,19 @@
     .caixa-musica{
         height: 16em;
         width: 16em;
-        background-color: #ffffff4d;
-    -webkit-backdrop-filter: blur(40px);
-backdrop-filter: blur(40px);
-
     }
 
     .caixa-musicaa{
+        border: solid 2px blue;
+        flex-wrap: wrap;
         height: 16em;
         width: 16em;
     }
     .playlist{
         display: flex;
         align-items: center;
+        border: 2px solid green;
+        
     }
 
     .section-playlist{
@@ -97,6 +94,7 @@ backdrop-filter: blur(40px);
     }
 
     .k{
+        
     
     justify-content: center;
     align-items: center;
@@ -109,8 +107,9 @@ backdrop-filter: blur(40px);
         }
 
         .capP{
-            width: 100px;
-            height: 100px;
+            display: flex;
+            width: 75px;
+            height: 75px;
             flex-wrap: wrap;
         }
     

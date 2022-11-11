@@ -11,41 +11,45 @@ import Storage from 'local-storage'
 export default function Reproduzir() {
     const [musica, setMusica] = useState([])
     const [imagemPrincipal, setImagemPrincipal] = useState(0);
+    const [audioPrincipal,setAudioPrincipal] = useState(0)
     const navigate = useNavigate()
     const { idParam } = useParams()
 
-    function acessarMusica(id){
+    function acessarMusica(id) {
         navigate(`/Reproduzir/${id}`)
     }
 
     function exibirImagemPrincipal(imagem) {
         if (musica.imagem > 0) {
             console.log(imagem)
-            return  API_URL + '/' + imagem[imagemPrincipal];
-        }
-         
-        else {
-            return '/images/teto.jpg';
-            
+            return API_URL + '/' + imagem[imagemPrincipal];
         }
 
-      
+        else {
+            return '/images/teto.jpg';
+
+        }
+
+
     }
 
     function exibirImagemProduto(imagem) {
-        return  API_URL + '/' + imagem;
-       
+        return API_URL + '/' + imagem;
+    }
+
+    function exibirAudio(audio) {
+        return API_URL + '/' + audio;
     }
 
 
 
     async function carregarMusica() {
         const id = Storage('usuario-logado').id
-        const x =  await listarPlaylistItemUsuarioo(id)
-       
+        const x = await listarPlaylistItemUsuarioo(id)
+
         setMusica(x)
         console.log(x)
-        
+
     }
 
     useEffect(() => {
@@ -53,42 +57,43 @@ export default function Reproduzir() {
 
     }, [])
 
-   
+
     return (
         <main className='pagina-reproduzir'>
             <section className='faixa-principal'>
 
                 <div className='faixa-1'>
-                    <img src={exibirImagemPrincipal()} alt="" />
+                    <img src={imagemPrincipal} alt="" />
+                    <audio src={audioPrincipal}></audio>
                     <h2>Musica do mickael de novo</h2>
                     <h3>Mickael</h3>
                 </div>
 
                 <div >
 
-                {musica.map((item,pos) =>
-//  onClick={() => acessarMusica(item.id_playlist_item)}
-<div className='cardmusica'>
+                    {musica.map((item, pos) =>
 
-    <img src={exibirImagemProduto(item.imagem)} onClick={() => setImagemPrincipal(pos)} className="image-music" />
+                        <div className='cardmusica' onClick={() => acessarMusica(item.id_playlist_item)}>
 
-    <div className='div-ator'>
-        <h1>{item.musica}</h1>
-        <p>Mickael</p>
-    </div>
+                            <img src={exibirImagemProduto(item.imagem)} onClick={() => setImagemPrincipal(exibirImagemProduto(item.imagem))} className="image-music" />
 
-</div>
-)}
+                            <div className='div-ator'>
+                                <h1>{item.musica}</h1>
+                                <p>Mickael</p>
+                            </div>
 
-                    </div>
-                  
+                        </div>
+                    )}
 
-                   
-
-                   
+                </div>
 
 
-               
+
+
+
+
+
+
 
             </section>
         </main>

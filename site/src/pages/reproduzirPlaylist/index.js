@@ -49,7 +49,7 @@ export default function Reproduzir(){
                         <img src={`${API_URL}/${item.imagem}`} className="image-music" />
 
                         <div className='div-ator'>
-                            <h1>musica do Mickael</h1>
+                            <h1>{item.musica}</h1>
                             <p>Mickael</p>
                         </div>
 

@@ -18,6 +18,11 @@ export async function listarPlaylistPorIdUsuarioo(idUsuario){
     return resposta.data;
   }
 
+  export async function listarPlaylistImagem(idUsuario){
+    const resposta = await api.get('/usuario/' + idUsuario + '/playlist/imagem');
+    return resposta.data;
+  }  
+
 
   export async function listarPlaylistItemUsuarioo(idUsuario){
     const resposta = await api.get('/usuario/'+ idUsuario + '/playlist/item');

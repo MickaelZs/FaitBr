@@ -67,10 +67,26 @@ export async function listarPlaylistItemPorIdUsuario(idUsuario) {
     from tb_playlist_item
     inner join tb_musicas on tb_playlist_item.id_musica = tb_musicas.id_musica
     inner join tb_playlist on tb_playlist_item.id_playlist = tb_playlist.id_playlist
-    where id_usuario = ?
-    ;`
+    `
     
     const [linhas] = await con.query(comando, [idUsuario]);
+    return linhas;
+}
+
+export async function listarTodasImagemPlaylist(idUsuario) {
+    const comando =
+    `select tb_playlist_item.id_playlist_item id,
+    id_usuario usuario,
+    nm_playlist playlist,
+    img_imagem imagem
+    from tb_playlist_item
+    inner join tb_musicas on tb_playlist_item.id_musica = tb_musicas.id_musica
+    inner join tb_playlist on tb_playlist_item.id_playlist = tb_playlist.id_playlist
+    where id_usuario = ? and img_imagem is not null
+    limit 4
+    ;`
+    
+    const [linhas] = await con.query(comando,[idUsuario]);
     return linhas;
 }
 
