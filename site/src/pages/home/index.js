@@ -66,104 +66,15 @@ function closeModal() {
 
 
 
-
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-      slidesToSlide: 3
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 3,
-      slidesToSlide: 2
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-      slidesToSlide: 1
-    }
-  };
-
   return (
 
     <div className='pagina-home'>
       <Home/>
-
-      {/* <div className='faixa1'>
-        <header >
-          <div className='texto-cabecalho'>
-            <div className='uee'>
-              <li><a href="#sec1">Artistas mais escutados</a></li>
-              <li><a href="#sec2">Gêneros</a></li>
-              <li><a href="#sec3">Artistas populares</a></li>
-              </div>
-              
-              
-          
-              <div class="hamburger-menu">
-              <input id="menu__toggle" type="checkbox" />
-              <label class="menu__btn" for="menu__toggle">
-                <span></span>
-              </label>
-
-              <ul class="menu__box">
-                <li><a class="menu__item" href="/LoginUsuario">Login</a></li>
-                <li><a class="menu__item" href="/CadastroUsuario">Cadastro</a></li>
-                <li><a class="menu__item" href="/LoginAdm">Area ADM</a></li>
-                
-              </ul>
-              </div>
-
-          </div>
-        </header>
-
-        <div className='faixa2'>
-          <div className='containerdafaixa2'>
-          <h1 className='text-pass'>Without music, life would be aﾠﾠﾠﾠﾠﾠﾠ mistake</h1>
-          <div className='caixa-incisivel2'></div>
-          </div>  
-          <div>
-            <div className='caixa-invisivel'></div>
-          <div className='caixa-do-artista'>
-            <div className='img-artista'>
-            <img src='/images/manobrown.png' className='image'></img>
-            </div>
-            <div className='nome-artista'>
-              <div className='ball-transparent'></div>
-              <h3 >Mano Brown</h3>
-            </div>
-          </div>
-          </div>
-        </div>
-      </div> */}
       
-
-      {/* <Carousel
-        swipeable={false}
-        draggable={false}
-        responsive={responsive}
-        ssr={true}
-        infinite={false}
-        autoPlaySpeed={1000}
-        keyBoardControl={true}
-        transitionDuration={20}
-        centerMode
-      > */}
        <Faixa/>
         <CardGenero/>
         <Faixa/>
         <ArtistaSeguido/>
-          
-         
-
-      {/* </Carousel> */}
-
-      
-        
-           
-
-       
 
       <div className='rodape'>
 
@@ -193,27 +104,6 @@ function closeModal() {
         </div>
 
       </div>
-
-      <a href='login usuario'></a>
-
-      <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Para ter o acesso é preciso do cadastro</h2>
-        <button onClick={closeModal}>Fechar</button>
-        <br/>
-        
-       
-          
-      
-          
-        
-      </Modal>
-      
 
     </div>
   );

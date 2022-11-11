@@ -18,9 +18,10 @@ export default function Reproduzir() {
         navigate(`/Reproduzir/${id}`)
     }
 
-    function exibirImagemPrincipal() {
-        if (musica.imagem) {
-            return  API_URL + '/' + musica.imagem[imagemPrincipal];
+    function exibirImagemPrincipal(imagem) {
+        if (musica.imagem > 0) {
+            console.log(imagem)
+            return  API_URL + '/' + imagem[imagemPrincipal];
         }
          
         else {
@@ -57,40 +58,37 @@ export default function Reproduzir() {
         <main className='pagina-reproduzir'>
             <section className='faixa-principal'>
 
-               
-                <div className='faixa1'>
-                    
-                <img src={exibirImagemPrincipal()} />
+                <div className='faixa-1'>
+                    <img src={exibirImagemPrincipal()} alt="" />
                     <h2>Musica do mickael de novo</h2>
                     <h3>Mickael</h3>
                 </div>
 
-                <div>
-                    <label>1</label>
-                    {musica.map((item,pos) =>
-                    <div className='cardmusica'  onClick={() => acessarMusica(item.id_playlist_item)}>
-                            
-                            <img className='image-music' src={exibirImagemProduto(item.imagem)} onClick={() => setImagemPrincipal(pos)}  />
+                <div >
 
-                        <div className='div-ator'>
-                            <p className='nome'>{item.musica}</p>
-                            <p className='autor'>Mickael</p>
-                        </div>
+                {musica.map((item,pos) =>
+//  onClick={() => acessarMusica(item.id_playlist_item)}
+<div className='cardmusica'>
 
-                    </div>
-                    )}
+    <img src={exibirImagemProduto(item.imagem)} onClick={() => setImagemPrincipal(pos)} className="image-music" />
 
-                    <div className='cardmusica'>
+    <div className='div-ator'>
+        <h1>{item.musica}</h1>
+        <p>Mickael</p>
+    </div>
 
-                        <img src="./images/ftneymar.svg" className="image-music" />
-
-                        <div className='div-ator'>
-                            <p className='nome'>musica do Mickael</p>
-                            <p className='autor'>Mickael</p>
-                        </div>
+</div>
+)}
 
                     </div>
-                </div>
+                  
+
+                   
+
+                   
+
+
+               
 
             </section>
         </main>

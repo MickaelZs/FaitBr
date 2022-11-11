@@ -34,39 +34,52 @@ export default function Reproduzir(){
 
     return(
         <main className='pagina-reproduzir'>
-           
-           
-            {playlist.map(item => 
-                 <section className='faixa1'>
-<h1>{item.playlist}</h1>
-                 </section>
-                
-                )}
-           
-            <section className='div-reproducao'>
-                {playlist.map(item => 
-                <div className='cardmusica' onClick={() => acessarMusica (item.id_playlist_item)}>
+            <section className='faixa-principal'>
 
-                    <img src={`${API_URL}/${item.imagem}`} className="image-music" />
-                    
-                    <div className='div-ator'>
-                        <p className='nome'>{item.musica}</p>
-                        <p className='autor'>{item.genero}</p>
-                    </div>
-                    
+                <div className='faixa-1'>
+                    <img src="./images/anitta..jpg" alt="" />
+                    <h2>Musica do mickael de novo</h2>
+                    <h3>Mickael</h3>
                 </div>
 
-               
-           
-               
-                    
-                    )}
-                
-             
+                <div>
+                    <div className='cardmusica'>
+
+                        <img src="./images/anitta..jpg" className="image-music" />
+
+                        <div className='div-ator'>
+                            <h1>musica do Mickael</h1>
+                            <p>Mickael</p>
+                        </div>
+
+                    </div>
+
+                    <div className='cardmusica'>
+
+                        <img src="./images/anitta..jpg" className="image-music" />
+
+                        <div className='div-ator'>
+                            <h1>musica do Mickael</h1>
+                            <p>Mickael</p>
+                        </div>
+
+                    </div>
+
+                    <div className='cardmusica'>
+
+                        <img src="./images/anitta..jpg" className="image-music" />
+
+                        <div className='div-ator'>
+                            <h1>musica do Mickael</h1>
+                            <p>Mickael</p>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
             </section>
-        
-
-
         </main>
     );
 }

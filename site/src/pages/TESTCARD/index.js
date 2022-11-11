@@ -5,6 +5,7 @@ import ArtistaSeguido from "../../components/artista";
 
 import Carousell from "../../components/carousel3d";
 
+import Menu from "../../components/menu";
 
 import Carouselhome from "../../components/carouselhome";
 import CardMusica from "../../components/coracao";

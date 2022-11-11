@@ -41,7 +41,7 @@ export default function ArtistaSeguido (){
 
     },[])
     return(
-        <div className='faixa-Artista'>
+        <div className='faixa-Artistaa'>
             <h1>Artista</h1>
             <Carousel
         swipeable={false}

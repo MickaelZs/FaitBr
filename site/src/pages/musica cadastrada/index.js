@@ -76,7 +76,7 @@ export default function Index(){
 
                     <div className='caixa-busca'>
                         <input type="text" placeholder='Buscar musica por nome' value={filtro} onChange={e => setFiltro(e.target.value)} />
-                        <img src='/assets/images/icon-buscar.svg' alt='buscar' />
+                        <img src='/images/procurar.png' alt='buscar' />
                     </div>
                 
 
