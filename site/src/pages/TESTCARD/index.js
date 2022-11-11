@@ -10,6 +10,7 @@ import Carouselhome from "../../components/carouselhome";
 import CardMusica from "../../components/coracao";
 import Heart from "../../components/coracao";
 import CardGenero from "../../components/genero";
+import Menu from "../../components/menu";
 import Rodape from "../../components/rodape";
 import Home from "../../components/vamos";
 import Vamos from "../../components/vamos";
@@ -20,7 +21,7 @@ export default function Test(){
     return(
         <main className="f1">
            
-          <Rodape/>
+          <Menu/>
 
         </main>
     )
