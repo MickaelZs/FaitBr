@@ -4,11 +4,11 @@ import { useState } from 'react'
 import { listarUsuario } from '../../api/usuarioAPI'
 import { useEffect } from 'react'
 
-export default function Consulta(){
+export default function Consulta() {
 
-    const [usuario,setUsuario] = useState([])
+    const [usuario, setUsuario] = useState([])
 
-    async function carregarUsuario(){
+    async function carregarUsuario() {
         const resp = await listarUsuario()
         setUsuario(resp)
     }
@@ -16,36 +16,28 @@ export default function Consulta(){
     useEffect(() => {
         carregarUsuario()
 
-    },[])
+    }, [])
 
-    return(
+    return (
         <main className='pagina-consulta'>
-        <Menu/>
+            <Menu className='menu-lado'/>
 
-        {usuario.map(item => {
-                                return (
+            <section className='a'>
+                {usuario.map(item => {
+                    return (
+                        <div className='card'>
+                            <div>
+                                <div>Nome: {item.nome} </div>
+                                <div>Nascimento: {item.nascimento.substr(0, 10)} </div>
+                                <div>Email: {item.email} </div>
+                                <div>Senha: {item.senha}</div>
+                                <div>id: {item.id} </div>
+                            </div>
+                        </div>
+                    );
+                })}
+            </section>
 
-                                    <div className='card'>
-                                        <div className='acoes'>
-
-                                            
-
-                                        </div>
-                                        <div>
-
-
-                                            <div>Nome: {item.nome} </div>
-                                            <div>Nascimento: {item.nascimento.substr(0, 10)} </div>
-                                            <div>Email: {item.email} </div>
-                                            <div>Senha: {item.senha}</div>
-                                            <div>id: {item.id} </div>
-
-                                        </div>
-
-                                    </div>
-                                );
-                            })}
-        
         </main>
     )
 }

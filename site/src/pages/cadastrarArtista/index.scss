@@ -1,10 +1,14 @@
 @import url('');
 
 .pagina-cadastro-artista {
-
   display: flex;
   flex-direction: row;
-  height: auto;
+  width: 100%;
+
+  .faixa-cadastro{
+    width: 80%;
+    margin-left: 20em;
+  }
 
   #imagemCapa {
     visibility: hidden;

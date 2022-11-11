@@ -49,14 +49,17 @@ export default function Menu (){
                     <a href='/adm/MusicaCadastradas'>Musicas cadastradas</a>
                 </div>
             </div>
-        </div>
 
-        <div className='menu-items sair-div'>
+            <div className='menu-items sair-div'>
             <div onClick={sairClick}>
                 <img src="/images/logout.png" />
                 <div>Sair</div>
             </div>
+
         </div>
+        </div>
+
+        
     </nav>
         
     )
