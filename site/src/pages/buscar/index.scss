@@ -49,6 +49,37 @@ body{
     justify-content: space-around;
 
 }
+.atorenome{
+    padding-left: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    padding-bottom: 10px;
+
+}
+.section-music{
+    display: flex;
+    flex-direction: row;
+    border-radius: 15px;
+    width: 30em;
+    background-color: #2e2e2e;
+    position:sticky;
+    box-shadow: 1px 1px 8px 1px #ffffff;
+    margin: 25px;
+
+    
+}
+.imagem{
+    height: 7.5em;
+}
+.atorenome{
+    padding-left: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    padding-bottom: 10px;
+
+}
 
 
 .comp-card{

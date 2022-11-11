@@ -43,20 +43,29 @@ export default function Index(){
                 <div className='container'>
                     <div className='comp-card'>
                     {artista.map(item =>
-                    <div className='card_artistas' onClick={() => acessarArtista (item.id)}>
-                        <img className='cap' src={`${API_URL}/${item.artista}`}/>
+                    <div className='section-music' onClick={() => acessarArtista (item.id)}>
+                        <img className="imagem"src={`${API_URL}/${item.artista}`}/>
+                        <div className="atorenome">
+                            <div className="border">
                         <h1>{item.nome}</h1>
+                        </div>
+                        </div>
                         
                 </div> 
+                
             
                 )}
                 </div>
                 <div className='card-genero'>
                     {genero.map(item =>
-                    <div className='card_artistas' onClick={() => acessarGenero (item.id)}>
-                        <img src={`${API_URL}/${item.genero}`}/>
+                    <div className='section-music' onClick={() => acessarGenero (item.id)}>
+                        <img src={`${API_URL}/${item.genero}`} className="imagem"/>
+                        <div  className="atorenome">
                         <h1>{item.nome}</h1>
+                        <div className="border">
                         <h3>{item.genero}</h3>
+                        </div>
+                        </div>
                     </div>
                     )}
                     </div>

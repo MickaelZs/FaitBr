@@ -44,18 +44,17 @@ export default function Index() {
     return(
         <div className='add'>
             <ToastContainer/>
-
+            <div>
             <div className='caixa-busca'>             
                     <input type="text" placeholder='Buscar artista por nome' value={buscar} onChange={e => setBuscar(e.target.value)} />
                 <img src='/images/procurar.png' onClick={filtrar}  />
                 </div>
 
   
-
-
+        
+        <div className="faixa-musica">
     {musicaa.map((item, index) => (
         <div className="Card-addmusica">
-        <h2>1.</h2>
         <div className="section-music"> 
         <img src={`${API_URL}/${item.imagem} `} className="imagem"></img>
         <div className="atorenome">
@@ -66,9 +65,10 @@ export default function Index() {
         </div>
         </div>
         <img className="i" src="/images/i.png" alt="" onClick={() => salvar(index)} />
-      
-    </div>
+         </div>
       ))}
+      </div>
+      </div>
     </div>
   );
 }

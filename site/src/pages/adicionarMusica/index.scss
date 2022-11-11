@@ -23,6 +23,12 @@
 
 
     }
+    .faixa-musica{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-left: 2em;
+    }
 
     h3{
         color: #1e1e1e;
@@ -158,6 +164,100 @@
             position: relative;
             right: -15px;
         }
+
+        @media(max-width: 1346px){
+            .faixa-musica{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;                
+            }
+        }
+
+        @media(max-width: 570px){
+            .faixa-musica{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                
+            }
+            .caixa-busca {
+                display: flex;
+                background-color: white;
+               
+                border: solid 3px blueviolet;
+                padding: 10px 20px;
+                border-radius: 15px;
+                box-shadow: 1px 1px 5px #bdbdbd;
+                width: 70%;
+                margin-top: 0px;
+                justify-content: center;
+                margin: 30px;
+                align-items: center;
+                
+            }
+            .Card-addmusica{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                color: #fff;
+                background-color: #1e1e1e;
+                margin: 25px;
+                width: 500px;
+        
+            }
+            .i{
+                width: 2.8rem;
+            }
+        }
+        @media(max-width: 500px){
+            .faixa-musica{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                margin-right: 3em;
+                
+            }
+            .caixa-busca {
+                display: flex;
+                background-color: white;
+               
+                border: solid 3px blueviolet;
+                padding: 10px 20px;
+                border-radius: 15px;
+                box-shadow: 1px 1px 5px #bdbdbd;
+                width: 80%;
+                margin-top: 0px;
+                justify-content: center;
+                margin: 30px;
+                align-items: center;
+                
+            }
+            .Card-addmusica{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                color: #fff;
+                background-color: #1e1e1e;
+                margin: 25px;
+                width: 400px;
+                font-size: 10px;
+                
+        
+            }
+            .i{
+                width: max-content;
+            }
+            
+            .imagem{
+                height: 7.5em;
+                
+            }
+            
+            
+        }
+       
     
     
 }
