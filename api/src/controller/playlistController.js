@@ -69,10 +69,10 @@ server.post('/playlist/:id/item', async (req,resp) =>{
 
 server.get('/usuario/:id/playlist/item', async (req, resp) => {
     try {
-        const idUsuario = Number(req.params.id);
+        const idPlaylist = Number(req.params.id);
+       
         
-        
-        const resposta = await listarPlaylistItemPorIdUsuario(idUsuario);
+        const resposta = await listarPlaylistItemPorIdUsuario(idPlaylist);
 
         if (!resposta)
             resp.status(404).send([])

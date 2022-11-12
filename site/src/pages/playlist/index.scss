@@ -5,10 +5,10 @@
     height: 100;
     color: #fff;
 
-    // *{
-    //     margin: 0;
-    //     border: 2px solid green;
-    // }
+    *{
+        margin: 0;
+        border: 1px solid red;
+    }
 
     .section-musicas{
       
@@ -51,15 +51,17 @@
     }
 
     .caixa-musicaa{
-        border: solid 2px blue;
-        flex-wrap: wrap;
-        height: 16em;
-        width: 16em;
+        // border: solid 2px blue;
+        
     }
     .playlist{
+ margin:0;
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
-        border: 2px solid green;
+        
+        height: 11.5em;
+        width: 11.3em;
         
     }
 
@@ -107,10 +109,10 @@
         }
 
         .capP{
-            display: flex;
-            width: 75px;
-            height: 75px;
-            flex-wrap: wrap;
+           
+            width: 90px;
+            height: 90px;
+            
         }
     
 

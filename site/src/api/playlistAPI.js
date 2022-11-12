@@ -24,8 +24,8 @@ export async function listarPlaylistPorIdUsuarioo(idUsuario){
   }  
 
 
-  export async function listarPlaylistItemUsuarioo(idUsuario){
-    const resposta = await api.get('/usuario/'+ idUsuario + '/playlist/item');
+  export async function listarPlaylistItemUsuarioo(idPlaylist){
+    const resposta = await api.get('/usuario/'+ idPlaylist + '/playlist/item');
     return resposta.data;
   }
 

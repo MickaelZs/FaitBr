@@ -271,9 +271,9 @@ export default function Index() {
             <div className='playlist' onClick={() => acessarPlaylist(item.id)}>
 
               {imagem.map((item) =>
-                <div className='caixa-musicaa'>
+               
                   <img className='capP' src={`${API_URL}/${item.imagem}`} alt="" />
-                </div>
+               
               )}
 
               

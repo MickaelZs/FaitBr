@@ -54,22 +54,26 @@ export async function playlistItem(idPlaylist,item){
 }
 
 
-export async function listarPlaylistItemPorIdUsuario(idUsuario) {
+export async function listarPlaylistItemPorIdUsuario(idPlaylist) {
     const comando =
-    `select tb_playlist_item.id_playlist_item,
-    id_usuario usuario,
+    ` select tb_playlist_item.id_playlist_item,
     nm_playlist playlist,
-    nm_musicas musica,
-    id_genero genero,
-    id_artistas artista,
-    blob_musica audio,
-    img_imagem imagem
-    from tb_playlist_item
-    inner join tb_musicas on tb_playlist_item.id_musica = tb_musicas.id_musica
-    inner join tb_playlist on tb_playlist_item.id_playlist = tb_playlist.id_playlist
+    tb_playlist.id_playlist,
+     id_usuario usuario,
+     nm_musicas musica,
+     id_genero genero,
+     id_artistas artista,
+     blob_musica audio,
+     img_imagem imagem
+     from tb_playlist_item
+     inner join tb_musicas on tb_playlist_item.id_musica = tb_musicas.id_musica
+     inner join tb_playlist on tb_playlist_item.id_playlist = tb_playlist.id_playlist
+     where 
+      tb_playlist.id_playlist = ?
+     ;
     `
     
-    const [linhas] = await con.query(comando, [idUsuario]);
+    const [linhas] = await con.query(comando, [idPlaylist]);
     return linhas;
 }
 
