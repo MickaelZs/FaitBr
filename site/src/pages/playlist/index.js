@@ -179,10 +179,6 @@ export default function Index() {
       else
         toast.error(err.message);
     }
-
-    console.log(salvarClick)
-
-
   }
 
 

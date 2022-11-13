@@ -5,13 +5,14 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { buscarMusicaPorId } from '../../api/musicaAPI';
 import { useEffect } from 'react';
 import { API_URL } from '../../api/config';
-
+import { ToastContainer, toast } from 'react-toastify';
 import Storage from 'local-storage'
-import { listarPlaylistItemUsuarioo } from '../../api/playlistAPI';
+import { listarPlaylistItemUsuarioo, criarPlaylist } from '../../api/playlistAPI';
 import Cabeçario from '../../components/cabeçalho';
 
 
 export default function Reproduzir(){
+    const [nome, setNome] = useState('');
     const [playlist,setPlaylist] = useState([])
     const [audioPrincipal, setAudioPrincipal] = useState(0);
     const [imagemPrincipal, setImagemPrincipal] = useState(0);
@@ -50,6 +51,25 @@ export default function Reproduzir(){
 
     },[])
 
+    async function salvarClick() {
+        try {
+    
+          let id = Storage('usuario-logado').id;
+    
+          const NovaPlaylist = await criarPlaylist(nome, id);
+          Storage('Playlist', NovaPlaylist)
+    
+          navigate('/AdicionarMusica')    
+        }
+    
+        catch (err) {
+          if (err.response)
+            toast.error(err.response.data.erro)
+          else
+            toast.error(err.message);
+        }
+      }
+
     return(
         <main className='pagina-reproduzir'>
             <section className='faixa-principal'>
@@ -62,6 +82,7 @@ export default function Reproduzir(){
                 </div>
 
                 <div>
+                    <button onClick={salvarClick}>add musica</button>
                     {playlist.map(item => 
                     <div className='cardmusica' >
 
