@@ -96,7 +96,8 @@ body{
 
 
   .heart{
-    margin: 10px;
+    margin-left: 4em;
+    background-color: red;
   }
 .card-musica{
         display: flex;
@@ -179,10 +180,8 @@ body{
         width: 30em;
         background-color: #2e2e2e;
         position:sticky;
-        box-shadow: 2px 2px 8px 1px #000000
-
-;
-
+        box-shadow: 2px 2px 8px 1px #000000;
+        margin-right: 1em;
     }
 
     
@@ -223,4 +222,28 @@ body{
     }
 
 }
+
+
+@media(max-width: 1250px){
+    .comp-card{
+        width: 80em;
+        font-size: 18px;
+        margin-top: 2em;
+    }
+
+    .Card-addmusica{
+        width: 90%;
+        margin-left: 5em;
+    }
+    .aaaa{
+        display: flex;
+        justify-content: space-around;
+        margin-right: 15em;
+
+        img{
+            margin-top: 6em;
+            width: 23em;
+        }
+    }
+  }
 }
