@@ -1,10 +1,10 @@
 
 
-.pagina-reproduzir{
+.pagina-reproduzir-musica{
     display: flex;
     flex-direction: column;
     background-color: #1e1e1e;
-    padding-top: 3em;;
+    padding-top: 3em;
 
 
     .faixa-principal{
@@ -27,13 +27,17 @@
         width: 37vw;
         border-radius: 25px;
     }
+
+    
 }
 
 .cardmusica{
     display: flex;
     flex-direction: row;
-    padding-bottom: 5px;
-    width: 20em;
+    background-color: aliceblue;
+    
+    
+    width: 25em;
     height: 7em;
     border-radius: 10px;
     margin: 15px;
@@ -41,33 +45,26 @@
     h1{
         margin-bottom: -1px;
     }
+
+    
 }
 
     .image-music{
-        border-radius: 100%;
-        width:100px;
-        height: 100px;
+        border-radius: 20px 0px 0px 20px;
+        width:9em;
+        height: 8.3em;
     }
    
     .div-ator{
         font-family: "Roboto";
         width: 0px;
-        padding-left: 20px;
-        padding-bottom: 10px;
+        
         font-size: 5px;
         color: hsl(0, 0%, 12%);
         line-height: 30px;
 
     }
-    
-    .nome{
-        padding-bottom: 10px;
-        font-size: 25px;
-    }
-    .autor{
-        font-size: 15px;
-        font-family: 'Roboto';
-    }
+   
     p{
         font-size: 15px;
         font-family: 'Roboto';

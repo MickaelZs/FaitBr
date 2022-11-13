@@ -30,14 +30,15 @@ export default function Index() {
     const [musica, setMusica] = useState([])
     const [curtir, setCurtir] = useState(false);
     const [seguirr, setSeguirr] = useState(false)
+    
     const { idParam } = useParams()
     const navigate = useNavigate()
    
 
     async function deletarClick(id) {
         try {
-      
             const resp = await deletarrCurtida(id)
+            Storage.remove('musicaC',resp)
             toast.dark('curtida deletada')
         }
         catch (err) {
@@ -61,7 +62,7 @@ export default function Index() {
 
 
     function acessarMusica(id) {
-        navigate(`/play/${id}`)
+        navigate(`/Reproduzir/${id}`)
     }
 
     function mostrarImagem(imagem) {
@@ -104,8 +105,8 @@ export default function Index() {
         try {
             let id = Storage('usuario-logado').id;
             let musicaSelecionada = musica[0].id
-            console.log(musicaSelecionada)
             const resp = await curtirMusica(musicaSelecionada, id)
+            Storage('musicaC',resp)
             toast.dark('musica curtidaa');
         }
 
@@ -113,6 +114,10 @@ export default function Index() {
             if (err.response) toast.error(err.response.data.erro);
             else toast.error(err.message);
 
+        }
+        function sairClick(){
+            Storage.remove('music')
+            navigate('/LoginUsuario')
         }
 
         
@@ -175,6 +180,7 @@ export default function Index() {
                                 <button className='botao' onClick={() => seguir(artista)}>Seguir</button>
                             
                             }
+                           
 
                             </div>
                            
@@ -186,8 +192,8 @@ export default function Index() {
 
 
                     {musica.map((item, index) => (
-                        <div className="Card-addmusica">
-                            <div className="section-music">
+                        <div className="Card-addmusica" >
+                            <div className="section-music"  onClick={()=> acessarMusica(item.id)}>
                                 <img src={`${API_URL}/${item.imagem} `} className="imagem" ></img>
                                 <div className="atorenome">
                                     <h1>{item.nome}</h1>
@@ -203,8 +209,7 @@ export default function Index() {
                                     <img className="l" src="/images/heart.png" alt="" onClick={() => curtirr (item.id) (index)} />}
 
                             </div>
-                            {/* <button onClick={() => curtirr (item.id)}>curtir</button>
-                            <button onClick={() => deletarClick (item.id)} >deletar</button> */}
+                            
                         </div>
 
                     ))}

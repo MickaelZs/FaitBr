@@ -4,74 +4,227 @@
     display: flex;
     flex-direction: column;
     background-color: #1e1e1e;
+    padding-top: 3em;
 
 
-    .faixa1{
-       
-        background-color: #8D32E5;
-    }
-
-    .div-reproducao{
+    .faixa-principal{
         display: flex;
-        flex-direction: column;
-        margin:10px;
+        flex-direction: row;
+        justify-content: space-around;
 
-        img{
-            border-radius: 20px;
-            width: 600px;
-            height: 400px;
-
-        }
     }
 
-    audio {
-       background-color: #8D32E5;
 
-      }
+.faixa-1{
+    display: flex;
+    flex-direction: column;
+    background-color: #1e1e1e;
+    color: white;
+    line-height: 10px;
 
+    img{
+        height: 56vh;
+        width: 37vw;
+        border-radius: 25px;
+    }
 
+    
+}
 
-      
 .cardmusica{
     display: flex;
     flex-direction: row;
-    color: #fff;
-    align-items: center;
-    padding: 10px 10px;
-    width: 20em;
-    background-color: #fff;
+    background-color: aliceblue;
+    
+    
+    width: 25em;
+    height: 7em;
     border-radius: 10px;
     margin: 15px;
 
-    .image-music{
-        border-radius: 20px;
-        width:100px;
-        height: 100px;
-
-    }
-    .p{
-        font-size: 40px ;
-        font: bold;
-        margin-right: 20px;
-    }
-    .div-ator{
-        font-family: "Roboto";
-        width: 370px;
-        padding-left: 20px;
+    h1{
+        margin-bottom: 0px;
         
     }
+
+    
+}
+
+    .image-music{
+        border-radius: 20px 0px 0px 20px;
+        width:9em;
+        height: 8.3em;
+    }
+   
+    .div-ator{
+        font-family: "Roboto";
+        width: 0px;
+        
+        font-size: 5px;
+        color: hsl(0, 0%, 12%);
+        line-height: 30px;
+
+    }
+   
     p{
-        font-family: sans-serif;
-        margin: 0px;
-    }
-    .nome{
-        font-weight:550;
-        padding-bottom: 10px;
-        font-size: 35px;
-    }
-    .autor{
-        font-size: 25px;
+        font-size: 15px;
         font-family: 'Roboto';
     }
-}
+    h1{
+        font-size:35px;
+    }
+    @media  (max-width:360px ) {
+       
+        .faixa-principal{
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;   
+    }
+
+    .cardmusica{
+        display: flex;
+        flex-direction: row;
+        
+       
+        background-color: aliceblue;
+        
+        
+        width: 18em;
+        height: 5em;
+        border-radius: 10px;
+        margin: 15px;
+    
+        h1{
+            margin-bottom: -1px;
+        }
+    
+        
+    }
+    .image-music{
+        border-radius: 20px 0px 0px 20px;
+        width:7em;
+        height: 6em;
+    }
+    .faixa-1{
+        display: flex;
+        flex-direction: column;
+        background-color: #1e1e1e;
+        color: white;
+        line-height: 10px;
+        justify-content: center;
+        align-items: center;
+    
+        img{
+            height: 40vh;
+            width: 65vw;
+            border-radius: 25px;
+        }   
+    }
+        
+    }
+    @media  (max-width:375px ) {
+       
+        .faixa-principal{
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;   
+    }
+
+    .cardmusica{
+        display: flex;
+        flex-direction: row;
+        
+       
+        background-color: aliceblue;
+        
+        
+        width: 18em;
+        height: 5em;
+        border-radius: 10px;
+        margin: 15px;
+    
+        h1{
+            margin-bottom: -1px;
+        }
+    
+        
+    }
+    .image-music{
+        border-radius: 20px 0px 0px 20px;
+        width:7em;
+        height: 6em;
+    }
+    .faixa-1{
+        display: flex;
+        flex-direction: column;
+        background-color: #1e1e1e;
+        color: white;
+        line-height: 10px;
+        justify-content: center;
+        align-items: center;
+    
+        img{
+            height: 40vh;
+            width: 65vw;
+            border-radius: 25px;
+        }
+    
+        
+    }
+        
+    }
+      @media  (max-width:425px ) {
+       
+        .faixa-principal{
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;   
+    }
+
+    .cardmusica{
+        display: flex;
+        flex-direction: row;
+        
+       
+        background-color: aliceblue;
+        
+        
+        width: 18em;
+        height: 5em;
+        border-radius: 10px;
+        margin: 15px;
+    
+        h1{
+            margin-bottom: -1px;
+        }
+    
+        
+    }
+    .image-music{
+        border-radius: 20px 0px 0px 20px;
+        width:7em;
+        height: 6em;
+    }
+    .faixa-1{
+        display: flex;
+        flex-direction: column;
+        background-color: #1e1e1e;
+        color: white;
+        line-height: 10px;
+        justify-content: center;
+        align-items: center;
+    
+        img{
+            height: 40vh;
+            width: 65vw;
+            border-radius: 25px;
+        }
+    
+        
+    }
+        
+    }
 }
