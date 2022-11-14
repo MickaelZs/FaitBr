@@ -92,7 +92,9 @@ export default function Index() {
   }, [])
 
   function acessarPlaylist(id) {
+    
     navigate(`/ReproduzirPlaylist/${id}`)
+
   }
 
   async function carregarSeguidores() {
@@ -114,6 +116,7 @@ export default function Index() {
   async function carregarPlaylist() {
     const id = Storage('usuario-logado').id;
     const resp = await listarPlaylistPorIdUsuarioo(id)
+  
     setUsu(resp)
   }
 
@@ -261,8 +264,8 @@ export default function Index() {
         {usu.map(item =>
 
           <section className='section-playlist' >
-            <img src='/images/excluir.png' onClick={() => DeletarPlaylist(item.id)} />
-            <h2 className='titulo-playlist'>Playlist</h2>
+            <div className="acoes"><img src='/images/excluir.png' onClick={() => DeletarPlaylist(item.id)} /></div>
+            <h2 className='titulo-playlist'>{item.nome}</h2>
 
             <div className='playlist' onClick={() => acessarPlaylist(item.id)}>
 

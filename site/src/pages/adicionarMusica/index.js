@@ -5,10 +5,12 @@ import { API_URL } from "../../api/config.js";
 import { PlaylistItem } from "../../api/playlistAPI";
 import { ToastContainer, toast } from "react-toastify";
 import Storage from "local-storage";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+
 
 export default function Index() {
   const { idParam } = useParams();
+  const navigate = useNavigate()
 
   const [musicaa, setMusicaa] = useState([]);
   const [buscar,setBuscar] = useState('')
@@ -30,6 +32,11 @@ export default function Index() {
       else toast.error(err.message);
     }
   }
+
+  function sairClick(){
+    Storage.remove('Playlist')
+    navigate('/playlist')
+}
 
   async function carregarMusica() {
     const resp = await listaMusicaArtista(idParam);
@@ -67,6 +74,7 @@ export default function Index() {
         <img className="i" src="/images/i.png" alt="" onClick={() => salvar(index)} />
          </div>
       ))}
+      <button onClick={sairClick}> oiii</button>
       </div>
       </div>
     </div>

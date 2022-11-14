@@ -11,7 +11,7 @@ export default function Faixa (){
         },
         tablet: {
           breakpoint: { max: 1024, min: 464 },
-          items: 3,
+          items: 2,
           slidesToSlide: 2
         },
         mobile: {
@@ -21,8 +21,10 @@ export default function Faixa (){
         }
       };
     return(
+    <div className='mae'>
        
         <main className='home-faixaaa'>
+
 
             
 <Carousel
@@ -65,5 +67,6 @@ export default function Faixa (){
 
                 </Carousel>
         </main>
+        </div>
     )
 }
