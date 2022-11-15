@@ -92,8 +92,10 @@ export default function Index() {
   }, [])
 
   function acessarPlaylist(id) {
+   
+     navigate(`/ReproduzirPlaylist/${id}`)
+   
     
-    navigate(`/ReproduzirPlaylist/${id}`)
 
   }
 

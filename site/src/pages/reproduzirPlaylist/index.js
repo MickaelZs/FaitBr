@@ -50,26 +50,27 @@ export default function Reproduzir(){
         carregarMusica()
 
     },[])
-    function AdicionarMusicaPlaylist(id){
+    // function AdicionarMusicaPlaylist(id){
         
-        navigate(`/AdicionarMusica/${id}`)
-    }
+    //     navigate(`/AdicionarMusica/${id}`)
+    // }
 
-    // async function AdicionarMusicaPlaylist() {
-    //     try {
-    //         let p = Storage("Playlist").id;
-    //       const adicionar = await PlaylistItem(p);
-    //       navigate('/AdicionarMusica')    
-    //     }
+    async function AdicionarMusicaPlaylist(id) {
+        try {
+           
+          const adicionar = await PlaylistItem();
+          Storage('mc',adicionar)
+          navigate(`/AdicionarMusica/${id}`)    
+        }
     
     
-    //     catch (err) {
-    //       if (err.response)
-    //         toast.error(err.response.data.erro)
-    //       else
-    //         toast.error(err.message);
-    //     }
-    //   }
+        catch (err) {
+          if (err.response)
+            toast.error(err.response.data.erro)
+          else
+            toast.error(err.message);
+        }
+      }
 
     return(
         <main className='pagina-reproduzir'>
@@ -80,12 +81,13 @@ export default function Reproduzir(){
                     <h2>{nomePrincipal}</h2>
                     <h3>Mickael</h3>
                     <audio controls autoPlay={true} src={audioPrincipal}/>
-                    <button onClick={ AdicionarMusicaPlaylist}>add musica</button>
+                    <button onClick={ AdicionarMusicaPlaylist }>add musica</button>
                 </div>
 
                 <div>
                     
-                    {playlist.map(item => 
+                    {playlist.map(item =>
+                    
                     <div className='cardMusica' >
 
                         <img src={exibirImagemProduto(item.imagem)} onClick={() => setAudioPrincipal(exibirAudio(item.audio)) & setImagemPrincipal(exibirImagemProduto(item.imagem)) & setNomePrincipal(item.musica) } className="image-music" />

@@ -11,6 +11,19 @@ const upload = multer({ dest: 'storage/capaUsuario'})
 server.post('/cadastrousuario', async (req,resp) => {
     try {
       const usuario = req.body;
+      if(!usuario.nome.trim()){
+        throw new Error('Nome é obrigatória');
+    }
+      if(!usuario.nasc.trim()){
+        throw new Error('Nascimento é obrigatória');
+    }
+     if(!usuario.email.trim()){
+        throw new Error('Email é obrigatória');
+    }
+    if(!usuario.senha.trim()){
+        throw new Error('Senha é obrigatória');
+    }
+   
       const x = await cadastrorUsuario(usuario);
       
       resp.send(x);

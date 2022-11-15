@@ -35,13 +35,15 @@ export default function Index() {
     const navigate = useNavigate()
    
 
-    async function deletarClick(id) {
+    async function deletarClick(position) {
         try {
-            const resp = await deletarrCurtida(id)
-            Storage.remove('musicaC',resp)
-            toast.dark('curtida deletada')
+         
+            
+            const resp = await deletarrCurtida(position) 
+            console.log(resp)
+            toast.dark('curtida deletada') 
         }
-        catch (err) {
+               catch (err) {
             if (err.response) toast.error(err.response.data.erro);
             else toast.error(err.message);
 
@@ -87,7 +89,7 @@ export default function Index() {
 
     // }
 
-    async function seguir(position) {
+    async function seguir() {
         try {
             let id = Storage('usuario-logado').id;
             let artistas = artista.id
@@ -103,10 +105,12 @@ export default function Index() {
 
     async function curtirr(position) {
         try {
+            alert(position)
             let id = Storage('usuario-logado').id;
-            let musicaSelecionada = musica[0].id
+            let musicaSelecionada = musica[position].id
             const resp = await curtirMusica(musicaSelecionada, id)
-            Storage('musicaC',resp)
+            console.log(resp)
+            
             toast.dark('musica curtidaa');
         }
 
@@ -207,7 +211,7 @@ export default function Index() {
                             {curtir ?
                                 <img className="l" src="/images/heart on.png" alt="" onClick={() => deletarClick (item.id) (index)} />
                                 :
-                                    <img className="l" src="/images/heart.png" alt="" onClick={() => curtirr (item.id) (index)} />}
+                                    <img className="l" src="/images/heart.png" alt="" onClick={() => curtirr (index)  } />}
 
                             </div>
                             
@@ -215,7 +219,7 @@ export default function Index() {
 
                     ))}
 
-
+ 
 
                 </div>
 

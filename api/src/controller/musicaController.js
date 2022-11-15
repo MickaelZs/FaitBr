@@ -99,8 +99,9 @@ server.delete ('/curtida/:id',async (req,resp) => {
     try{
 
         const { id } = req.params;
-    
-        const resposta = await deletaCurtida(id);
+      
+        const resposta = await deletaCurtida(id)
+       
         resp.status(200).send();
     }
 
@@ -118,6 +119,7 @@ server.delete ('/musica/:id',async (req,resp) => {
         const { id } = req.params;
     
         const resposta = await deletaMusica(id);
+        console.log(resposta)
         resp.status(200).send();
     }
 

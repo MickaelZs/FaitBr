@@ -15,7 +15,7 @@ export default function HomeLogin (props){
         <main className="faixa-home-login">
              <div className='texto-cabecalho'>
             <div className='uee'>
-                <img src="/images/logooo.png" alt=""  width="100px"/>
+                <img classsName='logo' src="/images/logooo.png" alt="" width='50px' />
                 {/* <img src="/images/lupa.png" alt=""  width="40px"/>
                 <img src="/images/playlist.png" alt=""  width="40px"/> */}
                 

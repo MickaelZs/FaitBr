@@ -76,7 +76,7 @@ height: 268px;
        
     }
 
-    @media (max-width:300px){
+    @media screen and (min-width:300px) and (max-width:500px){
         .card-1{
             display: flex;
             justify-content: center;

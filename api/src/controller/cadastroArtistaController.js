@@ -10,6 +10,7 @@ server.post('/cadastroArtista' , async(req, resp) => {
 
     try{
         const artistas = req.body;
+        
         const x = await cadastrorArtista(artistas);
 
         resp.send(x);
@@ -89,6 +90,7 @@ server.delete ('/artista/:id',async (req,resp) => {
         const { id } = req.params;
     
         const resposta = await deletaArtista(id);
+        console.log(resposta)
         resp.status(200).send();
     }
 
