@@ -42,7 +42,7 @@ export default function Index() {
   const [usu, setUsu] = useState([])
   const [artista, setArtista] = useState([])
   const [itemm, setItemm] = useState([])
-  const [imagem, setImagem] = useState([]) 
+  const [imagem, setImagem] = useState([])
   const [id, setId] = useState(0)
   const navigate = useNavigate()
 
@@ -68,11 +68,11 @@ export default function Index() {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: 3,
-      slidesToSlide: 3
+      slidesToSlide: 2
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 3,
+      items: 2,
       slidesToSlide: 2
     },
     mobile: {
@@ -92,7 +92,7 @@ export default function Index() {
   }, [])
 
   function acessarPlaylist(id) {
-    
+
     navigate(`/ReproduzirPlaylist/${id}`)
 
   }
@@ -116,11 +116,11 @@ export default function Index() {
   async function carregarPlaylist() {
     const id = Storage('usuario-logado').id;
     const resp = await listarPlaylistPorIdUsuarioo(id)
-  
+
     setUsu(resp)
   }
 
-  async function carregarImagem(){
+  async function carregarImagem() {
     const id = Storage('usuario-logado').id;
     const resp = await listarPlaylistImagem(id)
     setImagem(resp)
@@ -202,7 +202,7 @@ export default function Index() {
           autoPlaySpeed={1000}
           keyBoardControl={true}
           transitionDuration={500}
-          
+
         >
 
           {musica.map(item =>
@@ -216,9 +216,8 @@ export default function Index() {
           )}
 
         </Carousel>
-
-
       </section>
+
       <section className='section-musicas'>
         <h2 className='titulos'>Artistas - Seguidos</h2>
         <Carousel
@@ -270,12 +269,12 @@ export default function Index() {
             <div className='playlist' onClick={() => acessarPlaylist(item.id)}>
 
               {imagem.map((item) =>
-               
-                  <img className='capP' src={`${API_URL}/${item.imagem}`} alt="" />
-               
+
+                <img className='capP' src={`${API_URL}/${item.imagem}`} alt="" />
+
               )}
 
-              
+
               <div className='nome-playlist'>
                 <h1>{item.nome}</h1>
                 <h1>{usu.id}</h1>

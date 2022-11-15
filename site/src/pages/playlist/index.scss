@@ -54,8 +54,20 @@
         border: 2px solid #ffffff;
         width: max-content;
         text-align: start;
-    
- 
+        width: 16em;
+        margin-left: 5em;
+    }
+
+    .caixa-musica{
+        height: 16em;
+        width: 16em;
+        .k{
+            margin-top: 3em;
+        }
+    }
+
+    .titulos{
+        margin-left: 1em;
     }
 
     .textt{
@@ -70,15 +82,6 @@
 
     }
 
-    .caixa-musica{
-        height: 16em;
-        width: 16em;
-    }
-
-    .caixa-musicaa{
-        // border: solid 2px blue;
-        
-    }
     .playlist{
  margin:0;
         display: flex;
@@ -141,4 +144,125 @@
         }
     
 
+
+        @media screen and (max-width: 1250px){
+            .music{
+                border: 2px solid #ffffff;
+                width: max-content;
+                text-align: start;
+                width: 16em;
+                font-size: 22px;
+
+                margin-left: 5em;
+            }
+        
+            .caixa-musica{
+                height: 16em;
+                width: 15.8em;
+                border: 2px solid #ffffff;
+                .k{
+                    margin-top: 3em;
+                }
+            }
+        }
+
+        @media screen and (max-width: 1100px){
+            .music{
+               
+                border: 2px solid #ffffff;
+                width: max-content;
+                text-align: start;
+                width: 14em;
+                font-size: 22px;
+
+                margin-left: 5em;
+            }
+
+            .section-musicas{
+                display: flex;
+            }
+        
+            .caixa-musica{
+                height: 16em;
+                width: 13.8em;
+                .k{
+                    margin-top: 3em;
+                }
+            }
+        }
+
+        @media screen and (max-width: 1000px){
+            .music{
+               
+                border: 2px solid #ffffff;
+                width: max-content;
+                text-align: start;
+                width: 13em;
+                font-size: 22px;
+
+                margin-left: 5em;
+            }
+
+            .section-musicas{
+                display: flex;
+            }
+        
+            .caixa-musica{
+                height: 16em;
+                width: 12.8em;
+                .k{
+                    margin-top: 3em;
+                }
+            }
+        }
+
+        @media screen and (max-width: 900px){
+            .music{
+               
+                border: 2px solid #ffffff;
+                width: max-content;
+                text-align: start;
+                width: 12.7em;
+                font-size: 22px;
+
+                margin-left: 5em;
+            }
+
+            .section-musicas{
+                display: flex;
+            }
+        
+            .caixa-musica{
+                height: 16em;
+                width: 12.5em;
+                .k{
+                    margin-top: 3em;
+                }
+            }
+        }
+
+        @media screen and (max-width: 800px){
+            .music{
+               
+                border: 2px solid #ffffff;
+                width: max-content;
+                text-align: start;
+                width: 11.5em;
+                font-size: 22px;
+
+                margin-left: 5em;
+            }
+
+            .section-musicas{
+                display: flex;
+            }
+        
+            .caixa-musica{
+                height: 16em;
+                width: 11.3em;
+                .k{
+                    margin-top: 3em;
+                }
+            }
+        }
 }
