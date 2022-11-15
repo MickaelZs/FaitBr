@@ -5,10 +5,7 @@
     height: 100;
     color: #fff;
 
-    *{
-        margin: 0;
-        border: 1px solid red;
-    }
+    
 
     .section-musicas{
       
@@ -17,6 +14,34 @@
         justify-content: center;
         text-align: center;
 
+    }
+    .playlist .acoes {
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+
+        align-items: center;
+        top: -50px;
+        padding: 20px;
+
+        visibility: hidden;
+        opacity: 0;
+        transition: .3s;
+    }
+
+    .playlist:hover {
+        transition: .1s;
+        transform: scale(1.04);
+
+        .acoes {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+
+    .playlist .acoes > img {
+        margin: 0px 5px;
+        cursor: pointer;
     }
 
     .artista{
@@ -71,12 +96,12 @@
     }
 
     .titulo-playlist{
-        font-size: 50px;
+        font-size: 30px;
         margin-bottom: 35px;
     }
 
     .nome-playlist{
-        margin-left: 1em;
+       
         font-size: 30px;
     }
 

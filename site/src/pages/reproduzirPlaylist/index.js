@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import { API_URL } from '../../api/config';
 import { ToastContainer, toast } from 'react-toastify';
 import Storage from 'local-storage'
-import { listarPlaylistItemUsuarioo, criarPlaylist } from '../../api/playlistAPI';
+import { listarPlaylistItemUsuarioo, criarPlaylist, PlaylistItem } from '../../api/playlistAPI';
 import Cabeçario from '../../components/cabeçalho';
 
 
@@ -50,25 +50,26 @@ export default function Reproduzir(){
         carregarMusica()
 
     },[])
+    function AdicionarMusicaPlaylist(id){
+        
+        navigate(`/AdicionarMusica/${id}`)
+    }
 
-    async function salvarClick() {
-        try {
+    // async function AdicionarMusicaPlaylist() {
+    //     try {
+    //         let p = Storage("Playlist").id;
+    //       const adicionar = await PlaylistItem(p);
+    //       navigate('/AdicionarMusica')    
+    //     }
     
-          let id = Storage('usuario-logado').id;
     
-          const NovaPlaylist = await criarPlaylist(nome, id);
-          Storage('Playlist', NovaPlaylist)
-    
-          navigate('/AdicionarMusica')    
-        }
-    
-        catch (err) {
-          if (err.response)
-            toast.error(err.response.data.erro)
-          else
-            toast.error(err.message);
-        }
-      }
+    //     catch (err) {
+    //       if (err.response)
+    //         toast.error(err.response.data.erro)
+    //       else
+    //         toast.error(err.message);
+    //     }
+    //   }
 
     return(
         <main className='pagina-reproduzir'>
@@ -79,12 +80,13 @@ export default function Reproduzir(){
                     <h2>{nomePrincipal}</h2>
                     <h3>Mickael</h3>
                     <audio controls autoPlay={true} src={audioPrincipal}/>
+                    <button onClick={ AdicionarMusicaPlaylist}>add musica</button>
                 </div>
 
                 <div>
-                    <button onClick={salvarClick}>add musica</button>
+                    
                     {playlist.map(item => 
-                    <div className='cardmusica' >
+                    <div className='cardMusica' >
 
                         <img src={exibirImagemProduto(item.imagem)} onClick={() => setAudioPrincipal(exibirAudio(item.audio)) & setImagemPrincipal(exibirImagemProduto(item.imagem)) & setNomePrincipal(item.musica) } className="image-music" />
 

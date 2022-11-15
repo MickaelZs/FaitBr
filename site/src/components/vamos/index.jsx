@@ -5,14 +5,7 @@ export default function Home (){
         <main className="faixa-homee">
              <div className='texto-cabecalho'>
             <div className='uee'>
-              <li><a href="#sec1">Artistas mais escutados</a></li>
-              <li><a href="#sec2">Gêneros</a></li>
-              <li><a href="#sec3">Artistas populares</a></li>
-              </div>
-              
-              
-          
-              <div class="hamburger-menu">
+            <div class="hamburger-menu">
               <input id="menu__toggle" type="checkbox" />
               <label class="menu__btn" for="menu__toggle">
                 <span></span>
@@ -25,6 +18,16 @@ export default function Home (){
                 
               </ul>
               </div>
+              
+              <li><a href="#sec1">Musicas</a></li>
+              <li><a href="#sec2">Gêneros</a></li>
+              <li><a href="#sec3">Artistas </a></li>
+             
+              
+              
+          
+             
+               </div>
 
           </div>
             <div className='container'>

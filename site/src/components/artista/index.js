@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from "react-router-dom"
 import { listaArtista } from '../../api/cadastroArtistaAPI'
 import './index.scss'
 import Carousel from "react-multi-carousel";
@@ -7,7 +8,12 @@ import { API_URL } from '../../api/config';
 
 
 
+
 export default function ArtistaSeguido (){
+    const navigate = useNavigate()
+    function acessarArtista(){
+        navigate('/CadastroUsuario')
+    }
 
     const responsive = {
         desktop: {
@@ -17,7 +23,7 @@ export default function ArtistaSeguido (){
         },
         tablet: {
           breakpoint: { max: 1024, min: 464 },
-          items: 3,
+          items: 2,
           slidesToSlide: 2
         },
         mobile: {
@@ -52,10 +58,12 @@ export default function ArtistaSeguido (){
         autoPlaySpeed={10000}
         keyBoardControl={true}
         transitionDuration={500}
+        containerClass="carousel-container"
+        itemClass='carousel-item'
         centerMode
       >
             {artista.map(item =>
-            <div className='card'>
+            <div className='card' onClick={() => acessarArtista(item.id)}>
                 <div className='circulo'>
                     <img src={`${API_URL}/${item.artista}`} alt="" />
                 </div>

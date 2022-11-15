@@ -1,10 +1,12 @@
-
-
 .pagina-reproduzir{
     display: flex;
     flex-direction: column;
     background-color: #1e1e1e;
     padding-top: 3em;
+
+    // *{
+    //     border: 2px solid green;
+    // }
 
 
     .faixa-principal{
@@ -31,12 +33,10 @@
     
 }
 
-.cardmusica{
+.cardMusica{
     display: flex;
     flex-direction: row;
     background-color: aliceblue;
-    
-    
     width: 25em;
     height: 7em;
     border-radius: 10px;
@@ -51,9 +51,9 @@
 }
 
     .image-music{
-        border-radius: 20px 0px 0px 20px;
+        border-radius: 10px 0px 0px 10px;
         width:9em;
-        height: 8.3em;
+        height: 7em;
     }
    
     .div-ator{
