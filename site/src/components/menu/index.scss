@@ -6,7 +6,7 @@
     width: 25%;
     height: 100%;
     padding-bottom: 0px;
-    padding-top: 0px;
+    padding-top: 30px;
     background-color: #8D32E5;
     
     display: flex;
@@ -31,12 +31,10 @@
     }
 
     .imagem-logo{
-        width: 300px;
+        width: 100px;
     }
     
-    .logo img {
-        width: 110px;
-    }
+    
     .logo div {
         font: 700 22px 'Inter';
         color: #E9E9E9;

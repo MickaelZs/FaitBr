@@ -16,7 +16,7 @@ export default function Menu (){
         <nav className="comp-menu">
         <div className='div-minimae'>
             <div className='logo'>
-                <img src="/images/reallogo.png" className='imagem-logo' />
+                <img src="/images/nova-logo.png" className='imagem-logo' />
             </div>
 
             <div className='menu-items'>

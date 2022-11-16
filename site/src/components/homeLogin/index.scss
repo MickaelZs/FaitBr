@@ -16,9 +16,7 @@
         height: 2.5em;
     }
 
-    .logo{
-      width: 100px;
-    }
+    
 
     .usuario{
         border-radius: 100%;
@@ -119,7 +117,7 @@
       .uee{
         display: flex;
         box-sizing: none;
-        justify-content: space-evenly;
+        justify-content: space-around;
         width: 100%;
       }
 

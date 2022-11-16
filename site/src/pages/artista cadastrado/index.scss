@@ -3,11 +3,11 @@
 
         display: flex;
         font: 600 16px 'Inter';
-    
         
         .container {
             display: flex;
             flex-direction: column;
+
 
             flex-grow: 1;
             background-color: #f5f6fa;
@@ -23,6 +23,7 @@
         .conteudo {
             display: flex;
             flex-direction: column;
+
             
             padding: 20px 60px;
             background-color: #F5F6FA;
@@ -66,14 +67,12 @@
 
         }
 
-        .comp-card{
-            display: flex;
-            flex-direction: row;
-        
-            border: 2px solid green;
-            
-            flex-wrap: wrap;
-            }
+       .comp-card{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+       }
     
     
         .card {
@@ -86,7 +85,7 @@
             background-color: #fff;
 
             padding: 25px;
-            width: 235px;
+            width: 200px;
             height: 270px;
 
             border-radius: 26px;
