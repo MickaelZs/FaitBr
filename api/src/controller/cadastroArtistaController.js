@@ -10,6 +10,15 @@ server.post('/cadastroArtista' , async(req, resp) => {
 
     try{
         const artistas = req.body;
+        if(!artistas.artistas.trim()){
+            throw new Error('Nome do Artista é obrigatório');
+        }
+        if(!artistas.genero.trim()){
+            throw new Error('Genero é obrigatório');
+        }
+        if(!artistas.sobre.trim()){
+            throw new Error('Sobre é obrigatório');
+        }
         
         const x = await cadastrorArtista(artistas);
 

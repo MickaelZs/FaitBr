@@ -28,6 +28,15 @@ server.post('/cadastramusica' , async(req, resp) => {
 
     try{
         const musica = req.body;
+        if(!musica.genero.trim()){
+            throw new Error('Genero é obrigatório');
+        }
+        if(!musica.artistas.trim()){
+            throw new Error('Artista é obrigatório');
+        }
+        if(!musica.nome.trim()){
+            throw new Error('Nome da musica é obrigatório');
+        }
         const x = await cadastrarMusica(musica);
 
         resp.send(x);

@@ -1,12 +1,98 @@
-.Artistas{
-    img{
-    width: 200px ;
-    height: 200px ;
-    border-radius: 50%;
+.faixa-Artistaa{
+   
+    background-image: url("../../../../site/public/images/degrade.jpg") ;
+    height: 100vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .card:hover {
+        transform: scale(1.1);
+      }
+    .card{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        width: 300px;
+        height: 394px;
+      background-color: #ffffff31;
+  backdrop-filter: blur(40px);
+  border-radius: 20px 20px 20px 20px ;
+  margin: 20px;
+  border: solid 2px #fff;
     }
 
-    p{
-        color: white;
+    .circulo{
+        img{
+            border-radius: 100%;
+            width: 170px;
+            height: 170px;
+        }
     }
 
+    .text{
+        h1{
+            color: #fff;
+        }
+    }
+
+
+    .botao-seguir{
+        button{
+            border: none;
+            color: #8D32E5;
+            border-radius: 20px;
+            width: 92px;
+            height: 30px;
+        }
+    }
+
+    @media screen and (min-width:200px) and (max-width:500px){
+        .card{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            width: 150px;
+            height: 230px;
+          background-color: #ffffff31;
+      backdrop-filter: blur(40px);
+      border-radius: 20px 20px 20px 20px ;
+      margin: 10px;
+      border: solid 2px #fff;
+        }
+       
+        .carousel-item{
+            margin: 20px;
+            border:solid 2px green;
+        }
+        .circulo{
+            img{
+                border-radius: 100%;
+                width: 70px;
+                height: 70px;
+            }
+        }
+    
+        .text{
+            h1{
+                font-size: 100%;
+                color: #fff;
+            }
+        }
+        .botao-seguir{
+        button{
+            border: none;
+            color: #8D32E5;
+            border-radius: 20px;
+            width: 70px;
+            height: 25px;
+        }
+    }
+
+    }
+    
 }

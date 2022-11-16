@@ -9,6 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import Storage from 'local-storage'
 import { listarPlaylistItemUsuarioo, criarPlaylist, PlaylistItem } from '../../api/playlistAPI';
 import Cabeçario from '../../components/cabeçalho';
+import Cabecario from '../../components/cabeçalho';
 
 
 export default function Reproduzir(){
@@ -74,6 +75,7 @@ export default function Reproduzir(){
 
     return(
         <main className='pagina-reproduzir'>
+            <Cabecario/>
             <section className='faixa-principal'>
 
                 <div className='faixa-1'>

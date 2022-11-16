@@ -1,11 +1,12 @@
 
-import {useParams} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 import { buscarArtistaPorGeneroId, BuscarArtistaPorNome } from '../../api/cadastroArtistaAPI';
 import './index.scss'
 import { useState,useEffect  } from 'react';
 import CardGenero from '../../components/genero';
 import { buscarGeneroPorId, buscarGeneroPorNome } from '../../api/generoAPI';
 import { API_URL } from '../../api/config';
+import Cabecario from '../../components/cabeçalho';
 
 
 
@@ -18,6 +19,7 @@ const [ge,setGe] = useState ({})
 const [buscar,setBuscar] = useState ('')
 
 const {idParam} = useParams();
+const navigate = useNavigate()
 
 async function filtrar (){
     const resp = await BuscarArtistaPorNome (buscar)
@@ -37,6 +39,10 @@ async function carregarGenero(){
     setGe(resp)
 }
 
+function acessarArtista(id){
+    navigate(`/detalhe/artista/${id}`)
+  }
+
  
 useEffect(() => {
     carregarArtistaPorGenero();
@@ -46,10 +52,8 @@ useEffect(() => {
 
     return(
         <div className='pagina-genero'> 
-         <div className='caixa-busca'>             
-                    <input type="text" placeholder='Buscar artista por nome' value={buscar} onChange={e => setBuscar(e.target.value)} />
-                <img src='/images/procurar.png'  onClick={filtrar} />
-                </div>
+        <Cabecario/>
+         
             <div className="genero-nome">
             <h1>{ge.nome}</h1>
             </div>                 
@@ -58,7 +62,7 @@ useEffect(() => {
        
       
         {genero.map(item =>
-        <div className="card">
+        <div className="card" onClick={() => acessarArtista (item.id)}>
         <div className="generos">
         <img src={`${API_URL}/${item.artista}`} alt="" />
        <p> {item.nome}</p>

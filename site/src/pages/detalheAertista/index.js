@@ -9,6 +9,7 @@ import './index.scss'
 
 
 import Storage from 'local-storage'
+import Cabecario from "../../components/cabeçalho";
 
 
 
@@ -153,6 +154,7 @@ export default function Index() {
 
     return (
         <main className='comp-detalhe'>
+            <Cabecario/>
             <ToastContainer />
 
 

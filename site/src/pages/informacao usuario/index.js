@@ -1,9 +1,8 @@
 import './index.scss'
 
-import Cabeçario from '../../components/cabeçalho'
 
 import { ToastContainer, toast } from 'react-toastify';
-
+import Cabecario from '../../components/cabeçalho'
 import { API_URL } from '../../api/config'
 import { useEffect, useState } from 'react'
 import { buscarUsuarioPorId, listarUsuario, enviarImagemUsuario } from '../../api/usuarioAPI'
@@ -68,7 +67,11 @@ export default function Index() {
 
     }
     return (
+        <section>
+             <Cabecario/>
         <main className='pagina-informacao-usu'>
+          
+            
 
             <div className='faixa-usuario'>
                 <div className='f'>
@@ -278,5 +281,6 @@ export default function Index() {
             {/* </section> */}
 
         </main>
+        </section>
     )
 }

@@ -1,17 +1,26 @@
 .cabecalho{
     display: flex;
     height: 10vh;
-    background-color: #ffffff4d;
-backdrop-filter: blur(42px);
+    width: 100%;
+    
     align-items: center;
+    
     justify-content: space-between;
 
     .faixa{
         display: flex;
        
     }
-    *{
-        //border: green solid 1px;
+    // *{
+    //     border: green solid 1px;
+    // }
+    .div1{
+
+        display: flex;
+        justify-content: space-between;
+       
+        align-items: center;
+        margin:30px;
     }
     .lupa{
         padding: 2em;

@@ -1,5 +1,5 @@
 import './index.scss'
-import Cabeçario from '../../components/cabeçalho'
+
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { confirmAlert } from 'react-confirm-alert'
@@ -16,6 +16,7 @@ import { enviarArquivoMusica, listarCurtidas } from '../../api/musicaAPI';
 import { API_URL } from '../../api/config';
 import styled from 'styled-components';
 import { seguindoArtistaPorId } from '../../api/cadastroArtistaAPI';
+import Cabecario from '../../components/cabeçalho';
 
 
 const customStyles = {
@@ -188,6 +189,7 @@ export default function Index() {
 
   return (
     <main className="pag-playlist">
+      <Cabecario/>
 
       <ToastContainer />
       <section className='section-musicas'>

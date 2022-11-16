@@ -1,40 +1,21 @@
 .pagina-genero{
 
-    .caixa-busca {
-    display: flex;
-    background-color: white;
-    margin-left: 22em;
-    border: solid 3px blueviolet;
-    padding: 10px 20px;
-    border-radius: 15px;
-    box-shadow: 1px 1px 5px #bdbdbd;
-    width: 40%;
-    margin-top: 0px;
-    justify-content: center;
+   
     
-}
+
 
 .cap{
     width: 100px;
     height: 100px;
 }
 
-.caixa-busca input {
-    background: none;
-    border: none;
-    padding: 0px;
-    width: 100%;
-    
-}
-.caixa-busca img {
-    cursor: pointer;
-    position: relative;
-    right: -15px;
-}
 
    
  .genero-nome{
     margin: 20px;
+    display:flex;
+    align-items: center ;
+    justify-content: center;
     h1{
         color: #ffffff;
        

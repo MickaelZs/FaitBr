@@ -1,10 +1,10 @@
 .pagina-informacao-usu{
-    *{
-        border: solid green 2px;
-    }
+    // *{
+    //     border: solid green 2px;
+    // }
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+   
+    justify-content: space-evenly;
     align-items: center;
     color: #ffff;
 
@@ -48,6 +48,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        
        
 
       }

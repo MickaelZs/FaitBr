@@ -12,6 +12,8 @@ import CardMusica from '../../components/coracao';
 import Home from '../../components/vamos';
 import CardGenero from '../../components/genero';
 import Faixa from '../../components/usuario';
+import CardArtistaHome from '../../components/artista';
+import GeneroHome from '../../components/generoHome';
 
 const  customStyles  =  { 
   content : { 
@@ -72,9 +74,9 @@ function closeModal() {
       <Home/>
       
        <Faixa/>
-        <CardGenero/>
+       <GeneroHome/>
         <Faixa/>
-        <ArtistaSeguido/>
+       <CardArtistaHome/>
 
       <div className='rodape'>
 

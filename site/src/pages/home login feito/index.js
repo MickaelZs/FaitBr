@@ -15,9 +15,10 @@ import Perfil from '../../components/perfilUsuario';
 import { listarCurtidas } from '../../api/musicaAPI';
 import Cabeçario from '../../components/cabeçalho';
 import CardMusica from '../../components/coracao';
-import ArtistaSeguido from '../../components/artista';
+
 import HomeLogin from '../../components/homeLogin';
 import Faixa from '../../components/usuario'
+import ArtistaSeguido from '../../components/artistas';
 
 
 
@@ -116,6 +117,10 @@ useEffect(() => {
       slidesToSlide: 1
     }
   };
+  function acessarPerfil(id){
+   
+    navigate(`/informacao/${id}`)
+}
 
   return (
 

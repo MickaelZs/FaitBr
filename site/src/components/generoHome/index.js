@@ -6,23 +6,19 @@ import { useEffect, useState } from 'react';
 import { listaGeneros } from '../../api/generoAPI';
 import { useNavigate } from 'react-router-dom';
 
-export default function CardGenero() {
-  const navigate = useNavigate()
+export default function GeneroHome() {
 
   const [genero,setGenero] = useState([])
+  const navigate = useNavigate()
 
   async function carregarGenero (){
     const resp = await listaGeneros()
     setGenero(resp)
   }
 
-  function acessarGenero(id){
-    navigate(`/genero/${id}`)
+  function acessarGenero(){
+    navigate(`/CadastroUsuario`)
   }
-
-
-  
-  
 
   useEffect(() => {
     carregarGenero()
@@ -65,7 +61,7 @@ export default function CardGenero() {
         >
       
         {genero.map(item  =>
-        <div className='card-G'  onClick={() => acessarGenero (item.id)}>
+        <div className='card-G' onClick={ acessarGenero }>
           <img src="/images/teto.jpg" alt="" />
           <h1>{item.nome}</h1>
 

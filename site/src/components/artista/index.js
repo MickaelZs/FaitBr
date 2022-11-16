@@ -9,7 +9,7 @@ import { API_URL } from '../../api/config';
 
 
 
-export default function ArtistaSeguido (){
+export default function CardArtistaHome (){
     const navigate = useNavigate()
     function acessarArtista(){
         navigate('/CadastroUsuario')

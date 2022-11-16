@@ -1,11 +1,24 @@
 import { API_URL } from '../../api/config'
 import './index.scss'
 import Storage from 'local-storage'
-import { useCallback } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { buscarUsuarioPorId } from '../../api/usuarioAPI'
 
 
-export default function Cabeçario(props){
+
+
+export default function Cabecario(){
+    const [usuario,setUsuario] = useState({})
+    async function carregarUsuario(){
+        const id = Storage('usuario-logado').id
+        const reso = await buscarUsuarioPorId(id)
+        setUsuario(reso)
+      }
+
+      useEffect(() => {
+        carregarUsuario()
+      },[])
 
     const navigate = useNavigate();
 
@@ -13,6 +26,14 @@ export default function Cabeçario(props){
     function acessarPerfil(){
         const id = Storage('usuario-logado').id
         navigate(`/informacao/${id}`)
+    }
+    function acessarBuscar(){
+       
+        navigate(`/buscar`)
+    }
+    function acessarPlaylist(){
+       
+        navigate(`/playlist`)
     }
 
     return(
@@ -22,14 +43,14 @@ export default function Cabeçario(props){
             <img src='/images/logooo.png' width="100px"></img>
         </div>
         <div className='div1'>
-            <div className='lupa'>
-            <img src='/images/lupa.png' width="40px"></img>
+            <div className='lupa' onClick={acessarBuscar}>
+            <img src='/images/lupa.png' width="75px"></img>
             </div>
             <div className='playlist'>
-            <img src='/images/playlist.png' width="40px"></img>
+            <img src='/images/playlist.png' width="40px" onClick={acessarPlaylist}></img>
             </div>
             <div className='logoconta'>
-            <img className='usuario' onClick={() => acessarPerfil(props.usuario.id)} src={`${API_URL}/${props.usuario.imagem}`}></img>
+            <img className='usuario' onClick={() => acessarPerfil(usuario.id)} src={`${API_URL}/${usuario.imagem}`}></img>
             </div>
         </div>
 
