@@ -81,7 +81,7 @@ function closeModal() {
       <div className='rodape'>
 
         <div>
-          <img className='logo' src='./images/logo.png'/>
+          <img className='logo' src='./images/nova-logo.png'/>
         </div>
 
         <div className='texto-rodape' >
