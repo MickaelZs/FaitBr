@@ -114,11 +114,11 @@ export async function deletaPlaylist2 (id){
     return resposta.affectedRows;
 }
 
-export async function deletarMusicaPlaylist(id){
+export async function deletarMusicaPlaylist(id, id2){
     const comando = `delete from tb_playlist_item
-    where id_playlist = ?,
+    where id_playlist = ? and
      id_musica = ?;`
-     const [resposta] = await con.query(comando, [id]);
+     const [resposta] = await con.query(comando, [id, id2]);
     return resposta.affectedRows;
 }
 

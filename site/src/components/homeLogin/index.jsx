@@ -11,6 +11,12 @@ export default function HomeLogin(props) {
     navigate(`/informacao/${id}`)
   }
 
+  function acessarPlaylist() {
+
+    navigate(`/playlist`)
+}
+
+
   return (
     <main className="faixa-home-login">
       <div className='texto-cabecalho'>
@@ -22,6 +28,10 @@ export default function HomeLogin(props) {
           <li><a href="#sec1">Musicas</a></li>
           <li><a href="#sec2">Gêneros</a></li>
           <li><a href="#sec3">Artistas</a></li>
+
+          <div className='playlist'>
+                    <img src='/images/playlist.png' width="40px" onClick={acessarPlaylist}></img>
+                </div>
           <img className='usuario' onClick={() => acessarPerfil(props.usuario.id)} src={`${API_URL}/${props.usuario.imagem}`} alt="" />
         </div>
 

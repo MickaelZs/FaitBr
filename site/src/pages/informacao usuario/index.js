@@ -13,12 +13,12 @@ export default function Index() {
 
     const [usuario, setUsuario] = useState([])
     const [imagem, setImagem] = useState('')
-    
 
-    const {idParam} = useParams()
-   const  navigate = useNavigate ()
 
-    function sairClick(){
+    const { idParam } = useParams()
+    const navigate = useNavigate()
+
+    function sairClick() {
         Storage.remove('usuario-logado')
         navigate('/LoginUsuario')
     }
@@ -48,114 +48,115 @@ export default function Index() {
         document.getElementById('imagemCapa').click();
     }
 
-    async function salvarImagem(){
+    async function salvarImagem() {
         try {
-            
-            if(typeof(imagem) == 'object'){
+
+            if (typeof (imagem) == 'object') {
                 await enviarImagemUsuario(idParam, imagem)
-                
+
             }
 
             toast.success('trocastes a foto, querido usuario do fitas br')
-        
+
         } catch (err) {
-            if(err.response)
-            toast.error(err.response.data.erro)
+            if (err.response)
+                toast.error(err.response.data.erro)
             else
-            toast.error(err.message);
+                toast.error(err.message);
         }
 
     }
     return (
         <section>
-             <Cabecario/>
-        <main className='pagina-informacao-usu'>
-          
-            
-
-            <div className='faixa-usuario'>
-                <div className='f'>
-
-            <div className='usuarioo' onClick={escolherImagem}>
-
-                {!imagem &&
-
-                    <img className='usuarioo'  src={`${API_URL}/${usuario.imagem}`} />
-                }
-
-                {imagem &&
-
-                    <img className='usuarioo' src={mostrarImagem(imagem)} />
-
-                }
-
-                <input type='file' id='imagemCapa' onChange={e => setImagem(e.target.files[0])} ></input>
-
-                
-                </div>
-                <div>
-                    <button className='botaoo' onClick={salvarImagem} >Salvar Imagem</button>
-                    <button className='botaoo' onClick={sairClick}>Sair</button>
-                </div>
-
-                </div>
-
-                <div className='faixa3'>
-                    <div>
+            <Cabecario />
+            <main className='pagina-informacao-usu'>
 
 
-                    <div className='faixa3-div1'>
-                        <h1>Nome:</h1>
-                        <h3>{usuario.nome}</h3>
-                    </div>
+
+                <div className='faixa-usuario'>
+                    <div className='f'>
+
+                        <div className='usuarioo' onClick={escolherImagem}>
+
+                            {!imagem &&
+
+                                <img className='usuarioo' src={`${API_URL}/${usuario.imagem}`} />
+                            }
+
+                            {imagem &&
+
+                                <img className='usuarioo' src={mostrarImagem(imagem)} />
+
+                            }
+
+                            <input type='file' id='imagemCapa' onChange={e => setImagem(e.target.files[0])} ></input>
 
 
-                    <div className='faixa3-div1'>
-                        <h1>Nascimento:</h1>
-                        <h3>{usuario.nascimento}</h3>
-                    </div>
-                    </div>
-                    <div>
-
-                    <div className='faixa3-div2'>
-
+                        </div>
                         <div>
-                            <h1>Email:</h1>
-                            <h3> {usuario.email}</h3>
+                            <button className='botaoo' onClick={salvarImagem} >Salvar Imagem</button>
+                            <button className='botaoo' onClick={sairClick}>Sair</button>
+                        </div>
+
+                    </div>
+
+                    <div className='faixa3'>
+                        <div>
+
+
+                            <div className='faixa3-div1'>
+                                <h1>Nome:</h1>
+                                <h3>{usuario.nome}</h3>
+                            </div>
+
+
+                            <div className='faixa3-div1'>
+                                <h1>Nascimento:</h1>
+                                <h3>{usuario.nascimento.substr(0, 10)}</h3>
+                            </div>
+
+                        </div>
+                        <div>
+
+                            <div className='faixa3-div2'>
+
+                                <div>
+                                    <h1>Email:</h1>
+                                    <h3> {usuario.email}</h3>
+                                </div>
+
+
+
+
+
+
+                            </div>
+
+                            <div className='faixa3-div2'>
+                                <div>
+                                    <h1>Senha:</h1>
+                                    <h3>{usuario.senha}</h3>
+                                </div>
+
+
+
+                            </div>
                         </div>
 
 
-
-
-
-                        
                     </div>
 
-                    <div className='faixa3-div2'>
-                        <div>
-                            <h1>Senha:</h1>
-                            <h3>{usuario.senha}</h3>
-                        </div>
 
-                      
 
-                    </div>
-                    </div>
-                    
+
 
                 </div>
 
-                
-            
-
-                
-            </div>
 
 
 
 
-
-            {/* <Cabeçario usuario={usuario} />
+                {/* <Cabeçario usuario={usuario} />
 
             <section className='faixa2'>
 
@@ -243,7 +244,7 @@ export default function Index() {
                 </div>
 
                 <hr /> */}
-{/* 
+                {/* 
                 <div className='faixa3'>
                     <div className='faixa3-div1'>
                         <h1>Informações extras</h1>
@@ -278,9 +279,9 @@ export default function Index() {
 
                 </div> */}
 
-            {/* </section> */}
+                {/* </section> */}
 
-        </main>
+            </main>
         </section>
     )
 }

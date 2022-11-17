@@ -152,7 +152,7 @@ export default function Cadastromsc() {
         <main className='pagina-cadastro-musica'>
             <ToastContainer />
             <Menu />
-            <section className='faixa-cadastro'>
+            <section className='faixa-cadastro1'>
                 <div className='margin-cadastro-musica'>
                     <div className='div1-cadastro'>
                         <p className='p'>

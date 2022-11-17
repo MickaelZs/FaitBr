@@ -132,7 +132,7 @@ export default function Index() {
             <Menu />
             <section className='faixa-cadastro'>
 
-                <div className='margin-cadastro'>
+                <div className='margin-cadastro1'>
                     <div className='div1-cadastro'>
                         <p className='p'>
                             Adicionar capa

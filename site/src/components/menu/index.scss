@@ -1,12 +1,12 @@
-.comp-menu {
+.comp-menu1 {
 
     position: fixed;
     z-index: 10;
 
-    width: 25%;
+    width: 22%;
     height: 100%;
     padding-bottom: 0px;
-    padding-top: 30px;
+    padding-top: 20px;
     background-color: #8D32E5;
     
     display: flex;
@@ -19,7 +19,7 @@
     }
 
     .logo{
-        margin-bottom: 4em;
+        margin-bottom: 0.2em;
     }
     
     .div-minimae{
@@ -45,13 +45,16 @@
     .menu-items {
         display: flex;
         flex-direction: column;
+        justify-content: space-around;
+        font-size: 15px;
     }
     .menu-items > div {
         display: flex;
         align-items: center;
+        height: auto;
         
         padding: 30px 70px;
-        font: 500 18px 'Inter';
+        font: 500 14px 'Inter';
         color: #fff;
 
         transition: .3s;
@@ -67,7 +70,8 @@
     }
 
     .sair-div{
-        margin-top: 1em; margin-bottom: -1em;
+         margin-bottom: 2.4em;
+         height: auto;
     }
 
 

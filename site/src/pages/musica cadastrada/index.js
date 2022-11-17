@@ -69,10 +69,10 @@ export default function Index() {
     return (
         <main className='page page-consultar'>
             <Menu />
-            <div className='container'>
+            <div className='container1'>
 
 
-                <div className='conteudo'>
+                <div className='conteudo1'>
 
                     <div className='caixa-busca'>
                         <input type="text" placeholder='Buscar musica por nome' value={filtro} onChange={e => setFiltro(e.target.value)} />
@@ -80,13 +80,12 @@ export default function Index() {
                     </div>
 
 
-                    <section className='card-container'>
-                        <div className='comp-card'>
+                    <section className='card-container1'>
 
                             {nomee.map(item => {
                                 return (
 
-                                    <div className='card'>
+                                    <div className='card1'>
                                         <div className='acoes'>
 
                                             <img src='/images/botao-editar.png' onClick={() => editarMusica(item.id_musica)} />
@@ -109,7 +108,6 @@ export default function Index() {
                                     </div>
                                 );
                             })}
-                        </div>
 
                     </section>
 

@@ -265,6 +265,11 @@ export default function Index() {
         {usu.map(item =>
 
           <section className='section-playlist' >
+
+          <h1>Playlist de {item.usuario}</h1>
+
+            
+
             <div className="acoes"><img src='/images/excluir.png' onClick={() => DeletarPlaylist(item.id)} /></div>
             <h2 className='titulo-playlist'>{item.nome}</h2>
 

@@ -74,10 +74,10 @@ export default function Index() {
         <main className='page page-consultar'>
             <Menu />
             <ToastContainer />
-            <div className='container'>
+            <div className='container1'>
 
 
-                <div className='conteudo'>
+                <div className='conteudo1'>
 
                     <div className='caixa-busca'>
 
@@ -85,15 +85,15 @@ export default function Index() {
                         <img src='/images/procurar.png' onClick={filtrar} />
                     </div>
 
-                    <div className='card-container'>
+                    <div className='card-container1'>
 
 
-                        <div className='comp-card'>
+                        <div className='comp-card1'>
 
                             {nomee.map(item => {
                                 return (
 
-                                    <div className='card'>
+                                    <div className='card1'>
                                         <div className='acoes'>
 
                                             <img src='/images/botao-editar.png' onClick={() => editarArtista(item.id)} />
@@ -103,7 +103,7 @@ export default function Index() {
                                         </div>
                                         <div>
 
-                                            <img className='capas' src={`${API_URL}/${item.artista}`} />
+                                            <img className='capa' src={`${API_URL}/${item.artista}`} />
 
 
                                             <div className='id'>{item.id} </div>

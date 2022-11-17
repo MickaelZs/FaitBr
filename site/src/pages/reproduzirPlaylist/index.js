@@ -61,7 +61,8 @@ export default function Reproduzir(){
            
           const adicionar = await PlaylistItem();
           Storage('mc',adicionar)
-          navigate(`/AdicionarMusica/${id}`)    
+          navigate(`/AdicionarMusica/${id}`)  
+          console.log(AdicionarMusicaPlaylist)  
         }
     
     
@@ -83,7 +84,8 @@ export default function Reproduzir(){
                     <h2>{nomePrincipal}</h2>
                     <h3>Mickael</h3>
                     <audio controls autoPlay={true} src={audioPrincipal}/>
-                    <button onClick={ AdicionarMusicaPlaylist }>add musica</button>
+                    <button onClick={ AdicionarMusicaPlaylist }>adicionar musica</button>
+                    
                 </div>
 
                 <div>
