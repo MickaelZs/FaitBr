@@ -141,11 +141,11 @@ export async function listarcurtidaPorIdUsuario(idUsuario) {
 }
 
 
-export async function deletaCurtida (id){
+export async function deletaCurtida (idUsuario, idMusica){
     const comando = 
     `delete from tb_usuario_musica_favorita 
-    where id_usuario_musica_favorita = ? `;
-    const [resposta] = await con.query(comando, [id]);
+    where id_usuario = ? AND id_musica = ? `;
+    const [resposta] = await con.query(comando, [idUsuario, idMusica]);
     return resposta.affectedRows;
 }
 

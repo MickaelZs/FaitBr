@@ -104,14 +104,14 @@ server.put('/cadastraMusica/:id/capa', upload.single('capa') ,async (req, resp) 
 })
 
 
-server.delete ('/curtida/:id',async (req,resp) => {
+server.delete ('/curtida/:idUsuario/:idMusica',async (req,resp) => {
     try{
 
-        const { id } = req.params;
+        const { idUsuario, idMusica } = req.params;
       
-        const resposta = await deletaCurtida(id)
+        const resposta = await deletaCurtida(idUsuario, idMusica)
        
-        resp.status(200).send();
+        resp.status(204).send();
     }
 
     catch (err){

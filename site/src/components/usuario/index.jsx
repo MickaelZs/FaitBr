@@ -1,8 +1,15 @@
 import './index.scss'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import AudioPlayer from 'react-audio-player'
+
 
 export default function Faixa (){
+
+  function tocar(){
+    return <audio src='henriqueejulianooficial-completa-ai-part-marilia-mendonca-09f511dd.mp3'></audio>
+  }
+
     const responsive = {
         desktop: {
           breakpoint: { max: 3000, min: 1024 },
@@ -43,8 +50,10 @@ export default function Faixa (){
           itemClasse="carrossel-item"
           
         >
+        
     
-                 <div className='card-1'>
+                 <div className='card-1' >
+                  
                 <img src="/images/hl.jpg" alt="" />
                 <div className='text'>
                     <h2>Hino dos mlk</h2>
