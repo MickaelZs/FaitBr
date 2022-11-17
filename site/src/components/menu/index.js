@@ -35,7 +35,8 @@ export default function Menu (){
 
                 <div>
                     <img src="/images/consulta.svg"  />
-                    <div>Consultar</div>
+                    <a href='/Consulta'>Consultar usuario</a>
+                    
                 </div>
 
                 <div>

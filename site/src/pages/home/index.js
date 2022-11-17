@@ -74,9 +74,10 @@ function closeModal() {
       <Home/>
       
        <Faixa/>
-       <GeneroHome/>
-        <Faixa/>
        <CardArtistaHome/>
+        <Faixa/>
+       
+       <GeneroHome/>
 
       <div className='rodape'>
 

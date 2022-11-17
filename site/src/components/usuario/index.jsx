@@ -51,15 +51,29 @@ export default function Faixa (){
                 </div>
                 </div>
 
-                <div className='card-1'>
-                <img src="/images/hl.jpg" alt="" />
+                <div className='card-2'>
+                <img src="/images/meca.png" alt="" /> 
                 <div className='text'>
                     <h2>Hino dos mlk</h2>
                 </div>
                 </div>
 
-                <div className='card-1'>
-                <img src="/images/hl.jpg" alt="" />
+                <div className='card-3'>
+                <img src="/images/novinha.png" alt="" />
+                <div className='text'>
+                    <h2>Hino dos mlk</h2>
+                </div>
+                </div>
+
+                <div className='card-4'>
+                <img src="/images/durou.png" alt="" />
+                <div className='text'>
+                    <h2>Hino dos mlk</h2>
+                </div>
+                </div>
+
+                <div className='card-5'>
+                <img src="/images/felina.jpg" alt="" />
                 <div className='text'>
                     <h2>Hino dos mlk</h2>
                 </div>

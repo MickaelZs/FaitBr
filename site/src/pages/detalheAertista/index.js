@@ -202,7 +202,7 @@ export default function Index() {
                             <div className="section-music"  onClick={()=> acessarMusica(item.id)}>
                                 <img src={`${API_URL}/${item.imagem} `} className="imagem" ></img>
                                 <div className="atorenome">
-                                    <h1>{item.nome}</h1>
+                                    <h1>{item.nome}</h1> 
                                     <div className="border">
                                         <p>{item.genero}</p>
                                     </div>
