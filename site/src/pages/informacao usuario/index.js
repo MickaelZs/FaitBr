@@ -56,7 +56,7 @@ export default function Index() {
 
             }
 
-            toast.success('trocastes a foto, querido usuario do fitas br')
+            toast.dark('trocastes a foto, querido usuario do fitas br')
 
         } catch (err) {
             if (err.response)
@@ -78,14 +78,14 @@ export default function Index() {
 
                         <div className='usuarioo' onClick={escolherImagem}>
 
-                            {!imagem &&
+                            {!usuario.imagem &&
 
                                 <img className='usuarioo' src='/images/usuario.png' />
                             }
 
-                            {imagem &&
+                            {usuario.imagem &&
 
-                                <img className='usuarioo' src={mostrarImagem(imagem)} />
+                                <img className='usuarioo' src={`${API_URL}/${usuario.imagem}`} />
 
                             }
 
