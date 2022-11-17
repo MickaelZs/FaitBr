@@ -54,6 +54,9 @@ export default function Index() {
     async function ParaDeSeguirArtista(id) {
         try {
              alert(id)
+             let artistas = artista.id
+             const resp = await ParaDeSeguir(id,artistas)
+             console.log(resp)
             
         }
         catch (err) {
@@ -95,6 +98,7 @@ export default function Index() {
             let id = Storage('usuario-logado').id;
             let artistas = artista.id
             const resp = await seguirArtista(id, artistas)
+            console.log(resp)
             toast.dark('vamosssss')
         }
         catch (err) {
@@ -181,7 +185,7 @@ export default function Index() {
                             </div>
                             <div onClick={()=> setSeguirr(!seguirr)}>
                                 {seguirr ? 
-                                <button className='botao' onClick={() => ParaDeSeguirArtista(artista)}>Seguindo</button>
+                                <button className='botao' onClick={() => ParaDeSeguirArtista(artista.id) }>Seguindo</button>
                                 :
                                 <button className='botao' onClick={() => seguir(artista)}>Seguir</button>
                             
