@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { API_URL } from '../../api/config';
 import { buscarMusicaPorId } from '../../api/musicaAPI'
 import './index.scss'
-import AudioPlayer from 'react-modular-audio-player'
+import AudioPlayer from 'react-audio-player'
 
 export default function Play(){
 

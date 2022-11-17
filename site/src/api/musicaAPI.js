@@ -34,8 +34,9 @@ export async function listarCurtidas(idUsuario){
     return resposta.data;
   }
 
-  export async function deletarrCurtida(id){
-    const resposta = await api.delete(`/curtida/${id}`);
+  export async function deletarrCurtida(idUsuario, idMusica){
+    console.log(typeof(id))
+    const resposta = await api.delete(`/curtida/${idUsuario}/${idMusica}`);
     return resposta.status;
   } 
 

@@ -15,39 +15,48 @@ import Cabecario from "../../components/cabeçalho";
 
 export default function Index() {
 
-    let rearranjadoPlayer = [
-        {
-            className: "beatles",
-            style: { cursor: "ponteiro" },
-            innerComponents: [
-                {
-                    type: "play"
-                }
-            ]
-        }
-    ];
-
-    const [artista, setArtista] = useState([])
-    const [musica, setMusica] = useState([])
+    const [artista, setArtista] = useState([]);
+    const [musica, setMusica] = useState([]);
     const [curtir, setCurtir] = useState(false);
-    const [seguirr, setSeguirr] = useState(false)
+    const [seguirr, setSeguirr] = useState(false);
     
     const { idParam } = useParams()
     const navigate = useNavigate()
    
 
+
+    
+    async function curtirr(position) {
+        try {
+            let id = Storage('usuario-logado').id;
+            let musicaSelecionada = musica[position].id
+            const resp = await curtirMusica(musicaSelecionada, id)
+            Storage('Musica Curtida', resp)
+            console.log(resp)
+            
+            toast.dark('musica curtidaa');
+        }
+
+        catch (err) {
+            if (err.response) toast.error(err.response.data.erro);
+            else toast.error(err.message);
+
+        }
+
+    }
+
     async function deletarClick(position) {
         try {
-         
-            
-            const resp = await deletarrCurtida(position) 
+            console.log(position)
+            const user = Storage('usuario-logado').id
+            const resp = await deletarrCurtida(user, position)
+            Storage.remove('Musica Curtida')
             console.log(resp)
             toast.dark('curtida deletada') 
         }
                catch (err) {
             if (err.response) toast.error(err.response.data.erro);
             else toast.error(err.message);
-
         }
     }
 
@@ -108,29 +117,9 @@ export default function Index() {
 
     }
 
-    async function curtirr(position) {
-        try {
-            alert(position)
-            let id = Storage('usuario-logado').id;
-            let musicaSelecionada = musica[position].id
-            const resp = await curtirMusica(musicaSelecionada, id)
-            console.log(resp)
-            
-            toast.dark('musica curtidaa');
-        }
-
-        catch (err) {
-            if (err.response) toast.error(err.response.data.erro);
-            else toast.error(err.message);
-
-        }
-        function sairClick(){
-            Storage.remove('music')
-            navigate('/LoginUsuario')
-        }
-
-        
-
+    function sairClick(){
+        Storage.remove('music')
+        navigate('/LoginUsuario')
     }
 
 
@@ -215,7 +204,7 @@ export default function Index() {
                             
                             <div className="heart" onClick={() => setCurtir(!curtir)  } >
                             {curtir ?
-                                <img className="l" src="/images/heart on.png" alt="" onClick={() => deletarClick (item.id) (index)} />
+                                <img className="l" src="/images/heart on.png" alt="" onClick={() => deletarClick(item.id)(index)} />
                                 :
                                     <img className="l" src="/images/heart.png" alt="" onClick={() => curtirr (index)  } />}
 

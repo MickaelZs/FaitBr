@@ -8,7 +8,6 @@ import { API_URL } from '../../api/config';
 import { ToastContainer, toast } from 'react-toastify';
 import Storage from 'local-storage'
 import { listarPlaylistItemUsuarioo, criarPlaylist, PlaylistItem } from '../../api/playlistAPI';
-import Cabeçario from '../../components/cabeçalho';
 import Cabecario from '../../components/cabeçalho';
 
 
@@ -19,7 +18,7 @@ export default function Reproduzir(){
     const [imagemPrincipal, setImagemPrincipal] = useState(0);
     const [nomePrincipal, setNomePrincipal] = useState('');
     const navigate = useNavigate()
-    const {idParam} = useParams()
+    const {idParam} = useParams();
 
     async function carregarMusica(){
        
@@ -58,11 +57,8 @@ export default function Reproduzir(){
 
     async function AdicionarMusicaPlaylist(id) {
         try {
-           
-          const adicionar = await PlaylistItem();
-          Storage('mc',adicionar)
-          navigate(`/AdicionarMusica/${id}`)  
-          console.log(AdicionarMusicaPlaylist)  
+            Storage('x', [id])
+            navigate(`/AdicionarMusica/${id}`)
         }
     
     
@@ -84,7 +80,7 @@ export default function Reproduzir(){
                     <h2>{nomePrincipal}</h2>
                     <h3>Mickael</h3>
                     <audio controls autoPlay={true} src={audioPrincipal}/>
-                    <button onClick={ AdicionarMusicaPlaylist }>adicionar musica</button>
+                    <button onClick={() => AdicionarMusicaPlaylist(idParam)}>adicionar musica</button>
                     
                 </div>
 
