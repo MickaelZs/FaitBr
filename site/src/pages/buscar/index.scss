@@ -1,12 +1,13 @@
 .pagina-buscar{
     background-color: #1e1e1e;
     background-size: 100%;
-    height: auto;
-    padding-top: 3em;
-}
-body{
-    background-color: #1e1e1e;
-}
+    height: 100vh;
+    display:flex;
+    flex-direction: column;
+    
+    
+
+
 
 .caixa-busca {
     display: flex;
@@ -17,7 +18,7 @@ body{
     border-radius: 15px;
     box-shadow: 1px 1px 5px #bdbdbd;
     width: 40%;
-    margin-top: 0px;
+    margin-top: 30px;
     justify-content: center;
     
 }
@@ -70,7 +71,9 @@ body{
     
 }
 .imagem{
-    height: 7.5em;
+    height: 9.2em;
+    width: 9.5em;
+    border-radius: 20px 0px 0px 20px;
 }
 .atorenome{
     padding-left: 2em;
@@ -78,6 +81,7 @@ body{
     flex-direction: column;
     justify-content:space-evenly;
     padding-bottom: 10px;
+    color: #fff;
 
 }
 
@@ -108,14 +112,11 @@ body{
         cursor: pointer;
         user-select: none;
 
-        .cap{
-            border-radius: 20px 0px 0px 20px;
-
-
-        }
+      
 
         h1{
             margin: 15px;
+            font-size: 100%;
         }
 }
 
@@ -125,4 +126,5 @@ body{
         flex-direction: column;
         padding: auto;
     }    
+}
 }

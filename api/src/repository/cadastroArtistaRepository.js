@@ -115,13 +115,14 @@ return resposta.affectedRows;
 export async function buscarPorNome(nome) {
     
     const comando =
-    `select 
-    id_artistas     id,
+    `select tb_artistas.id_artistas id,
     nm_artistas     nome,
-    id_genero      genero,
+    nm_genero genero,
+    tb_genero.id_genero      iDgenero,
     ds_sobre    sobre,
     img_artista     artista
     from tb_artistas
+    inner join tb_genero on tb_artistas.id_genero = tb_genero.id_genero
     where nm_artistas like ?`;
     
     const [linhas] = await con.query(comando, [`%${nome}%`]);

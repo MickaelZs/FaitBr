@@ -18,11 +18,13 @@ export async function Cadastrarplaylist(idUsuario,playlist){
 
 export async function listarPlaylistPorIdUsuario(idUsuario) {
     const comando =
-    `select id_playlist id,
-    id_usuario usuario,
+    ` select tb_playlist.id_playlist id,
+    tb_usuario.id_usuario iDusuario,
+    nm_nome usuario,
     nm_playlist  nome
     from tb_playlist
-    where id_usuario = ?;`
+    inner join tb_usuario on tb_playlist.id_usuario = tb_usuario.id_usuario
+    where tb_usuario.id_usuario = ?;`
     
     const [linhas] = await con.query(comando, [idUsuario]);
     return linhas;

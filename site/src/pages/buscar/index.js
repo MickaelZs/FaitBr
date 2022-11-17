@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { BuscarArtistaPorNome, listaArtista } from '../../api/cadastroArtistaAPI';
 import { API_URL } from '../../api/config';
 import { buscarGeneroPorNome } from '../../api/generoAPI';
+import Cabecario from '../../components/cabeçalho';
 import './index.scss'
 
 export default function Index(){
@@ -34,6 +35,7 @@ export default function Index(){
         return(
 
         <main className='pagina-buscar'>
+            <Cabecario/>
             <body>
                 <div className='caixa-busca'>             
                     <input type="text" placeholder='Buscar artista por nome' value={filtro} onChange={e => setFiltro(e.target.value)} />
@@ -48,6 +50,7 @@ export default function Index(){
                         <div className="atorenome">
                             <div className="border">
                         <h1>{item.nome}</h1>
+                        <h2>{item.genero}</h2>
                         </div>
                         </div>
                         
