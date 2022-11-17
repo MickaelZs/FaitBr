@@ -103,6 +103,23 @@ server.delete ('/playlist/:id',async (req,resp) => {
 
 })
 
+server.delete ('/playlistMusica/:id/:id',async (req,resp) => {
+    try{
+
+        const { id } = req.params;
+        const res = await deletaPlaylist2(id);
+        
+        resp.status(200).send();
+    }
+
+    catch (err){
+        resp.status(401).send({
+            erro: err.message
+        })
+    }
+
+})
+
 server.get('/usuario/:id/playlist/imagem', async (req, resp) => {
     try {
         const idUsuario = Number(req.params.id);
