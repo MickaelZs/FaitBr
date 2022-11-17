@@ -87,7 +87,7 @@ export async function seguindoArtistaPorId(id){
     return resposta.data;
 }
 
-export async function ParaDeSeguir(id){
-    const resposta = await api.delete(`/seguir/${id}`);
+export async function ParaDeSeguir(idUsuario, idArtista){
+    const resposta = await api.delete(`/seguir/${idUsuario}/${idArtista}`);
     return resposta.status;
   }

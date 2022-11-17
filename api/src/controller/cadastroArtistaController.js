@@ -244,12 +244,12 @@ server.get('/seguido/:id', async (req, resp) => {
 })
 
 
-server.delete ('/seguir/:id',async (req,resp) => {
+server.delete ('/seguir/:idUsuario/:idArtista',async (req,resp) => {
     try{
 
-        const { id } = req.params;
+        const { idUsuario, idArtista } = req.params;
     
-        const resposta = await ParaDeSeguir(id);
+        const resposta = await ParaDeSeguir(idUsuario,idArtista);
         resp.status(200).send();
     }
 

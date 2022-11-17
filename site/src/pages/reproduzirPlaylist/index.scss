@@ -1,4 +1,4 @@
-.pagina-reproduzir{
+.pagina-reproduzir-playlist{
     display: flex;
     flex-direction: column;
     background-color: #1e1e1e;
@@ -15,18 +15,43 @@
 
     }
 
+    .kk{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 10px;
+        
+        p{
+            font-size: 20px;
+        }
+    }
+
+    audio{
+        width: 100%;
+        border: 0px;
+        margin: 10px;
+    }
+
 
 .faixa-1{
+    margin: 10px;
     display: flex;
     flex-direction: column;
     background-color: #1e1e1e;
     color: white;
     line-height: 10px;
 
-    img{
+    .ImgPrincipal{
         height: 56vh;
         width: 37vw;
         border-radius: 25px;
+    }
+
+    h2{
+        width: 100%;
+    }
+    h3{
+        width: 100%;
     }
 
     
@@ -120,7 +145,7 @@
         justify-content: center;
         align-items: center;
     
-        img{
+        .ImgPrincipal{
             height: 40vh;
             width: 65vw;
             border-radius: 25px;
@@ -170,7 +195,7 @@
         justify-content: center;
         align-items: center;
     
-        img{
+        .ImgPrincipal{
             height: 40vh;
             width: 65vw;
             border-radius: 25px;
@@ -222,7 +247,7 @@
         justify-content: center;
         align-items: center;
     
-        img{
+        .ImgPrincipal{
             height: 40vh;
             width: 65vw;
             border-radius: 25px;

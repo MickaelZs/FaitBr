@@ -155,10 +155,10 @@ export async function artistaSeguidosPorId(id) {
 }
 
     
-export async function ParaDeSeguir (id){
+export async function ParaDeSeguir (idUsuario, idArtista){
     const comando = 
-    `delete from tb_usuario_artista_seguido 
-    where id_usuario_artista_seguido = ?`;
-    const [resposta] = await con.query(comando, [id]);
+    `delete from tb_usuario_artista_seguido
+    where id_usuario = ? AND id_artistas = ? `;
+    const [resposta] = await con.query(comando, [idUsuario, idArtista]);
     return resposta.affectedRows;
 }

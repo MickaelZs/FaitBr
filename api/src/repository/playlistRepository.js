@@ -63,15 +63,16 @@ export async function listarPlaylistItemPorIdUsuario(idPlaylist) {
     tb_playlist.id_playlist,
      id_usuario usuario,
      nm_musicas musica,
-     id_genero genero,
-     id_artistas artista,
+    tb_artistas.id_artistas idArtista,
+     nm_artistas artista,
      blob_musica audio,
      img_imagem imagem
      from tb_playlist_item
      inner join tb_musicas on tb_playlist_item.id_musica = tb_musicas.id_musica
+     inner join tb_artistas on tb_musicas.id_artistas = tb_artistas.id_artistas
      inner join tb_playlist on tb_playlist_item.id_playlist = tb_playlist.id_playlist
      where 
-      tb_playlist.id_playlist = ?
+      tb_playlist.id_playlist = 10;
      ;
     `
     

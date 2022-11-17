@@ -60,11 +60,12 @@ export default function Index() {
         }
     }
 
-    async function ParaDeSeguirArtista(id) {
+    async function ParaDeSeguirArtista(position) {
         try {
-             alert(id)
-             let artistas = artista.id
-             const resp = await ParaDeSeguir(id,artistas)
+             
+             const user = Storage('usuario-logado').id
+             const resp = await ParaDeSeguir(user,position)
+             Storage.remove('Artista Seguido')
              console.log(resp)
             
         }
@@ -107,6 +108,7 @@ export default function Index() {
             let id = Storage('usuario-logado').id;
             let artistas = artista.id
             const resp = await seguirArtista(id, artistas)
+            Storage('Artista Seguido',resp)
             console.log(resp)
             toast.dark('vamosssss')
         }

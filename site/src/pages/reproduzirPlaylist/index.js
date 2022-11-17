@@ -16,6 +16,7 @@ export default function Reproduzir(){
     const [audioPrincipal, setAudioPrincipal] = useState(0);
     const [imagemPrincipal, setImagemPrincipal] = useState(0);
     const [nomePrincipal, setNomePrincipal] = useState('');
+    const [nomeArtista, setNomeArtista] = useState('');
     const navigate = useNavigate()
     const {idParam} = useParams();
 
@@ -44,6 +45,7 @@ export default function Reproduzir(){
         return API_URL + '/' + musica;
     }
 
+
     useEffect(() => {
         carregarMusica()
 
@@ -69,30 +71,33 @@ export default function Reproduzir(){
       }
 
     return(
-        <main className='pagina-reproduzir'>
+        <main className='pagina-reproduzir-playlist'>
             <Cabecario/>
             <section className='faixa-principal'>
 
                 <div className='faixa-1'>
-                    <img src= {imagemPrincipal} alt="" />
+                    <img className='ImgPrincipal' src= {imagemPrincipal} alt="" />
                     <h2>{nomePrincipal}</h2>
-                    <h3>Mickael</h3>
+                    <h3>{nomeArtista}</h3>
                     <audio controls autoPlay={true} src={audioPrincipal}/>
-                    <button onClick={() => AdicionarMusicaPlaylist(idParam)}>adicionar musica</button>
-                    
+                    <div className='kk'>
+                    <img onClick={() => AdicionarMusicaPlaylist(idParam)} className="botaoImg" src="/images/addM.png" alt="" width="35px"/>
+                    <p>Adicionar Musica</p>
+                    </div>
                 </div>
 
                 <div>
                     
                     {playlist.map(item =>
                     
-                    <div className='cardMusica' >
+                    <div className='cardMusica' onClick={() => setAudioPrincipal(exibirAudio(item.audio)) & setImagemPrincipal(exibirImagemProduto(item.imagem)) & setNomePrincipal(item.musica) & setNomeArtista(item.artista) } >
 
-                        <img src={exibirImagemProduto(item.imagem)} onClick={() => setAudioPrincipal(exibirAudio(item.audio)) & setImagemPrincipal(exibirImagemProduto(item.imagem)) & setNomePrincipal(item.musica) } className="image-music" />
+                        <img src={exibirImagemProduto(item.imagem)}  className="image-music" />
 
                         <div className='div-ator'>
                             <h1>{item.musica}</h1>
-                            <p>Mickael</p>
+                            <p>{item.artista}</p>
+                           
                         </div>
 
                     </div>
