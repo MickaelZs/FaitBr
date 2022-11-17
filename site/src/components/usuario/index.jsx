@@ -4,32 +4,6 @@ import "react-multi-carousel/lib/styles.css";
 import AudioPlayer from 'react-audio-player'
 
 
-<<<<<<< HEAD
-export default function Faixa (){
-
-  function tocar(){
-    return <audio src='henriqueejulianooficial-completa-ai-part-marilia-mendonca-09f511dd.mp3'></audio>
-  }
-
-    const responsive = {
-        desktop: {
-          breakpoint: { max: 3000, min: 1024 },
-          items: 3,
-          slidesToSlide: 3
-        },
-        tablet: {
-          breakpoint: { max: 1024, min: 464 },
-          items: 2,
-          slidesToSlide: 2
-        },
-        mobile: {
-          breakpoint: { max: 464, min: 0 },
-          items: 1,
-          slidesToSlide: 1
-        }
-      };
-    return(
-=======
 export default function Faixa() {
 
   function tocar() {
@@ -54,7 +28,6 @@ export default function Faixa() {
     }
   };
   return (
->>>>>>> 11b46048cb48fec9f491953917818a08d6902ea5
     <div className='mae'>
 
       <main className='home-faixaaa'>
@@ -76,17 +49,6 @@ export default function Faixa() {
           itemClasse="carrossel-item"
 
         >
-<<<<<<< HEAD
-        
-    
-                 <div className='card-1' >
-                  
-                <img src="/images/hl.jpg" alt="" />
-                <div className='text'>
-                    <h2>Hino dos mlk</h2>
-                </div>
-                </div>
-=======
 
 
           <div className='card-1' >
@@ -96,7 +58,6 @@ export default function Faixa() {
               <h2>Hino dos mlk</h2>
             </div>
           </div>
->>>>>>> 11b46048cb48fec9f491953917818a08d6902ea5
 
 
 

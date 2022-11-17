@@ -112,7 +112,7 @@ export default function Index() {
 
                             <div className='faixa3-div1'>
                                 <h1>Nascimento:</h1>
-                                <h3>{usuario.nascimento.substr(0, 10)}</h3>
+                                <h3>{usuario.nascimento}</h3>
                             </div>
 
                         </div>
