@@ -26,6 +26,7 @@ import Playlist from './pages/playlist';
 import AdicionarMusica from './pages/adicionarMusica'
 import Teest from './pages/TESTCARD';
 import ReproduzirPlaylist  from './pages/reproduzirPlaylist'
+import AddMusicPlaylist from './pages/addMusicPlaylist'
 
 import Play from './pages/Play';
 import Test from './pages/TESTCARD';
@@ -72,6 +73,7 @@ root.render(
       <Route path='/adicionarMusica' element={<AdicionarMusica/>}/>
 
       <Route path='/adicionarMusica/:idParam' element={<AdicionarMusica/>}/>
+      <Route path='/adicionarMusicaPlaylist/:idParam' element={<AddMusicPlaylist/>}/>
       <Route path='/test' element={<Teest/>}/>
       <Route path='/Play' element={<Play/>}/>
       

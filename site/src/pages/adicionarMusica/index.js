@@ -74,7 +74,7 @@ export default function Index() {
         <img className="i" src="/images/i.png" alt="" onClick={() => salvar(index)} />
          </div>
       ))}
-      <button onClick={sairClick}> oiii</button>
+      <button onClick={sairClick} >oiii</button>
       </div>
       </div>
     </div>

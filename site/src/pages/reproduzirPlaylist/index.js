@@ -12,7 +12,6 @@ import Cabecario from '../../components/cabeçalho';
 
 
 export default function Reproduzir(){
-    const [nome, setNome] = useState('');
     const [playlist,setPlaylist] = useState([])
     const [audioPrincipal, setAudioPrincipal] = useState(0);
     const [imagemPrincipal, setImagemPrincipal] = useState(0);
@@ -43,7 +42,6 @@ export default function Reproduzir(){
     }
     function exibirNome(musica){
         return API_URL + '/' + musica;
-
     }
 
     useEffect(() => {
@@ -57,8 +55,8 @@ export default function Reproduzir(){
 
     async function AdicionarMusicaPlaylist(id) {
         try {
-            Storage('x', [id])
-            navigate(`/AdicionarMusica/${id}`)
+            Storage("nova", [id])
+            navigate(`/adicionarMusicaPlaylist/${id}`)
         }
     
     
