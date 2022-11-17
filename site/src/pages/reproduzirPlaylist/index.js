@@ -11,17 +11,17 @@ import { listarPlaylistItemUsuarioo, criarPlaylist, PlaylistItem } from '../../a
 import Cabecario from '../../components/cabeçalho';
 
 
-export default function Reproduzir(){
-    const [playlist,setPlaylist] = useState([])
+export default function Reproduzir() {
+    const [playlist, setPlaylist] = useState([])
     const [audioPrincipal, setAudioPrincipal] = useState(0);
     const [imagemPrincipal, setImagemPrincipal] = useState(0);
     const [nomePrincipal, setNomePrincipal] = useState('');
     const navigate = useNavigate()
-    const {idParam} = useParams();
+    const { idParam } = useParams();
 
-    async function carregarMusica(){
-       
-        const x =  await listarPlaylistItemUsuarioo(idParam)
+    async function carregarMusica() {
+
+        const x = await listarPlaylistItemUsuarioo(idParam)
         setPlaylist(x)
         console.log(x)
     }
@@ -30,26 +30,26 @@ export default function Reproduzir(){
     //     navigate(`/Reproduzir/Playlist/${id}`)
     // }
     function exibirImagemProduto(imagem) {
-        
-      
+
+
         return API_URL + '/' + imagem
-         
-        
+
+
     }
-    function exibirAudio(audio){
+    function exibirAudio(audio) {
         return API_URL + '/' + audio;
 
     }
-    function exibirNome(musica){
+    function exibirNome(musica) {
         return API_URL + '/' + musica;
     }
 
     useEffect(() => {
         carregarMusica()
 
-    },[])
+    }, [])
     // function AdicionarMusicaPlaylist(id){
-        
+
     //     navigate(`/AdicionarMusica/${id}`)
     // }
 
@@ -58,46 +58,52 @@ export default function Reproduzir(){
             Storage("nova", [id])
             navigate(`/adicionarMusicaPlaylist/${id}`)
         }
-    
-    
-        catch (err) {
-          if (err.response)
-            toast.error(err.response.data.erro)
-          else
-            toast.error(err.message);
-        }
-      }
 
-    return(
+
+        catch (err) {
+            if (err.response)
+                toast.error(err.response.data.erro)
+            else
+                toast.error(err.message);
+        }
+    }
+
+    return (
         <main className='pagina-reproduzir'>
-            <Cabecario/>
+            <Cabecario />
             <section className='faixa-principal'>
 
                 <div className='faixa-1'>
-                    <img src= {imagemPrincipal} alt="" />
+                    {!imagemPrincipal &&
+                        <img className='usuarioo' src='/images/musica.png' />
+                    }
+
+                    {imagemPrincipal &&
+                        <img src={imagemPrincipal} alt="" />
+                    }
                     <h2>{nomePrincipal}</h2>
                     <h3>Mickael</h3>
-                    <audio controls autoPlay={true} src={audioPrincipal}/>
+                    <audio controls autoPlay={true} src={audioPrincipal} />
                     <button onClick={() => AdicionarMusicaPlaylist(idParam)}>adicionar musica</button>
-                    
+
                 </div>
 
                 <div>
-                    
+
                     {playlist.map(item =>
-                    
-                    <div className='cardMusica' >
 
-                        <img src={exibirImagemProduto(item.imagem)} onClick={() => setAudioPrincipal(exibirAudio(item.audio)) & setImagemPrincipal(exibirImagemProduto(item.imagem)) & setNomePrincipal(item.musica) } className="image-music" />
+                        <div className='cardMusica' >
 
-                        <div className='div-ator'>
-                            <h1>{item.musica}</h1>
-                            <p>Mickael</p>
+                            <img src={exibirImagemProduto(item.imagem)} onClick={() => setAudioPrincipal(exibirAudio(item.audio)) & setImagemPrincipal(exibirImagemProduto(item.imagem)) & setNomePrincipal(item.musica)} className="image-music" />
+
+                            <div className='div-ator'>
+                                <h1>{item.musica}</h1>
+                                <p>Mickael</p>
+                            </div>
+
                         </div>
-
-                    </div>
                     )}
- 
+
 
                 </div>
 

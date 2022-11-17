@@ -10,10 +10,10 @@ import Storage from 'local-storage'
 
 export default function Reproduzir() {
     const [musica, setMusica] = useState([])
-    const [imagemPrincipal, setImagemPrincipal] = useState(0);
+    const [imagemPrincipal, setImagemPrincipal] = useState();
     const [musicaPrincipal, setMusicaPrincipal] = useState('');
     const [generoPrincipal, setGeneroPrincipal] = useState('');
-    const [audioPrincipal,setAudioPrincipal] = useState(0)
+    const [audioPrincipal, setAudioPrincipal] = useState(0)
     const navigate = useNavigate()
     const { idParam } = useParams()
 
@@ -46,7 +46,7 @@ export default function Reproduzir() {
 
 
     async function carregarMusica() {
-       
+
         const x = await buscarArtistaPorMusicaId(idParam)
 
         setMusica(x)
@@ -65,7 +65,13 @@ export default function Reproduzir() {
             <section className='faixa-principal'>
 
                 <div className='faixa-1'>
-                    <img src={imagemPrincipal} alt="" />
+                    {!imagemPrincipal &&
+                        <img className='usuarioo' src='/images/musica.png' />
+                    }
+
+                    {imagemPrincipal &&
+                        <img src={imagemPrincipal} alt="" />
+                    }
                     <audio autoPlay={true} src={audioPrincipal}></audio>
                     <div className='text'></div>
                     <h1>{musicaPrincipal}</h1>
@@ -77,30 +83,21 @@ export default function Reproduzir() {
                     {musica.map((item, pos) =>
 
                         <div className='cardmusica'>
-
+                            
                             <img src={exibirImagemProduto(item.imagem)} onClick={() => setImagemPrincipal(exibirImagemProduto(item.imagem)) & setAudioPrincipal(exibirAudio(item.audio)) & setMusicaPrincipal(item.nome) & setGeneroPrincipal(item.genero)} className="image-music" />
 
                             <div className='div-ator'>
                                 <h1>{item.nome}</h1>
                                 <p>{item.genero}</p>
-                                
+
                             </div>
                             <img src="/images/heart on.png" alt="" />
 
                         </div>
                     )}
-                    
+
 
                 </div>
-               
-
-
-
-
-
-
-
-
 
             </section>
         </main>
