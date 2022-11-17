@@ -134,16 +134,16 @@ export default function Index() {
     setMusica(resp)
   }
 
-  async function DeletarPlaylist(id, nome) {
+  async function DeletarPlaylist(id) {
 
     confirmAlert({
       title: 'Remover playlist',
-      message: `deseja remover a playlist ${id, nome}?`,
+      message: `deseja remover a playlist ${id}?`,
       buttons: [
         {
           label: 'sim',
           onClick: async () => {
-            const filtro = await DeletaPlaylist(id, nome)
+            const filtro = await DeletaPlaylist(id)
 
 
             if (filtro === '') {
@@ -270,7 +270,7 @@ export default function Index() {
 
             
 
-            <div className="acoes"><img src='/images/excluir.png' onClick={() => DeletarPlaylist(item.id)} /></div>
+            <div className="acoes"><img src='/images/excluir.png' onClick={() => DeletarPlaylist(item.id, item.usu)} /></div>
             <h2 className='titulo-playlist'>{item.nome}</h2>
 
             <div className='playlist' onClick={() => acessarPlaylist(item.id)}>

@@ -49,6 +49,22 @@ export async function deletaMusica (id){
     return resposta.affectedRows;
 }
 
+export async function deletarPlaylistItem(id){
+    const comando = 
+    `delete from tb_playlist_item
+    where id_musica = ? `;
+    const [resposta] = await con.query(comando, [id]);
+    return resposta.affectedRows;
+}
+
+export async function deletarUsuarioMusicaFavorita(id){
+    const comando = 
+    `delete from tb_usuario_musica_favorita
+    where id_musica = ? `;
+    const [resposta] = await con.query(comando, [id]);
+    return resposta.affectedRows;
+}
+
 
 export async function listarMusicaeArtista() {
     const comando =

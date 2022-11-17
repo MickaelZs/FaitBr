@@ -6,7 +6,7 @@
     width: 22%;
     height: 100%;
     padding-bottom: 0px;
-    padding-top: 20px;
+    padding-top: 30px;
     background-color: #8D32E5;
     
     display: flex;
@@ -19,7 +19,7 @@
     }
 
     .logo{
-        margin-bottom: 0.2em;
+        margin-bottom: 4em;
     }
     
     .div-minimae{
@@ -45,16 +45,17 @@
     .menu-items {
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
-        font-size: 15px;
+        justify-content: space-between;
+        font-size: 20px;
     }
+
     .menu-items > div {
         display: flex;
         align-items: center;
         height: auto;
         
         padding: 30px 70px;
-        font: 500 14px 'Inter';
+        font: 500 20px 'Inter';
         color: #fff;
 
         transition: .3s;
@@ -70,7 +71,7 @@
     }
 
     .sair-div{
-         margin-bottom: 2.4em;
+         margin-top: 3em;
          height: auto;
     }
 

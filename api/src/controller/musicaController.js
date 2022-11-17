@@ -1,7 +1,7 @@
 import { Router} from "express";
 import multer from 'multer';
 
-import { alteraMusica, alterarImagemMusica, buscarMusicaPorNome, cadastrarMusica, deletaCurtida, deletaMusica, listarArtistaPorMusica, listarcurtidaPorIdUsuario, listarMusicaeArtista, listarMusicaPorId, MusicaFavorita } from "../repository/musicaRepository.js";
+import { alteraMusica, alterarImagemMusica, buscarMusicaPorNome, cadastrarMusica, deletaCurtida, deletaMusica, deletarPlaylistItem, deletarUsuarioMusicaFavorita, listarArtistaPorMusica, listarcurtidaPorIdUsuario, listarMusicaeArtista, listarMusicaPorId, MusicaFavorita } from "../repository/musicaRepository.js";
 
 
 const server = Router();
@@ -127,8 +127,10 @@ server.delete ('/musica/:id',async (req,resp) => {
 
         const { id } = req.params;
     
-        const resposta = await deletaMusica(id);
-        console.log(resposta)
+        await deletarUsuarioMusicaFavorita(id);
+        await deletarPlaylistItem(id);
+        await deletaMusica(id);
+        
         resp.status(200).send();
     }
 

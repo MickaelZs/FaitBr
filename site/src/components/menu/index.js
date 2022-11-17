@@ -1,6 +1,9 @@
 import './index.scss'
 import storage from 'local-storage'
 import { useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from "react-toastify";
+import { confirmAlert } from 'react-confirm-alert'; 
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 export default function Menu() {
 
@@ -11,11 +14,37 @@ export default function Menu() {
         navigate('/LoginAdm')
     }
 
+    function IrParaHome(){
+        confirmAlert({
+            title: 'Ir para home',
+            message: `Deseja ir para a home e deslogar do administrador?`,
+            buttons: [
+                {
+                    label: 'Sim',
+                    onClick: () => {
+                        storage.remove('adm-logado')
+                        navigate('/')
+                        toast.dark(`Administrador deslogado`)
+                    }
+                },
+                {
+                    label: 'Não'
+                }
+            ]
+        })
+    }
+
 
     return (
         <nav className="comp-menu1">
             <div className='div-minimae'>
-                <div className='logo'>
+
+                <div className='logo' onClick=
+                                            {e => {
+                                                e.stopPropagation();
+                                                IrParaHome();
+                                            }}
+                >
                     <img src="/images/nova-logo.png" className='imagem-logo' />
                 </div>
 

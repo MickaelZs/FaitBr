@@ -6,37 +6,36 @@
     align-items: center;
     
     justify-content: space-between;
-    background-color:#8D32E5; ;
+    background-color:#8D32E5; 
 
-    .faixa{
-        display: flex;
-       
-    }
-    // *{
-    //     border: green solid 1px;
-    // }
+
     .div1{
-
         display: flex;
+        flex-direction: row;
         justify-content: space-between;
-       
         align-items: center;
-        margin:30px;
+        margin-right: 5em;
     }
-    .lupa{
-        padding: 2em;
-    }
-    .playlist{
-        padding-right:3em;
-    }
-
-    .logoconta{
-        padding-right: 3em;
-    }
-
+    
+   
     .logo{
         margin-top: 0.5em;
         padding-left: 2em;
+        margin-left: 2em;
+    }
+
+    .lupa{
+        margin-right: 2em;
+
+    }
+
+    .playlist1{
+        margin-right: 2em;
+    }
+
+
+    .logoconta1{
+        width: 50px;
     }
 
     .usuario{
@@ -49,7 +48,8 @@
       border-radius: 100%;
 
       height: 50px;
-      width: 50px;
+      width: 100%;
       cursor: pointer;
     }
+    
 }

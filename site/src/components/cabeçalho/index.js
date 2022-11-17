@@ -36,22 +36,36 @@ export default function Cabecario() {
         navigate(`/playlist`)
     }
 
+    function irPraHome(){
+        if(Storage('usuario-logado').id){
+        navigate(`/HomeLoginFeito`)
+        }
+        else{
+            navigate(`/`)
+        }
+    }
+
     return (
         <main className='cabecalho'>
 
-            <div className='logo'>
-                <img src='/images/nova-logo.png' width="100px"></img>
+            <div className='logo' onClick={irPraHome}>
+                <img src='/images/nova-logo.png' width="100px" ></img>
             </div>
+
             <div className='div1'>
+
                 <div className='lupa' onClick={acessarBuscar}>
                     <img src='/images/lupa.png' width="75px"></img>
                 </div>
-                <div className='playlist'>
+
+                <div className='playlist1'>
                     <img src='/images/playlist.png' width="40px" onClick={acessarPlaylist}></img>
                 </div>
-                <div className='logoconta'>
+
+                <div className='logoconta1'>
                     <img className='usuario' onClick={() => acessarPerfil(usuario.id)} src={`${API_URL}/${usuario.imagem}`}></img>
                 </div>
+                
             </div>
 
         </main>
