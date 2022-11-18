@@ -1,3 +1,11 @@
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: blueviolet;
+    border-radius: .4em
+  }
+
 .pagina-reproduzir-playlist-f{
     display: flex;
     flex-direction: column;

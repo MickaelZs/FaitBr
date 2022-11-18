@@ -225,79 +225,12 @@ body{
     }
 
 }
-@media screen and (max-width: 1250px){
+ 
+
+  @media(max-width: 1060){
     .comp-card{
         width: 80em;
-        font-size: 17px;
-        margin-top: 2em;
-    }
-
-    .Card-addmusica{
-        width: 90%;
-        margin-left: 10em;
-    }
-    .aaaa{
-        display: flex;
-        justify-content: space-evenly;
-        margin-right: 13em;
-
-        img{
-            margin-top: 6em;
-            width: 23em;
-        }
-    }
-  }
-
-  @media screen and (max-width: 1100px){
-    .comp-card{
-        width: 80em;
-        font-size: 16px;
-        margin-top: 2em;
-    }
-
-    .Card-addmusica{
-        width: 90%;
-        margin-left: 8em;
-    }
-    .aaaa{
-        display: flex;
-        justify-content: space-evenly;
-        margin-right: 16em;
-
-        img{
-            margin-top: 6em;
-            width: 23em;
-        }
-    }
-  }
-
-  @media screen and (max-width: 1100px){
-    .comp-card{
-        width: 80em;
-        font-size: 16px;
-        margin-top: 2em;
-    }
-
-    .Card-addmusica{
-        width: 90%;
-        margin-left: 8em;
-    }
-    .aaaa{
-        display: flex;
-        justify-content: space-evenly;
-        margin-right: 14em;
-
-        img{
-            margin-top: 6em;
-            width: 23em;
-        }
-    }
-  }
-
-  @media screen and (max-width: 1000px){
-    .comp-card{
-        width: 80em;
-        font-size: 14px;
+        font-size: 1px;
         margin-top: 2em;
     }
 
@@ -309,6 +242,7 @@ body{
         display: flex;
         justify-content: space-evenly;
         margin-right: 20em;
+        border: rgb(255, 255, 255) solid 1px;
 
         img{
             margin-top: 6em;
