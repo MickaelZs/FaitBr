@@ -57,11 +57,9 @@ export default function Index(){
                         <h1>{item.nome}</h1>
                         <h2>{item.genero}</h2>
                         </div>
-                        </div>
-                        
+                        </div>                        
                 </div> 
-                
-            
+                            
                 )}
                 </div>
                 <div className='card-genero'>

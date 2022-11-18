@@ -58,7 +58,7 @@ async function loginClick() {
 
 <br/>
 
-<a href="home" className='corno'>Esqueceu sua senha?</a>
+<a href="/cadastroUsuario" className='corno'>Fazer Cadastro</a>
 <div className='err'>
 {erro}
 </div>
