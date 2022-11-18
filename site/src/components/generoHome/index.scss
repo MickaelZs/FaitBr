@@ -1,14 +1,20 @@
 .page-generos{
     background-image: url(../../../public/images/degrade.jpg);
 
-    height: 100vh;
+    height: auto;
     width: 100%;
+    padding-top: 2em;
+    padding-bottom: 6em;
     background-repeat: no-repeat;
     background-size: cover;
     // display:flex;
     // justify-content: center;
     //     align-items: center;
          
+    h1 {
+        font-size: 35px;
+        margin-left: 3em;
+      }
 
 
     
@@ -39,9 +45,10 @@
             margin: 10px;
         }
 
-        h1{
-            color: #fff;
-        }
+          h1 {
+            font-size: 22px;
+            margin-left: 0;
+          }
     }
 
     @media (max-width:300px){

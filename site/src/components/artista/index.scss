@@ -3,8 +3,13 @@
     background-image: url("../../../../site/public/images/degrade.jpg") ;
     height: 100vh;
     width: 100%;
+    padding-top: 3em;
     background-repeat: no-repeat;
     background-size: cover;
+
+    h1{
+        margin-left:1em;
+    }
 
     .card:hover {
         transform: scale(1.1);

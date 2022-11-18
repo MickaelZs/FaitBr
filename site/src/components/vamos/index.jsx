@@ -23,15 +23,12 @@ export default function Home (){
               <li><a href="#sec2">Gêneros</a></li>
               <li><a href="#sec3">Artistas </a></li>
              
-              
-              
-          
              
                </div>
 
           </div>
             <div className='container'>
-                <h1>Without music, <br/> life would be a <br/> mistake</h1>
+                <h1>Sem a musica <br/>a vida seria... <br/> um erro</h1>
                 <div className='oi'>
                
       <div className='card' >
