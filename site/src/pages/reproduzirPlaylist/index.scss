@@ -1,9 +1,9 @@
-.pagina-reproduzir-playlist{
+.pagina-reproduzir-playlist-f{
     display: flex;
     flex-direction: column;
     background-color: #1e1e1e;
     width: 100%;
-    height: 100vh;
+    height: 100;
    
 
     
@@ -37,19 +37,12 @@
     margin: 10px;
     display: flex;
     flex-direction: column;
-    background-color: #1e1e1e;
     color: white;
     line-height: 10px;
 
-<<<<<<< HEAD
-    .ImgPrincipal{
-        height: 56vh;
-        width: 37vw;
-=======
-    img{
+    .imgMusica{
         height: 40vh;
         width: 30vw;
->>>>>>> cc00af60bcb94ea0a4090ecd7a311a619f67bdb2
         border-radius: 25px;
         margin-top: 3em;
     }

@@ -21,7 +21,6 @@ export default function Reproduzir() {
     const { idParam } = useParams();
 
     async function carregarMusica() {
-
         const x = await listarPlaylistItemUsuarioo(idParam)
         setPlaylist(x)
         console.log(x)
@@ -61,23 +60,6 @@ export default function Reproduzir() {
             navigate(`/adicionarMusicaPlaylist/${id}`)
         }
 
-<<<<<<< HEAD
-    return(
-        <main className='pagina-reproduzir-playlist'>
-            <Cabecario/>
-            <section className='faixa-principal'>
-
-                <div className='faixa-1'>
-                    <img className='ImgPrincipal' src= {imagemPrincipal} alt="" />
-                    <h2>{nomePrincipal}</h2>
-                    <h3>{nomeArtista}</h3>
-                    <audio controls autoPlay={true} src={audioPrincipal}/>
-                    <div className='kk'>
-                    <img onClick={() => AdicionarMusicaPlaylist(idParam)} className="botaoImg" src="/images/addM.png" alt="" width="35px"/>
-                    <p>Adicionar Musica</p>
-                    </div>
-=======
-
         catch (err) {
             if (err.response)
                 toast.error(err.response.data.erro)
@@ -87,40 +69,33 @@ export default function Reproduzir() {
     }
 
     return (
-        <main className='pagina-reproduzir'>
+        <main className='pagina-reproduzir-playlist-f'>
             <Cabecario />
             <section className='faixa-principal'>
 
                 <div className='faixa-1'>
                     {!imagemPrincipal &&
-                        <img className='usuarioo' src='/images/musica.png' />
+                        <img  className='usuarioo' src='/images/musica.png' />
                     }
 
                     {imagemPrincipal &&
-                        <img src={imagemPrincipal} alt="" />
+                        <img className="imgMusica" src={imagemPrincipal} alt="" />
                     }
                     <h2>{nomePrincipal}</h2>
                     <h3>Mickael</h3>
                     <audio controls autoPlay={true} src={audioPrincipal} />
                     <button onClick={() => AdicionarMusicaPlaylist(idParam)}>adicionar musica</button>
+                    <div className='kk'>
+                    <img className="imgBotao" src="/images/addM.png" alt="" />
+                    <p>Adicionar Musica</p>
+                    </div>
+                    
 
->>>>>>> cc00af60bcb94ea0a4090ecd7a311a619f67bdb2
                 </div>
 
                 <div>
 
                     {playlist.map(item =>
-<<<<<<< HEAD
-                    
-                    <div className='cardMusica' onClick={() => setAudioPrincipal(exibirAudio(item.audio)) & setImagemPrincipal(exibirImagemProduto(item.imagem)) & setNomePrincipal(item.musica) & setNomeArtista(item.artista) } >
-
-                        <img src={exibirImagemProduto(item.imagem)}  className="image-music" />
-
-                        <div className='div-ator'>
-                            <h1>{item.musica}</h1>
-                            <p>{item.artista}</p>
-                           
-=======
 
                         <div className='cardMusica' >
 
@@ -131,7 +106,6 @@ export default function Reproduzir() {
                                 <p>Mickael</p>
                             </div>
 
->>>>>>> cc00af60bcb94ea0a4090ecd7a311a619f67bdb2
                         </div>
                     )}
 
