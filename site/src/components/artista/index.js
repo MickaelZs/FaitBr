@@ -47,7 +47,7 @@ export default function CardArtistaHome (){
 
     },[])
     return(
-        <div className='faixa-Artistaa'>
+        <div className='faixa-Artistaaa'>
             <h1>Artista</h1>
             <Carousel
         swipeable={false}

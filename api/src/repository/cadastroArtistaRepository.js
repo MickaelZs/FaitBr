@@ -144,6 +144,7 @@ export async function artistaSeguidosPorId(id) {
 
     `select tb_usuario_artista_seguido.id_usuario_artista_seguido,
     id_usuario id,
+    tb_artistas.id_artistas IdArtista,
     nm_artistas artista,
     img_artista imagem
     from tb_usuario_artista_seguido

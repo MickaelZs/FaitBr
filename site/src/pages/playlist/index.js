@@ -8,7 +8,7 @@ import modal from 'react-modal';
 import React, { useEffect, useState } from 'react'
 import { criarPlaylist, criarPlaylistItem, DeletaPlaylist, listarPlaylistPorIdUsuarioo, listaPlaylist, listarPlaylistItemUsuarioo, listarPlaylistImagem } from '../../api/playlistAPI';
 import { ToastContainer, toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Storage from 'local-storage'
 import { buscarUsuarioPorId } from '../../api/usuarioAPI';
 import Modal from 'react-modal';
@@ -46,6 +46,7 @@ export default function Index() {
   const [imagem, setImagem] = useState([])
   const [id, setId] = useState(0)
   const navigate = useNavigate()
+  const {idParam} = useParams()
 
 
   let subtitle;
@@ -168,6 +169,15 @@ export default function Index() {
 
   }
 
+  function acessarArtista(id){
+
+    navigate(`/detalhe/artista/${id}`)
+  }
+
+  function acessarMusicaa(id){
+    navigate(`/play/${id}` )
+  }
+
 
 
   async function salvarClick() {
@@ -214,7 +224,7 @@ export default function Index() {
         >
 
           {musica.map(item =>
-            <div className='music'>
+            <div className='music' onClick={() => acessarMusicaa (item.IdMusica) (idParam)}>
               <img className='caixa-musica' src={`${API_URL}/${item.imagem}`} alt="" />
               <div className='textt'>
                 <h3>{item.musica}</h3>
@@ -240,7 +250,7 @@ export default function Index() {
           centerMode
         >
           {artista.map(item =>
-            <div className='music'>
+            <div className='music' onClick={ () => acessarArtista (item.IdArtista) }>
 
               <div className='caixa-musica'>
                 <img className='caixa-musica' src={`${API_URL}/${item.imagem}`} alt="" />

@@ -66,7 +66,6 @@ export default function Reproduzir() {
     
     async function deletarMusicaClick(position) {
         try {
-            alert(position)
             const p = Storage('foi').id
             console.log(p)
             const musica = playlist[position].idMusica
@@ -136,7 +135,7 @@ export default function Reproduzir() {
 
                 <div className='faixa-1'>
                     {!imagemPrincipal &&
-                        <img  className='usuarioo' src='/images/musica.png' />
+                        <img  className='usuarioo' src='/images/ImgReproduzir.png'  />
                     }
 
                     {imagemPrincipal &&
@@ -158,9 +157,9 @@ export default function Reproduzir() {
 
                     {playlist.map((item,index) =>
                     <div className='lo'>
-                        <div className='cardMusica' >
+                        <div className='cardMusica' onClick={() => setAudioPrincipal(exibirAudio(item.audio)) & setImagemPrincipal(exibirImagemProduto(item.imagem)) & setNomePrincipal(item.musica) & setNomeArtista(item.artista)} >
 
-                            <img src={exibirImagemProduto(item.imagem)} onClick={() => setAudioPrincipal(exibirAudio(item.audio)) & setImagemPrincipal(exibirImagemProduto(item.imagem)) & setNomePrincipal(item.musica) & setNomeArtista(item.artista)} className="image-music" />
+                            <img src={exibirImagemProduto(item.imagem)}  className="image-music" />
 
                             <div className='div-ator'>
                                 <h1>{item.musica}</h1>
@@ -171,7 +170,7 @@ export default function Reproduzir() {
 
                         </div>
                         <div>
-                            <button onClick={() => deletarMusicaClick (index)}>deletar</button>
+                            <img onClick={() => deletarMusicaClick (index)} src='/images/excluir.png' alt="" width="30px"/>
 
                         </div>
                         {/* <div className="heart" onClick={() => setCurtir(!curtir)  } >

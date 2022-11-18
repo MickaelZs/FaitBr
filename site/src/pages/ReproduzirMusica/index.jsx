@@ -54,47 +54,49 @@ export default function Reproduzir() {
     }
 
     useEffect(() => {
-         if(!Storage('usuario-logado')){
-                navigate('/LoginUsuario');
-            }
+        if (!Storage('usuario-logado')) {
+            navigate('/LoginUsuario');
+        }
         carregarMusica()
 
     }, [])
 
 
     return (
-        <main className='pagina-reproduzir-musica'>
-            <Cabecario/>
+        <main className='pagina-reproduzir-musicaaa'>
+            <Cabecario />
             <section className='faixa-principal'>
 
                 <div className='faixa-1'>
                     {!imagemPrincipal &&
-                        <img className='usuarioo' src='/images/musica.png' />
+                        <img className='usuarioo' src='/images/ImgReproduzir.png'/>
                     }
 
                     {imagemPrincipal &&
-                        <img src={imagemPrincipal} alt="" />
+                        <img className="imgMusica" src={imagemPrincipal} alt="" />
                     }
-                    <audio autoPlay={true} src={audioPrincipal}></audio>
-                    <div className='text'></div>
-                    <h1>{musicaPrincipal}</h1>
-                    <h3>{generoPrincipal}</h3>
+                    <div className='text'>
+                        <h1>{musicaPrincipal}</h1>
+                        <h3>{generoPrincipal}</h3>
+
+                    </div>
+                    <audio controls autoPlay={true} src={audioPrincipal}></audio>
                 </div>
 
                 <div >
 
                     {musica.map((item, pos) =>
 
-                        <div className='cardmusica'>
-                            
-                            <img src={exibirImagemProduto(item.imagem)} onClick={() => setImagemPrincipal(exibirImagemProduto(item.imagem)) & setAudioPrincipal(exibirAudio(item.audio)) & setMusicaPrincipal(item.nome) & setGeneroPrincipal(item.genero)} className="image-music" />
+                        <div className='cardMusica' onClick={() => setImagemPrincipal(exibirImagemProduto(item.imagem)) & setAudioPrincipal(exibirAudio(item.audio)) & setMusicaPrincipal(item.nome) & setGeneroPrincipal(item.genero)}>
+
+                            <img src={exibirImagemProduto(item.imagem)} className="image-music" />
 
                             <div className='div-ator'>
                                 <h1>{item.nome}</h1>
                                 <p>{item.genero}</p>
 
                             </div>
-                            <img src="/images/heart on.png" alt="" />
+
 
                         </div>
                     )}

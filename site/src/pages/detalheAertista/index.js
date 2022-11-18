@@ -197,7 +197,7 @@ export default function Index() {
 
                     {musica.map((item, index) => (
                         <div className="Card-addmusica" >
-                            <div className="section-music"  onClick={()=> acessarMusica(item.id)}>
+                            <div className="section-music"  onClick={() => acessarMusica (idParam)}>
                                 <img src={`${API_URL}/${item.imagem} `} className="imagem" ></img>
                                 <div className="atorenome">
                                     <h1>{item.nome}</h1> 

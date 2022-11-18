@@ -142,6 +142,7 @@ export async function listarcurtidaPorIdUsuario(idUsuario) {
     const comando =
     `select tb_usuario_musica_favorita.id_usuario_musica_favorita,
     id_usuario usuario,
+    tb_musicas.id_musica IdMusica,
     nm_musicas musica,
     id_genero genero,
     id_artistas artista,
