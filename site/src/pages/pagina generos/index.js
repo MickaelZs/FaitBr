@@ -60,7 +60,8 @@ useEffect(() => {
          
             <div className="genero-nome">
             <h1>{ge.nome}</h1>
-            </div>                 
+            </div>           
+            <div className='opa'>      
         <div className='Artistas'>
             
        
@@ -77,6 +78,7 @@ useEffect(() => {
       </div>
             
             )}
+    </div>
     </div>
     
    
