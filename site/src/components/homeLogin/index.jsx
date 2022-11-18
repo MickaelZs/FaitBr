@@ -1,10 +1,15 @@
 import { API_URL } from '../../api/config'
 import Storage from 'local-storage'
 import './index.scss'
+import { useCallback, useEffect, useState } from 'react'
+
 import { useNavigate } from 'react-router-dom'
 
 export default function HomeLogin(props) {
   const navigate = useNavigate()
+
+  const [usuario, setUsuario] = useState({})
+
 
   function acessarPerfil() {
     const id = Storage('usuario-logado').id
@@ -14,14 +19,19 @@ export default function HomeLogin(props) {
   function acessarPlaylist() {
 
     navigate(`/playlist`)
-}
+  }
+
+  function acessarBuscar() {
+
+    navigate(`/buscar`)
+  }
 
 
   return (
     <main className="faixa-home-login">
       <div className='texto-cabecalho'>
         <div className='uee'>
-          <img classsName='logo' src="/images/nova-logo.png" alt="" width='85px' height='55px'/>
+          <img classsName='logo' src="/images/nova-logo.png" alt="" width='85px' height='55px' />
           {/* <img src="/images/lupa.png" alt=""  width="40px"/>
                 <img src="/images/playlist.png" alt=""  width="40px"/> */}
 
@@ -29,10 +39,21 @@ export default function HomeLogin(props) {
           <li><a href="#sec2">Gêneros</a></li>
           <li><a href="#sec3">Artistas</a></li>
 
-          <div className='playlist'>
-                    <img src='/images/playlist.png' width="40px" onClick={acessarPlaylist}></img>
-                </div>
-          <img className='usuario' onClick={() => acessarPerfil(props.usuario.id)} src={`${API_URL}/${props.usuario.imagem}`} alt="" />
+          <div className='div1'>
+
+            <div className='lupa' onClick={acessarBuscar}>
+              <img src='/images/lupa.png' width="75px"></img>
+            </div>
+
+            <div className='playlist1'>
+              <img src='/images/playlist.png' width="40px" onClick={acessarPlaylist}></img>
+            </div>
+
+            <div className='logoconta1'>
+              <img className='usuario' onClick={() => acessarPerfil(props.usuario.id)} src={`${API_URL}/${props.usuario.imagem}`} alt="" />
+            </div>
+
+          </div>
         </div>
 
 

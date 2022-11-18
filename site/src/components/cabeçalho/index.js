@@ -52,7 +52,7 @@ export default function Cabecario() {
                 <img src='/images/nova-logo.png' width="100px" ></img>
             </div>
 
-            <div className='div1'>
+            <div className='div1-log'>
 
                 <div className='lupa' onClick={acessarBuscar}>
                     <img src='/images/lupa.png' width="75px"></img>
