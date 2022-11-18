@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { API_URL } from '../../api/config';
 import { listarPlaylistItemUsuarioo } from '../../api/playlistAPI';
 import Storage from 'local-storage'
+import Cabecario from '../../components/cabeçalho';
 
 export default function Reproduzir() {
     const [musica, setMusica] = useState([])
@@ -55,6 +56,9 @@ export default function Reproduzir() {
     }
 
     useEffect(() => {
+         if(!Storage('usuario-logado')){
+                navigate('/LoginUsuario');
+            }
         carregarMusica()
 
     }, [])
@@ -62,6 +66,7 @@ export default function Reproduzir() {
 
     return (
         <main className='pagina-reproduzir-musica'>
+            <Cabecario/>
             <section className='faixa-principal'>
 
                 <div className='faixa-1'>

@@ -4,11 +4,21 @@ import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from "react-toastify";
 import { confirmAlert } from 'react-confirm-alert'; 
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import { useEffect } from 'react';
 
 export default function Menu() {
+    
 
     const navigate = useNavigate();
+    function inicial(){
+       
+    }
 
+    // useEffect(() => {
+    //     if(!storage('usuario-logado')){
+    //         navigate('/LoginUsuario')
+    //     }
+    // },[])
     function sairClick() {
         storage.remove('usuario-logado')
         navigate('/LoginAdm')

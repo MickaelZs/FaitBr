@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BuscarArtistaPorNome, listaArtista } from '../../api/cadastroArtistaAPI';
 import { API_URL } from '../../api/config';
 import { buscarGeneroPorNome } from '../../api/generoAPI';
 import Cabecario from '../../components/cabeçalho';
+import storage from 'local-storage'
 import './index.scss'
 
 export default function Index(){
@@ -15,7 +16,11 @@ export default function Index(){
     const navigate = useNavigate ()
 
 
-   
+    useEffect(() => {
+            if(!storage('usuario-logado')){
+                navigate('/LoginUsuario');
+            }
+        },[])
 
     async function filtrar(){
         const resp = await BuscarArtistaPorNome (filtro);

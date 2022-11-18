@@ -7,6 +7,7 @@ import CardGenero from '../../components/genero';
 import { buscarGeneroPorId, buscarGeneroPorNome } from '../../api/generoAPI';
 import { API_URL } from '../../api/config';
 import Cabecario from '../../components/cabeçalho';
+import Storage from 'local-storage'
 
 
 
@@ -45,6 +46,9 @@ function acessarArtista(id){
 
  
 useEffect(() => {
+     if(!Storage('usuario-logado')){
+                navigate('/LoginUsuario');
+            }
     carregarArtistaPorGenero();
     carregarGenero();
 },[]);

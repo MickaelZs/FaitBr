@@ -139,6 +139,9 @@ export default function Index() {
     }
 
     useEffect(() => {
+         if(!Storage('usuario-logado')){
+                navigate('/LoginUsuario');
+            }
         carregarArtista()
         carregarArtistaPorMusica()
  

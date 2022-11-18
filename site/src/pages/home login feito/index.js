@@ -2,7 +2,7 @@ import './index.scss'
 import Storage from 'local-storage'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import AudioPlayer from 'react-modular-audio-player' ;
+
 import CardGenero from '../../components/genero';
 import CardArtistas from '../../components/artistas';
 import { useEffect, useState } from 'react';
@@ -15,6 +15,7 @@ import Perfil from '../../components/perfilUsuario';
 import { listarCurtidas } from '../../api/musicaAPI';
 import Cabeçario from '../../components/cabeçalho';
 import CardMusica from '../../components/coracao';
+import AudioPlayer from 'react-audio-player'
 
 import HomeLogin from '../../components/homeLogin';
 import Faixa from '../../components/usuario'
@@ -94,33 +95,23 @@ async function carregarArtista(){
 }
 
 useEffect(() => {
+  if(!Storage('usuario-logado')){
+    navigate('/LoginUsuario');
+}
   carregarUsuario();
   carregarArtista();
     carregarGenero();
     carregarCurtidas()
 }, [])
 
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-      slidesToSlide: 3
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 3,
-      slidesToSlide: 2
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-      slidesToSlide: 1
-    }
-  };
-  function acessarPerfil(id){
-   
-    navigate(`/informacao/${id}`)
-}
+let playlist = [
+  { src: "/music.mp3",
+    title: "Song",
+    artist: "Singer" },
+  { src: "/moreMusic.mp3",
+    title: "Another Song",
+    artist: "Another Singer" }
+];
 
   return (
 
@@ -135,6 +126,7 @@ useEffect(() => {
       <Faixa/>
 
       <ArtistaSeguido/>
+    
     
 </div>
   );

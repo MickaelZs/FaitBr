@@ -44,6 +44,9 @@ export default function Index() {
   }
 
   useEffect(() => {
+    if(!Storage('usuario-logado')){
+      navigate('/LoginUsuario')
+  }
     carregarMusica();
   }, []);
 
@@ -74,7 +77,7 @@ export default function Index() {
         <img className="i" src="/images/i.png" alt="" onClick={() => salvar(index)} />
          </div>
       ))}
-      <button onClick={sairClick} >oiii</button>
+    
       </div>
       </div>
     </div>

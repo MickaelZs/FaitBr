@@ -1,5 +1,5 @@
 import { loginUsuario } from '../../api/usuarioAPI';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import './index.scss'
 import Storage from 'local-storage'
@@ -12,6 +12,13 @@ export default function Index() {
   const [erro, setErro] = useState('');
   const navigate = useNavigate();
 
+  
+  useEffect(() => {
+    if(Storage('usuario-logado')){
+      navigate('/HomeLoginFeito')
+    }
+  },[])
+
 async function loginClick() {
 
   try{
@@ -20,6 +27,7 @@ async function loginClick() {
     navigate('/HomeLoginFeito');
 
   }
+
 
 
   

@@ -4,6 +4,7 @@ import { API_URL } from '../../api/config';
 import { buscarMusicaPorId } from '../../api/musicaAPI'
 import './index.scss'
 import AudioPlayer from 'react-audio-player'
+import Cabecario from '../../components/cabeçalho';
 
 export default function Play(){
 
@@ -26,6 +27,7 @@ export default function Play(){
     },[])
     return(
         <main className="pagina-playy">
+        <Cabecario/>
           {musica.map(item => 
             <div className='div-center'>
                 <img src={`${API_URL}/${item.imagem}`} className='imagem'></img>
@@ -33,15 +35,10 @@ export default function Play(){
                 <h1>{item.nome}</h1>
                 <h3>Gênero</h3>
                 </div>
-                <div>
-	  <button onclick="document.getElementById('player').play()">Play</button>
-	  <button onclick="document.getElementById('player').pause()">Pause</button>
-	  <button onclick="document.getElementById('player').volume+=0.1">Aumentar volume</button>
-	  <button onclick="document.getElementById('player').volume-=0.1">Diminuir volume</button>
-	</div>
+                
 
                 
-                <audio className="audio" id="player" preload='auto|metadata|none'  controls src={`${API_URL}/${item.musica}`}></audio>
+                <audio className="audio" autoPlay={true}  controls src={`${API_URL}/${item.musica}`}></audio>
             </div>
          
             )}

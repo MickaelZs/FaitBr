@@ -6,9 +6,10 @@ import AudioPlayer from 'react-audio-player'
 
 export default function Faixa() {
 
-  function tocar() {
-    return <audio src='henriqueejulianooficial-completa-ai-part-marilia-mendonca-09f511dd.mp3'></audio>
-  }
+  // function tocar(a) {
+  //   return a = src='henriqueejulianooficial-completa-ai-part-marilia-mendonca-09f511dd.mp3'
+  //   return a
+  // }
 
   const responsive = {
     desktop: {
