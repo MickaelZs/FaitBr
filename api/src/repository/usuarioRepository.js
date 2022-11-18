@@ -46,7 +46,7 @@ export async function listarUsuario() {
     `select 
     id_usuario id,
     nm_nome nome,
-    dt_nasc nascimento,
+    DATE_FORMAT (dt_nasc, '%d-%m-%y') AS nascimento,
     ds_email email,
     ds_senha  senha
     from tb_usuario;`
@@ -61,7 +61,7 @@ export async function buscarUsuarioPorId(id) {
     `select 
     id_usuario id,
     nm_nome nome,
-    dt_nasc nascimento,
+    DATE_FORMAT (dt_nasc, '%d-%m-%y') AS nascimento,
     ds_email email,
     ds_senha senha,
     img_imagem imagem
@@ -84,4 +84,6 @@ export  async function alteraUsuario(id, usuario){
 const [resposta] = await con.query(comando,[usuario.nome,usuario.nasc,usuario.email, usuario.senha ,id ])
 return resposta.affectedRows;
 }
+
+
 

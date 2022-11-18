@@ -96,7 +96,10 @@ export default function Index() {
   }, [])
 
   function acessarPlaylist(id) {
-
+    const idPlaylist = ({
+      "id":id
+  })
+    Storage('foi', idPlaylist)
     navigate(`/ReproduzirPlaylist/${id}`)
 
   }

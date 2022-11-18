@@ -8,7 +8,7 @@ import { API_URL } from '../../api/config';
 
 import { ToastContainer, toast } from 'react-toastify';
 import Storage from 'local-storage'
-import { listarPlaylistItemUsuarioo, criarPlaylist, PlaylistItem } from '../../api/playlistAPI';
+import { listarPlaylistItemUsuarioo, criarPlaylist, PlaylistItem, DeletarMusicaPlaylist } from '../../api/playlistAPI';
 import Cabecario from '../../components/cabeçalho';
 
 
@@ -25,7 +25,7 @@ export default function Reproduzir() {
     async function carregarMusica() {
         const x = await listarPlaylistItemUsuarioo(idParam)
         setPlaylist(x)
-        console.log(x)
+      
     }
 
     
@@ -62,6 +62,26 @@ export default function Reproduzir() {
             else toast.error(err.message);
         }
     }
+
+    
+    async function deletarMusicaClick(position) {
+        try {
+            alert(position)
+            const p = Storage('foi').id
+            console.log(p)
+            const musica = playlist[position].idMusica
+            console.log(musica)
+            const resp = await DeletarMusicaPlaylist(p,musica, position)
+
+            
+            toast.dark('musica deletada da playlist') 
+        }
+               catch (err) {
+            if (err.response) toast.error(err.response.data.erro);
+            else toast.error(err.message);
+        }
+    }
+
 
     // function acessarMusica(id){
     //     navigate(`/Reproduzir/Playlist/${id}`)
@@ -148,6 +168,10 @@ export default function Reproduzir() {
                                
                             </div>
                             
+
+                        </div>
+                        <div>
+                            <button onClick={() => deletarMusicaClick (index)}>deletar</button>
 
                         </div>
                         {/* <div className="heart" onClick={() => setCurtir(!curtir)  } >

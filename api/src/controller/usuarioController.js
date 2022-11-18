@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { alteraUsuario, buscarUsuarioPorId, cadastrorUsuario, imagemUsuario, listarUsuario, loginUsuario, recupeçao } from "../repository/usuarioRepository.js"
 import multer from 'multer';
-
+import nodemailer from 'nodemailer'
 
 
 const server = Router();
@@ -180,6 +180,35 @@ server.put ('/usuario/:id', async (req,resp) => {
             erro: err.message
         })
     }
+})
+server.post('/enviar-email', async (req, resp) =>{
+    let data = req.body;
+    const transport = nodemailer.createTransport({
+    host: process.env.HOST,
+    service: process.env.SERVICE,
+    secure:process.env.SECURE,
+    auth:{
+        user: process.env.EMAIL,
+        pass: process.env.SENHA
+    }
+    })
+    
+    const message = {
+    from: process.env.EMAIL,
+     to: data.email,
+     subject:'FeatBR',
+     html: `
+     <h1> Seja bem vindo, caro ${data.nome} do FeatBR </h1>
+     <h2> Agradecemos o seu cadastro </h2>
+     `
+     
+    }
+    transport.sendMail(message, (error, info)=> {
+        if(error){
+            return resp.status(400).send('Erro, tente novamente')
+        }
+        return resp.status(200).send('Email enviado com sucesso!')
+    })
 })
 
  export default server;

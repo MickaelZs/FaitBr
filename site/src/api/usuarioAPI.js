@@ -55,3 +55,12 @@ export async function enviarImagemUsuario(id, imagem){
 
     return resposta.status;
 }
+
+export async function EnviarEmail(nome, email){
+    const resposta = await api.post('/enviar-email', {
+        nome:nome, 
+        email:email
+        
+    });
+    return resposta.status;
+}

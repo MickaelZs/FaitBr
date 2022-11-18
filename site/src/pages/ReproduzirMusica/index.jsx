@@ -47,9 +47,7 @@ export default function Reproduzir() {
 
 
     async function carregarMusica() {
-
         const x = await buscarArtistaPorMusicaId(idParam)
-
         setMusica(x)
         console.log(x)
 

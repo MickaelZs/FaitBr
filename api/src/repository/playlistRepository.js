@@ -62,6 +62,7 @@ export async function listarPlaylistItemPorIdUsuario(idPlaylist) {
     nm_playlist playlist,
     tb_playlist.id_playlist,
      id_usuario usuario,
+     tb_musicas.id_musica idMusica,
      nm_musicas musica,
     tb_artistas.id_artistas idArtista,
      nm_artistas artista,
@@ -72,8 +73,7 @@ export async function listarPlaylistItemPorIdUsuario(idPlaylist) {
      inner join tb_artistas on tb_musicas.id_artistas = tb_artistas.id_artistas
      inner join tb_playlist on tb_playlist_item.id_playlist = tb_playlist.id_playlist
      where 
-      tb_playlist.id_playlist = ?;
-     ;
+    tb_playlist.id_playlist = ?;
     `
     
     const [linhas] = await con.query(comando, [idPlaylist]);

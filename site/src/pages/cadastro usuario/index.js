@@ -5,7 +5,7 @@ import {useEffect, useState} from 'react'
 import {useHref, useNavigate, useParams} from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
-import { cadastroUsuario, loginUsuario } from '../../api/usuarioAPI';
+import { cadastroUsuario, loginUsuario, EnviarEmail } from '../../api/usuarioAPI';
 import Storage from 'local-storage'
 
 export default function Index() {
@@ -39,6 +39,7 @@ export default function Index() {
           const r = await cadastroUsuario (nome,nasc,email,senha)
           Storage('usuario-logado', r)
           navigate('/HomeLoginFeito');
+          await EnviarEmail(nome, email);
           
       }
       catch (err){

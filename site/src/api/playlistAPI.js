@@ -47,3 +47,10 @@ export async function DeletaPlaylist(id){
     const resposta = await api.delete(`/playlist/${id}`);
     return resposta.status;
   }
+
+  export async function DeletarMusicaPlaylist (idPlaylist,idMusica) {
+    const r = await api.delete(`/playlistMusica/${idPlaylist}/${idMusica}`,{
+       
+    })
+    return r.data;
+}  
