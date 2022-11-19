@@ -59,13 +59,24 @@
         border-radius: 10px
     }
 
+    .caixa-musica-playlist{
+        height: 14em;
+        width: 14em;
+        border-radius: 10px;
+        background-color: #e3e3e325;
+        border: solid 1px #fff;
+        .k{
+           display:flex;
+           justify-content: center;
+          margin:3em;
+        }
+    }
+
     .caixa-musica{
         height: 16em;
         width: 16em;
         border-radius: 10px 10px 0px 0px;
-        .k{
-            margin-top: 3em;
-        }
+       
     }
 
     .titulos{

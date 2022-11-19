@@ -51,7 +51,7 @@ export default function Index() {
 
 
     return (
-      <div className="pagina-cadastroUsuario">
+      <div className="pagina-cadastroUsuarioo">
 
         <ToastContainer/>
 
@@ -64,8 +64,8 @@ export default function Index() {
 
           <div className="faixa-input">
           <div class="label-float">
-        <input type="text" placeholder=" " value={nome} onChange={e => setNome(e.target.value)}/>
-        <label>Nome</label>
+        <input type="text" placeholder="Nome" value={nome} onChange={e => setNome(e.target.value)}/>
+        
           </div>
           <br/>
           <div class="label-float">

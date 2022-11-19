@@ -98,8 +98,11 @@ body{
 
 
   .heart{
-    margin-left: 4em;
-    background-color: red;
+    display: flex;
+    justify-content: center;
+   align-items: center;
+   margin-left: 10em;
+
   }
 .card-musica{
         display: flex;

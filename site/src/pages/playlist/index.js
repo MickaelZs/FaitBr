@@ -59,9 +59,11 @@ export default function Index() {
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
     subtitle.style.color = '#8D32E5';
+     
   }
 
   function closeModal() {
+   
     setIsOpen(false);
   }
 
@@ -310,7 +312,7 @@ export default function Index() {
       </Carousel>
       <section className='faixa-criar-play'>
 
-        <div onClick={openModal} className='caixa-musica'>
+        <div onClick={openModal} className='caixa-musica-playlist'>
           <img className='k' src="/images/add.png" alt="" />
 
         </div>

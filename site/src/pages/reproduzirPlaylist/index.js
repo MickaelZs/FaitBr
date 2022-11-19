@@ -134,13 +134,16 @@ export default function Reproduzir() {
             <section className='faixa-principal'>
 
                 <div className='faixa-1'>
+                    <div  className='imgg'>
                     {!imagemPrincipal &&
-                        <img  className='usuarioo' src='/images/ImgReproduzir.png'  />
+                        <img  className='usuarioo' src='/images/botao-play (3).png' width='50px'  />
                     }
+                   
 
                     {imagemPrincipal &&
                         <img className="imgMusica" src={imagemPrincipal} alt="" />
                     }
+                     </div>
                     <h2>{nomePrincipal}</h2>
                     <h3>{nomeArtista}</h3>
                     <audio controls autoPlay={true} src={audioPrincipal} />

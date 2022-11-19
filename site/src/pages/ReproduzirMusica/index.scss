@@ -3,7 +3,7 @@
     flex-direction: column;
     background-color: #1e1e1e;
     width: 100%;
-    height: 100vh;
+    height: auto;
 
     // *{border: solid 2px green;}
    
@@ -14,8 +14,26 @@
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+        margin-top:3em;
 
     }
+    .imgg{
+    background-color: #e3e3e325;
+    height: 30em;
+    width: 30em;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid #fff;
+}
+.usuarioo{
+    height: 15em;
+    width: 15em;
+    border-radius: 25px;
+    // background-color: #ffffff2d;
+
+}
 
     .text{
         display: flex;
@@ -57,8 +75,8 @@
     .imgMusica{
         height: 30em;
         width: 30em;
-        border-radius: 25px;
-        margin-top: 3em;
+        border-radius: 10px;
+       
     }
 
     h2{
@@ -94,12 +112,7 @@
 
     
 }
-.usuarioo{
-    border:solid 2px green;
-    height: 30em;
-    width: 30em;
-    border-radius: 25px;
-}
+
 
     .image-music{
         border-radius: 10px 0px 0px 10px;
