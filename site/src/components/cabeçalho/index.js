@@ -63,7 +63,17 @@ export default function Cabecario() {
                 </div>
 
                 <div className='logoconta1'>
-                    <img className='usuario' onClick={() => acessarPerfil(usuario.id)} src={`${API_URL}/${usuario.imagem}`}></img>
+                {!usuario.imagem &&
+
+<img className='usuario' src='/images/usuario.png' />
+}
+
+{usuario.imagem &&
+
+<img className='usuario' onClick={() => acessarPerfil(usuario.id)} src={`${API_URL}/${usuario.imagem}`}></img>
+
+}
+                    
                 </div>
                 
             </div>

@@ -226,7 +226,7 @@ export default function Index() {
         >
 
           {musica.map(item =>
-            <div className='music' onClick={() => acessarMusicaa (item.IdMusica) (idParam)}>
+            <div className='music' onClick={() => acessarMusicaa (item.IdMusica) }>
               <img className='caixa-musica' src={`${API_URL}/${item.imagem}`} alt="" />
               <div className='textt'>
                 <h3>{item.musica}</h3>

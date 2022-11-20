@@ -90,6 +90,11 @@ export async function listaMusicaArtista(){
     return resposta.data;
 }  
 
+export async function buscarMusicaPorGenero(id){
+    const resposta = await api.get(`/genero/musica/${id}`)
+    return resposta.data;
+} 
+
 
 export async function buscarMusicaPorId(id){
     const resposta = await api.get(`/musicas/${id}`)

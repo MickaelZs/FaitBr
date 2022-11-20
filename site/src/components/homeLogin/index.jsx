@@ -50,7 +50,20 @@ export default function HomeLogin(props) {
             </div>
 
             <div className='logoconta1'>
-              <img className='usuario' onClick={() => acessarPerfil(props.usuario.id)} src={`${API_URL}/${props.usuario.imagem}`} alt="" />
+            {!usuario.imagem &&
+
+<img className='usuario' src='/images/usuario.png'  onClick={() => acessarPerfil(usuario.id)}
+
+
+ />
+}
+
+{usuario.imagem &&
+
+<img className='usuario' onClick={() => acessarPerfil(usuario.id)} src={`${API_URL}/${usuario.imagem}`}></img>
+
+}
+            
             </div>
 
           </div>

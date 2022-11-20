@@ -8,6 +8,9 @@ server.post('/criar/:id/playlist', async (req,resp) =>{
     try{
         const idUsuario = req.params.id;
         const playlist = req.body;
+        if(!playlist.nome.trim()){
+            throw new Error('Nome é obrigatório');
+        }
         const x = await Cadastrarplaylist(idUsuario,playlist);
 
         resp.send(x);

@@ -70,19 +70,19 @@ export default function Index() {
           <br/>
           <div class="label-float">
             <input type="date" placeholder=" " value={nasc} onChange={e => setNasc(e.target.value)} required/>
-            <label>Date de nascimento</label>
+           
           </div>
 
           <br/>
 
           <div class="label-float">
         <input type="text" placeholder=" " value={email} onChange={e => setEmail(e.target.value)}/>
-        <label>Email</label>
+      
           </div>
           <br/>
           <div class="label-float">
             <input type="password" placeholder=" " value={senha} onChange={e => setSenha(e.target.value)} required/>
-            <label>Senha</label>
+           
           </div>
 
           <br/>

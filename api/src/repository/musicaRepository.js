@@ -88,12 +88,16 @@ export async function listarMusicaeArtista() {
 export async function listarMusicaPorId(id) {
     const comando =
     `select id_musica id,
-    id_genero genero,
-    id_artistas artista,
+    tb_genero.id_genero idGenero,
+    nm_genero genero,
+    tb_artistas.id_artistas idArtista,
+    nm_artistas artista,
     nm_musicas nome,
     blob_musica musica,
     img_imagem imagem
     from tb_musicas
+    inner join tb_genero on tb_musicas.id_genero = tb_genero.id_genero
+     inner join tb_artistas on tb_musicas.id_artistas = tb_artistas.id_artistas
     where id_musica = ? ;`
     
     const [linhas] = await con.query(comando, [id]);
@@ -112,6 +116,24 @@ export async function listarArtistaPorMusica(id) {
     from tb_musicas
     inner join tb_genero on tb_musicas.id_genero = tb_genero.id_genero
     where id_artistas = ?`
+    
+    const [linhas] = await con.query(comando, [id]);
+    return linhas;
+}
+
+export async function listarMusicaPorGenero(id) {
+    const comando =
+    ` select 
+    id_musica id,
+    tb_genero.id_genero idGenero,
+    nm_genero genero,
+    id_artistas idArtista,
+    nm_musicas nome,
+    blob_musica audio,
+    img_imagem imagem
+    from tb_musicas
+    inner join tb_genero on tb_musicas.id_genero = tb_genero.id_genero
+    where tb_genero.id_genero = ? ;`
     
     const [linhas] = await con.query(comando, [id]);
     return linhas;
