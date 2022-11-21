@@ -13,9 +13,9 @@ export default function Index() {
   const navigate = useNavigate()
 
   const [musicaa, setMusicaa] = useState([]);
-  const [buscar,setBuscar] = useState('')
+  const [buscar, setBuscar] = useState('')
 
-  async function filtrar(){
+  async function filtrar() {
     const resp = await BuscarMusicaPorNome(buscar)
     setMusicaa(resp)
     console.log(resp)
@@ -33,10 +33,10 @@ export default function Index() {
     }
   }
 
-  function sairClick(){
+  function sairClick() {
     Storage.remove('Playlist')
     navigate('/playlist')
-}
+  }
 
   async function carregarMusica() {
     const resp = await listaMusicaArtista(idParam);
@@ -44,42 +44,44 @@ export default function Index() {
   }
 
   useEffect(() => {
-    if(!Storage('usuario-logado')){
+    if (!Storage('usuario-logado')) {
       navigate('/LoginUsuario')
-  }
+    }
     carregarMusica();
   }, []);
 
- 
-    return(
-        <div className='add'>
-            <ToastContainer/>
-            <div>
-            <div className='caixa-busca'>             
-                    <input type="text" placeholder='Buscar artista por nome' value={buscar} onChange={e => setBuscar(e.target.value)} />
-                <img src='/images/procurar.png' onClick={filtrar}  />
-                </div>
 
-  
-        
-        <div className="faixa-musica">
-    {musicaa.map((item, index) => (
-        <div className="Card-addmusica">
-        <div className="section-music"> 
-        <img src={`${API_URL}/${item.imagem} `} className="imagem"></img>
-        <div className="atorenome">
-            <h1>{item.musica}</h1>
-            <div className="border">
-            <p>{item.artista}</p>
-            </div>
+  return (
+    <div className='add'>
+      <ToastContainer />
+      <body>
+        <div>
+          <div className='caixa-busca'>
+            <input type="text" placeholder='Buscar artista por nome' value={buscar} onChange={e => setBuscar(e.target.value)} />
+            <img src='/images/procurar.png' onClick={filtrar} />
+          </div>
+
+
+
+          <div className="faixa-musica">
+            {musicaa.map((item, index) => (
+              <div className="Card-addmusica">
+                <div className="section-music">
+                  <img src={`${API_URL}/${item.imagem} `} className="imagem"></img>
+                  <div className="atorenome">
+                    <h1>{item.musica}</h1>
+                    <div className="border">
+                      <p>{item.artista}</p>
+                    </div>
+                  </div>
+                </div>
+                <img className="i" src="/images/i.png" alt="" onClick={() => salvar(index)} />
+              </div>
+            ))}
+
+          </div>
         </div>
-        </div>
-        <img className="i" src="/images/i.png" alt="" onClick={() => salvar(index)} />
-         </div>
-      ))}
-    
-      </div>
-      </div>
+      </body>
     </div>
   );
 }

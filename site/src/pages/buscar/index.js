@@ -42,7 +42,10 @@ export default function Index(){
         <main className='pagina-buscar'>
             <Cabecario/>
             <body>
-                <div className='caixa-busca'>             
+            <img onClick={()=> window.history.back()} className='volta' src='/images/seta-icon.png' />
+
+                <div className='caixa-busca'>  
+           
                     <input type="text" placeholder='Buscar artista por nome' value={filtro} onChange={e => setFiltro(e.target.value)} />
                 <img src='./images/procurar.png'  onClick={filtrar} />
                 </div>

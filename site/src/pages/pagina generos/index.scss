@@ -1,6 +1,7 @@
 .pagina-genero{
     background-color: #1e1e1e;
     width:100%;
+    background-size: 100%;
     height:100vh;
     display: flex;
     flex-direction: column;
@@ -15,6 +16,15 @@
     height: 100px;
 }
 
+.volta{
+    display:flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width:3em;
+    height: 3em;
+    margin-top: 1em;
+    margin-left: 2em;
+  }
 
    
  .genero-nome{
@@ -68,6 +78,8 @@
 
 
     }
+
+    
 
    
 

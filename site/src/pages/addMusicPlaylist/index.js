@@ -1,79 +1,91 @@
 import { API_URL } from '../../api/config';
-import { listaMusicaArtista } from '../../api/musicaAPI';
+import { listaMusicaArtista, BuscarMusicaPorNome } from '../../api/musicaAPI';
 import { PlaylistItem } from '../../api/playlistAPI';
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import './index.scss'
 import { useEffect, useState } from 'react';
 import Storage from 'local-storage'
+import Cabecario from "../../components/cabeçalho";
 
-export default function Index (){
 
-    const [musicaa, setMusicaa] = useState([]);
-    const [buscar,setBuscar] = useState('')
+export default function Index() {
 
-    const navigate = useNavigate()
-    const { idParam } = useParams()
+  const [musicaa, setMusicaa] = useState([]);
+  const [buscar, setBuscar] = useState('')
 
-    async function add(position) {
-        try {
-          let id = Storage("nova")
-          let musicaSelecionada = musicaa[position].id_musica;
-          const resp = await PlaylistItem(musicaSelecionada, id);
-          console.log(resp)
-          toast.dark("Musica selecionada");
-        } catch (err) {
-          if (err.response) toast.error(err.response.data.erro);
-          else toast.error(err.message);
-        }
-      }
+  const navigate = useNavigate()
+  const { idParam } = useParams()
 
-      async function carregarMusica() {
-        const resp = await listaMusicaArtista(idParam);
-        setMusicaa(resp);
-      }
-    
-      useEffect(() => {
-       
-          if(!Storage('usuario-logado')){
-              navigate('/LoginUsuario')
-          }
-     
-        carregarMusica();
-      }, []);
+  async function add(position) {
+    try {
+      let id = Storage("nova")
+      let musicaSelecionada = musicaa[position].id_musica;
+      const resp = await PlaylistItem(musicaSelecionada, id);
+      console.log(resp)
+      toast.dark("Musica selecionada");
+    } catch (err) {
+      if (err.response) toast.error(err.response.data.erro);
+      else toast.error(err.message);
+    }
+  }
 
-    //   function sairClick(){
-    //     Storage.remove('Playlist')
-    //     navigate('/playlist')
-    // }
-    return(
-        <div className='addPlaylist'>
-            <ToastContainer/>
-            <div>
-            <div className='caixa-busca'>             
-                    <input type="text" placeholder='Buscar artista por nome' value={buscar} onChange={e => setBuscar(e.target.value)} />
-                <img src='/images/procurar.png'   />
+  async function carregarMusica() {
+    const resp = await listaMusicaArtista(idParam);
+    setMusicaa(resp);
+  }
+
+  async function filtrar() {
+    const resp = await BuscarMusicaPorNome(buscar)
+    setMusicaa(resp)
+    console.log(resp)
+  }
+
+  useEffect(() => {
+
+    if (!Storage('usuario-logado')) {
+      navigate('/LoginUsuario')
+    }
+
+    carregarMusica();
+  }, []);
+
+  //   function sairClick(){
+  //     Storage.remove('Playlist')
+  //     navigate('/playlist')
+  // }
+  return (
+    <div className='addPlaylist'>
+      <Cabecario />
+
+      <ToastContainer />
+      <body>
+        <div>
+          <div className='caixa-busca'>
+            <input type="text" placeholder='Buscar artista por nome' value={buscar} onChange={e => setBuscar(e.target.value)} />
+            <img src='/images/procurar.png' onClick={filtrar} />
+          </div>
+
+
+
+          <div className="faixa-musica">
+            {musicaa.map((item, index) => (
+              <div className="Card-addmusica">
+                <div className="section-music">
+                  <img src={`${API_URL}/${item.imagem} `} className="imagem"></img>
+                  <div className="atorenome">
+                    <h1>{item.musica}</h1>
+                    <div className="border">
+                      <p>{item.artista}</p>
+                    </div>
+                  </div>
                 </div>
-
-  
-        
-        <div className="faixa-musica">
-    {musicaa.map((item, index) => (
-        <div className="Card-addmusica">
-        <div className="section-music"> 
-        <img src={`${API_URL}/${item.imagem} `} className="imagem"></img>
-        <div className="atorenome">
-            <h1>{item.musica}</h1>
-            <div className="border">
-            <p>{item.artista}</p>
-            </div>
+                <img className="i" src="/images/i.png" alt="" onClick={() => add(index)} />
+              </div>
+            ))}
+          </div>
         </div>
-        </div>
-        <img className="i" src="/images/i.png" alt="" onClick={() => add (index)} />
-         </div>
-      ))}
-      </div>
-      </div>
+      </body>
     </div>
-    )
+  )
 }

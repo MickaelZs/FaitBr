@@ -17,8 +17,8 @@ import GeneroHome from '../../components/generoHome';
 
 const  customStyles  =  { 
   content : { 
-    top : '50%' , 
-    left : '50%' , 
+    top : '30%' , 
+    left : '30%' , 
     right : 'auto' , 
     bottom : 'auto' , 
     marginRight : '-50%' , 
