@@ -65,19 +65,21 @@ export default function Reproduzir() {
     return (
         <main className='pagina-reproduzir-musicaaa'>
             <Cabecario />
+            <img onClick={()=> window.history.back()} className='volta' src='/images/seta-icon.png' />
+
             <section className='faixa-principal'>
 
                 <div className='faixa-1'>
-                <div  className='imgg'>
-                    {!imagemPrincipal &&
-                        <img  className='usuarioo' src='/images/botao-play (3).png'  />
-                    }
-                   
+                    <div className='imgg'>
+                        {!imagemPrincipal &&
+                            <img className='usuarioo' src='/images/botao-play (3).png' />
+                        }
 
-                    {imagemPrincipal &&
-                        <img className="imgMusica" src={imagemPrincipal} alt="" />
-                    }
-                     </div>
+
+                        {imagemPrincipal &&
+                            <img className="imgMusica" src={imagemPrincipal} alt="" />
+                        }
+                    </div>
                     <div className='text'>
                         <h1>{musicaPrincipal}</h1>
                         <h3>{generoPrincipal}</h3>

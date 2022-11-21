@@ -25,6 +25,16 @@ input {
     
 }
 
+.volta{
+    display:flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width:3em;
+    height: 3em;
+    margin-top: 2em;
+    margin-left: 2em;
+  }
+
 .cap{
     width: 100px;
     height: 100px;
@@ -60,6 +70,12 @@ input {
     padding-bottom: 10px;
 
 }
+
+.section-music:hover{
+    transform: scale(1.1);
+
+}
+
 .section-music{
     display: flex;
     flex-direction: row;
@@ -69,6 +85,8 @@ input {
     position:sticky;
     box-shadow: 1px 1px 8px 1px #ffffff;
     margin: 25px;
+    cursor: pointer;
+
 
     
 }

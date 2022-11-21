@@ -22,14 +22,14 @@ export default function Index() {
 
   async function loginClick() {
 
-   
-      const r = await loginUsuario(email, senha)
-      Storage('usuario-logado', r)
-      navigate('/HomeLoginFeito');
 
-  
+    const r = await loginUsuario(email, senha)
+    Storage('usuario-logado', r)
+    navigate('/HomeLoginFeito');
 
-   
+
+
+
   }
 
   async function voltar() {
@@ -42,7 +42,7 @@ export default function Index() {
 
       <div className="faixa1">
 
-          <img onClick={voltar} className='voltar' src='/images/seta-icon-branca.png' />
+        <img onClick={voltar} className='voltar' src='/images/seta-icon-branca.png' />
 
         <div className='faixa-input'>
 
@@ -62,7 +62,7 @@ export default function Index() {
 
           <a href="/cadastroUsuario" className='corno'>Fazer Cadastro</a>
           <div className='err'>
-           
+
           </div>
 
 
@@ -70,17 +70,19 @@ export default function Index() {
 
           <button type="button" onClick={loginClick} > Entrar </button>
 
-</div>
-
-
-
-
-
-
-
         </div>
 
-       
+
+        <div className="imagemm">
+          <img src="images/loginUsuario.png" className='imagemfdp' ></img>
+        </div>
+
+
+
+
+      </div>
+
+
 
 
 

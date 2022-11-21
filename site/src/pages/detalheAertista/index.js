@@ -19,13 +19,13 @@ export default function Index() {
     const [musica, setMusica] = useState([]);
     const [curtir, setCurtir] = useState(false);
     const [seguirr, setSeguirr] = useState(false);
-    
+
     const { idParam } = useParams()
     const navigate = useNavigate()
-   
 
 
-    
+
+
     async function curtirr(position) {
         try {
             let id = Storage('usuario-logado').id;
@@ -33,7 +33,7 @@ export default function Index() {
             const resp = await curtirMusica(musicaSelecionada, id)
             Storage('Musica Curtida', resp)
             console.log(resp)
-            
+
             toast.dark('musica curtidaa');
         }
 
@@ -52,9 +52,9 @@ export default function Index() {
             const resp = await deletarrCurtida(user, position)
             Storage.remove('Musica Curtida')
             console.log(resp)
-            toast.dark('curtida deletada') 
+            toast.dark('curtida deletada')
         }
-               catch (err) {
+        catch (err) {
             if (err.response) toast.error(err.response.data.erro);
             else toast.error(err.message);
         }
@@ -62,12 +62,12 @@ export default function Index() {
 
     async function ParaDeSeguirArtista(position) {
         try {
-             
-             const user = Storage('usuario-logado').id
-             const resp = await ParaDeSeguir(user,position)
-             Storage.remove('Artista Seguido')
-             console.log(resp)
-            
+
+            const user = Storage('usuario-logado').id
+            const resp = await ParaDeSeguir(user, position)
+            Storage.remove('Artista Seguido')
+            console.log(resp)
+
         }
         catch (err) {
             if (err.response) toast.error(err.response.data.erro);
@@ -108,7 +108,7 @@ export default function Index() {
             let id = Storage('usuario-logado').id;
             let artistas = artista.id
             const resp = await seguirArtista(id, artistas)
-            Storage('Artista Seguido',resp)
+            Storage('Artista Seguido', resp)
             console.log(resp)
             toast.dark('vamosssss')
         }
@@ -119,7 +119,7 @@ export default function Index() {
 
     }
 
-    function sairClick(){
+    function sairClick() {
         Storage.remove('music')
         navigate('/LoginUsuario')
     }
@@ -139,12 +139,12 @@ export default function Index() {
     }
 
     useEffect(() => {
-         if(!Storage('usuario-logado')){
-                navigate('/LoginUsuario');
-            }
+        if (!Storage('usuario-logado')) {
+            navigate('/LoginUsuario');
+        }
         carregarArtista()
         carregarArtistaPorMusica()
- 
+
 
     }, [])
     //src={`${API_URL}/${artista.artista}`}
@@ -152,20 +152,21 @@ export default function Index() {
 
     return (
         <main className='comp-detalhe'>
-            <Cabecario/>
+            <Cabecario />
             <ToastContainer />
 
 
             <body>
                 <div className="comp-card">
                     <div className='aaaa'>
+                    <img onClick={()=> window.history.back()} className='volta' src='/images/seta-icon.png' />
 
                         <div className="imagem">
                             <img className="capa" src={`${API_URL}/${artista.artista}`}></img>
                         </div>
 
                         <div className='box-info'>
-                          
+
                             <h1 className="titulo-artista">{artista.nome}</h1>
 
                             <div className="genero">
@@ -177,17 +178,17 @@ export default function Index() {
                                 <h3>Sobre</h3>
                                 <p className='sinopse'>{artista.sobre} </p>
                             </div>
-                            <div onClick={()=> setSeguirr(!seguirr)}>
-                                {seguirr ? 
-                                <button className='botao' onClick={() => ParaDeSeguirArtista(artista.id) }>Seguindo</button>
-                                :
-                                <button className='botao' onClick={() => seguir(artista)}>Seguir</button>
-                            
-                            }
-                           
+                            <div onClick={() => setSeguirr(!seguirr)}>
+                                {seguirr ?
+                                    <button className='botao' onClick={() => ParaDeSeguirArtista(artista.id)}>Seguindo</button>
+                                    :
+                                    <button className='botao' onClick={() => seguir(artista)}>Seguir</button>
+
+                                }
+
 
                             </div>
-                           
+
 
                         </div>
 
@@ -197,30 +198,30 @@ export default function Index() {
 
                     {musica.map((item, index) => (
                         <div className="Card-addmusica" >
-                            <div className="section-music"  onClick={() => acessarMusica (idParam)}>
+                            <div className="section-music" onClick={() => acessarMusica(idParam)}>
                                 <img src={`${API_URL}/${item.imagem} `} className="imagem" ></img>
                                 <div className="atorenome">
-                                    <h1>{item.nome}</h1> 
+                                    <h1>{item.nome}</h1>
                                     <div className="border">
                                         <p>{item.genero}</p>
                                     </div>
-                                </div>                                                                                                                        
+                                </div>
                             </div>
-                            
-                            <div className="heart" onClick={() => setCurtir (!curtir )  } >
-                            {curtir  ?
-                            
-                                <img className="l" src="/images/coracao (4).png" alt="" onClick={() => deletarClick (item.id)(index)} />
-                                :
-                                    <img className="l" src="/images/coracao (2).png" alt="" onClick={() => curtirr (index)  } />}
+
+                            <div className="heart" onClick={() => setCurtir(!curtir)} >
+                                {curtir ?
+
+                                    <img className="l" src="/images/coracao (4).png" alt="" onClick={() => deletarClick(index)} />
+                                    :
+                                    <img className="l" src="/images/coracao (2).png" alt="" onClick={() => curtirr(index)} />}
 
                             </div>
-                            
+
                         </div>
 
                     ))}
 
- 
+
 
                 </div>
 
