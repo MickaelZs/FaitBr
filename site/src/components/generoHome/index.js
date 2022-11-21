@@ -17,7 +17,7 @@ export default function GeneroHome() {
   }
 
   function acessarGenero(){
-    navigate(`/CadastroUsuario`)
+    navigate(`/LoginUsuario`)
   }
 
   useEffect(() => {

@@ -3,8 +3,11 @@ import Menu from '../../components/menu'
 import { useState } from 'react'
 import { listarUsuario } from '../../api/usuarioAPI'
 import { useEffect } from 'react'
+import Storage from 'local-storage'
+import { useNavigate } from 'react-router-dom'
 
 export default function Consulta() {
+    const navigate = useNavigate()
 
     const [usuario, setUsuario] = useState([])
 
@@ -14,6 +17,9 @@ export default function Consulta() {
     }
 
     useEffect(() => {
+        if(!Storage('adm-logado')){
+            navigate('/LoginAdm');
+        }
         carregarUsuario()
 
     }, [])

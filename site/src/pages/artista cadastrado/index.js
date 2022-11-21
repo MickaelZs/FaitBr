@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-confirm-alert/src/react-confirm-alert.css'
-import storage from 'local-storage'
+import Storage from 'local-storage'
 import './index.scss'
 
 
@@ -30,6 +30,9 @@ export default function Index() {
 
 
     useEffect(() => {
+        if(!Storage('adm-logado')){
+            navigate('/LoginAdm');
+        } 
 
         carregarArtista();
     }, [])

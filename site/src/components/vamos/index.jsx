@@ -34,15 +34,15 @@ export default function Home() {
           <div className='card' >
 
             <div>
-              <img src='/images/teto.jpg' alt="" />
+              <img src='/images/kk.jpg' alt="" />
             </div>
 
             <div className='baixo'>
               <div className='circulo'>
-                <img src='/images/teto.jpg' alt="" />
+                <img src='/images/jo.jpg' alt="" />
               </div>
               <div className="text">
-                <h1>musica <br /> artista </h1>
+                <h1>Se For Amor <br /> João gomes </h1>
               </div>
             </div>
           </div>

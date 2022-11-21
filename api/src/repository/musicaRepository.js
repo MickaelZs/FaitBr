@@ -4,13 +4,17 @@ export async function buscarMusicaPorNome(nome) {
     
     const comando =
     `select id_musica,
-    id_genero,
-    id_artistas,
-    nm_musicas,
-    blob_musica,
-    img_imagem
+    tb_genero.id_genero idGenero,
+    nm_genero genero,
+    tb_artistas.id_artistas idArtista,
+    nm_artistas artista,
+    nm_musicas musica,
+    blob_musica audio,
+    img_imagem imagem
     from tb_musicas
-    where nm_musicas like ? ;
+    inner join tb_genero on tb_musicas.id_genero = tb_genero.id_genero
+     inner join tb_artistas on tb_musicas.id_artistas = tb_artistas.id_artistas
+    where nm_musicas like ?;
     
    `;
     

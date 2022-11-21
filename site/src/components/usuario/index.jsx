@@ -73,30 +73,7 @@ export default function Faixa() {
 
 
 
-          <div className='card-1'>
-            <img src="/images/hl.jpg" alt="" />
-            <div className='text'>
-              <h2>Hino dos mlk</h2>
-            </div>
-          </div>
-
-<div className='card-1'>
-          <AudioPlayer
-  audioFiles={[
-    {
-      src: "music/henriqueejulianooficial-completa-ai-part-marilia-mendonca-09f511dd.mp3",
-      title: "Hey Jude",
-      artist: "The Beatles"
-    }
-  ]}
-  rearrange={rearrangedPlayer}
- 
-  playIcon="/images/teto.jpg"
-  playHoverIcon="/beatlesPic.png"
-  pauseIcon="/beatlesPic.png"
-  pauseHoverIcon="beatlesPic.png"
-/>
-</div>
+         
 
           <div className='card-2'>
             <img src="/images/meca.png" alt="" />

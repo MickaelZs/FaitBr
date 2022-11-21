@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import Menu from '../../components/menu'
 import { listaArtista } from '../../api/cadastroArtistaAPI'
 import { listaGeneros } from '../../api/generoAPI'
-import storage from 'local-storage'
+import Storage from 'local-storage'
 
 import { alterarMusica, buscarMusicaPorId, cadastraMusica, enviarArquivoMusica, enviarImagemMusica, inserirImagemMusica, inserirMusica } from '../../api/musicaAPI'
 
@@ -22,6 +22,7 @@ export default function Cadastromsc() {
     const [musica, setMusica] = useState('')
     const [imagem, setImagem] = useState('')
     const [id, setId] = useState(0)
+    const navigate = useNavigate()
 
     const { idParam } = useParams();
 
@@ -82,6 +83,9 @@ export default function Cadastromsc() {
         carregarGeneros()
         if (idParam) {
             carregarMusica()
+        }
+        if(!Storage('adm-logado')){
+            navigate('/LoginAdm');
         }
 
 

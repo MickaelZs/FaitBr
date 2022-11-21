@@ -20,7 +20,7 @@ export default function Menu() {
     //     }
     // },[])
     function sairClick() {
-        storage.remove('usuario-logado')
+        storage.remove('adm-logado')
         navigate('/LoginAdm')
     }
 

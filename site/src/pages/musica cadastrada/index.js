@@ -2,7 +2,7 @@ import './index.scss'
 import Menu from '../../components/menu'
 import { listaArtista } from '../../api/cadastroArtistaAPI';
 import { useEffect, useState } from 'react'
-import storage from 'local-storage'
+import Storage from 'local-storage'
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { confirmAlert } from 'react-confirm-alert'
@@ -33,7 +33,9 @@ export default function Index() {
 
 
     useEffect(() => {
-
+        if(!Storage('adm-logado')){
+            navigate('/LoginAdm');
+        }
         carregarMusicaArtista();
     }, [])
 
@@ -67,7 +69,7 @@ export default function Index() {
     }
 
     return (
-        <main className='page page-consultar'>
+        <main className='page-consultar-musica'>
             <Menu />
             <div className='container1'>
 
@@ -85,7 +87,7 @@ export default function Index() {
                             {nomee.map(item => {
                                 return (
 
-                                    <div className='card1'>
+                                    <div className='card'>
                                         <div className='acoes'>
 
                                             <img src='/images/botao-editar.png' onClick={() => editarMusica(item.id_musica)} />

@@ -52,7 +52,7 @@ export default function Index() {
 
  
     return(
-        <div className='add'>
+        <div className='add-music'>
             <ToastContainer/>
             <div>
             <div className='caixa-busca'>             
