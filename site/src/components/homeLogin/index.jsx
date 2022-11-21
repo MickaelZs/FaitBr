@@ -31,7 +31,7 @@ export default function HomeLogin(props) {
     <main className="faixa-home-login">
       <div className='texto-cabecalho'>
         <div className='uee'>
-          <img classsName='logo' src="/images/nova-logo.png" alt="" width='85px' height='55px' />
+          <img classsName='logo1' src="/images/nova-logo.png" alt="" width='85px' height='55px' />
           {/* <img src="/images/lupa.png" alt=""  width="40px"/>
                 <img src="/images/playlist.png" alt=""  width="40px"/> */}
 
@@ -50,20 +50,20 @@ export default function HomeLogin(props) {
             </div>
 
             <div className='logoconta1'>
-            {!usuario.imagem &&
+              {!usuario.imagem &&
 
-<img className='usuario' src='/images/usuario.png'  onClick={() => acessarPerfil(usuario.id)}
+                <img className='usuario' src='/images/usuario.png' onClick={() => acessarPerfil(usuario.id)}
 
 
- />
-}
+                />
+              }
 
-{usuario.imagem &&
+              {usuario.imagem &&
 
-<img className='usuario' onClick={() => acessarPerfil(usuario.id)} src={`${API_URL}/${usuario.imagem}`}></img>
+                <img className='usuario' onClick={() => acessarPerfil(usuario.id)} src={`${API_URL}/${usuario.imagem}`}></img>
 
-}
-            
+              }
+
             </div>
 
           </div>

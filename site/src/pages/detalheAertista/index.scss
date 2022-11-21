@@ -80,6 +80,10 @@ body{
     color: white
 }
 
+.botao:hover{
+        transform: scale(1.1);
+}
+
 .botao{
     background-color:#ffffff ;
     font-weight: bold;
@@ -88,6 +92,7 @@ body{
       border: solid #ffffff 3px;
       width: 120px;
       height: 45px;
+      cursor: pointer;
    
       font-size: 19px;
       box-shadow: 2px 2px 10px #8d32e5;
@@ -155,12 +160,16 @@ body{
 
 .curtida{
     margin-top:2em;
-    margin-right:1em
+    margin-left:1em
 }
 
 .nome{
    color: #8d32e5;
    font-size: 1.2em;
+}
+
+.Card-addmusica:hover{
+    transform: scale(1.1);
 }
 
 .Card-addmusica{
@@ -172,6 +181,7 @@ body{
     margin: 30px;
     width: max-content;
     margin-left: 10em;
+    cursor: pointer;
     
     
     *{
