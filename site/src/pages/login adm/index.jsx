@@ -36,13 +36,13 @@ export default function Index() {
         
         <section className='faixa2'>
         <div class="label-float">
-        <input type="text" placeholder=" " value={email}  onChange={e => setEmail(e.target.value)}/> 
-       <label>Email</label>
+        <input type="text" placeholder="Email" value={email}  onChange={e => setEmail(e.target.value)}/> 
+       
           </div>
           <br/>
           <div class="label-float">
             <input type="text" placeholder="Senha" required  value={senha} onChange={e => setSenha(e.target.value)} />
-            <label>Senha</label>
+         
           </div>
           <button type='button' className='botao'  onClick={loginClick}> Entrar </button>
           </section>

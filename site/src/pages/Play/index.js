@@ -33,7 +33,7 @@ export default function Play(){
     return(
         <main className="pagina-playy-musica">
         <Cabecario/>
-        
+            <div className='box'></div>
            <section className='faixa-play'>
           {musica.map(item => 
             <div className='div-center'>

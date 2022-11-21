@@ -26,6 +26,7 @@ const customStyles = {
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
+    
     transform: 'translate(-50%, -50%)',
   },
 };
@@ -57,9 +58,24 @@ export default function Index() {
   }
 
   function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = '#8D32E5';
+     //references are now sync'd and can be accessed.
+     subtitle.style.color = '#8D32E5';
+    //  subtitle.style.backgroundColor = '#8D32E5';
+    //  subtitle.style.outline = 'none';
+    //  subtitle.style.border = 'solid 2px #000';
+    //  subtitle.style.borderRadius = '15px';
+    //  subtitle.style.height = '30px';
+    //  subtitle.style.width = '70px';
+
+    //  subtitlee.style.color = '#fff';
+    //  subtitlee.style.backgroundColor = '#8D32E5';
+    //  subtitlee.style.outline = 'none';
+    //  subtitlee.style.border = 'solid 2px #000';
+    //  subtitlee.style.borderRadius = '15px';
+    //  subtitlee.style.height = '30px';
+    //  subtitlee.style.width = '70px';
      
+    
   }
 
   function closeModal() {
@@ -330,16 +346,17 @@ export default function Index() {
         style={customStyles}
         contentLabel="Example Modal"
       >
+        <button className='botaoModal' ref={(_subtitle) => (subtitle = _subtitle)} onClick={closeModal}>Fechar</button>
         <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Criar Playlist</h2>
-        <button className='botaoModal' onClick={closeModal}>Fechar</button>
+      
         <br />
 
 
 
-        <input type='text' value={nome} onChange={e => setNome(e.target.value)} />
-        <br />
+        <input type='text' value={nome}  onChange={e => setNome(e.target.value)} />
+        
 
-        <button className='botaoModal' onClick={salvarClick} >Continuar</button>
+        <button className='botaoModal'   onClick={salvarClick} >Continuar</button>
 
 
       </Modal>

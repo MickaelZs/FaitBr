@@ -57,7 +57,7 @@ export default function Index() {
       <body>
         <div>
           <div className='caixa-busca'>
-            <input type="text" placeholder='Buscar artista por nome' value={buscar} onChange={e => setBuscar(e.target.value)} />
+            <input className="inptsss" type="text" placeholder='Buscar artista por nome' value={buscar} onChange={e => setBuscar(e.target.value)} />
             <img src='/images/procurar.png' onClick={filtrar} />
           </div>
 

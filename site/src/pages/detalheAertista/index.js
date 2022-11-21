@@ -22,7 +22,7 @@ export default function Index() {
 
     const { idParam } = useParams()
     const navigate = useNavigate()
-
+    
 
 
 
@@ -150,7 +150,7 @@ export default function Index() {
     //src={`${API_URL}/${artista.artista}`}
 
 
-    return (
+    return ( 
         <main className='comp-detalhe'>
             <Cabecario />
             <ToastContainer />
@@ -159,7 +159,7 @@ export default function Index() {
             <body>
                 <div className="comp-card">
                     <div className='aaaa'>
-                    <img onClick={()=> window.history.back()} className='volta' src='/images/seta-icon.png' />
+                    <img onClick={()=> window.history.back()} className='volta' src='/images/seta-icon.png' width='10px' />
 
                         <div className="imagem">
                             <img className="capa" src={`${API_URL}/${artista.artista}`}></img>

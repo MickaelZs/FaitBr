@@ -19,8 +19,11 @@ export default function Index() {
     const navigate = useNavigate()
 
     function sairClick() {
-        Storage.remove('usuario-logado')
-        navigate('/')
+        toast.success('Você deslogou!')
+        setTimeout(() => {
+            Storage.remove('usuario-logado')
+            navigate('/')    
+        }, 1500);
     }
 
     async function carregarUsuario() {
@@ -72,6 +75,7 @@ export default function Index() {
     return (
         <section>
             <Cabecario />
+            <ToastContainer/>
             <main className='pagina-informacao-usu'>
 
 

@@ -2,9 +2,9 @@
     height: 100vh;
     display: flex;
    
-    justify-content: space-between;
+    
     align-items: center;
-    flex-direction: column;
+        flex-direction: column;
     background-color: #1e1e1e;
     
     color: #fff;
@@ -17,7 +17,15 @@
       text-align: center;
       align-items: center;
     }
-    
+    .faixa-play{
+      display:  flex;
+      justify-content: center;
+      align-items: center;
+     
+    }
+    .box{
+      height: 8rem;
+    }
 
     .div-center{
         display: flex;

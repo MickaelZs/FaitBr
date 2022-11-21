@@ -62,7 +62,7 @@ export default function Cabecario() {
                     <img src='/images/playlist.png' width="40px" onClick={acessarPlaylist}></img>
                 </div>
 
-                <div className='logoconta1'>
+                <div className='logoconta1' onClick={() => acessarPerfil(usuario.id)}>
                     {!usuario.imagem &&
 
                         <img className='usuario' src='/images/usuario.png' />
@@ -70,7 +70,7 @@ export default function Cabecario() {
 
                     {usuario.imagem &&
 
-                        <img className='usuario' onClick={() => acessarPerfil(usuario.id)} src={`${API_URL}/${usuario.imagem}`}></img>
+                        <img className='usuario'  src={`${API_URL}/${usuario.imagem}`}></img>
 
                     }
 

@@ -40,7 +40,7 @@ export default function Index() {
   return (
     <div className="pagina-loginUsuario">
 
-      <div className="faixa1">
+      <div className="faixa">
 
         <img onClick={voltar} className='voltar' src='/images/seta-icon-branca.png' />
 
@@ -61,21 +61,17 @@ export default function Index() {
           <br />
 
           <a href="/cadastroUsuario" className='corno'>Fazer Cadastro</a>
-          <div className='err'>
-
-          </div>
+        
 
 
           <br />
 
-          <button type="button" onClick={loginClick} > Entrar </button>
+          <button type="button" className='button22' onClick={loginClick} > Entrar </button>
 
         </div>
 
 
-        <div className="imagemm">
-          <img src="images/loginUsuario.png" className='imagemfdp' ></img>
-        </div>
+       
 
 
 

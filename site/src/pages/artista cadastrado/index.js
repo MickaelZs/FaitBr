@@ -74,10 +74,13 @@ export default function Index() {
 
 
     return (
-        <main className='page page-consultar'>
-            <Menu />
+        <main className='page-artista-c'>
+            
             <ToastContainer />
             <div className='container1'>
+            
+            <div className='menu'><Menu /></div>
+
 
 
                 <div className='conteudo1'>
@@ -104,7 +107,7 @@ export default function Index() {
 
 
                                         </div>
-                                        <div>
+                                        <div className='text'>
 
                                             <img className='capa' src={`${API_URL}/${item.artista}`} />
 
