@@ -83,16 +83,16 @@ export default function Index() {
 
                             {!usuario.imagem &&
 
-                                <img className='usuarioo' src='/images/usuario.png' />
+                                 <img  src={mostrarImagem(imagem)} className='usuarioo' alt="" />
                             }
 
                             {usuario.imagem &&
-
-                                <img className='usuarioo' src={`${API_URL}/${usuario.imagem}`} />
-
+                            
+                                    <img className='usuarioo' src={`${API_URL}/${usuario.imagem}`} />
+                               
                             }
 
-                            <input type='file' id='imagemCapa' onChange={e => setImagem(e.target.files[0])} ></input>
+                            <input type='file' id='imagemCapa' onChange={e => setImagem(e.target.files[0])}  src={mostrarImagem(imagem)} ></input>
 
 
                         </div>

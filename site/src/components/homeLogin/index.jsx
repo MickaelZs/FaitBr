@@ -4,6 +4,7 @@ import './index.scss'
 import { useCallback, useEffect, useState } from 'react'
 
 import { useNavigate } from 'react-router-dom'
+import { buscarUsuarioPorId } from '../../api/usuarioAPI'
 
 export default function HomeLogin(props) {
   const navigate = useNavigate()
@@ -15,6 +16,15 @@ export default function HomeLogin(props) {
     const id = Storage('usuario-logado').id
     navigate(`/informacao/${id}`)
   }
+
+  async function carregarUsuario() {
+    const id = Storage('usuario-logado').id
+    const reso = await buscarUsuarioPorId(id)
+    setUsuario(reso)
+}
+useEffect(() => {
+carregarUsuario()
+},[])
 
   function acessarPlaylist() {
 
@@ -52,7 +62,7 @@ export default function HomeLogin(props) {
             <div className='logoconta1'>
             {!usuario.imagem &&
 
-<img className='usuario' src='/images/usuario.png'  onClick={() => acessarPerfil(usuario.id)}
+<img className='usuario' src='/images/usuario (2).png'  onClick={() => acessarPerfil(usuario.id)}
 
 
  />

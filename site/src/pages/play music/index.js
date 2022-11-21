@@ -34,7 +34,7 @@ export default function Index() {
   rearrange={rearrangedPlayer}
   playerWidth="10rem"
   iconSize="10rem"
-  playIcon="/beatlesPic.png"
+  playIcon="/images/teto.jpg"
   playHoverIcon="/beatlesPic.png"
   pauseIcon="/beatlesPic.png"
   pauseHoverIcon="beatlesPic.png"

@@ -18,7 +18,7 @@ export default function Play(){
         console.log(x)
     }
     async function carregarMusica(){
-        const x = await buscarMusicaPorId()
+        const x = await buscarMusicaPorId(idParam)
         setMusica(x)
         console.log(x)
     }
@@ -38,7 +38,7 @@ export default function Play(){
           {musica.map(item => 
             <div className='div-center'>
                 <img src={`${API_URL}/${item.imagem}`} className='imagem'></img>
-                <div className="h1h3">
+                <div className="text">
                 <h1>{item.nome}</h1>
                 <h3>{item.genero}</h3>
                 </div>
@@ -51,20 +51,7 @@ export default function Play(){
             )}
            
 
-            <div>
-            {genero.map(item =>
-            <div className='cardMusica'>
-                <img src={`${API_URL}/${item.imagem}`} alt="" width='20px' />
-                <div className='text'>
-                <h1>{item.nome}</h1>
-                <h3>{item.genero}</h3>
-
-                </div>
-                
-            </div>
-                
-                )}
-            </div>
+          
             </section>
            
         </main>

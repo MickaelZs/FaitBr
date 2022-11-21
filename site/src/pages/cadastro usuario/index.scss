@@ -59,7 +59,7 @@
       
       .label-float input{
         color: white;
-        
+        background-color: #ffffff00;
         border: 1px solid lightgrey;
         border-radius: 5px;
         outline: none;
@@ -111,6 +111,13 @@
             transition: all ease-in 0.2s;
         
      }
+     .label-float input:focus + label,
+    .label-float input:not(:placeholder-shown) + label{
+      font-size: 13px;
+      top: 0;
+      color: #ffffff;
+    }
+
 
      .faixa-input{
         display: flex;
@@ -135,7 +142,7 @@
     @media(max-width: 1690px){
       .label-float input{
         color: white;
-        background-color: #8d32e5;
+        // background-color: #8d32e5;
         border: 1px solid lightgrey;
         border-radius: 5px;
         outline: none;

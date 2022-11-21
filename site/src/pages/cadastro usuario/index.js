@@ -65,24 +65,24 @@ export default function Index() {
           <div className="faixa-input">
           <div class="label-float">
         <input type="text" placeholder="Nome" value={nome} onChange={e => setNome(e.target.value)}/>
-        
+        <label>Nome</label>
           </div>
           <br/>
           <div class="label-float">
             <input type="date" placeholder=" " value={nasc} onChange={e => setNasc(e.target.value)} required/>
-           
+            <label>Nascimento</label>
           </div>
 
           <br/>
 
           <div class="label-float">
         <input type="text" placeholder=" " value={email} onChange={e => setEmail(e.target.value)}/>
-      
+        <label>Email</label>
           </div>
           <br/>
           <div class="label-float">
             <input type="password" placeholder=" " value={senha} onChange={e => setSenha(e.target.value)} required/>
-           
+           <label>Senha</label>
           </div>
 
           <br/>

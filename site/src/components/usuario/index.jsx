@@ -1,15 +1,26 @@
 import './index.scss'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import AudioPlayer from 'react-audio-player'
+import AudioPlayer from 'react-modular-audio-player' ;
+
 
 
 export default function Faixa() {
-
-  // function tocar(a) {
-  //   return a = src='henriqueejulianooficial-completa-ai-part-marilia-mendonca-09f511dd.mp3'
-  //   return a
+  // function tocar (){
+  //     return   img.src ="music/henriqueejulianooficial-completa-ai-part-marilia-mendonca-09f511dd.mp3"
   // }
+
+  const rearrangedPlayer = [
+    {
+      className: "beatles",
+      style: { cursor: "pointer" },
+      innerComponents: [
+        {
+          type: "play"
+        }
+      ]
+    }
+  ];
 
   const responsive = {
     desktop: {
@@ -40,7 +51,7 @@ export default function Faixa() {
           responsive={responsive}
           ssr={true}
           infinite={true}
-          autoPlaySpeed={3000}
+          autoPlaySpeed={4000}
           keyBoardControl={true}
           transitionDuration={500}
 
@@ -52,7 +63,7 @@ export default function Faixa() {
         >
 
 
-          <div className='card-1' >
+          <div className='card-1'  >
 
             <img src="/images/hl.jpg" alt="" />
             <div className='text'>
@@ -68,6 +79,24 @@ export default function Faixa() {
               <h2>Hino dos mlk</h2>
             </div>
           </div>
+
+<div className='card-1'>
+          <AudioPlayer
+  audioFiles={[
+    {
+      src: "music/henriqueejulianooficial-completa-ai-part-marilia-mendonca-09f511dd.mp3",
+      title: "Hey Jude",
+      artist: "The Beatles"
+    }
+  ]}
+  rearrange={rearrangedPlayer}
+ 
+  playIcon="/images/teto.jpg"
+  playHoverIcon="/beatlesPic.png"
+  pauseIcon="/beatlesPic.png"
+  pauseHoverIcon="beatlesPic.png"
+/>
+</div>
 
           <div className='card-2'>
             <img src="/images/meca.png" alt="" />

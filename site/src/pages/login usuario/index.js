@@ -1,6 +1,7 @@
 import { loginUsuario } from '../../api/usuarioAPI';
 import {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 import './index.scss'
 import Storage from 'local-storage'
 
@@ -9,7 +10,7 @@ export default function Index() {
 
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
-  const [erro, setErro] = useState('');
+  // const [erro, setErro] = useState('');
   const navigate = useNavigate();
 
   
@@ -20,26 +21,25 @@ export default function Index() {
   },[])
 
 async function loginClick() {
-
   try{
     const r = await loginUsuario(email,senha)
     Storage('usuario-logado', r)
-    navigate('/HomeLoginFeito');
+    toast.dark('Usuário logado', { autoClose: 400, hideProgressBar: true });
+    setTimeout(() => {
+      navigate('/HomeLoginFeito');
+    },1500)
+   
 
   }
-
-
-
-  
-  catch(err){
-    if(err.response.status === 401){
-        setErro(err.response.data.erro)
-    }
+  catch (err) {
+    console.log(err)
+    toast.error(err.response.data.erro);
 }
 }
 
     return (
       <div className="pagina-loginUsuario">
+        <ToastContainer/>
 
 <div className="faixa1">
       <div className='faixa-input'>
@@ -59,14 +59,17 @@ async function loginClick() {
 <br/>
 
 <a href="/cadastroUsuario" className='corno'>Fazer Cadastro</a>
-<div className='err'>
-{erro}
-</div>
+
 
 
 <br/>
-
+<div>
 <button type="button" onClick={loginClick} > Entrar </button>
+
+</div>
+
+
+
 
 
 

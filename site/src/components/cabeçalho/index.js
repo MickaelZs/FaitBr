@@ -65,7 +65,7 @@ export default function Cabecario() {
                 <div className='logoconta1'>
                 {!usuario.imagem &&
 
-<img className='usuario' src='/images/usuario.png' />
+<img className='usuario' src='/images/usuario (2).png' />
 }
 
 {usuario.imagem &&
