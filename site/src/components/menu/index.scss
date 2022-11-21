@@ -20,6 +20,8 @@
 
     .logo{
         margin-bottom: 4em;
+        cursor: pointer;
+
     }
     
     .div-minimae{
@@ -29,9 +31,15 @@
         align-items: center;
 
     }
+    .imagem-logo:hover{
+        transform: scale(1.1);
 
+    }
+    
     .imagem-logo{
         width: 100px;
+        cursor: pointer;
+
     }
     
     

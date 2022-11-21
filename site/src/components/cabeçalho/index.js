@@ -36,11 +36,11 @@ export default function Cabecario() {
         navigate(`/playlist`)
     }
 
-    function irPraHome(){
-        if(Storage('usuario-logado').id){
-        navigate(`/HomeLoginFeito`)
+    function irPraHome() {
+        if (Storage('usuario-logado').id) {
+            navigate(`/HomeLoginFeito`)
         }
-        else{
+        else {
             navigate(`/`)
         }
     }
@@ -63,19 +63,19 @@ export default function Cabecario() {
                 </div>
 
                 <div className='logoconta1'>
-                {!usuario.imagem &&
+                    {!usuario.imagem &&
 
-<img className='usuario' src='/images/usuario (2).png' />
-}
+                        <img className='usuario' src='/images/usuario.png' />
+                    }
 
-{usuario.imagem &&
+                    {usuario.imagem &&
 
-<img className='usuario' onClick={() => acessarPerfil(usuario.id)} src={`${API_URL}/${usuario.imagem}`}></img>
+                        <img className='usuario' onClick={() => acessarPerfil(usuario.id)} src={`${API_URL}/${usuario.imagem}`}></img>
 
-}
-                    
+                    }
+
                 </div>
-                
+
             </div>
 
         </main>

@@ -20,7 +20,7 @@ export default function Index() {
 
     function sairClick() {
         Storage.remove('usuario-logado')
-        navigate('/LoginUsuario')
+        navigate('/')
     }
 
     async function carregarUsuario() {

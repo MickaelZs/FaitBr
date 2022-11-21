@@ -15,12 +15,11 @@
         height: 85vh;
         width: 80vw;
         box-shadow: 0px 0px 10px white;
+
+        
     }
     
-
     
-
-
 
 
     .label-float{
@@ -90,7 +89,19 @@
         align-items: center;
         flex-direction:column;
         width: 100%;
+
+        
      }
+
+     .voltar{
+      display:flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width:3em;
+      height: 3em;
+      margin-top: -30em;
+      margin-left: 2em;
+    }
 
      .faixa-input a{
         color: #ffffff;

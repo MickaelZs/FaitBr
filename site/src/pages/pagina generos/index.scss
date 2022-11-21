@@ -36,6 +36,11 @@
     align-items: center;
  }
 
+ .card:hover{
+    transform: scale(1.1);
+
+ }
+
 .Artistas{
    
     display: flex;
@@ -59,7 +64,8 @@
        20px;
         display: flex;
         flex-direction: row;
-    
+        cursor:pointer;
+
 
     }
 
