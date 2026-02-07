@@ -14,6 +14,7 @@ import CardGenero from '../../components/genero';
 import Faixa from '../../components/usuario';
 import CardArtistaHome from '../../components/artista';
 import GeneroHome from '../../components/generoHome';
+import Cabecario from '../../components/cabeçalho';
 
 const  customStyles  =  { 
   content : { 
@@ -70,43 +71,41 @@ function closeModal() {
 
   return (
 
-    <div className='pagina-home'>
-      <Home/>
-      
-       <Faixa/>
-       <CardArtistaHome/>
-        <Faixa/>
-       
-       <GeneroHome/>
+   
 
-      <div className='rodape'>
+      <div className="landing">
+     <Cabecario/>
 
-        <div>
-          <img className='logo' src='./images/nova-logo.png'/>
+      {/* HERO */}
+      <section className="landing__hero">
+        <div className="hero-card"></div>
+      </section>
+
+      {/* FEATURES */}
+      <section className="landing__section">
+        <h2>Recursos Incríveis</h2>
+        <p>Tudo que você precisa para aproveitar sua música ao máximo</p>
+
+        <div className="cards blue">
+          <div className="card"></div>
+          <div className="card"></div>
+          <div className="card"></div>
         </div>
+      </section>
 
-        <div className='texto-rodape' >
-          <h3>Redes Sociais:</h3>
-          <p>Instagram</p>
-          <p>fitbr2023@gmail.com</p>
+      {/* GENRES */}
+      <section className="landing__section">
+        <h2>Explore por Gênero</h2>
+        <p>Milhões de músicas em todos os estilos que você ama</p>
+
+        <div className="cards dark">
+          <div className="card"></div>
+          <div className="card"></div>
+          <div className="card"></div>
         </div>
-
-        <div>
-        <h3>Desenvolvedores:</h3>
-          <p>João Paulo</p>
-          <p>Mickael V.</p>
-          <p>Lucas Tatsuo</p>
-          <p>Cauã G.</p>
-          <p>Cauan R.</p>
-        </div>
-
-        <div>
-          <h3>Apoiadores:</h3>
-          <img src='/images/logo-frei.png'  width='10px'/>
-        </div>
-
-      </div>
-
+      </section>
     </div>
+     
+    
   );
 }

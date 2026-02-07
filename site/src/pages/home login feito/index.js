@@ -1,25 +1,24 @@
 import './index.scss'
 import Storage from 'local-storage'
-import Carousel from "react-multi-carousel";
+
 import "react-multi-carousel/lib/styles.css";
 
 import CardGenero from '../../components/genero';
-import CardArtistas from '../../components/artistas';
+
 import { useEffect, useState } from 'react';
 import { listaArtista } from '../../api/cadastroArtistaAPI';
 import { listaGeneros } from '../../api/generoAPI';
 import { useNavigate, useParams } from 'react-router-dom';
 import { API_URL } from '../../api/config';
 import { buscarUsuarioPorId } from '../../api/usuarioAPI';
-import Perfil from '../../components/perfilUsuario';
-import { listarCurtidas } from '../../api/musicaAPI';
-import Cabeçario from '../../components/cabeçalho';
-import CardMusica from '../../components/coracao';
-import AudioPlayer from 'react-audio-player'
 
-import HomeLogin from '../../components/homeLogin';
+import { listarCurtidas } from '../../api/musicaAPI';
+
+
+
 import Faixa from '../../components/usuario'
 import ArtistaSeguido from '../../components/artistas';
+import Cabecario from '../../components/cabeçalho';
 
 
 
@@ -116,10 +115,7 @@ let playlist = [
   return (
 
     <div className='pagina-home-login-feito'>
-      
-      <HomeLogin usuario={usuario} />
-
-
+      <Cabecario/>
       
       <Faixa/>
       <CardGenero/>

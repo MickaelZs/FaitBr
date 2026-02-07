@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import './index.scss'
 import Storage from 'local-storage'
+import Cabecario from '../../components/cabeçalho';
 
 export default function Index() {
 
@@ -16,7 +17,7 @@ export default function Index() {
 
   useEffect(() => {
     if (Storage('usuario-logado')) {
-      navigate('/HomeLoginFeito')
+      navigate('/')
     }
   }, [])
 
@@ -25,7 +26,7 @@ export default function Index() {
 
     const r = await loginUsuario(email, senha)
     Storage('usuario-logado', r)
-    navigate('/HomeLoginFeito');
+    navigate('/');
 
 
 
@@ -39,50 +40,38 @@ export default function Index() {
 
   return (
     <div className="pagina-loginUsuario">
+      <Cabecario />
 
-      <div className="faixa">
+      <div className="login-container">
 
-        <img onClick={voltar} className='voltar' src='/images/seta-icon-branca.png' />
+      <div className="login">
+      <div className="login__left">
+        <h1>Bem-vindo de volta  </h1>
 
-        <div className='faixa-input'>
-
-
-          <div class="label-float">
-            <input type="text" placeholder=" " value={email} onChange={e => setEmail(e.target.value)} />
-            <label>Email</label>
-          </div>
-          <br />
-          <div class="label-float">
-            <input type="password" placeholder=" " required value={senha} onChange={e => setSenha(e.target.value)} />
-            <label>senha</label>
-
-          </div>
-
-          <br />
-
-          <a href="/cadastroUsuario" className='corno'>Fazer Cadastro</a>
-        
-
-
-          <br />
-
-          <button type="button" className='button22' onClick={loginClick} > Entrar </button>
-
+        <div className="login__field">
+          <label>Email</label>
+          <input type="email" placeholder="Example@email.com"  value={email} onChange={e => setEmail(e.target.value)}/>
         </div>
 
+        <div className="login__field">
+          <label>Password</label>
+          <input type="password" placeholder="8 characters" value={senha} onChange={e => setSenha(e.target.value)} />
+        </div>
 
-       
+        <button className="login__button" onClick={loginClick} >Entrar</button>
 
+        <div className="login__divider">
+          <span>Ou</span>
+        </div>
 
-
-
+        <a href="/CadastroUsuario" className="login__link">
+          Não tem uma conta? Cadastre-se        
+          </a>
       </div>
 
-
-
-
-
-
+      <div className="login__right" />
+    </div>
+    </div>
     </div>
 
   );

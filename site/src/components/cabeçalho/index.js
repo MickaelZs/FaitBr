@@ -38,45 +38,78 @@ export default function Cabecario() {
 
     function irPraHome() {
         if (Storage('usuario-logado').id) {
-            navigate(`/HomeLoginFeito`)
+            navigate(`/`)
         }
         else {
             navigate(`/`)
         }
     }
 
+    function handlePerfilClick() {
+  const usuarioLogado = Storage('usuario-logado');
+
+  if (!usuarioLogado) {
+    navigate('/LoginUsuario');
+    return;
+  }
+
+  navigate(`/informacao/${usuarioLogado.id}`);
+}
+
     return (
         <main className='cabecalho'>
 
-            <div className='logo' onClick={irPraHome}>
-                <img src='/images/nova-logo.png' width="100px" ></img>
-            </div>
+            
 
-            <div className='div1-log'>
+            <header class="music-header">
 
-                <div className='lupa' onClick={acessarBuscar}>
-                    <img src='/images/lupa.png' width="75px"></img>
+                <div class="left" onClick={irPraHome}>
+                    <button class="play-btn">
+                        <svg viewBox="0 0 24 24">
+                            <polygon points="8,5 19,12 8,19"></polygon>
+                        </svg>
+                    </button>
                 </div>
 
-                <div className='playlist1'>
-                    <img src='/images/playlist.png' width="40px" onClick={acessarPlaylist}></img>
+
+                <div class="center">
+                    <div class="search-bar">
+                        <input type="text" placeholder="" />
+                        <svg class="search-icon" viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+                        </svg>
+                    </div>
                 </div>
 
-                <div className='logoconta1' onClick={() => acessarPerfil(usuario.id)}>
-                    {!usuario.imagem &&
 
-                        <img className='usuario' src='/images/usuario.png' />
+                <div class="right">
+                    <button class="icon-btn" onClick={acessarPlaylist}>
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9 18V5l12-2v13"></path>
+                            <circle cx="6" cy="18" r="3"></circle>
+                            <circle cx="18" cy="16" r="3"></circle>
+                        </svg>
+                    </button>
+
+                    <button className="icon-btn" onClick={handlePerfilClick}>
+                        {!usuario.imagem &&
+
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="8" r="4"></circle>
+                            <path d="M4 21c0-4 4-7 8-7s8 3 8 7"></path>
+                        </svg>
                     }
 
                     {usuario.imagem &&
 
-                        <img className='usuario'  src={`${API_URL}/${usuario.imagem}`}></img>
+                        <img className='usuario' src={`${API_URL}/${usuario.imagem}`}></img>
 
                     }
-
+                        
+                    </button>
                 </div>
-
-            </div>
+            </header>
 
         </main>
     )

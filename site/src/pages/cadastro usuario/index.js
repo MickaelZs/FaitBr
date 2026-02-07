@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { cadastroUsuario, loginUsuario, EnviarEmail } from '../../api/usuarioAPI';
 import Storage from 'local-storage'
+import Cabecario from '../../components/cabeçalho';
 
 export default function Index() {
   const [nome, setNome] = useState('');
@@ -21,7 +22,7 @@ export default function Index() {
     try {
       const r = await cadastroUsuario(email, senha)
       Storage('usuario-logado', r)
-      navigate('/HomeLoginFeito');
+      navigate('/');
     }
 
     catch (err) {
@@ -38,7 +39,7 @@ export default function Index() {
     try {
       const r = await cadastroUsuario(nome, nasc, email, senha)
       Storage('usuario-logado', r)
-      navigate('/HomeLoginFeito');
+      navigate('/');
       await EnviarEmail(nome, email);
 
     }
@@ -55,55 +56,49 @@ export default function Index() {
 
 
   return (
-    <div className="pagina-cadastroUsuarioo">
+    
+    <div className="cadastroUsuario">
+      <Cabecario />
 
-      <ToastContainer />
+      <div className="cadastro">
+      <div className="register">
+      <div className="register__left">
+        <h1>Cria uma conta</h1>
 
-      <div className="faixa1">
-
-      <div className="faixa-input">
-          <img onClick={()=> window.history.back()} className='voltar1' src='/images/seta-icon-branca.png' />
-
-          <div class="label-float">
-            <input type="text" placeholder="Nome" value={nome} onChange={e => setNome(e.target.value)} />
-
-          </div>
-          <br />
-          <div class="label-float">
-            <input type="date" placeholder="" value={nasc} onChange={e => setNasc(e.target.value)} required />
-
-          </div>
-
-          <br />
-
-          <div class="label-float">
-            
-            <input type="text" placeholder=" Email" value={email} onChange={e => setEmail(e.target.value)} />
-
-          </div>
-          <br />
-          <div class="label-float">
-            <input type="password" placeholder="Senha " value={senha} onChange={e => setSenha(e.target.value)} required />
-
-          </div>
-
-          <br />
-
-          <button type="button" className="botao1" onClick={salvarClick}> Entrar </button>
-
-
+        <div className="field">
+          <label>Nome</label>
+          <input type="text" placeholder="Nome completo" value={nome} onChange={e => setNome(e.target.value)} />
         </div>
 
-        <div className="imagemm">
-          <img src="images/cadastro.png" className='imagemfdp' ></img>
+        <div className="field">
+          <label>Data de Nascimento</label>
+          <input type="date" placeholder="Data de nascimento" value={nasc} onChange={e => setNasc(e.target.value)} />
         </div>
 
+        <div className="field">
+          <label>Email</label>
+          <input type="email" placeholder="Example@email.com" value={email} onChange={e => setEmail(e.target.value)} />
+        </div>
 
-        
+        <div className="field">
+          <label>Senha</label>
+          <input type="password" placeholder="8 characters" value={senha} onChange={e => setSenha(e.target.value)} />
+        </div>
 
+        <button className="btn-primary" onClick={salvarClick}>Inscreva-se</button>
 
+        <div className="divider">
+          <span>Ou</span>
+        </div>
 
+        <a href="/LoginUsuario" className="login-link">
+          Já tenho uma conta
+        </a>
       </div>
+
+      <div className="register__right" />
+    </div>
+     </div>
 
     </div>
   );

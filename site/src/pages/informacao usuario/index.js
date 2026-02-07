@@ -76,219 +76,67 @@ export default function Index() {
         <section>
             <Cabecario />
             <ToastContainer/>
-            <main className='pagina-informacao-usu'>
+            <main className="profile-page">
+  <div className="profile-card">
+
+    {/* COLUNA ESQUERDA */}
+    <div className="profile-avatar-section">
+      <div className="profile-avatar" onClick={escolherImagem}>
+        {!usuario.imagem && (
+          <img src={mostrarImagem(imagem)} alt="Avatar usuário" />
+        )}
+
+        {usuario.imagem && (
+          <img src={`${API_URL}/${usuario.imagem}`} alt="Avatar usuário" />
+        )}
+
+        <input
+          type="file"
+          id="imagemCapa"
+          onChange={e => setImagem(e.target.files[0])}
+        />
+      </div>
+
+      <div className="profile-actions">
+        <button className="btn-primary" onClick={salvarImagem}>
+          Salvar imagem
+        </button>
+        <button className="btn-secondary" onClick={sairClick}>
+          Sair
+        </button>
+      </div>
+    </div>
+
+    {/* COLUNA DIREITA */}
+    <div className="profile-info">
+      <div className="info-group">
+        <div className="info-item">
+          <h1>Nome</h1>
+          <h3>{usuario.nome}</h3>
+        </div>
+
+        <div className="info-item">
+          <h1>Nascimento</h1>
+          <h3>{usuario.nascimento}</h3>
+        </div>
+      </div>
+
+      <div className="info-group">
+        <div className="info-item">
+          <h1>Email</h1>
+          <h3>{usuario.email}</h3>
+        </div>
+
+        <div className="info-item">
+          <h1>Senha</h1>
+          <h3>••••••••</h3>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
 
-
-
-                <div className='faixa-usuario'>
-                    <div className='f'>
-
-                        <div className='usuarioo' onClick={escolherImagem}>
-
-                            {!usuario.imagem &&
-
-                                 <img  src={mostrarImagem(imagem)} className='usuarioo' alt="" />
-                            }
-
-                            {usuario.imagem &&
-                            
-                                    <img className='usuarioo' src={`${API_URL}/${usuario.imagem}`} />
-                               
-                            }
-
-                            <input type='file' id='imagemCapa' onChange={e => setImagem(e.target.files[0])}  src={mostrarImagem(imagem)} ></input>
-
-
-                        </div>
-                        <div>
-                            <button className='botaoo' onClick={salvarImagem} >Salvar Imagem</button>
-                            <button className='botaoo' onClick={sairClick}>Sair</button>
-                        </div>
-
-                    </div>
-
-                    <div className='faixa3'>
-                        <div>
-
-
-                            <div className='faixa3-div1'>
-                                <h1>Nome:</h1>
-                                <h3>{usuario.nome}</h3>
-                            </div>
-
-
-                            <div className='faixa3-div1'>
-                                <h1>Nascimento:</h1>
-                                <h3>{usuario.nascimento}</h3>
-                            </div>
-
-                        </div>
-                        <div>
-
-                            <div className='faixa3-div2'>
-
-                                <div>
-                                    <h1>Email:</h1>
-                                    <h3> {usuario.email}</h3>
-                                </div>
-
-
-
-
-
-
-                            </div>
-
-                            <div className='faixa3-div2'>
-                                <div>
-                                    <h1>Senha:</h1>
-                                    <h3>{usuario.senha}</h3>
-                                </div>
-
-
-
-                            </div>
-                        </div>
-
-
-                    </div>
-
-
-
-
-
-                </div>
-
-
-
-
-
-                {/* <Cabeçario usuario={usuario} />
-
-            <section className='faixa2'>
-
-                <div className='faixa1'>
-
-                    <div className='faixa1-div'>
-
-                        <div className='usuarioo' onClick={escolherImagem}>
-
-                            {!imagem &&
-
-                                <img className='usuarioo'  src={`${API_URL}/${usuario.imagem}`} />
-                            }
-
-                            {imagem &&
-
-                                <img className='usuarioo' src={mostrarImagem(imagem)} />
-
-                            }
-
-                            <input type='file' id='imagemCapa' onChange={e => setImagem(e.target.files[0])} ></input>
-
-                        </div>
-                        <button className='botaoo' onClick={salvarImagem}>Salvar Imagem</button>
-                        <div  >
-                        <button className='botaoo' onClick={sairClick}>sair</button>
-                    </div>
-
-
-                    </div>
-
-                    <div>
-                       
-
-                       
-                    </div>
-                </div>
-
-          
-
-
-                <div className='faixa3'>
-                    <div>
-
-
-                    <div className='faixa3-div1'>
-                        <h1>Nome:</h1>
-                        <h3>{usuario.nome}</h3>
-                    </div>
-
-
-                    <div className='faixa3-div1'>
-                        <h1>Nascimento:</h1>
-                        <h3>{usuario.nascimento}</h3>
-                    </div>
-                    </div>
-                    <div>
-
-                    <div className='faixa3-div2'>
-
-                        <div>
-                            <h1>Email:</h1>
-                            <h3> {usuario.email}</h3>
-                        </div>
-
-
-
-
-
-                        
-                    </div>
-
-                    <div className='faixa3-div2'>
-                        <div>
-                            <h1>Senha:</h1>
-                            <h3>{usuario.senha}</h3>
-                        </div>
-
-                      
-
-                    </div>
-                    </div>
-                    
-
-                </div>
-
-                <hr /> */}
-                {/* 
-                <div className='faixa3'>
-                    <div className='faixa3-div1'>
-                        <h1>Informações extras</h1>
-                        <h3>descrição:</h3>
-                        <input type='text' placeholder='escreva algo' />
-                    </div>
-
-                    <div>
-                        <h5>Adicionar uma foto de perfil:</h5>
-
-                        <div className='border-image' onClick={escolherImagem}>
-
-                            {!imagem &&
-
-                                <img src='/images/image-bottom212.svg' width='170px' />
-                            }
-
-                            {imagem &&
-
-                                <img className='imagem' src={mostrarImagem(imagem)} />
-
-                            }
-
-                            <input type='file' id='imagemCapa' onChange={e => setImagem(e.target.files[0])} ></input>
-                        </div>
-                    </div>
-
-                    <div className='faixa3-div1'>
-                        <h3>Nome de usuárioP:</h3>
-                        <input type='text' placeholder='escreva algo' />
-                    </div>
-
-                </div> */}
-
-                {/* </section> */}
-
-            </main>
         </section>
     )
 }
