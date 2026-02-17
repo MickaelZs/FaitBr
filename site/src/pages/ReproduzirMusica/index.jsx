@@ -65,7 +65,7 @@ export default function Reproduzir() {
     return (
         <main className='pagina-reproduzir-musicaaa'>
             <Cabecario />
-            <img onClick={()=> window.history.back()} className='volta' src='/images/seta-icon.png' />
+           
 
             <section className='faixa-principal'>
 

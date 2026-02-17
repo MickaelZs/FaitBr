@@ -1,304 +1,238 @@
-::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: blueviolet;
-    border-radius: .4em
-  }
-
-.pagina-reproduzir-playlist-f{
-    display: flex;
-    flex-direction: column;
-    background-color: #1e1e1e;
-    width: 100%;
-    height: 100vh;
-   
-
-    
-
-    .faixa-principal{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        margin-top: 3em;
-
-    }
-
-    .kk{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin: 10px;
-        
-        p{
-            font-size: 20px;
-        }
-    }
-
-    audio{
-        width: 100%;
-        border: 0px;
-        margin: 10px;
-        border-radius: 15px;
-
-    }
 
 
-.faixa-1{
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-    color: white;
-    line-height: 10px;
-    align-items: center;
-  
 
-    .imgMusica{
-        height: 30em;
-        width: 30em;
-        border-radius: 10px;
-        
-    }
 
-    h2{
-        width: 100%;
-        color: #fff;
-    }
-    h3{
-        width: 100%;
-        color: #fff;
-    }
-
-    
+.pagina-reproduzir-playlist-f {
+  min-height: 100vh;
+  background: #121212;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
 }
 
-.cardMusica{
-    display: flex;
+
+
+.faixa-principal {
+  width: 100%;
+  max-width: 1600px;
+  margin: 40px auto;
+  padding: 0 60px;
+
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 60px;
+}
+
+
+
+.faixa-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.imgg {
+  width: 100%;
+  aspect-ratio: 1/1;
+  max-width: 420px;
+
+  background: #1e1e1e;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #333;
+}
+
+.imgMusica {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.usuarioo {
+  width: 40%;
+  opacity: 0.6;
+}
+
+.faixa-1 h2 {
+  font-size: clamp(20px, 2vw, 28px);
+  text-align: center;
+}
+
+.faixa-1 h3 {
+  font-size: clamp(14px, 1.5vw, 18px);
+  color: #aaa;
+}
+
+audio {
+  width: 100%;
+  border-radius: 12px;
+}
+
+
+
+.kk {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.kk:hover {
+  transform: scale(1.05);
+}
+
+.kk p {
+  font-size: 16px;
+}
+
+
+.lo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.cardMusica {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  background: #1e1e1e;
+  padding: 15px;
+  border-radius: 14px;
+  border: 1px solid #2a2a2a;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.cardMusica:hover {
+  background: #242424;
+  transform: translateY(-4px);
+}
+
+.image-music {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.div-ator {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.div-ator h1 {
+  font-size: 18px;
+}
+
+.div-ator p {
+  font-size: 14px;
+  color: #aaa;
+}
+
+
+@media (min-width: 1600px) {
+  .faixa-principal {
+    grid-template-columns: 480px 1fr;
+  }
+}
+
+@media (max-width: 1200px) {
+  .faixa-principal {
+    padding: 0 40px;
+    gap: 40px;
+  }
+}
+
+
+@media (max-width: 992px) {
+
+  .faixa-principal {
+    grid-template-columns: 350px 1fr;
+    gap: 30px;
+  }
+
+  .image-music {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+
+@media (max-width: 768px) {
+
+  .faixa-principal {
+    grid-template-columns: 1fr;
+  }
+
+  .faixa-1 {
+    order: -1;
+  }
+}
+
+
+@media (max-width: 576px) {
+
+  .faixa-principal {
+    padding: 0 20px;
+  }
+
+  .cardMusica {
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .image-music {
+    width: 60px;
+    height: 60px;
+  }
+
+  .div-ator h1 {
+    font-size: 15px;
+  }
+
+  .div-ator p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+
+  .imgg {
+    max-width: 100%;
+  }
+
+  .cardMusica {
     flex-direction: row;
-    background-color: #1e1e1e;
-    width: 27em;
-    height: 8em;
-    border-radius: 10px;
-    margin: 25px;
-    box-shadow: 1px 2px 10px #e3e3e3;
-    border: solid 1px #fff;
-    
-
-    h1{
-        color: #fff;
-        margin-bottom: 0px;
-        font-size: 25px;
-        width: 10em;
-        
-    }
-
-    
-}
-.imgg{
-    background-color: #e3e3e325;
-    height: 30em;
-    width: 30em;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    border: 1px solid #fff;
-}
-.usuarioo{
-    height: 15em;
-    width: 15em;
-    border-radius: 25px;
-    // background-color: #ffffff2d;
-
-}
-
-    .image-music{
-        border-radius: 10px 0px 0px 10px;
-        width:9.5em;
-        height: 8em;
-    }
-
-  .lo{
-    display:flex;
-    flex-direction: row;
-    align-items: center;
   }
-   
-    .div-ator{
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-        
-        margin-left:10px;
-       
-       
-        
-       
-        color: hsl(0, 0%, 100%);
-        line-height: 25px;
-        p{
-            font-size: 100%;
-           
-        }
-        h1{
-            font-size:150%;
-        }
 
-    }
-   
-   
-    @media  (max-width:360px ) {
-       
-        .faixa-principal{
-            display: flex;
-            flex-direction: column; 
-            justify-content: center;
-            align-items: center;   
-    }
+  .image-music {
+    width: 55px;
+    height: 55px;
+  }
+}
 
-    .cardmusica{
-        display: flex;
-        flex-direction: row;
-        
-       
-        background-color: aliceblue;
-        
-        
-        width: 18em;
-        height: 5em;
-        border-radius: 10px;
-        margin: 15px;
-    
-        h1{
-            margin-bottom: -1px;
-        }
-    
-        
-    }
-    .image-music{
-        border-radius: 20px 0px 0px 20px;
-        width:7em;
-        height: 6em;
-    }
-    .faixa-1{
-        display: flex;
-        flex-direction: column;
-        background-color: #1e1e1e;
-        color: white;
-        line-height: 10px;
-        justify-content: center;
-        align-items: center;
-    
-        .ImgPrincipal{
-            height: 40vh;
-            width: 65vw;
-            border-radius: 25px;
-        }   
-    }
-        
-    }
-    @media  (max-width:375px ) {
-       
-        .faixa-principal{
-            display: flex;
-            flex-direction: column; 
-            justify-content: center;
-            align-items: center;   
-    }
 
-    .cardmusica{
-        display: flex;
-        flex-direction: row;
-        
-       
-        background-color: aliceblue;
-        
-        
-        width: 18em;
-        height: 5em;
-        border-radius: 10px;
-        margin: 15px;
-    
-        h1{
-            margin-bottom: -1px;
-        }
-    
-        
-    }
-    .image-music{
-        border-radius: 20px 0px 0px 20px;
-        width:7em;
-        height: 6em;
-    }
-    .faixa-1{
-        display: flex;
-        flex-direction: column;
-        background-color: #1e1e1e;
-        color: white;
-        line-height: 10px;
-        justify-content: center;
-        align-items: center;
-    
-        .ImgPrincipal{
-            height: 40vh;
-            width: 65vw;
-            border-radius: 25px;
-        }
-    
-        
-    }
-        
-    }
-      @media  (max-width:425px ) {
-       
-        .faixa-principal{
-            display: flex;
-            flex-direction: column; 
-            justify-content: center;
-            align-items: center;   
-    }
+@media (max-width: 360px) {
 
-    .cardmusica{
-        display: flex;
-        flex-direction: row;
-        
-       
-        background-color: aliceblue;
-        
-        
-        width: 18em;
-        height: 5em;
-        border-radius: 10px;
-        margin: 15px;
-    
-        h1{
-            margin-bottom: -1px;
-        }
-    
-        
-    }
-    .image-music{
-        border-radius: 20px 0px 0px 20px;
-        width:7em;
-        height: 6em;
-    }
-    .faixa-1{
-        display: flex;
-        flex-direction: column;
-        background-color: #1e1e1e;
-        color: white;
-        line-height: 10px;
-        justify-content: center;
-        align-items: center;
-    
-        .ImgPrincipal{
-            height: 40vh;
-            width: 65vw;
-            border-radius: 25px;
-        }
-    
-        
-    }
-        
-    }
+  .faixa-principal {
+    padding: 0 15px;
+  }
+
+  .image-music {
+    width: 50px;
+    height: 50px;
+  }
+
+  .div-ator h1 {
+    font-size: 14px;
+  }
 }

@@ -3,89 +3,108 @@ import { listaMusicaArtista, BuscarMusicaPorNome } from '../../api/musicaAPI';
 import { PlaylistItem } from '../../api/playlistAPI';
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
-import './index.scss'
 import { useEffect, useState } from 'react';
-import Storage from 'local-storage'
+import Storage from 'local-storage';
 import Cabecario from "../../components/cabeçalho";
-
+import './index.scss';
 
 export default function Index() {
 
-  const [musicaa, setMusicaa] = useState([]);
-  const [buscar, setBuscar] = useState('')
+  const [musicas, setMusicas] = useState([]);
+  const [buscar, setBuscar] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const navigate = useNavigate()
-  const { idParam } = useParams()
+  const navigate = useNavigate();
+  const { idParam } = useParams();
 
-  async function add(position) {
+  async function add(musicaId) {
     try {
-      let id = Storage("nova")
-      let musicaSelecionada = musicaa[position].id_musica;
-      const resp = await PlaylistItem(musicaSelecionada, id);
-      console.log(resp)
-      toast.dark("Musica selecionada");
+      const playlistId = Storage("nova");
+      await PlaylistItem(musicaId, playlistId);
+      toast.success("Música adicionada à playlist 🎵");
     } catch (err) {
-      if (err.response) toast.error(err.response.data.erro);
-      else toast.error(err.message);
+      toast.error(err.response?.data?.erro || err.message);
     }
   }
 
   async function carregarMusica() {
-    const resp = await listaMusicaArtista(idParam);
-    setMusicaa(resp);
+    try {
+      setLoading(true);
+      const resp = await listaMusicaArtista(idParam);
+      setMusicas(resp);
+    } catch (err) {
+      toast.error("Erro ao carregar músicas");
+    } finally {
+      setLoading(false);
+    }
   }
 
   async function filtrar() {
-    const resp = await BuscarMusicaPorNome(buscar)
-    setMusicaa(resp)
-    console.log(resp)
+    try {
+      setLoading(true);
+      const resp = await BuscarMusicaPorNome(buscar);
+      setMusicas(resp);
+    } catch (err) {
+      toast.error("Erro ao buscar música");
+    } finally {
+      setLoading(false);
+    }
   }
 
   useEffect(() => {
-
     if (!Storage('usuario-logado')) {
-      navigate('/LoginUsuario')
+      navigate('/LoginUsuario');
+      return;
     }
 
     carregarMusica();
   }, []);
 
-  //   function sairClick(){
-  //     Storage.remove('Playlist')
-  //     navigate('/playlist')
-  // }
   return (
     <div className='addPlaylist'>
       <Cabecario />
-
       <ToastContainer />
-      <body>
-        <div>
-          <div className='caixa-busca'>
-            <input type="text" placeholder='Buscar artista por nome' value={buscar} onChange={e => setBuscar(e.target.value)} />
-            <img src='/images/procurar.png' onClick={filtrar} />
-          </div>
 
+      <div className="container">
 
+        <div className='caixa-busca'>
+          <input
+            type="text"
+            placeholder='Buscar música...'
+            value={buscar}
+            onChange={e => setBuscar(e.target.value)}
+          />
+          <img src='/images/procurar.png' onClick={filtrar} alt="Buscar" />
+        </div>
 
+        {loading ? (
+          <div className="loading">Carregando...</div>
+        ) : (
           <div className="faixa-musica">
-            {musicaa.map((item, index) => (
-              <div className="Card-addmusica">
-                <div className="section-music">
-                  <img src={`${API_URL}/${item.imagem} `} className="imagem"></img>
-                  <div className="atorenome">
-                    <h1>{item.musica}</h1>
-                    <div className="border">
-                      <p>{item.artista}</p>
-                    </div>
-                  </div>
+            {musicas.map((item) => (
+              <div className="card-musica" key={item.id_musica}>
+                <img
+                  src={`${API_URL}/${item.imagem}`}
+                  alt={item.musica}
+                  className="imagem"
+                />
+
+                <div className="info">
+                  <h3>{item.musica}</h3>
+                  <span>{item.artista}</span>
                 </div>
-                <img className="i" src="/images/i.png" alt="" onClick={() => add(index)} />
+
+                <button
+                  className="btn-add"
+                  onClick={() => add(item.id_musica)}
+                >
+                  +
+                </button>
               </div>
             ))}
           </div>
-        </div>
-      </body>
+        )}
+      </div>
     </div>
-  )
+  );
 }

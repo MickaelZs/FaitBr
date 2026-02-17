@@ -1,74 +1,85 @@
-
-    .landing {
-
+.landing {
   background: #000;
   color: #fff;
   font-family: Arial, sans-serif;
+  overflow-x: hidden;
 
+ 
   &__header {
     height: 60px;
     display: flex;
     align-items: center;
     padding: 0 20px;
+    gap: 20px;
 
     .logo {
       color: #1e4bff;
       font-size: 18px;
+      font-weight: bold;
     }
 
     .search-bar {
       flex: 1;
-      max-width: 160px;
-      height: 12px;
+      max-width: 200px;
+      height: 32px;
       background: #c6ccff;
-      border-radius: 10px;
+      border-radius: 20px;
       margin: 0 auto;
     }
 
     .icons {
       display: flex;
-      gap: 12px;
+      gap: 16px;
       opacity: 0.8;
     }
   }
 
+  
   &__hero {
     display: flex;
     justify-content: center;
-    margin: 40px 0;
+    margin: 60px 0;
 
     .hero-card {
       width: 80%;
+      max-width: 1200px;
       height: 561px;
       background: #0a1dff;
       border-radius: 10px;
     }
   }
 
+  
   &__section {
     text-align: center;
-    // margin: 40px 0;
+    padding: 40px 20px;
 
     h2 {
       font-size: 40px;
-      margin-bottom: 6px;
+      margin-bottom: 10px;
     }
 
     p {
       font-size: 20px;
       color: #aaa;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
     .cards {
       display: flex;
       justify-content: center;
-      gap: 14px;
+      gap: 20px;
+      flex-wrap: wrap;
 
       .card {
         width: 287px;
         height: 292px;
-        border-radius: 6px;
+        border-radius: 8px;
+        transition: 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
       }
 
       &.blue .card {
@@ -82,7 +93,111 @@
   }
 }
 
-        
-    
-   
 
+@media (max-width: 1200px) {
+
+  .landing__hero .hero-card {
+    height: 450px;
+  }
+
+  .landing__section h2 {
+    font-size: 32px;
+  }
+
+  .landing__section p {
+    font-size: 18px;
+  }
+}
+
+
+@media (max-width: 1024px) {
+
+  .landing__header {
+    .search-bar {
+      max-width: 150px;
+    }
+  }
+
+  .landing__hero .hero-card {
+    width: 90%;
+    height: 380px;
+  }
+
+  .landing__section {
+    h2 {
+      font-size: 28px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  .landing__section .cards {
+    gap: 16px;
+  }
+}
+
+
+@media (max-width: 768px) {
+
+  .landing__header {
+    padding: 0 12px;
+
+    .search-bar {
+      display: none;
+    }
+  }
+
+  .landing__hero {
+    margin: 40px 0;
+
+    .hero-card {
+      width: 95%;
+      height: 300px;
+    }
+  }
+
+  .landing__section {
+    padding: 30px 15px;
+
+    h2 {
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+
+    .cards {
+      flex-direction: column;
+      align-items: center;
+
+      .card {
+        width: 90%;
+        max-width: 320px;
+        height: 240px;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 480px) {
+
+  .landing__hero .hero-card {
+    height: 220px;
+  }
+
+  .landing__section h2 {
+    font-size: 20px;
+  }
+
+  .landing__section p {
+    font-size: 13px;
+  }
+
+  .landing__section .cards .card {
+    height: 200px;
+  }
+}

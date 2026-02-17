@@ -1,318 +1,168 @@
-.pagina-reproduzir-musicaaa{
-    display: flex;
-    flex-direction: column;
-    background-color: #1e1e1e;
-    width: 100%;
-    height: auto;
-
-    // *{border: solid 2px green;}
-   
-
-    
-
-    .faixa-principal{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        margin-top:3em;
-
-    }
-    
-    .volta{
-        display:flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-        width:3em;
-        height: 3em;
-        margin-top: 1em;
-        margin-left: 2em;
-      }
-    
-    .imgg{
-    background-color: #e3e3e325;
-    height: 30em;
-    width: 30em;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    border: 1px solid #fff;
-}
-.usuarioo{
-    height: 15em;
-    width: 15em;
-    border-radius: 25px;
-    // background-color: #ffffff2d;
-
-}
-
-    .text{
-        display: flex;
-        justify-content: flex-start;
-        flex-direction: column;
-        align-items: flex-start;
-        margin: 10px;
-        width: 30em;
-        
-        h1{
-            font-size: 20px;
-        }
-
-        h2{
-            font-size: 20px;
-        }
+.pagina-reproduzir-musicaaa {
+  display: flex;
+  flex-direction: column;
+  background-color: #1e1e1e;
+  width: 100%;
+  min-height: 100vh;
+  color: #fff;
 
 
-    }
 
-    audio{
-        width: 100%;
-        border: 0px;
-        margin: 10px;
-        border-radius: 15px;
-
-    }
-
-
-.faixa-1{
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-    color: white;
-    line-height: 10px;
-    align-items: center;
-  
-
-    .imgMusica{
-        height: 30em;
-        width: 30em;
-        border-radius: 10px;
-       
-    }
-
-    h2{
-        width: 100%;
-        color: #fff;
-    }
-    h3{
-        width: 100%;
-        color: #fff;
-    }
-
-    
-}
-
-.cardMusica{
-    display: flex;
-    flex-direction: row;
-    background-color: #1e1e1e;
-    width: 28em;
-    height: 8em;
-    border-radius: 10px;
-    margin: 25px;
-    box-shadow: 1px 2px 10px #e3e3e3;
-    border: solid 1px #fff;
-    
-
-    h1{
-        color: #fff;
-        margin-bottom: 0px;
-        font-size: 25px;
-        width: 10em;
-        
-    }
-
-    
-}
-
-
-    .image-music{
-        border-radius: 10px 0px 0px 10px;
-        width:9.5em;
-        height: 8em;
-    }
-
-  .lo{
-    display:flex;
-    flex-direction: row;
-    align-items: center;
+  .volta {
+    width: 3rem;
+    height: 3rem;
+    margin: 1.5rem 0 0 2rem;
   }
-   
-    .div-ator{
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-        
-        margin-left:10px;
-       
-       
-        
-       
-        color: hsl(0, 0%, 100%);
-        line-height: 25px;
-        p{
-            font-size: 100%;
-           
-        }
-        h1{
-            font-size:150%;
-        }
 
-    }
-   
-   
-    @media  (max-width:360px ) {
-       
-        .faixa-principal{
-            display: flex;
-            flex-direction: column; 
-            justify-content: center;
-            align-items: center;   
-    }
 
-    .cardmusica{
-        display: flex;
-        flex-direction: row;
-        
-       
-        background-color: aliceblue;
-        
-        
-        width: 18em;
-        height: 5em;
-        border-radius: 10px;
-        margin: 15px;
-    
-        h1{
-            margin-bottom: -1px;
-        }
-    
-        
-    }
-    .image-music{
-        border-radius: 20px 0px 0px 20px;
-        width:7em;
-        height: 6em;
-    }
-    .faixa-1{
-        display: flex;
-        flex-direction: column;
-        background-color: #1e1e1e;
-        color: white;
-        line-height: 10px;
-        justify-content: center;
-        align-items: center;
-    
-        .ImgPrincipal{
-            height: 40vh;
-            width: 65vw;
-            border-radius: 25px;
-        }   
-    }
-        
-    }
-    @media  (max-width:375px ) {
-       
-        .faixa-principal{
-            display: flex;
-            flex-direction: column; 
-            justify-content: center;
-            align-items: center;   
+
+  .faixa-principal {
+    width: 100%;
+    max-width: 1500px;
+    margin: 3rem auto;
+    padding: 0 3rem;
+
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 4rem;
+  }
+
+  /* ================= FAIXA 1 (PLAYER) ================= */
+
+  .faixa-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    text-align: center;
+
+    .imgMusica {
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid #fff;
     }
 
-    .cardmusica{
-        display: flex;
-        flex-direction: row;
-        
-       
-        background-color: aliceblue;
-        
-        
-        width: 18em;
-        height: 5em;
-        border-radius: 10px;
-        margin: 15px;
-    
-        h1{
-            margin-bottom: -1px;
-        }
-    
-        
-    }
-    .image-music{
-        border-radius: 20px 0px 0px 20px;
-        width:7em;
-        height: 6em;
-    }
-    .faixa-1{
-        display: flex;
-        flex-direction: column;
-        background-color: #1e1e1e;
-        color: white;
-        line-height: 10px;
-        justify-content: center;
-        align-items: center;
-    
-        .ImgPrincipal{
-            height: 40vh;
-            width: 65vw;
-            border-radius: 25px;
-        }
-    
-        
-    }
-        
-    }
-      @media  (max-width:425px ) {
-       
-        .faixa-principal{
-            display: flex;
-            flex-direction: column; 
-            justify-content: center;
-            align-items: center;   
+    h2 {
+      font-size: clamp(18px, 2vw, 26px);
     }
 
-    .cardmusica{
-        display: flex;
-        flex-direction: row;
-        
-       
-        background-color: aliceblue;
-        
-        
-        width: 18em;
-        height: 5em;
-        border-radius: 10px;
-        margin: 15px;
-    
-        h1{
-            margin-bottom: -1px;
-        }
-    
-        
+    h3 {
+      font-size: clamp(14px, 1.5vw, 18px);
+      opacity: 0.7;
     }
-    .image-music{
-        border-radius: 20px 0px 0px 20px;
-        width:7em;
-        height: 6em;
+  }
+
+  audio {
+    width: 100%;
+    border-radius: 12px;
+  }
+
+  /* ================= LISTA ================= */
+
+  .lo {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .cardMusica {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    width: 100%;
+    min-height: 110px;
+    padding: 1rem;
+
+    background-color: #242424;
+    border-radius: 14px;
+    border: 1px solid #333;
+    transition: 0.3s ease;
+  }
+
+  .cardMusica:hover {
+    transform: translateY(-4px);
+    background-color: #2b2b2b;
+  }
+
+  .image-music {
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  .div-ator {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    h1 {
+      font-size: clamp(16px, 1.4vw, 20px);
     }
-    .faixa-1{
-        display: flex;
-        flex-direction: column;
-        background-color: #1e1e1e;
-        color: white;
-        line-height: 10px;
-        justify-content: center;
-        align-items: center;
-    
-        .ImgPrincipal{
-            height: 40vh;
-            width: 65vw;
-            border-radius: 25px;
-        }
-    
-        
+
+    p {
+      font-size: clamp(13px, 1vw, 15px);
+      opacity: 0.7;
     }
-        
+  }
+
+  /* ================= RESPONSIVIDADE REAL ================= */
+
+  /* Notebook médio */
+  @media (max-width: 1200px) {
+    .faixa-principal {
+      grid-template-columns: 350px 1fr;
+      gap: 3rem;
+      padding: 0 2rem;
     }
+  }
+
+  /* Tablet */
+  @media (max-width: 900px) {
+    .faixa-principal {
+      grid-template-columns: 1fr;
+    }
+
+    .faixa-1 {
+      order: -1; /* FICA EM CIMA */
+    }
+  }
+
+  /* Mobile grande */
+  @media (max-width: 600px) {
+    .faixa-principal {
+      margin: 2rem auto;
+      padding: 0 1.2rem;
+    }
+
+    .image-music {
+      width: 70px;
+      height: 70px;
+    }
+
+    .cardMusica {
+      gap: 1rem;
+      min-height: 90px;
+    }
+  }
+
+  /* Mobile pequeno */
+  @media (max-width: 380px) {
+    .image-music {
+      width: 60px;
+      height: 60px;
+    }
+
+    .div-ator h1 {
+      font-size: 14px;
+    }
+
+    .div-ator p {
+      font-size: 12px;
+    }
+  }
 }

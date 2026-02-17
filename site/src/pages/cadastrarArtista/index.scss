@@ -1,346 +1,176 @@
-@import url('');
-
 .pagina-cadastro-artista {
   display: flex;
-  flex-direction: row;
   width: 100%;
+  min-height: 100vh;
+  background: #1E1E1E;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
 
-  .faixa-cadastro{
-    width: 70%;
-    margin-left: 15em;
-  }
 
-  #imagemCapa {
-    visibility: hidden;
-    position: absolute;
-  }
-
-  select {
-    border-radius: 5px;
-    padding: 10px 7.9em;
-    border: solid 1px #8d32e5;
-  }
-
-  .botoes {
+  .margin-cadastro1 {
+    background: #fff;
+    width: 100%;
+    max-width: 1100px;
+    border-radius: 25px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 40%;
-    margin-right: 6em;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   }
 
-  .imagem {
+ 
+  .div2-cadastro {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background: #f8f8f8;
+  }
 
+  .border-image {
+    height: 300px;
+    width: 300px;
     border-radius: 20px;
-    height: 40vw;
-    width: 60vw;
-    margin-bottom: 1em;
-
+    border: 3px solid #8d32e5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
   }
 
-  .label-float {
-    position: relative;
-    padding-top: 13px;
-
+  .border-image:hover {
+    transform: scale(1.03);
   }
 
-  .label-float input {
-    background-color: #ffffff;
-    border: 1px solid #8d32e5;
-    border-radius: 3px;
+  
+  .div1-cadastro {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+    gap: 20px;
+  }
 
-
-    outline: none;
-    min-width: 250px;
-    padding: 15px 20px;
-    font-size: 16px;
-    transition: all .1s linear;
-    -webkit-transition: all .1s linear;
-    -moz-transition: all .1s linear;
-    -webkit-appearance: none;
+  p {
+    font-size: 26px;
+    font-weight: 600;
     color: #8d32e5;
   }
 
-  .label-float input:focus {
-    border: 2px solid #ffffff;
-    box-shadow: 2px 2px 10px #8d32e5;
+ 
+  .label-float {
+    position: relative;
   }
 
-  .label-float input::placeholder {
-    color: transparent;
+  .label-float input,
+  select {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 8px;
+    border: 1px solid #8d32e5;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+  }
+
+  .label-float input:focus,
+  select:focus {
+    border: 2px solid #8d32e5;
+    box-shadow: 0 0 10px rgba(141, 50, 229, 0.3);
   }
 
   .label-float label {
-    pointer-events: none;
     position: absolute;
-    top: calc(50% - 8px);
     left: 15px;
-    transition: all .1s linear;
-    -webkit-transition: all .1s linear;
-    -moz-transition: all .1s linear;
-    background-color: #ffffff;
+    top: 14px;
+    font-size: 14px;
+    background: #fff;
+    padding: 0 5px;
     color: #8d32e5;
-    padding: 5px;
-    box-sizing: border-box;
+    transition: 0.2s;
+    pointer-events: none;
   }
 
-
-  .label-float input:focus+label,
-  .label-float input:not(:placeholder-shown)+label {
-    font-size: 13px;
-    top: 0;
-    color: #8d32e5;
+  .label-float input:focus + label,
+  .label-float input:not(:placeholder-shown) + label {
+    top: -8px;
+    font-size: 12px;
   }
 
-  .div {
-    margin-top: 30px;
-    font-size: 17px;
-    font-weight: bold;
-    color: #ffffff;
-  }
-
-  .botao:hover{
-    transform: scale(1.1);
+  
+  .botoes {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
   }
 
   .botao {
-    display: flex;
-    background-color: #ffffff;
-    font-weight: bold;
-    color: #8d32e5;
-    border-radius: 10px;
-    border: solid #ffffff 3px;
-    width: 120px;
+    flex: 1;
     height: 45px;
+    border-radius: 10px;
+    border: none;
+    background: #8d32e5;
+    color: #fff;
+    font-weight: bold;
     cursor: pointer;
-
-    font-size: 19px;
-    box-shadow: 2px 2px 10px #8d32e5;
-    transition: all ease-in 0.2s;
-    margin-left: 1em;
-
-
+    transition: 0.3s;
   }
 
-
-  .logo {
-    margin-bottom: 4em;
+  .botao:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(141, 50, 229, 0.4);
   }
+}
 
-  .faixa-cadastro {
-    background-color: #1E1E1E;
-    height: 100vh;
-    width: 100%;
-    display: flex;
+
+@media (max-width: 1200px) {
+  .pagina-cadastro-artista .margin-cadastro1 {
+    max-width: 900px;
+  }
+}
+
+@media (max-width: 992px) {
+  .pagina-cadastro-artista .margin-cadastro1 {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-
   }
 
-  .margin-cadastro1 {
-    background-color: #fff;
-    height: 35vw;
-    width: 60vw;
-    border-radius: 25px;
-    display: flex;
-    flex-direction: row;
+  .pagina-cadastro-artista .div2-cadastro {
+    padding: 30px;
   }
 
-  .div1-cadastro {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  .pagina-cadastro-artista .border-image {
+    width: 250px;
+    height: 250px;
+  }
 
+  .pagina-cadastro-artista .div1-cadastro {
+    padding: 30px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+
+  .pagina-cadastro-artista {
+    padding: 20px;
+  }
+
+  .pagina-cadastro-artista .border-image {
+    width: 200px;
+    height: 200px;
+  }
+
+  .pagina-cadastro-artista p {
     font-size: 20px;
-    font-family: 'inter';
-    width: 36vw;
-  }
-  .border-image {
-    height: 22rem;
-    width: 22rem;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: #8d32e5 solid 3.3px;
-
   }
 
-
-
-  p {
-    font-size: 24px;
-  }
-
-
-  .div2-cadastro {
-    display: flex;
+  .pagina-cadastro-artista .botoes {
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 31vw;
-
   }
 
-  .botoes {
-    display: flex;
-    align-items: center;
+  .pagina-cadastro-artista .botao {
+    width: 100%;
   }
-
-
-
-
-  .div-input {
-    padding: 15px;
-    margin-right: 3em;
-  }
-
-
-    @media(max-width: 1550px){
-      .margin-cadastro {
-        background-color: #fff;
-        height: 43vw;
-        width: 63vw;
-        border-radius: 25px;
-        display: flex;
-        flex-direction: row;
-      }
-
-      .border-image {
-        height: 19rem;
-        width: 19rem;
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: #8d32e5 solid 3.3px;
-    
-      }
-    }
-    
-    @media(max-width: 1250px){
-      .margin-cadastro {
-        background-color: #fff;
-        height: 50vw;
-        width: 63vw;
-        border-radius: 25px;
-        display: flex;
-        flex-direction: row;
-      }
-
-      .border-image {
-        height: 15rem;
-        width: 15rem;
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: #8d32e5 solid 3.3px;
-    
-      }
-    }
-
-    @media(max-width: 1100px){
-      .margin-cadastro {
-        background-color: #fff;
-        height: 85vw;
-        width: 60vw;
-        border-radius: 25px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .border-image {
-        height: 17rem;
-        width: 17rem;
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: #8d32e5 solid 3.3px;
-        margin-bottom: 3em;
-        
-    
-      }
-      .div-input{
-        margin-right: 0;
-      }
-      .botao {
-      
-        margin-left: 2em;
-    
-    
-      }
-    }
-    @media(max-width: 1000px){
-      .margin-cadastro {
-        background-color: #fff;
-        height: 90vw;
-        width: 60vw;
-        border-radius: 25px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .border-image {
-        height: 15rem;
-        width: 15rem;
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: #8d32e5 solid 3.3px;
-        margin-bottom: 1em;
-        
-    
-      }
-      .div-input{
-        margin-right: 0;
-      }
-      .botao {
-      
-        margin-left: 2em;
-    
-    
-      }
-    }
-    @media(max-width: 870px){
-      .margin-cadastro {
-        background-color: #fff;
-        height: 110vw;
-        width: 50vw;
-        border-radius: 25px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .border-image {
-        height: 15rem;
-        width: 15rem;
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: #8d32e5 solid 3.3px;
-        margin-bottom: 1em;
-        
-    
-      }
-      .div-input{
-        margin-right: 0;
-      }
-      .botao {
-      
-        margin-left: 2em;
-    
-    
-      }
-    }
 }

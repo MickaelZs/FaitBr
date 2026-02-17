@@ -159,9 +159,9 @@ export default function Index() {
             <body>
                 <div className="comp-card">
                     <div className='aaaa'>
-                    <img onClick={()=> window.history.back()} className='volta' src='/images/seta-icon.png' width='10px' />
+                   
 
-                        <div className="imagem">
+                        <div className="imagemm">
                             <img className="capa" src={`${API_URL}/${artista.artista}`}></img>
                         </div>
 
