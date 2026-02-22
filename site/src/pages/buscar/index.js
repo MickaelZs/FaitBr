@@ -42,7 +42,6 @@ export default function Index(){
         <main className='pagina-buscar'>
             <Cabecario/>
             <body>
-            <img onClick={()=> window.history.back()} className='volta' src='/images/seta-icon.png' />
 
                 <div className='caixa-busca'>  
            

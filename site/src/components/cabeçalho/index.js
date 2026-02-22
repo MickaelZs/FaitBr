@@ -73,17 +73,25 @@ export default function Cabecario() {
 
 
                 <div class="center">
-                    <div class="search-bar">
+                    {/* <div class="search-bar">
                         <input type="text" placeholder="" />
                         <svg class="search-icon" viewBox="0 0 24 24">
                             <circle cx="11" cy="11" r="7"></circle>
                             <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
                         </svg>
-                    </div>
+                    </div> */}
                 </div>
 
 
                 <div class="right">
+
+                    <button class="icon-btn" onClick={acessarBuscar}>
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+                        </svg>
+                    </button>
+
                     <button class="icon-btn" onClick={acessarPlaylist}>
                         <svg viewBox="0 0 24 24">
                             <path d="M9 18V5l12-2v13"></path>
