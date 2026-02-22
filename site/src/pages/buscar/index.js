@@ -1,88 +1,106 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BuscarArtistaPorNome, listaArtista } from '../../api/cadastroArtistaAPI';
-import { API_URL } from '../../api/config';
+import { BuscarArtistaPorNome } from '../../api/cadastroArtistaAPI';
 import { buscarGeneroPorNome } from '../../api/generoAPI';
+import { API_URL } from '../../api/config';
 import Cabecario from '../../components/cabeçalho';
-import storage from 'local-storage'
-import './index.scss'
+import storage from 'local-storage';
+import './index.scss';
 
-export default function Index(){
+export default function Index() {
 
-    const [filtro, setFiltro] = useState('')
-    const [filtro2, setFiltro2] = useState('')
-    const [genero,setGenero] = useState([])
-    const [artista,setArtista] = useState ([])
-    const navigate = useNavigate ()
+  const [filtro, setFiltro] = useState('');
+  const [genero, setGenero] = useState([]);
+  const [artista, setArtista] = useState([]);
+  const navigate = useNavigate();
 
-
-    useEffect(() => {
-            if(!storage('usuario-logado')){
-                navigate('/LoginUsuario');
-            }
-        },[])
-
-    async function filtrar(){
-        const resp = await BuscarArtistaPorNome (filtro);
-        const reps2 = await buscarGeneroPorNome (filtro)
-        setArtista(resp);
-        setGenero(reps2)
+  useEffect(() => {
+    if (!storage('usuario-logado')) {
+      navigate('/LoginUsuario');
     }
+  }, []);
 
-    function acessarArtista(id){
-        navigate(`/detalhe/artista/${id}`)
-    }
+  async function filtrar() {
+    const resp = await BuscarArtistaPorNome(filtro);
+    const resp2 = await buscarGeneroPorNome(filtro);
 
-    function acessarGenero(id){
-        navigate(`/genero/${id}`)
-    }
+    setArtista(resp);
+    setGenero(resp2);
+  }
 
-        return(
+  function acessarArtista(id) {
+    navigate(`/detalhe/artista/${id}`);
+  }
 
-        <main className='pagina-buscar'>
-            <Cabecario/>
-            <body>
+  function acessarGenero(id) {
+    navigate(`/genero/${id}`);
+  }
 
-                <div className='caixa-busca'>  
-           
-                    <input type="text" placeholder='Buscar artista por nome' value={filtro} onChange={e => setFiltro(e.target.value)} />
-                <img src='./images/procurar.png'  onClick={filtrar} />
-                </div>
+  return (
+    <main className='pagina-buscar'>
+      <Cabecario />
 
-                <div className='container'>
-                    <div className='comp-card'>
-                    {artista.map(item =>
-                    <div className='section-music' onClick={() => acessarArtista (item.id)}>
-                        <img className="imagem"src={`${API_URL}/${item.artista}`}/>
-                        <div className="atorenome">
-                            <div className="border">
-                        <h1>{item.nome}</h1>
-                        <h2>{item.genero}</h2>
-                        </div>
-                        </div>                        
-                </div> 
-                            
-                )}
-                </div>
-                <div className='card-genero'>
-                    {genero.map(item =>
-                    <div className='section-music' onClick={() => acessarGenero (item.id)}>
-                        <img src={`${API_URL}/${item.genero}`} className="imagem"/>
-                        <div  className="atorenome">
-                        <h1>{item.nome}</h1>
-                        <div className="border">
-                        <h3>{item.genero}</h3>
-                        </div>
-                        </div>
-                    </div>
-                    )}
-                    </div>
-                </div>
-            </body>
-        </main>
+      <section className="conteudo">
 
+        <div className='caixa-busca'>
+          <input
+            type="text"
+            placeholder='Buscar artista ou gênero'
+            value={filtro}
+            onChange={e => setFiltro(e.target.value)}
+          />
+          <img src='./images/procurar.png' onClick={filtrar} />
+        </div>
 
-            
+        
+        {/* <h2 className="titulo-secao">Artistas</h2> */}
 
-    )
+        <div className='comp-card'>
+          {artista.map(item =>
+            <div
+              key={item.id}
+              className='card-artista'
+              onClick={() => acessarArtista(item.id)}
+            >
+              <img
+                className="imagem-artista"
+                src={`${API_URL}/${item.artista}`}
+                alt={item.nome}
+              />
+
+              <div className="info-artista">
+                <h1>{item.nome}</h1>
+                <h2>{item.genero}</h2>
+              </div>
+            </div>
+          )}
+        </div>
+
+        
+        {/* <h2 className="titulo-secao">Gêneros</h2> */}
+
+        <div className='card-genero'>
+          {genero.map(item =>
+            <div
+              key={item.id}
+              className='card-genero-item'
+              onClick={() => acessarGenero(item.id)}
+            >
+              <img
+                src={`${API_URL}/${item.genero}`}
+                className="imagem-genero"
+                alt={item.nome}
+              />
+
+              <div className="overlay-genero">
+                <h1>{item.nome}</h1>
+                <p>{item.genero}</p>
+              </div>
+            </div>
+          )}
+        </div>
+
+      </section>
+    </main>
+  );
 }

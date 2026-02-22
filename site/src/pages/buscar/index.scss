@@ -1,150 +1,203 @@
-.pagina-buscar{
-    background-color: #1e1e1e;
-    background-size: 100%;
-    height: 100vh;
-    display:flex;
-    flex-direction: column;
-    
-    
-input {
-    outline: none;
+.pagina-buscar {
+  background: linear-gradient(180deg, #0f0f0f, #121212);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
+
+.conteudo {
+  flex: 1;
+  padding: 40px 20px 80px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.titulo-secao {
+  color: #fff;
+  margin: 50px 0 25px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
 
 
 .caixa-busca {
-    display: flex;
-    background-color: white;
-    margin-left: 22em;
-    border: solid 3px blueviolet;
-    padding: 10px 20px;
-    border-radius: 15px;
-    box-shadow: 1px 1px 5px #bdbdbd;
-    width: 40%;
-    margin-top: 30px;
-    justify-content: center;
-    
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid #7c3aed;
+  padding: 12px 20px;
+  border-radius: 50px;
+  max-width: 600px;
+  margin: 0 auto 50px;
+  transition: 0.3s;
 }
 
-.volta{
-    display:flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width:3em;
-    height: 3em;
-    margin-top: 2em;
-    margin-left: 2em;
-  }
-
-.cap{
-    width: 100px;
-    height: 100px;
+.caixa-busca:focus-within {
+  box-shadow: 0 0 20px #7c3aed88;
 }
 
 .caixa-busca input {
-    background: none;
-    border: none;
-    padding: 0px;
-    width: 100%;
-    
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 15px;
 }
+
 .caixa-busca img {
-    cursor: pointer;
-    position: relative;
-    right: -15px;
+  width: 22px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.container{
+.caixa-busca img:hover {
+  transform: scale(1.1);
+}
 
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+
+
+.comp-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.card-artista {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #1f1f1f, #181818);
+  border-radius: 20px;
+  padding: 18px;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.card-artista:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(124, 58, 237, 0.3);
+}
+
+.imagem-artista {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #7c3aed;
+}
+
+.info-artista {
+  margin-left: 18px;
+}
+
+.info-artista h1 {
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.info-artista h2 {
+  font-size: 14px;
+  color: #b3b3b3;
+}
+
+
+
+.card-genero {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.card-genero-item {
+  position: relative;
+  height: 260px;
+  border-radius: 25px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.4s ease;
+}
+
+.card-genero-item:hover {
+  transform: scale(1.05);
+}
+
+.imagem-genero {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.6s ease;
+}
+
+.card-genero-item:hover .imagem-genero {
+  transform: scale(1.1);
+}
+
+.overlay-genero {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+  color: white;
+}
+
+.overlay-genero h1 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.overlay-genero p {
+  font-size: 13px;
+  color: #ccc;
+}
+
+
+
+@media (max-width: 768px) {
+
+  .card-artista {
+    flex-direction: column;
     align-items: flex-start;
-    justify-content: space-around;
+  }
 
-}
-.atorenome{
-    padding-left: 2em;
-    display: flex;
-    flex-direction: column;
-    justify-content:space-evenly;
-    padding-bottom: 10px;
-
-}
-
-.section-music:hover{
-    transform: scale(1.1);
-
-}
-
-.section-music{
-    display: flex;
-    flex-direction: row;
+  .imagem-artista {
+    width: 100%;
+    height: 200px;
     border-radius: 15px;
-    width: 30em;
-    background-color: #2e2e2e;
-    position:sticky;
-    box-shadow: 1px 1px 8px 1px #ffffff;
-    margin: 25px;
-    cursor: pointer;
+    margin-bottom: 15px;
+  }
 
+  .info-artista {
+    margin-left: 0;
+  }
+}
 
+@media (max-width: 475px) {
+
+  .card-artista {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
     
-}
-.imagem{
-    height: 9.2em;
-    width: 9.5em;
-    border-radius: 20px 0px 0px 20px;
-}
-.atorenome{
-    padding-left: 2em;
-    display: flex;
-    flex-direction: column;
-    justify-content:space-evenly;
-    padding-bottom: 10px;
-    color: #fff;
+    
+  }
 
-}
+  .imagem-artista {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    margin-bottom: 15px;
+  }
 
-
-.comp-card{
-    display: flex;
-    flex-direction: column;
-    padding: auto;
-}
-
-
-.card_artistas{
-    position: relative;
-        display: flex;
-        
-        
-        align-items: center;
-      
-      
-
-        box-shadow: 1px 2px 10px #e3e3e3;
-        background-color: white;
-        
-        width: 330px;
-        height: 100px;
-        border-radius: 20px;
-        margin: 30px 10px;
-        cursor: pointer;
-        user-select: none;
-
-      
-
-        h1{
-            margin: 15px;
-            font-size: 100%;
-        }
-}
-
-.card-genero{
-    .comp-card{
-        display: flex;
-        flex-direction: column;
-        padding: auto;
-    }    
-}
+  .info-artista {
+    margin-left: 0;
+  }
 }
