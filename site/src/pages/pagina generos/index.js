@@ -57,8 +57,8 @@ export default function Index() {
     return (
         <div className='pagina-genero'>
             <Cabecario />
-            <body>
-                <img onClick={() => window.history.back()} className='volta' src='/images/seta-icon.png' />
+            <div>
+            
 
                 <div className="genero-nome">
 
@@ -84,8 +84,7 @@ export default function Index() {
                     </div>
                 </div>
 
-
-            </body>
+            </div>
         </div>
     )
 }
