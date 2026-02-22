@@ -5,131 +5,185 @@
   z-index: 1000;
 
   width: 260px;
-  height: 100vh;
+  height: 100dvh;
   padding: 30px 0;
+
   background: linear-gradient(180deg, #8D32E5, #6a1cc9);
-  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 4px 0 25px rgba(0, 0, 0, 0.35);
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   transition: 0.3s ease;
-
-  a {
-    text-decoration: none;
-    color: white;
-  }
-
-  .logo {
-    margin-bottom: 3em;
-    text-align: center;
-    cursor: pointer;
-  }
-
-  .imagem-logo {
-    width: 110px;
-    transition: 0.3s;
-  }
-
-  .imagem-logo:hover {
-    transform: scale(1.08);
-  }
-
-  .logo div {
-    font: 700 20px 'Inter';
-    color: #E9E9E9;
-    margin-top: 10px;
-  }
-
- 
-  .menu-items {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 0 15px;
-  }
-
-  .menu-items > div {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-
-    padding: 14px 18px;
-    border-radius: 12px;
-
-    font: 500 16px 'Inter';
-    color: #fff;
-
-    cursor: pointer;
-    transition: 0.25s ease;
-  }
-
-  .menu-items > div img {
-    width: 22px;
-  }
-
-
-  .menu-items > div:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateX(6px);
-  }
-
-
-  .menu-items > .active {
-    background: #fff;
-    color: #8D32E5;
-    font-weight: 600;
-  }
-
-
-  .sair-div {
-    padding: 0 20px;
-    margin-top: 2em;
-  }
 }
 
+/* ---------- LINKS ---------- */
 
+.menu-link {
+  display: flex;
+  align-items: center;
+  gap: 18px;
 
+  padding: 14px 20px;
+  border-radius: 12px;
+
+  font: 500 16px 'Inter';
+  color: #fff;
+  text-decoration: none;
+
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.menu-link img {
+  width: 22px;
+}
+
+.menu-link:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(6px);
+}
+
+.menu-link.sair:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- LOGO ---------- */
+
+.logo {
+  margin-bottom: 3em;
+  text-align: center;
+  cursor: pointer;
+}
+
+.imagem-logo {
+  width: 110px;
+  transition: 0.3s;
+}
+
+.imagem-logo:hover {
+  transform: scale(1.08);
+}
+
+/* ---------- ORGANIZAÇÃO ---------- */
+
+.menu-top {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 15px;
+}
+
+.menu-bottom {
+  padding: 0 20px;
+  margin-bottom: 10px;
+}
+
+/* ======================================== */
+/* RESPONSIVIDADE PROFISSIONAL */
+/* ======================================== */
+
+/* NOTEBOOK */
 @media (max-width: 1200px) {
   .comp-menu1 {
     width: 220px;
   }
 }
 
-
+/* TABLET COLAPSADO */
 @media (max-width: 992px) {
+
   .comp-menu1 {
     width: 80px;
     padding: 20px 0;
   }
 
-  .comp-menu1 .logo div {
-    display: none;
-  }
-
-  .comp-menu1 .menu-items > div {
+  .menu-link {
     justify-content: center;
     padding: 14px 0;
   }
 
-  .comp-menu1 .menu-items > div span {
-    display: none; 
+  .menu-link span {
+    display: none;
   }
 
-  .comp-menu1 .menu-items > div img {
-    margin: 0;
+  .logo {
+    display: none;
   }
+
 }
 
-
+/* MOBILE GRANDE */
 @media (max-width: 768px) {
+
   .comp-menu1 {
-    transform: translateX(-100%);
-    width: 240px;
+    top: auto;
+    bottom: 0;
+
+    width: 100%;
+    height: 70px;
+
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    padding: 0 10px;
+
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.3);
   }
 
-  .comp-menu1.open {
-    transform: translateX(0);
+  .menu-top {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .menu-items {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    padding: 0;
+    gap: 0;
+  }
+
+  .menu-link {
+    flex-direction: column;
+    gap: 4px;
+    padding: 6px;
+    font-size: 11px;
+    transform: none !important;
+  }
+
+  .menu-link span {
+    display: block;
+    font-size: 10px;
+  }
+  
+
+  
+
+}
+
+/* MOBILE PEQUENO */
+@media (max-width: 400px) {
+
+  .menu-link span {
+    font-size: 9px;
+    display: none;
+  }
+
+  .menu-link img {
+    width: 20px;
+  }
+
+  .comp-menu1 {
+    height: 60px;
   }
 }

@@ -1,70 +1,209 @@
+// .pagina-cadastro-artista {
+//   display: flex;
+//   min-height: 100vh;
+//   width: 100%;
+//   background: #1E1E1E;
+//   justify-content: center;
+//   align-items: center;
+//   padding: clamp(20px, 4vw, 60px);
+
+//   .margin-cadastro1 {
+//     background: #fff;
+//     width: 100%;
+//     max-width: 1100px;
+//     border-radius: 25px;
+//     display: flex;
+//     overflow: hidden;
+//     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+//   }
+
+//   .div2-cadastro {
+//     flex: 1;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: center;
+//     padding: clamp(25px, 4vw, 50px);
+//     background: #f8f8f8;
+//   }
+
+//   .border-image {
+//     width: clamp(160px, 22vw, 280px);
+//     height: clamp(160px, 22vw, 280px);
+//     border-radius: 20px;
+//     border: 3px solid #8d32e5;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     transition: 0.3s;
+//   }
+
+//   .border-image:hover {
+//     transform: scale(1.03);
+//   }
+
+//   .div1-cadastro {
+//     flex: 1;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     padding: clamp(30px, 5vw, 60px);
+//     gap: 20px;
+//     color: #8D32E5;
+//   }
+
+//   p {
+//     font-size: clamp(20px, 2vw, 28px);
+//     font-weight: 600;
+//   }
+
+//   .label-float {
+//     position: relative;
+//   }
+
+//   .label-float input,
+//   select {
+//     width: 100%;
+//     padding: 14px 16px;
+//     border-radius: 8px;
+//     border: 1px solid #8d32e5;
+//     font-size: 15px;
+//     outline: none;
+//     transition: 0.3s;
+//   }
+
+//   .label-float input:focus,
+//   select:focus {
+//     border: 2px solid #8d32e5;
+//     box-shadow: 0 0 10px rgba(141, 50, 229, 0.3);
+//   }
+
+//   .label-float label {
+//     position: absolute;
+//     left: 15px;
+//     top: 14px;
+//     font-size: 14px;
+//     background: #fff;
+//     padding: 0 5px;
+//     color: #8d32e5;
+//     transition: 0.2s;
+//     pointer-events: none;
+//   }
+
+//   .label-float input:focus + label,
+//   .label-float input:not(:placeholder-shown) + label {
+//     top: -8px;
+//     font-size: 12px;
+//   }
+
+//   .botoes {
+//     display: flex;
+//     gap: 20px;
+//     margin-top: 20px;
+//   }
+
+//   .label-float, select {
+//     margin-top: 15px;
+    
+//   }
+
+//   .botao {
+//     flex: 1;
+//     height: 45px;
+//     border-radius: 10px;
+//     border: none;
+//     background: #8d32e5;
+//     color: #fff;
+//     font-weight: bold;
+//     cursor: pointer;
+//     transition: 0.3s;
+//   }
+
+//   .botao:hover {
+//     transform: translateY(-3px);
+//     box-shadow: 0 8px 20px rgba(141, 50, 229, 0.4);
+//   }
+// }
+
+
 .pagina-cadastro-artista {
-  display: flex;
+  min-height: 100dvh; // melhor que 100vh no mobile
   width: 100%;
-  min-height: 100vh;
   background: #1E1E1E;
+  display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px 20px;
+  padding: 40px;
+  box-sizing: border-box;
 
 
   .margin-cadastro1 {
-    background: #fff;
     width: 100%;
     max-width: 1100px;
-    border-radius: 25px;
+    background: #ffffff;
+    border-radius: 24px;
     display: flex;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  }
-
- 
-  .div2-cadastro {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-    background: #f8f8f8;
-  }
-
-  .border-image {
-    height: 300px;
-    width: 300px;
-    border-radius: 20px;
-    border: 3px solid #8d32e5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.3s;
-  }
-
-  .border-image:hover {
-    transform: scale(1.03);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
   }
 
   
+
+  /* ================= LADO ESQUERDO ================= */
+
+  .div2-cadastro {
+    flex: 1;
+    background: linear-gradient(135deg, #f5f0ff, #ffffff);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    gap: 25px;
+  }
+
+  .border-image {
+    width: 240px;
+    height: 240px;
+    border-radius: 20px;
+    border: 3px dashed #8d32e5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .border-image:hover {
+    background: rgba(141, 50, 229, 0.05);
+    transform: scale(1.03);
+  }
+
+  /* ================= LADO DIREITO ================= */
+
   .div1-cadastro {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 50px;
+    padding: 60px;
     gap: 20px;
+    color: #8D32E5;
   }
 
-  p {
+  .div1-cadastro p {
     font-size: 26px;
     font-weight: 600;
-    color: #8d32e5;
   }
 
- 
-  .label-float {
-    position: relative;
+  /* ================= INPUTS ================= */
+  
+
+  select, .label-float {
+    margin-top: 20px;
   }
 
-  .label-float input,
+    .label-float input,
   select {
     width: 100%;
     padding: 14px 16px;
@@ -75,21 +214,38 @@
     transition: 0.3s;
   }
 
+  .label-float {
+    position: relative;
+    width: 100%;
+  }
+
+  .label-float input,
+  .label-float select {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: 1.5px solid #d6c3f7;
+    font-size: 15px;
+    background: #fafafa;
+    transition: 0.3s;
+  }
+
   .label-float input:focus,
-  select:focus {
-    border: 2px solid #8d32e5;
-    box-shadow: 0 0 10px rgba(141, 50, 229, 0.3);
+  .label-float select:focus {
+    border-color: #8d32e5;
+    box-shadow: 0 0 12px rgba(141, 50, 229, 0.25);
+    background: #fff;
   }
 
   .label-float label {
     position: absolute;
-    left: 15px;
+    left: 14px;
     top: 14px;
     font-size: 14px;
-    background: #fff;
-    padding: 0 5px;
+    background: #ffffff;
+    padding: 0 6px;
     color: #8d32e5;
-    transition: 0.2s;
+    transition: 0.2s ease;
     pointer-events: none;
   }
 
@@ -99,35 +255,45 @@
     font-size: 12px;
   }
 
-  
+
+
   .botoes {
     display: flex;
-    gap: 20px;
-    margin-top: 20px;
+    gap: 15px;
+    margin-top: 15px;
   }
 
   .botao {
     flex: 1;
-    height: 45px;
-    border-radius: 10px;
+    height: 48px;
+    border-radius: 12px;
     border: none;
-    background: #8d32e5;
+    background: linear-gradient(135deg, #8d32e5, #6c1ed9);
     color: #fff;
-    font-weight: bold;
+    font-weight: 600;
     cursor: pointer;
     transition: 0.3s;
   }
 
   .botao:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(141, 50, 229, 0.4);
+    box-shadow: 0 10px 25px rgba(141, 50, 229, 0.4);
+  }
+}
+ 
+@media (min-width: 1600px) {
+  .pagina-cadastro-artista .margin-cadastro1 {
+    max-width: 1300px;
+  }
+
+  .pagina-cadastro-artista .div1-cadastro {
+    padding: 80px;
   }
 }
 
-
 @media (max-width: 1200px) {
   .pagina-cadastro-artista .margin-cadastro1 {
-    max-width: 900px;
+    max-width: 950px;
   }
 }
 
@@ -137,40 +303,80 @@
   }
 
   .pagina-cadastro-artista .div2-cadastro {
-    padding: 30px;
-  }
-
-  .pagina-cadastro-artista .border-image {
-    width: 250px;
-    height: 250px;
+    padding: 35px;
   }
 
   .pagina-cadastro-artista .div1-cadastro {
-    padding: 30px;
+    padding: 35px;
   }
 }
 
-/* MOBILE */
 @media (max-width: 600px) {
-
   .pagina-cadastro-artista {
-    padding: 20px;
+    padding: 15px;
   }
 
   .pagina-cadastro-artista .border-image {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
   }
 
   .pagina-cadastro-artista p {
     font-size: 20px;
+    text-align: center;
   }
 
   .pagina-cadastro-artista .botoes {
     flex-direction: column;
+    gap: 15px;
   }
 
   .pagina-cadastro-artista .botao {
     width: 100%;
   }
+}
+
+@media (max-width: 400px) {
+
+  .pagina-cadastro-artista {
+    align-items: flex-start;   
+    padding: 20px 12px;
+    min-height: auto;         
+  }
+
+  .pagina-cadastro-artista .margin-cadastro1 {
+    width: 100%;
+    border-radius: 18px;
+  }
+
+  .pagina-cadastro-artista .border-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .pagina-cadastro-artista .div1-cadastro,
+  .pagina-cadastro-artista .div2-cadastro {
+    padding: 30px;
+  }
+
+  .pagina-cadastro-artista .faixa-cadastro{
+    width: 100%;
+  }
+
+  .pagina-cadastro-artista input,
+  .pagina-cadastro-artista select {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .pagina-cadastro-artista .botoes {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .pagina-cadastro-artista .botao {
+    width: 100%;
+  }
+
 }

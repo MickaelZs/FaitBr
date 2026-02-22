@@ -208,7 +208,10 @@ export default function Cadastromsc() {
                             </select>
                         </div>
                         <div className='div-input'>
-                            <input type="text" value={nome} onChange={e => setNome(e.target.value)} required></input>
+                             <div className='label-float'>
+                                    <input type="text" placeholder=" " value={nome} onChange={e => setNome(e.target.value)} />
+                                    <label>Artista</label>
+                                </div>
                         </div>
 
                         <div className='botoes'>

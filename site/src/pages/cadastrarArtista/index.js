@@ -42,14 +42,14 @@ export default function Index() {
     }
 
     useEffect(() => {
-        if(!Storage('adm-logado')){
+        if (!Storage('adm-logado')) {
             navigate('/LoginAdm');
         }
         carregarGeneros();
         if (idParam) {
             carregarArtista()
         }
-       
+
 
     }, [])
 
@@ -78,7 +78,7 @@ export default function Index() {
         }
     }
 
-    function novoClick(){
+    function novoClick() {
         setNome('');
         setIdGenero(0);
         setSobre('');
@@ -153,43 +153,49 @@ export default function Index() {
 
                             }
 
-                            <input type='file' id='imagemCapa' onChange={e => setImagem(e.target.files[0])} ></input>
+                            <input
+                                type='file'
+                                id='imagemCapa'
+                                accept='image/*'
+                                hidden
+                                onChange={e => setImagem(e.target.files[0])}
+                            />
                         </div>
                     </div>
                     <div className='div2-cadastro'>
-                        <div>
-                        <div className='div-input'>
-                            <div className='label-float'>
-                                <input type="text" placeholder=" " value={nome} onChange={e => setNome(e.target.value)} />
-                                <label>Artista</label>
+                        <div className='container-p1-text'>
+                            <div className='div-input'>
+                                <div className='label-float'>
+                                    <input type="text" placeholder=" " value={nome} onChange={e => setNome(e.target.value)} />
+                                    <label>Artista</label>
+                                </div>
+
+                                
+
+                                <select value={idGenero} onChange={e => setIdGenero(e.target.value)}>
+                                    <option selected disabled hidden> Generos </option>
+                                    {genero.map(item =>
+                                        <option value={item.id}> {item.nome} </option>
+                                    )}
+                                </select>
+                              
+                                
+                                <div className='label-float'>
+                                    <input type="text" placeholder=" " value={sobre} onChange={e => setSobre(e.target.value)} />
+                                    <label>Sobre</label>
+                                </div>
+                                
+
                             </div>
+                            <div className='botoes'>
+                                <div>
+                                    <button className='botao' onClick={salvarClick} >{id === 0 ? 'cadastrar' : 'Alterar'}</button>
+                                </div>
 
-                            <br />
-
-                            <select value={idGenero} onChange={e => setIdGenero(e.target.value)}>
-                                <option selected disabled hidden> Generos </option>
-                                {genero.map(item =>
-                                    <option value={item.id}> {item.nome} </option>
-                                )}
-                            </select>
-                            <button>+</button>
-                            <br />
-                            <div className='label-float'>
-                                <input type="text" placeholder=" " value={sobre} onChange={e => setSobre(e.target.value)} />
-                                <label>Sobre</label>
+                                <div>
+                                    <button className='botao' onClick={novoClick}>novo</button>
+                                </div>
                             </div>
-                            <br />
-
-                        </div>
-                        <div className='botoes'>
-                            <div>
-                                <button className='botao' onClick={salvarClick} >{id === 0 ? 'cadastrar' : 'Alterar'}</button>
-                            </div>
-
-                            <div>
-                                <button className='botao' onClick={novoClick}>novo</button>
-                            </div>                        
-                        </div>
                         </div>
                     </div>
                 </div>

@@ -21,7 +21,7 @@ export default function Menu() {
     // },[])
     function sairClick() {
         storage.remove('adm-logado')
-        navigate('/LoginAdm')
+        navigate('/')
     }
 
     function IrParaHome(){
@@ -45,59 +45,51 @@ export default function Menu() {
     }
 
 
-    return (
-        <nav className="comp-menu1">
-            <div className='div-minimae'>
+  return (
+  <nav className="comp-menu1">
+    <div className="menu-top">
 
-                <div className='logo' onClick=
-                                            {e => {
-                                                e.stopPropagation();
-                                                IrParaHome();
-                                            }}
-                >
-                    <img src="/images/nova-logo.png" className='imagem-logo' />
-                </div>
+      <div
+        className="logo"
+        onClick={(e) => {
+          e.stopPropagation();
+          IrParaHome();
+        }}
+      >
+        <img src="/images/nova-logo.png" className="imagem-logo" />
+      </div>
 
-                <div className='menu-items'>
+      <div className="menu-items">
 
-                    <div>
-                        <img src="/images/artista.svg" />
-                        <a href='/adm/cadastrarArtista'>Cadastrar artista</a>
-                    </div>
-                    <div>
-                        <img src="/images/cadastrarmusica.svg" />
-                        <a href='/adm/cadastromusica'>Cadastrar Musica </a>
-                    </div>
+        <a href="/adm/cadastrarArtista" className="menu-link">
+          <img src="/images/artista.svg" />
+          <span>Cadastrar artista</span>
+        </a>
 
-                    <div>
-                        <img src="/images/consulta.svg" />
-                        <a href='/Consulta'>Consultar usuario</a>
+        <a href="/adm/cadastromusica" className="menu-link">
+          <img src="/images/cadastrarmusica.svg" />
+          <span>Cadastrar música</span>
+        </a>
 
-                    </div>
+        <a href="/adm/artistaCadastrado" className="menu-link">
+          <img src="/images/artistaCadastrado.svg" />
+          <span>Artistas cadastrados</span>
+        </a>
 
-                    <div>
-                        <img src="/images/artistacadastrado.svg" />
-                        <a href='/adm/artistaCadastrados'>Artista cadastrado</a>
+        <a href="/adm/MusicaCadastradas" className="menu-link">
+          <img src="/images/msccadastrada.svg" />
+          <span>Músicas cadastradas</span>
+        </a>
 
-                    </div>
+      </div>
+    </div>
 
-                    <div href='/adm/MusicaCadastradas' >
-                        <img src="/images/msccadastrada.svg" />
-                        <a href='/adm/MusicaCadastradas'>Musicas cadastradas</a>
-                    </div>
-                </div>
-
-                <div className='menu-items sair-div'>
-                    <div onClick={sairClick}>
-                        <img src="/images/logout.png" />
-                        <div>Sair</div>
-                    </div>
-
-                </div>
-            </div>
-
-
-        </nav>
-
-    )
+    <div className="menu-bottom">
+      <div className="menu-link sair" onClick={sairClick}>
+        <img src="/images/logout.png" />
+        <span>Sair</span>
+      </div>
+    </div>
+  </nav>
+);
 }
