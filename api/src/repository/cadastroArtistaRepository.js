@@ -139,6 +139,19 @@ export async function seguirArtista(idUsuario,artista){
     return artista;
 }
 
+export async function verificarSeSegue(usuarioId, artistaId){
+
+    const comando = `
+        select * from tb_usuario_artista_seguido
+        where id_usuario = ?
+        and id_artistas = ?
+    `;
+
+    const [resposta] = await con.query(comando, [usuarioId, artistaId]);
+
+    return resposta.length > 0;
+}
+
 export async function artistaSeguidosPorId(id) {
     const comando =
 

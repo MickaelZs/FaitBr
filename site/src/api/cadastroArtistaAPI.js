@@ -82,6 +82,11 @@ export async function seguirArtista (idUsuario, artista) {
     return r.data;
 }
 
+export async function verificarSeSegue(usuarioId, artistaId){
+    const resp = await api.get(`/seguir/${usuarioId}/${artistaId}`);
+    return resp.data;
+}
+
 export async function seguindoArtistaPorId(id){
     const resposta = await api.get(`/seguido/${id}`)
     return resposta.data;

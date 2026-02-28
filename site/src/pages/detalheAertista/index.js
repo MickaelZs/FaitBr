@@ -2,7 +2,8 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { buscarPorId, ParaDeSeguir, seguirArtista } from "../../api/cadastroArtistaAPI"
 import { ToastContainer, toast } from 'react-toastify';
-import { buscarArtistaPorMusicaId, curtirMusica, deletarrCurtida, listaMusicaArtista, listarCurtidas } from "../../api/musicaAPI"
+import { buscarArtistaPorMusicaId, curtirMusica, deletarrCurtida, listaMusicaArtista, listarCurtidas, } from "../../api/musicaAPI"
+import { verificarSeSegue } from "../../api/cadastroArtistaAPI";
 import { API_URL } from "../../api/config"
 import AudioPlayer from 'react-modular-audio-player'
 import './index.scss'
@@ -17,63 +18,67 @@ export default function Index() {
 
     const [artista, setArtista] = useState([]);
     const [musica, setMusica] = useState([]);
-    const [curtir, setCurtir] = useState(false);
+    const [curtir, setCurtir] = useState([]);
     const [seguirr, setSeguirr] = useState(false);
 
     const { idParam } = useParams()
     const navigate = useNavigate()
-    
 
 
 
-    async function curtirr(position) {
+
+    async function curtirr(musicaId) {
         try {
             let id = Storage('usuario-logado').id;
-            let musicaSelecionada = musica[position].id
-            const resp = await curtirMusica(musicaSelecionada, id)
-            Storage('Musica Curtida', resp)
-            console.log(resp)
 
-            toast.dark('musica curtidaa');
-        }
+            setCurtir(prev => [...prev, { IdMusica: musicaId }]);
+            await curtirMusica(musicaId, id);
+        } catch (err) {
 
-        catch (err) {
-            if (err.response) toast.error(err.response.data.erro);
-            else toast.error(err.message);
-
-        }
-
-    }
-
-    async function deletarClick(position) {
-        try {
-            console.log(position)
-            const user = Storage('usuario-logado').id
-            const resp = await deletarrCurtida(user, position)
-            Storage.remove('Musica Curtida')
-            console.log(resp)
-            toast.dark('curtida deletada')
-        }
-        catch (err) {
-            if (err.response) toast.error(err.response.data.erro);
-            else toast.error(err.message);
         }
     }
 
-    async function ParaDeSeguirArtista(position) {
+    function musicaJaCurtida(musicaId) {
+        return curtir.some(item => item.IdMusica === musicaId);
+    }
+
+    async function carregarCurtidas() {
+        const id = Storage('usuario-logado').id;
+        const resp = await listarCurtidas(id);
+        
+        setCurtir(resp);
+    }
+
+    async function deletarClick(musicaId) {
         try {
+            const user = Storage('usuario-logado').id;
 
-            const user = Storage('usuario-logado').id
-            const resp = await ParaDeSeguir(user, position)
-            Storage.remove('Artista Seguido')
-            console.log(resp)
+            await deletarrCurtida(user, musicaId);
 
-        }
-        catch (err) {
+            await carregarCurtidas();
+
+        } catch (err) {
             if (err.response) toast.error(err.response.data.erro);
             else toast.error(err.message);
-
         }
+    }
+
+    async function ParaDeSeguirArtista(artistaId) {
+        try {
+            const user = Storage('usuario-logado').id;
+            await ParaDeSeguir(user, artistaId);
+
+            setSeguirr(false); 
+            
+        } catch (err) {
+            toast.error(err.message);
+        }
+    }
+
+    async function verificarSeguimento() {
+        const user = Storage('usuario-logado').id;
+        const resp = await verificarSeSegue(user, idParam);
+        setSeguirr(resp);
     }
 
 
@@ -81,19 +86,19 @@ export default function Index() {
         navigate(`/Reproduzir/${id}`)
     }
 
-    function mostrarImagem(imagem) {
+    // function mostrarImagem(imagem) {
 
-        if (typeof (imagem) == 'object') {
-            return URL.createObjectURL(imagem);
-        }
-        else {
+    //     if (typeof (imagem) == 'object') {
+    //         return URL.createObjectURL(imagem);
+    //     }
+    //     else {
 
-            return `${API_URL}/${imagem}`
-        }
-    }
-    function escolherImagem(objeto, mostrarNovaimagem) {
-        document.querySelector(objeto).src = "./images/heart on.png";
-    }
+    //         return `${API_URL}/${imagem}`
+    //     }
+    // }
+    // function escolherImagem(objeto, mostrarNovaimagem) {
+    //     document.querySelector(objeto).src = "./images/heart on.png";
+    // }
 
     // async function carregarCurtidas() {
     //     const id = Storage('usuario-logado').id;
@@ -106,18 +111,15 @@ export default function Index() {
     async function seguir() {
         try {
             let id = Storage('usuario-logado').id;
-            let artistas = artista.id
-            const resp = await seguirArtista(id, artistas)
-            Storage('Artista Seguido', resp)
-            console.log(resp)
-            toast.dark('vamosssss')
-        }
-        catch (err) {
-            if (err.response) toast.error(err.response.data.erro);
-            else toast.error(err.message);
-        }
 
+            await seguirArtista(id, idParam);
+
+            setSeguirr(true);
+        } catch (err) {
+            toast.error(err.message);
+        }
     }
+
 
     function sairClick() {
         Storage.remove('music')
@@ -141,16 +143,23 @@ export default function Index() {
     useEffect(() => {
         if (!Storage('usuario-logado')) {
             navigate('/LoginUsuario');
+            return;
         }
-        carregarArtista()
-        carregarArtistaPorMusica()
 
+        async function carregarTudo() {
+            await carregarArtista();
+            await carregarArtistaPorMusica();
+            await carregarCurtidas();
+            await verificarSeguimento();
+        }
 
-    }, [])
+        carregarTudo();
+
+    }, [idParam])
     //src={`${API_URL}/${artista.artista}`}
 
 
-    return ( 
+    return (
         <main className='comp-detalhe'>
             <Cabecario />
             <ToastContainer />
@@ -159,7 +168,7 @@ export default function Index() {
             <body>
                 <div className="comp-card">
                     <div className='aaaa'>
-                   
+
 
                         <div className="imagemm">
                             <img className="capa" src={`${API_URL}/${artista.artista}`}></img>
@@ -178,15 +187,22 @@ export default function Index() {
                                 <h3>Sobre</h3>
                                 <p className='sinopse'>{artista.sobre} </p>
                             </div>
-                            <div onClick={() => setSeguirr(!seguirr)}>
-                                {seguirr ?
-                                    <button className='botao' onClick={() => ParaDeSeguirArtista(artista.id)}>Seguindo</button>
-                                    :
-                                    <button className='botao' onClick={() => seguir(artista)}>Seguir</button>
-
-                                }
-
-
+                            <div>
+                                {seguirr ? (
+                                    <button
+                                        className='botao'
+                                        onClick={() => ParaDeSeguirArtista(artista.id)}
+                                    >
+                                        Seguindo
+                                    </button>
+                                ) : (
+                                    <button
+                                        className='botao'
+                                        onClick={seguir}
+                                    >
+                                        Seguir
+                                    </button>
+                                )}
                             </div>
 
 
@@ -206,16 +222,28 @@ export default function Index() {
                                         <p>{item.genero}</p>
                                     </div>
                                 </div>
+
+                                <div
+                                    className="heart"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        musicaJaCurtida(item.id)
+                                            ? deletarClick(item.id)
+                                            : curtirr(item.id);   
+                                    }}
+                                >
+                                    <img
+                                        src={
+                                            musicaJaCurtida(item.id)
+                                                ? "/images/coracao (4).png"
+                                                : "/images/coracao (2).png"
+                                        }
+                                    />
+                                </div>
+
                             </div>
 
-                            <div className="heart" onClick={() => setCurtir(!curtir)} >
-                                {curtir ?
 
-                                    <img className="l" src="/images/coracao (4).png" alt="" onClick={() => deletarClick(index)} />
-                                    :
-                                    <img className="l" src="/images/coracao (2).png" alt="" onClick={() => curtirr(index)} />}
-
-                            </div>
 
                         </div>
 

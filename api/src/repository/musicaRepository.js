@@ -154,14 +154,16 @@ const [resposta] = await con.query(comando,[musica.genero,musica.artista,musica.
 return resposta.affectedRows;
 }
 
-export async function MusicaFavorita(idUsuario,musica){
-    const comando = `insert into tb_usuario_musica_favorita (id_usuario,id_musica)
-    values (?,?);`
+export async function MusicaFavorita(idUsuario, idMusica){
+    console.log("ID MUSICA RECEBIDO:", idMusica);
+    const comando = `
+        insert into tb_usuario_musica_favorita (id_usuario, id_musica)
+        values (?, ?);
+    `;
 
-    const [resposta] = await con.query(comando,[idUsuario,musica.musica]);
-    musica.id = resposta.insertId;
+    const [resposta] = await con.query(comando, [idUsuario, idMusica]);
 
-    return musica;
+    return resposta.insertId;
 }
 
 export async function listarcurtidaPorIdUsuario(idUsuario) {

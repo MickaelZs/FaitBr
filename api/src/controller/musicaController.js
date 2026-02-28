@@ -49,22 +49,29 @@ server.post('/cadastramusica' , async(req, resp) => {
 })
 
 
-server.post('/curtir/:id/musica' , async(req, resp) => {
+server.post('/curtir/:id/musica', async (req, resp) => {
+    try {
+        const usuarioId = Number(req.params.id);
+        const musicaId = Number(req.body.idMusica);
 
-    try{
-        const idUsuario = Number(req.params.id);
-        const musica = req.body;
-       
-        const x = await MusicaFavorita(idUsuario,musica);
+        const x = await MusicaFavorita(usuarioId, musicaId);
 
-        resp.send(x);
+        resp.status(200).send(x);
     }
-    catch (err){
-        resp.status(401).send({
+    catch (err) {
+
+        // 👇 TRATAMENTO CORRETO DE DUPLICIDADE
+        if (err.code === 'ER_DUP_ENTRY') {
+            return resp.status(409).send({
+                erro: 'Música já curtida'
+            });
+        }
+
+        resp.status(500).send({
             erro: err.message
-        })   
+        });
     }
-})
+});
 
 server.get('/musica/:id/curtidas', async (req, resp) => {
     try {
