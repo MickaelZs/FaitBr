@@ -284,6 +284,7 @@ export default function Index() {
         </section>
 
 
+        <h1>Playlist de {usu.length > 0 && usu[0].usuario}</h1>
 
         <Carousel
           swipeable
@@ -300,7 +301,7 @@ export default function Index() {
 
             <section className='section-playlist' key={item.id} >
 
-              <h1>Playlist de {item.usuario}</h1>
+              {/* <h1>Playlist de {usu.length > 0 && usu[0].usuario}</h1> */}
 
 
               <div className='container-titulos-play'>
