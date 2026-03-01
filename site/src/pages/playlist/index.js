@@ -1,43 +1,44 @@
 import './index.scss'
-
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
-import modal from 'react-modal';
 import React, { useEffect, useState } from 'react'
-import { criarPlaylist, criarPlaylistItem, DeletaPlaylist, listarPlaylistPorIdUsuarioo, listaPlaylist, listarPlaylistItemUsuarioo, listarPlaylistImagem } from '../../api/playlistAPI';
+import { criarPlaylist, DeletaPlaylist, listarPlaylistPorIdUsuarioo, listarPlaylistItemUsuarioo, listarPlaylistImagem } from '../../api/playlistAPI';
 import { ToastContainer, toast } from 'react-toastify';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import Storage from 'local-storage'
-import { buscarUsuarioPorId } from '../../api/usuarioAPI';
 import Modal from 'react-modal';
-import { enviarArquivoMusica, listarCurtidas } from '../../api/musicaAPI';
+import { listarCurtidas } from '../../api/musicaAPI';
 import { API_URL } from '../../api/config';
-import styled from 'styled-components';
 import { seguindoArtistaPorId } from '../../api/cadastroArtistaAPI';
 import Cabecario from '../../components/cabeçalho';
 
 
 const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    
-    transform: 'translate(-50%, -50%)',
+  overlay: {
+    backgroundColor: "rgba(0, 0, 0, 0.75)",
+    backdropFilter: "blur(6px)",
+    zIndex: 999
   },
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    transform: "translate(-50%, -50%)",
+    borderRadius: "20px",
+    padding: "40px",
+    border: "none",
+    background: "#121212",
+    width: "400px",
+    maxWidth: "90%",
+    boxShadow: "0 20px 60px rgba(0,0,0,0.8)"
+  }
 };
 
 
-
 export default function Index() {
-
-  const button = styled.button({
-    backgroundColor: 'grey',
-  });
 
   const [nome, setNome] = useState('')
   const [musica, setMusica] = useState([])
@@ -45,41 +46,15 @@ export default function Index() {
   const [artista, setArtista] = useState([])
   const [itemm, setItemm] = useState([])
   const [imagem, setImagem] = useState([])
-  const [id, setId] = useState(0)
   const navigate = useNavigate()
-  const {idParam} = useParams()
-
-
-  let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {
     setIsOpen(true);
   }
 
-  function afterOpenModal() {
-     //references are now sync'd and can be accessed.
-     subtitle.style.color = '#8D32E5';
-    //  subtitle.style.backgroundColor = '#8D32E5';
-    //  subtitle.style.outline = 'none';
-    //  subtitle.style.border = 'solid 2px #000';
-    //  subtitle.style.borderRadius = '15px';
-    //  subtitle.style.height = '30px';
-    //  subtitle.style.width = '70px';
-
-    //  subtitlee.style.color = '#fff';
-    //  subtitlee.style.backgroundColor = '#8D32E5';
-    //  subtitlee.style.outline = 'none';
-    //  subtitlee.style.border = 'solid 2px #000';
-    //  subtitlee.style.borderRadius = '15px';
-    //  subtitlee.style.height = '30px';
-    //  subtitlee.style.width = '70px';
-     
-    
-  }
-
   function closeModal() {
-   
+
     setIsOpen(false);
   }
 
@@ -87,7 +62,7 @@ export default function Index() {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 3,
+      items: 7,
       slidesToSlide: 2
     },
     tablet: {
@@ -97,15 +72,15 @@ export default function Index() {
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
-      items: 1,
+      items: 2,
       slidesToSlide: 1
     }
   };
 
   useEffect(() => {
-    if(!Storage('usuario-logado')){
+    if (!Storage('usuario-logado')) {
       navigate('/LoginUsuario');
-  }
+    }
     carregarPlaylist();
     carregarCurtida();
     carregarSeguidores();
@@ -116,8 +91,8 @@ export default function Index() {
 
   function acessarPlaylist(id) {
     const idPlaylist = ({
-      "id":id
-  })
+      "id": id
+    })
     Storage('foi', idPlaylist)
     navigate(`/ReproduzirPlaylist/${id}`)
 
@@ -187,13 +162,13 @@ export default function Index() {
 
   }
 
-  function acessarArtista(id){
+  function acessarArtista(id) {
 
     navigate(`/detalhe/artista/${id}`)
   }
 
-  function acessarMusicaa(id){
-    navigate(`/play/${id}` )
+  function acessarMusicaa(id) {
+    navigate(`/play/${id}`)
   }
 
 
@@ -223,144 +198,189 @@ export default function Index() {
 
   return (
     <main className="pag-playlist">
-      <Cabecario/>
+      <Cabecario />
 
       <ToastContainer />
-      <section className='section-musicas'>
-        <h2 className='titulos'>Musicas</h2>
+      <div className='cont-playlist'>
+
+        <section className='section-musicas'>
+          <h2 className='titulos'>Musicas</h2>
+
+          {musica.length === 0 ? (
+            <div className="empty-state">
+              <h3>Você ainda não curtiu nenhuma música 🎵</h3>
+              <p>Explore artistas e comece a curtir suas músicas favoritas.</p>
+            </div>
+          ) : (
+            <Carousel
+              swipeable
+              draggable
+              responsive={responsive}
+              ssr
+              infinite={false}
+              autoPlay={false}
+              keyBoardControl
+              containerClass="carousel-container"
+              itemClass="carousel-item-padding-10-px"
+            >
+              {musica.map(item => (
+                <div
+                  key={item.IdMusica}
+                  className='music'
+                  onClick={() => acessarMusicaa(item.IdMusica)}
+                >
+                  <img
+                    className='caixa-musica'
+                    src={`${API_URL}/${item.imagem}`}
+                    alt=""
+                  />
+                  <div className='textt'>
+                    <h3>{item.musica}</h3>
+                    <p>{item.nome}</p>
+                  </div>
+                </div>
+              ))}
+            </Carousel>
+          )}
+        </section>
+
+        <section className='section-musicas'>
+          <h2 className='titulos'>Artistas - Seguidos</h2>
+          {artista.length === 0 ? (
+            <div className="empty-state">
+              <h3>Você ainda não segue nenhum artista 🎤</h3>
+              <p>Comece a seguir artistas para vê-los aqui.</p>
+            </div>
+          ) : (
+            <Carousel
+              swipeable
+              draggable
+              responsive={responsive}
+              ssr
+              infinite={false}
+              autoPlay={false}
+              keyBoardControl
+              containerClass="carousel-container"
+              itemClass="carousel-item-padding-10-px"
+            >
+              {artista.map(item => (
+                <div
+                  key={item.IdArtista}
+                  className='music'
+                  onClick={() => acessarArtista(item.IdArtista)}
+                >
+                  <img
+                    className='caixa-musica'
+                    src={`${API_URL}/${item.imagem}`}
+                    alt=""
+                  />
+                  <div className='textt'>
+                    <h3>{item.artista}</h3>
+                  </div>
+                </div>
+              ))}
+            </Carousel>
+          )}
+        </section>
+
+
 
         <Carousel
-          swipeable={false}
-          draggable={false}
+          swipeable
+          draggable
           responsive={responsive}
-          ssr={true}
-          infinite={true}
-          autoPlaySpeed={1000}
-          keyBoardControl={true}
-          transitionDuration={500}
-
+          ssr
+          infinite={false}
+          autoPlay={false}
+          keyBoardControl
+          containerClass="carousel-container"
+          itemClass="carousel-item-padding-10-px"
         >
+          {usu.map(item =>
 
-          {musica.map(item =>
-            <div className='music' onClick={() => acessarMusicaa (item.IdMusica) }>
-              <img className='caixa-musica' src={`${API_URL}/${item.imagem}`} alt="" />
-              <div className='textt'>
-                <h3>{item.musica}</h3>
-                <p>Teto</p>
+            <section className='section-playlist' key={item.id} >
+
+              <h1>Playlist de {item.usuario}</h1>
+
+
+              <div className='container-titulos-play'>
+                <h2 className='titulo-playlist'>{item.nome}</h2>
+                <div className="acoes"><img src='/images/excluir.png' onClick={() => DeletarPlaylist(item.id, item.usu)} /></div>
+
               </div>
-            </div>
+
+
+              <div className='playlist' onClick={() => acessarPlaylist(item.id)}>
+
+                {imagem
+                  .filter(img => img.idPlaylist === item.id)
+                  .slice(0, 1)
+                  .map(img => (
+                    <img
+                      key={img.id}
+                      className='capP'
+                      src={`${API_URL}/${img.imagem}`}
+                      alt=""
+                    />
+                  ))}
+
+                {imagem.map((item) => <img className='capP' src={`${API_URL}/${item.imagem}`} alt="" />)}
+
+
+                <div className='nome-playlist'>
+                  <h1>{item.nome}</h1>
+                  <h1>{usu.id}</h1>
+                </div>
+
+              </div>
+
+            </section>
           )}
-
         </Carousel>
-      </section>
+        <section className='faixa-criar-play'>
 
-      <section className='section-musicas'>
-        <h2 className='titulos'>Artistas - Seguidos</h2>
-        <Carousel
-          swipeable={false}
-          draggable={false}
-          responsive={responsive}
-          ssr={true}
-          infinite={true}
-          autoPlaySpeed={1000}
-          keyBoardControl={true}
-          transitionDuration={500}
-          centerMode
+          <div onClick={openModal} className='caixa-musica-playlist'>
+            <img className='k' src="/images/add.png" alt="" />
+
+          </div>
+          <h1 className='criar-playlist'>Criar Playlist</h1>
+
+        </section>
+        <div className='finalização'></div>
+
+
+
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          style={customStyles}
         >
-          {artista.map(item =>
-            <div className='music' onClick={ () => acessarArtista (item.IdArtista) }>
+          <div className="modal-header">
+            <h2>Criar Playlist</h2>
+            <button className="close-btn" onClick={closeModal}>✕</button>
+          </div>
 
-              <div className='caixa-musica'>
-                <img className='caixa-musica' src={`${API_URL}/${item.imagem}`} alt="" />
-              </div>
-              <div className='textt'>
-                <h3>{item.artista}</h3>
-              </div>
+          <div className="modal-body">
+            <input
+              type="text"
+              placeholder="Nome da playlist"
+              value={nome}
+              onChange={e => setNome(e.target.value)}
+            />
+          </div>
 
+          <div className="modal-footer">
+            <button className="btn-cancel" onClick={closeModal}>
+              Cancelar
+            </button>
 
-            </div>
-          )}
-        </Carousel>
-      </section>
+            <button className="btn-primary" onClick={salvarClick}>
+              Criar
+            </button>
+          </div>
+        </Modal>
 
-
-
-      <Carousel
-        swipeable={false}
-        draggable={false}
-        responsive={responsive}
-        ssr={true}
-        infinite={true}
-        autoPlaySpeed={1000}
-        keyBoardControl={true}
-        transitionDuration={500}
-        centerMode
-      >
-        {usu.map(item =>
-
-          <section className='section-playlist' >
-
-          <h1>Playlist de {item.usuario}</h1>
-
-            
-
-            <div className="acoes"><img src='/images/excluir.png' onClick={() => DeletarPlaylist(item.id, item.usu)} /></div>
-            <h2 className='titulo-playlist'>{item.nome}</h2>
-
-            <div className='playlist' onClick={() => acessarPlaylist(item.id)}>
-
-              {imagem.map((item) =>
-
-                <img className='capP' src={`${API_URL}/${item.imagem}`} alt="" />
-
-              )}
-
-
-              <div className='nome-playlist'>
-                <h1>{item.nome}</h1>
-                <h1>{usu.id}</h1>
-              </div>
-
-            </div>
-
-          </section>
-        )}
-      </Carousel>
-      <section className='faixa-criar-play'>
-
-        <div onClick={openModal} className='caixa-musica-playlist'>
-          <img className='k' src="/images/add.png" alt="" />
-
-        </div>
-        <h1 className='criar-playlist'>Criar Playlist</h1>
-
-      </section>
-      <div className='finalização'></div>
-
-
-
-      <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-        <button className='botaoModal' ref={(_subtitle) => (subtitle = _subtitle)} onClick={closeModal}>Fechar</button>
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Criar Playlist</h2>
-      
-        <br />
-
-
-
-        <input type='text' value={nome}  onChange={e => setNome(e.target.value)} />
-        
-
-        <button className='botaoModal'   onClick={salvarClick} >Continuar</button>
-
-
-      </Modal>
-
+      </div>
     </main>
   )
 }
