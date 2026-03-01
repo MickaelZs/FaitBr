@@ -42,17 +42,22 @@ export default function Index() {
 
       <section className="conteudo">
 
-        <div className='caixa-busca'>
+        <div className='caixa-buscaa'>
           <input
             type="text"
             placeholder='Buscar artista ou gênero'
             value={filtro}
             onChange={e => setFiltro(e.target.value)}
           />
-          <img src='./images/procurar.png' onClick={filtrar} />
+          <button className="icon-btn" onClick={filtrar}>
+            <svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="7"></circle>
+              <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+            </svg>
+          </button>
         </div>
 
-        
+
         {/* <h2 className="titulo-secao">Artistas</h2> */}
 
         <div className='comp-card'>
@@ -76,7 +81,7 @@ export default function Index() {
           )}
         </div>
 
-        
+
         {/* <h2 className="titulo-secao">Gêneros</h2> */}
 
         <div className='card-genero'>

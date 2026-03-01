@@ -72,7 +72,8 @@ export default function Reproduzir() {
                 <div className='faixa-1'>
                     <div className='imgg'>
                         {!imagemPrincipal &&
-                            <img className='usuarioo' src='/images/botao-play (3).png' />
+                            <img className='usuarioo' src='/images/play (1).png' />
+                            
                         }
 
 
@@ -88,7 +89,7 @@ export default function Reproduzir() {
                     <audio controls autoPlay={true} src={audioPrincipal}></audio>
                 </div>
 
-                <div >
+                <div className='contan-cardMusica'>
 
                     {musica.map((item, pos) =>
 

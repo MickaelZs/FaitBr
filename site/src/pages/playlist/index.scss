@@ -1,7 +1,7 @@
 .pag-playlist {
   display: flex;
   flex-direction: column;
-  background: #000000;
+  background: #030303;
 }
 
 .titulos {
@@ -14,11 +14,6 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-}
-
-.acoes img {
-  width: 19px;
-  height: 19px;
 }
 
 
@@ -108,8 +103,7 @@
 }
 
 .modal-body input:focus {
-  border-color: #8D32E5;
-  box-shadow: 0 0 0 2px rgba(141, 50, 229, 0.3);
+  border-color: #0008FF;
 }
 
 .modal-footer {
@@ -134,7 +128,7 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #8D32E5, #5f00d4);
+  background: #0008FF;
   border: none;
   padding: 10px 22px;
   border-radius: 10px;

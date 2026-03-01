@@ -94,12 +94,12 @@ export default function Index() {
                   <span>{item.artista}</span>
                 </div>
 
-                <button
+                <div
                   className="btn-add"
                   onClick={() => add(item.id_musica)}
                 >
                   +
-                </button>
+                </div>
               </div>
             ))}
           </div>

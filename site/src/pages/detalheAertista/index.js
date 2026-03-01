@@ -224,7 +224,7 @@ export default function Index() {
                                 </div>
 
                                 <div
-                                    className="heart"
+                                    className="heartt"
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         musicaJaCurtida(item.id)
@@ -235,7 +235,7 @@ export default function Index() {
                                     <img
                                         src={
                                             musicaJaCurtida(item.id)
-                                                ? "/images/coracao (4).png"
+                                                ? "/images/heart (1).png"
                                                 : "/images/coracao (2).png"
                                         }
                                     />

@@ -6,7 +6,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css'
 import React, { useEffect, useState } from 'react'
 import { criarPlaylist, DeletaPlaylist, listarPlaylistPorIdUsuarioo, listarPlaylistItemUsuarioo, listarPlaylistImagem } from '../../api/playlistAPI';
 import { ToastContainer, toast } from 'react-toastify';
-import { useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Storage from 'local-storage'
 import Modal from 'react-modal';
 import { listarCurtidas } from '../../api/musicaAPI';
@@ -151,7 +151,7 @@ export default function Index() {
             }
             else
               carregarPlaylist()
-            toast.dark('Playlist removida')
+            toast.success('Playlist removida')
           }
         },
         {
@@ -306,7 +306,15 @@ export default function Index() {
 
               <div className='container-titulos-play'>
                 <h2 className='titulo-playlist'>{item.nome}</h2>
-                <div className="acoes"><img src='/images/excluir.png' onClick={() => DeletarPlaylist(item.id, item.usu)} /></div>
+                <div className="acoes" onClick={() => DeletarPlaylist(item.id, item.usu)}>
+                   <svg xmlns="http://www.w3.org/2000/svg" width="20"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 6h18"></path>
+                    <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                    <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                  </svg> 
+                </div>
 
               </div>
 
@@ -348,8 +356,6 @@ export default function Index() {
 
         </section>
         <div className='finalização'></div>
-
-
 
         <Modal
           isOpen={modalIsOpen}

@@ -98,7 +98,7 @@ export default function Index() {
       </div>
 
       <div className="profile-actions">
-        <button className="btn-primary" onClick={salvarImagem}>
+        <button className="btn-primaryy" onClick={salvarImagem}>
           Salvar imagem
         </button>
         <button className="btn-secondary" onClick={sairClick}>

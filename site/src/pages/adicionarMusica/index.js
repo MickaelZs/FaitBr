@@ -54,51 +54,57 @@ export default function Index() {
 
   return (
 
-     <div className='addPlaylist'>
-          <Cabecario />
-          <ToastContainer />
-    
-          <div className="container">
-    
-            <div className='caixa-busca'>
-              <input
-                type="text"
-                placeholder='Buscar música...'
-                value={buscar}
-                onChange={e => setBuscar(e.target.value)}
-              />
-              <img src='/images/procurar.png' onClick={filtrar} alt="Buscar" />
-            </div>
-              <div className="faixa-musica">
-                {musicaa.map((item) => (
-                  <div className="card-musica" key={item.id_musica}>
-                    <img
-                      src={`${API_URL}/${item.imagem}`}
-                      alt={item.musica}
-                      className="imagem"
-                    />
-    
-                    <div className="info">
-                      <h3>{item.musica}</h3>
-                      <span>{item.artista}</span>
-                    </div>
+    <div className='addPlaylist'>
+      <Cabecario />
+      <ToastContainer />
 
-                    <button className="add" onClick={() => salvar(musicaa.indexOf(item))}>
-                     +
-                 </button>
-    
-                    
-                  </div>
-                ))}
-              </div>
-            
-          </div>
+      <div className="container">
+
+        <div className='caixa-buscaa'>
+          <input
+            type="text"
+            placeholder='Buscar música...'
+            value={buscar}
+            onChange={e => setBuscar(e.target.value)}
+          />
+          <button className="icon-btn" onClick={filtrar}>
+            <svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="7"></circle>
+              <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+            </svg>
+          </button>
         </div>
+        <div className="faixa-musica">
+          {musicaa.map((item) => (
+            <div className="card-musica" key={item.id_musica}>
+              <img
+                src={`${API_URL}/${item.imagem}`}
+                alt={item.musica}
+                className="imagem"
+              />
+
+              <div className="info">
+                <h3>{item.musica}</h3>
+                <span>{item.artista}</span>
+              </div>
+
+              <div className="btn-add" onClick={() => salvar(musicaa.indexOf(item))}>
+                +
+              </div>
+              
+
+
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </div>
 
     // <div className='add'>
     //   <Cabecario />
     //   <ToastContainer />
-      
+
     //     <div className="container">
     //       <div className='caixa-busca'>
     //         <input className="inptsss" type="text" placeholder='Buscar artista por nome' value={buscar} onChange={e => setBuscar(e.target.value)} />

@@ -97,20 +97,16 @@
 
 
 .btn-add {
-  width: 40px;
-  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   border: none;
-  background: #8d32e5;
+  background: #0008FF;
   color: #fff;
-  font-size: 22px;
   cursor: pointer;
-  transition: .3s;
-}
-
-.btn-add:hover {
-  background: #7329c4;
-  transform: scale(1.1);
 }
 
 

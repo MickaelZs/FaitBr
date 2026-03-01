@@ -18,17 +18,16 @@ export default function Reproduzir() {
     const [imagemPrincipal, setImagemPrincipal] = useState('');
     const [nomePrincipal, setNomePrincipal] = useState('');
     const [nomeArtista, setNomeArtista] = useState('');
-    const [curtir, setCurtir] = useState(false);
     const navigate = useNavigate()
     const { idParam } = useParams();
 
     async function carregarMusica() {
         const x = await listarPlaylistItemUsuarioo(idParam)
         setPlaylist(x)
-      
+
     }
 
-    
+
     async function curtirr(position) {
         try {
             let id = Storage('usuario-logado').id;
@@ -36,7 +35,7 @@ export default function Reproduzir() {
             const resp = await curtirMusica(musicaSelecionada, id)
             Storage('Musica Curtida', resp)
             console.log(resp)
-            
+
             toast.dark('musica curtidaa');
         }
 
@@ -55,27 +54,27 @@ export default function Reproduzir() {
             const resp = await deletarrCurtida(user, position)
             Storage.remove('Musica Curtida')
             console.log(resp)
-            toast.dark('curtida deletada') 
+            toast.dark('curtida deletada')
         }
-               catch (err) {
+        catch (err) {
             if (err.response) toast.error(err.response.data.erro);
             else toast.error(err.message);
         }
     }
 
-    
+
     async function deletarMusicaClick(position) {
         try {
             const p = Storage('foi').id
             console.log(p)
             const musica = playlist[position].idMusica
             console.log(musica)
-            const resp = await DeletarMusicaPlaylist(p,musica, position)
+            const resp = await DeletarMusicaPlaylist(p, musica, position)
 
-            
-            toast.dark('musica deletada da playlist') 
+
+            toast.dark('musica deletada da playlist')
         }
-               catch (err) {
+        catch (err) {
             if (err.response) toast.error(err.response.data.erro);
             else toast.error(err.message);
         }
@@ -100,11 +99,15 @@ export default function Reproduzir() {
         return API_URL + '/' + musica;
     }
 
+    function acessarArtista(id) {
+        navigate(`/detalhe/artista/${id}`)
+    }
+
 
     useEffect(() => {
-         if(!Storage('usuario-logado')){
-                navigate('/LoginUsuario');
-            }
+        if (!Storage('usuario-logado')) {
+            navigate('/LoginUsuario');
+        }
         carregarMusica()
 
     }, [])
@@ -129,54 +132,62 @@ export default function Reproduzir() {
 
     return (
         <main className='pagina-reproduzir-playlist-f'>
-            <ToastContainer/>
+            <ToastContainer />
             <Cabecario />
             <section className='faixa-principal'>
 
                 <div className='faixa-1'>
-                    <div  className='imgg'>
-                    {!imagemPrincipal &&
-                        <img  className='usuarioo' src='/images/botao-play (3).png' width='50px'  />
-                    }
-                   
+                    <div className='imgg'>
+                        {!imagemPrincipal &&
+                            <img className='usuarioo' src='/images/play (1).png' width='50px' />
+                        }
 
-                    {imagemPrincipal &&
-                        <img className="imgMusica" src={imagemPrincipal} alt="" />
-                    }
-                     </div>
-                    <h2>{nomePrincipal}</h2>
-                    <h3>{nomeArtista}</h3>
-                    <audio controls autoPlay={true} src={audioPrincipal} />
-                    
-                    <div className='kk'>
-                    <img onClick={() => AdicionarMusicaPlaylist(idParam)} className="imgBotao" src="/images/addM.png" alt="" />
-                    <p>Adicionar Musica</p>
+
+                        {imagemPrincipal &&
+                            <img className="imgMusica" src={imagemPrincipal} alt="" />
+                        }
                     </div>
-                    
+                    <h2>{nomePrincipal}</h2>
+                    <h3 >{nomeArtista}</h3>
+                    <br />
+                    <audio controls autoPlay={true} src={audioPrincipal} />
+                    <br />
+                    <div className='kk'  onClick={() => AdicionarMusicaPlaylist(idParam)} >
+                        <div className='divAdicionar'> + </div>
+                        <p>Adicionar Musica</p>
+                    </div>
+
 
                 </div>
 
                 <div>
 
-                    {playlist.map((item,index) =>
-                    <div className='lo'>
-                        <div className='cardMusica' onClick={() => setAudioPrincipal(exibirAudio(item.audio)) & setImagemPrincipal(exibirImagemProduto(item.imagem)) & setNomePrincipal(item.musica) & setNomeArtista(item.artista)} >
+                    {playlist.map((item, index) =>
+                        <div className='lo'>
+                            <div className='cardMusica' onClick={() => setAudioPrincipal(exibirAudio(item.audio)) & setImagemPrincipal(exibirImagemProduto(item.imagem)) & setNomePrincipal(item.musica) & setNomeArtista(item.artista)} >
 
-                            <img src={exibirImagemProduto(item.imagem)}  className="image-music" />
+                                <img src={exibirImagemProduto(item.imagem)} className="image-music" />
 
-                            <div className='div-ator'>
-                                <h1>{item.musica}</h1>
-                                <p>{item.artista}</p>
-                               
+                                <div className='div-ator'>
+                                    <h1>{item.musica}</h1>
+                                    <p>{item.artista}</p>
+
+                                </div>
+
+
                             </div>
-                            
+                            <div onClick={() => deletarMusicaClick(index)}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 6h18"></path>
+                                    <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                                    <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                                </svg>
 
-                        </div>
-                        <div>
-                            <img onClick={() => deletarMusicaClick (index)} src='/images/excluir.png' alt="" width="30px"/>
 
-                        </div>
-                        {/* <div className="heart" onClick={() => setCurtir(!curtir)  } >
+                            </div>
+                            {/* <div className="heart" onClick={() => setCurtir(!curtir)  } >
                             {curtir ?
                                 <img className="l" src="/images/heart on.png" alt="" onClick={() => deletarClick(item.id)(index)}/>
                                 :

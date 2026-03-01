@@ -1,14 +1,10 @@
 .pagina-genero {
-    background-color: lab(0% 0 0);
+    background-color:#030303;;
     width: 100%;
     background-size: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
-
-
-
-
 
 
     .cap {
@@ -57,7 +53,8 @@
         }
 
         p {
-            color: #ffffff;
+            color: #fdfdfd;
+            font-weight:600;
 
         }
 
