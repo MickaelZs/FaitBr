@@ -352,3 +352,32 @@
 }
 
 }
+
+@media (max-width: 360px) {
+
+
+  .music {
+    width: 140px;
+  }
+
+  .caixa-musica {
+    height: 140px;
+  }
+
+  .playlist {
+    width: 150px;
+    height: 150px;
+  }
+
+
+  .container-titulos-play{
+  display: flex;
+  
+}
+
+.acoes img {
+  width: 18px;
+  height: 18px;
+}
+
+}

@@ -76,7 +76,7 @@ export default function Index() {
                                     <p> {item.nome}</p>
 
 
-                                    <br />
+                                 
                                 </div>
                             </div>
 

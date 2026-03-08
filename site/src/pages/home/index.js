@@ -133,6 +133,11 @@ export default function Index() {
             <h2>Sertanejo</h2>
           </div>
 
+          <div className="card" onClick={AcessarSertanejo}>
+            <img src="https://thebackstage-deezer.com/wp-content/uploads/2023/11/trap-1000x600.jpeg" />
+            <h2>Trap</h2>
+          </div>
+
         </div>
 
       </section>

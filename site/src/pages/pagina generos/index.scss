@@ -139,4 +139,33 @@
             
         }
     }
+    @media(max-width: 360px) {
+        .opa {
+            margin-left: 1em;
+        }
+
+        .Artistas {
+            display: flex;
+            align-items: center;
+            
+
+            img {
+            width: 132px;
+            height: 132px;
+            border-radius: 20px;
+
+        }
+        }
+
+        .generos{
+            p{
+                font-size: 14px;
+            }
+        }
+
+        .card {
+                padding-bottom: -50px;
+            
+        }
+    }
 }
