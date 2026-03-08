@@ -45,7 +45,7 @@ export default function Index() {
     async function carregarCurtidas() {
         const id = Storage('usuario-logado').id;
         const resp = await listarCurtidas(id);
-        
+
         setCurtir(resp);
     }
 
@@ -68,8 +68,8 @@ export default function Index() {
             const user = Storage('usuario-logado').id;
             await ParaDeSeguir(user, artistaId);
 
-            setSeguirr(false); 
-            
+            setSeguirr(false);
+
         } catch (err) {
             toast.error(err.message);
         }
@@ -229,7 +229,7 @@ export default function Index() {
                                         e.stopPropagation();
                                         musicaJaCurtida(item.id)
                                             ? deletarClick(item.id)
-                                            : curtirr(item.id);   
+                                            : curtirr(item.id);
                                     }}
                                 >
                                     <img

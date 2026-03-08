@@ -15,7 +15,7 @@ import { API_URL } from '../../api/config';
 export default function Cadastromsc() {
     const [nome, setNome] = useState('')
     const [artista, setArtista] = useState([]);
-    const [idArtista, setIdArtista] = useState(0)
+    const [idArtista, setIdArtista] = useState('')
     const [genero, setGenero] = useState([])
     const [newArtista, setNewArtista] = useState([]);
     const [idGenero, setIdGenero] = useState('')
@@ -84,7 +84,7 @@ export default function Cadastromsc() {
         if (idParam) {
             carregarMusica()
         }
-        if(!Storage('adm-logado')){
+        if (!Storage('adm-logado')) {
             navigate('/LoginAdm');
         }
 
@@ -110,7 +110,7 @@ export default function Cadastromsc() {
                 await inserirMusica(NovaMusica.id, musica);
                 setId(NovaMusica.id)
 
-                toast.dark('Nova musica cadastrada');
+                toast.success('Nova musica cadastrada');
             }
             else {
                 await alterarMusica(id, nome, idGenero, idArtista);
@@ -166,7 +166,7 @@ export default function Cadastromsc() {
 
                             {!imagem &&
 
-                                <img src='/images/image-bottom212.svg' width='120px' />
+                                <img src='https://img.icons8.com/sf-regular/1200/add-image.jpg' width='120px' />
                             }
 
                             {imagem &&
@@ -180,9 +180,17 @@ export default function Cadastromsc() {
                     </div>
                     <div className='div2-cadastro'>
                         <div className='div-input'>
+
                             <select value={idArtista} onChange={e => setIdArtista(e.target.value)}>
-                                <option selected disabled hidden> artista </option>
-                                {artista.map((item) => <option value={item.id}>{item.nome}</option>)}
+
+                                <option value="" disabled hidden>
+                                    Selecione um artista
+                                </option>
+                                {artista.map((item) => (
+                                    <option key={item.id} value={item.id}>
+                                        {item.nome}
+                                    </option>
+                                ))}
 
                             </select>
                         </div>
@@ -201,21 +209,28 @@ export default function Cadastromsc() {
 
                         <div className='div-input'>
                             <select value={idGenero} onChange={e => setIdGenero(e.target.value)}>
-                                <option selected disabled hidden> generos </option>
-                                {genero.map((item) =>
-                                    <option value={item.id}> {item.nome} </option>
-                                )}
+
+                                <option value="" disabled hidden>
+                                    Selecione um gênero
+                                </option>
+
+                                {genero.map((item) => (
+                                    <option key={item.id} value={item.id}>
+                                        {item.nome}
+                                    </option>
+                                ))}
+
                             </select>
                         </div>
                         <div className='div-input'>
-                             <div className='label-float'>
-                                    <input type="text" placeholder=" " value={nome} onChange={e => setNome(e.target.value)} />
-                                    <label>Artista</label>
-                                </div>
+                            <div className='label-float'>
+                                <input type="text" placeholder=" " value={nome} onChange={e => setNome(e.target.value)} />
+                                <label>Artista</label>
+                            </div>
                         </div>
 
                         <div className='botoes'>
-                                
+
                             <div>
                                 <button className='botao' onClick={salvarClick} >{id === 0 ? 'cadastrar' : 'Alterar'}</button>
                             </div>

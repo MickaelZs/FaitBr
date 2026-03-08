@@ -64,7 +64,7 @@ export default function Index() {
           {artista.map(item =>
             <div
               key={item.id}
-              className='card-artista'
+              className='card-artistaa'
               onClick={() => acessarArtista(item.id)}
             >
               <img
@@ -73,7 +73,7 @@ export default function Index() {
                 alt={item.nome}
               />
 
-              <div className="info-artista">
+              <div className="info-artistaa">
                 <h1>{item.nome}</h1>
                 <h2>{item.genero}</h2>
               </div>
@@ -91,11 +91,11 @@ export default function Index() {
               className='card-genero-item'
               onClick={() => acessarGenero(item.id)}
             >
-              <img
+              {/* <img
                 src={`${API_URL}/${item.genero}`}
                 className="imagem-genero"
                 alt={item.nome}
-              />
+              /> */}
 
               <div className="overlay-genero">
                 <h1>{item.nome}</h1>

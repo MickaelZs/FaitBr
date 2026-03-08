@@ -127,9 +127,9 @@
 
 
 .pagina-cadastro-artista {
-  min-height: 100dvh; // melhor que 100vh no mobile
+  min-height: 100vh; // melhor que 100vh no mobile
   width: 100%;
-  background: #1E1E1E;
+  background: #F5F6FA;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -144,16 +144,19 @@
     border-radius: 24px;
     display: flex;
     overflow: hidden;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
   }
 
+  .faixa-cadastro{
+    box-shadow: 0 6px 18px #00000013;
+    border-radius: 20px;
+  }
   
 
   /* ================= LADO ESQUERDO ================= */
 
   .div2-cadastro {
     flex: 1;
-    background: linear-gradient(135deg, #f5f0ff, #ffffff);
+    background: #bbb6b615;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -166,7 +169,7 @@
     width: 240px;
     height: 240px;
     border-radius: 20px;
-    border: 3px dashed #8d32e5;
+    border: 3px dashed #0008FF;;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -175,7 +178,7 @@
   }
 
   .border-image:hover {
-    background: rgba(141, 50, 229, 0.05);
+    background: rgba(255, 255, 255, 0.05);
     transform: scale(1.03);
   }
 
@@ -188,7 +191,7 @@
     justify-content: center;
     padding: 60px;
     gap: 20px;
-    color: #8D32E5;
+    color: #0008FF;
   }
 
   .div1-cadastro p {
@@ -208,7 +211,7 @@
     width: 100%;
     padding: 14px 16px;
     border-radius: 8px;
-    border: 1px solid #8d32e5;
+    border: 1px solid #0008FF;
     font-size: 15px;
     outline: none;
     transition: 0.3s;
@@ -224,7 +227,7 @@
     width: 100%;
     padding: 14px 16px;
     border-radius: 10px;
-    border: 1.5px solid #d6c3f7;
+    border: 1.5px solid #0008FF;
     font-size: 15px;
     background: #fafafa;
     transition: 0.3s;
@@ -232,8 +235,7 @@
 
   .label-float input:focus,
   .label-float select:focus {
-    border-color: #8d32e5;
-    box-shadow: 0 0 12px rgba(141, 50, 229, 0.25);
+    border-color: #0008FF;
     background: #fff;
   }
 
@@ -244,7 +246,7 @@
     font-size: 14px;
     background: #ffffff;
     padding: 0 6px;
-    color: #8d32e5;
+    color: #0008FF;
     transition: 0.2s ease;
     pointer-events: none;
   }
@@ -268,7 +270,7 @@
     height: 48px;
     border-radius: 12px;
     border: none;
-    background: linear-gradient(135deg, #8d32e5, #6c1ed9);
+    background: #0008FF;
     color: #fff;
     font-weight: 600;
     cursor: pointer;
@@ -277,7 +279,6 @@
 
   .botao:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(141, 50, 229, 0.4);
   }
 }
  
@@ -342,7 +343,7 @@
   .pagina-cadastro-artista {
     align-items: flex-start;   
     padding: 20px 12px;
-    min-height: auto;         
+       
   }
 
   .pagina-cadastro-artista .margin-cadastro1 {
@@ -377,6 +378,52 @@
 
   .pagina-cadastro-artista .botao {
     width: 100%;
+  }
+
+}
+
+@media (max-width: 360px) {
+
+  .pagina-cadastro-artista {
+    align-items: flex-start;   
+    padding: 20px 12px;
+       
+  }
+
+  .pagina-cadastro-artista .margin-cadastro1 {
+    width: 100%;
+    border-radius: 18px;
+  }
+
+  .pagina-cadastro-artista .border-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .pagina-cadastro-artista .div1-cadastro,
+  .pagina-cadastro-artista .div2-cadastro {
+    padding: 30px;
+  }
+
+  .pagina-cadastro-artista .faixa-cadastro{
+    width: 100%;
+  }
+
+  .pagina-cadastro-artista input,
+  .pagina-cadastro-artista select {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .pagina-cadastro-artista .botoes {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .pagina-cadastro-artista .botao {
+    width: 100px;
   }
 
 }

@@ -84,6 +84,8 @@ export default function Index() {
 
                     <section className='card-container1'>
 
+                        <h1 className='titulo'>Músicas cadastradas</h1>
+
                             {nomee.map(item => {
                                 return (
 

@@ -1,6 +1,6 @@
 .addPlaylist {
   min-height: 100vh;
-  background: #121212;
+  background: #000104;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -18,19 +18,19 @@
 
 
 .caixa-busca {
-  display: flex;
+   display: flex;
   align-items: center;
-  background: #1e1e1e;
-  border: 2px solid #8d32e5;
-  padding: 12px 20px;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 500px;
-  margin-bottom: 50px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid #0008FF;
+  padding: 7px 20px;
+  border-radius:30px;
+  max-width: 600px;
+  margin: 0 auto 50px;
+  transition: 0.3s;
 }
 
 .caixa-busca input {
-  flex: 1;
+   flex: 1;
   background: none;
   border: none;
   color: #fff;

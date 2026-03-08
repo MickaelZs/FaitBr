@@ -96,6 +96,8 @@ export default function Index() {
 
                         <div className='comp-card1'>
 
+                            <h1 className='titulo'>Artistas cadastrados</h1>
+
                             {nomee.map(item => {
                                 return (
 

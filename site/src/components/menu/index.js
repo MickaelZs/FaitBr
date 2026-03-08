@@ -71,7 +71,7 @@ export default function Menu() {
           <span>Cadastrar música</span>
         </a>
 
-        <a href="/adm/artistaCadastrado" className="menu-link">
+        {/* <a href="/adm/artistaCadastrados" className="menu-link">
           <img src="/images/artistaCadastrado.svg" />
           <span>Artistas cadastrados</span>
         </a>
@@ -79,7 +79,7 @@ export default function Menu() {
         <a href="/adm/MusicaCadastradas" className="menu-link">
           <img src="/images/msccadastrada.svg" />
           <span>Músicas cadastradas</span>
-        </a>
+        </a> */}
 
       </div>
     </div>

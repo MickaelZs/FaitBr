@@ -74,7 +74,12 @@ export default function Index() {
             value={buscar}
             onChange={e => setBuscar(e.target.value)}
           />
-          <img src='/images/procurar.png' onClick={filtrar} alt="Buscar" />
+           <button className="icon-btn" onClick={filtrar}>
+            <svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="7"></circle>
+              <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+            </svg>
+          </button>
         </div>
 
         {loading ? (

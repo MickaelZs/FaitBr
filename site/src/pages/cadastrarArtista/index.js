@@ -111,7 +111,7 @@ export default function Index() {
                     await enviarImagemArtista(id, imagem)
 
                 }
-                toast.dark(' Artista alterado com sucesso');
+                toast.success(' Artista alterado com sucesso');
             }
         }
 
@@ -144,7 +144,7 @@ export default function Index() {
 
                             {!imagem &&
 
-                                <img src='/images/image-bottom212.svg' width='120px' />
+                                <img src='https://img.icons8.com/sf-regular/1200/add-image.jpg' width='120px' />
                             }
 
                             {imagem &&
@@ -170,21 +170,28 @@ export default function Index() {
                                     <label>Artista</label>
                                 </div>
 
-                                
+
 
                                 <select value={idGenero} onChange={e => setIdGenero(e.target.value)}>
-                                    <option selected disabled hidden> Generos </option>
-                                    {genero.map(item =>
-                                        <option value={item.id}> {item.nome} </option>
-                                    )}
+
+                                    <option value="" disabled hidden>
+                                        Selecione um gênero
+                                    </option>
+
+                                    {genero.map((item) => (
+                                        <option key={item.id} value={item.id}>
+                                            {item.nome}
+                                        </option>
+                                    ))}
+
                                 </select>
-                              
-                                
+
+
                                 <div className='label-float'>
                                     <input type="text" placeholder=" " value={sobre} onChange={e => setSobre(e.target.value)} />
                                     <label>Sobre</label>
                                 </div>
-                                
+
 
                             </div>
                             <div className='botoes'>

@@ -3,18 +3,14 @@
   top: 0;
   left: 0;
   z-index: 1000;
-
   width: 260px;
   height: 100dvh;
   padding: 30px 0;
-
-  background: linear-gradient(180deg, #8D32E5, #6a1cc9);
+  background: #0008FF;
   box-shadow: 4px 0 25px rgba(0, 0, 0, 0.35);
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   transition: 0.3s ease;
 }
 
@@ -135,7 +131,7 @@
 
     padding: 0 10px;
 
-    border-radius: 20px 20px 0 0;
+    border-radius: 0px 0px 0px 0px;
     box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.3);
   }
 
@@ -184,6 +180,6 @@
   }
 
   .comp-menu1 {
-    height: 60px;
+    height: 65px;
   }
 }

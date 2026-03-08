@@ -27,7 +27,7 @@ export default function Index() {
       let id = Storage("Playlist").id;
       let musicaSelecionada = musicaa[position].id_musica
       const resp = await PlaylistItem(musicaSelecionada, id);
-      toast.dark("Musica selecionada");
+      toast.success("Musica selecionada");
     } catch (err) {
       if (err.response) toast.error(err.response.data.erro);
       else toast.error(err.message);
