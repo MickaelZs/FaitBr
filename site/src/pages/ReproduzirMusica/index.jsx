@@ -8,6 +8,8 @@ import { API_URL } from '../../api/config';
 import { listarPlaylistItemUsuarioo } from '../../api/playlistAPI';
 import Storage from 'local-storage'
 import Cabecario from '../../components/cabeçalho';
+import {  curtirMusica, deletarrCurtida, listaMusicaArtista, listarCurtidas, } from "../../api/musicaAPI"
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function Reproduzir() {
     const [musica, setMusica] = useState([])
@@ -15,26 +17,13 @@ export default function Reproduzir() {
     const [musicaPrincipal, setMusicaPrincipal] = useState('');
     const [generoPrincipal, setGeneroPrincipal] = useState('');
     const [audioPrincipal, setAudioPrincipal] = useState(0)
+    const [curtir, setCurtir] = useState([]);
+    
+
+
     const navigate = useNavigate()
     const { idParam } = useParams()
 
-    function acessarMusica(id) {
-        navigate(`/Reproduzir/${id}`)
-    }
-
-    function exibirImagemPrincipal(imagem) {
-        if (musica.imagem > 0) {
-            console.log(imagem)
-            return API_URL + '/' + imagem[imagemPrincipal];
-        }
-
-        else {
-            return '/images/teto.jpg';
-
-        }
-
-
-    }
 
     function exibirImagemProduto(imagem) {
         return API_URL + '/' + imagem;
@@ -58,8 +47,91 @@ export default function Reproduzir() {
             navigate('/LoginUsuario');
         }
         carregarMusica()
+        carregarCurtidas()
 
     }, [])
+
+
+
+      async function curtirr(musicaId) {
+            try {
+                let id = Storage('usuario-logado').id;
+    
+                setCurtir(prev => [...prev, { IdMusica: musicaId }]);
+                await curtirMusica(musicaId, id);
+            } catch (err) {
+    
+            }
+        }
+    
+        function musicaJaCurtida(musicaId) {
+            return curtir.some(item => item.IdMusica === musicaId);
+        }
+    
+        async function carregarCurtidas() {
+            const id = Storage('usuario-logado').id;
+            const resp = await listarCurtidas(id);
+    
+            setCurtir(resp);
+        }
+    
+        async function deletarClick(musicaId) {
+            try {
+                const user = Storage('usuario-logado').id;
+    
+                await deletarrCurtida(user, musicaId);
+    
+                await carregarCurtidas();
+    
+            } catch (err) {
+                if (err.response) toast.error(err.response.data.erro);
+                else toast.error(err.message);
+            }
+        }
+    
+    
+  
+    
+        function acessarMusica(id) {
+            navigate(`/Reproduzir/${id}`)
+        }
+    
+        // function mostrarImagem(imagem) {
+    
+        //     if (typeof (imagem) == 'object') {
+        //         return URL.createObjectURL(imagem);
+        //     }
+        //     else {
+    
+        //         return `${API_URL}/${imagem}`
+        //     }
+        // }
+        // function escolherImagem(objeto, mostrarNovaimagem) {
+        //     document.querySelector(objeto).src = "./images/heart on.png";
+        // }
+    
+        // async function carregarCurtidas() {
+        //     const id = Storage('usuario-logado').id;
+        //     const resp = await listarCurtidas(id)
+        //         (resp)
+    
+    
+        // }
+    
+    
+    
+        function sairClick() {
+            Storage.remove('music')
+            navigate('/LoginUsuario')
+        }
+    
+    
+        async function carregarArtistaPorMusica() {
+            const resp = await buscarArtistaPorMusicaId(idParam)
+            setMusica(resp)
+            console.log(resp)
+    
+        }
 
 
     return (
@@ -102,6 +174,24 @@ export default function Reproduzir() {
                                 <p>{item.genero}</p>
 
                             </div>
+
+                             <div
+                                    className="heartt"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        musicaJaCurtida(item.id)
+                                            ? deletarClick(item.id)
+                                            : curtirr(item.id);
+                                    }}
+                                >
+                                    <img
+                                        src={
+                                            musicaJaCurtida(item.id)
+                                                ? "/images/heart (1).png"
+                                                : "/images/coracao (2).png"
+                                        }
+                                    />
+                                </div>
 
 
                         </div>
