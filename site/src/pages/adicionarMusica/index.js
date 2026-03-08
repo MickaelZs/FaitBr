@@ -2,7 +2,7 @@ import "./index.scss";
 import { BuscarMusicaPorNome, listaMusicaArtista } from "../../api/musicaAPI";
 import { useEffect, useState } from "react";
 import { API_URL } from "../../api/config.js";
-import { PlaylistItem } from "../../api/playlistAPI";
+import { PlaylistItem, listarPlaylistItemUsuarioo } from "../../api/playlistAPI";
 import { ToastContainer, toast } from "react-toastify";
 import Storage from "local-storage";
 import { useNavigate, useParams } from "react-router-dom";
@@ -15,6 +15,7 @@ export default function Index() {
 
   const [musicaa, setMusicaa] = useState([]);
   const [buscar, setBuscar] = useState('')
+  const [itensPlaylist, setItensPlaylist] = useState([]);
 
   async function filtrar() {
     const resp = await BuscarMusicaPorNome(buscar)
@@ -23,15 +24,46 @@ export default function Index() {
   }
 
   async function salvar(position) {
+
     try {
-      let id = Storage("Playlist").id;
-      let musicaSelecionada = musicaa[position].id_musica
-      const resp = await PlaylistItem(musicaSelecionada, id);
-      toast.success("Musica selecionada");
+
+      let playlistId = Storage("Playlist").id;
+      let musicaSelecionada = musicaa[position].id_musica;
+
+      if (musicaJaNaPlaylist(musicaSelecionada)) {
+        toast.warning("Essa música já está na playlist 🎵");
+        return;
+      }
+
+      await PlaylistItem(musicaSelecionada, playlistId);
+
+      toast.success("Música adicionada 🎵");
+
+      carregarItensPlaylist();
+
     } catch (err) {
       if (err.response) toast.error(err.response.data.erro);
       else toast.error(err.message);
     }
+
+  }
+
+  async function carregarItensPlaylist() {
+    try {
+
+      const playlistId = Storage("Playlist").id;
+
+      const resp = await listarPlaylistItemUsuarioo(playlistId);
+
+      setItensPlaylist(resp);
+
+    } catch (err) {
+      toast.error("Erro ao carregar playlist");
+    }
+  }
+
+  function musicaJaNaPlaylist(musicaId) {
+    return itensPlaylist.some(item => item.idMusica === musicaId);
   }
 
   function sairClick() {
@@ -49,6 +81,7 @@ export default function Index() {
       navigate('/LoginUsuario')
     }
     carregarMusica();
+    carregarItensPlaylist();
   }, []);
 
 
@@ -88,10 +121,16 @@ export default function Index() {
                 <span>{item.artista}</span>
               </div>
 
-              <div className="btn-add" onClick={() => salvar(musicaa.indexOf(item))}>
-                +
+              <div
+                className={`btn-add ${musicaJaNaPlaylist(item.id_musica) ? "disabled" : ""}`}
+                onClick={() =>
+                  !musicaJaNaPlaylist(item.id_musica) &&
+                  salvar(musicaa.indexOf(item))
+                }
+              >
+                {musicaJaNaPlaylist(item.id_musica) ? "✓" : "+"}
               </div>
-              
+
 
 
             </div>
